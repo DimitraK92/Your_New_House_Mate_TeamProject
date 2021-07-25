@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1073,6 +1074,16 @@
     <Content Include="Templates\Dimi\now-ui-kit-master\gulpfile.js" />
     <Content Include="Templates\Dimi\now-ui-kit-master\index.html" />
     <Content Include="Templates\Dimi\now-ui-kit-master\nucleo-icons.html" />
+    <Content Include="Templates\PagesToWorkWith\404.html" />
+    <Content Include="Templates\PagesToWorkWith\author-single.html" />
+    <Content Include="Templates\PagesToWorkWith\dashboard-add-listing.html" />
+    <Content Include="Templates\PagesToWorkWith\dashboard-messages.html" />
+    <Content Include="Templates\PagesToWorkWith\dashboard-myprofile.html" />
+    <Content Include="Templates\PagesToWorkWith\dashboard-password.html" />
+    <Content Include="Templates\PagesToWorkWith\dashboard.html" />
+    <Content Include="Templates\PagesToWorkWith\index6.html" />
+    <Content Include="Templates\PagesToWorkWith\listing-single2.html" />
+    <Content Include="Templates\PagesToWorkWith\listing5.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1209,6 +1220,8 @@
     <Content Include="Templates\BootstrapiousAdmin\vendor\jquery.cookie\component.json" />
     <Content Include="Templates\BootstrapiousAdmin\vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="Templates\BootstrapiousAdmin\vendor\popper.js\umd\popper.js.flow" />
+    <Content Include="Views\HomePage\Index.cshtml" />
+    <Content Include="Views\Shared\_MenuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
