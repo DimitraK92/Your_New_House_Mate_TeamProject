@@ -38,7 +38,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="~/Templates/Citybook/citybook/author-single.html">View Profile</a>
+                            <a href="~/Profile/Profile">View Profile</a>
                         </li>
                         <li>
                             <a href="#">Log Out</a>
@@ -47,6 +47,11 @@
 
                     @*αν θέλουμε το παρακάτω κουμπί για LogOut αντί να είναι dropdown στο avatar θα πρέπει με κάποια μορφοποίηση να μην πέφτει πάνω στα υπόλοιπα*@
                     @*<a href="#" class="log-out-btn">Log Out</a>*@
+                    <div class="nav-button-wrap color-bg">
+                        <div class="nav-button">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
                 </div>
                 <!--  navigation -->
                 <div class="nav-holder main-menu">
@@ -56,10 +61,10 @@
                                 <a href="~/HomePage/Index">Home</a>
                             </li>
                             <li>
-                                <a href="#">People</a>
+                                <a href="~/People/People">People</a>
                             </li>
                             <li>
-                                <a href="#">Houses</a>
+                                <a href="~/Houses/Houses">Houses</a>
                             </li>
                             <li>
                                 <a class="act-link" href="~/MyAccount/MyAccount">My Account<i class="fa"></i></a>
@@ -94,18 +99,15 @@
                                                 <ul>
                                                     <li><a class="act-link user-profile-act" href="~/MyAccount/MyAccount"><i class="fa fa-gears"></i>Dashboard</a></li>
                                                     <li><a href="~/EditProfile/EditProfile"><i class="fa fa-user-o"></i> Edit profile</a></li>
-                                                    <li><a href="~/Templates/Citybook/citybook/dashboard-messages.html"><i class="fa fa-envelope-o"></i> Messages <span>3</span></a></li>
-                                                    <li><a href="~/Templates/Citybook/citybook/dashboard-password.html"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
+                                                    <li><a href="~/Messages/Messages"><i class="fa fa-envelope-o"></i> Messages <span>3</span></a></li>
+                                                    <li><a href="~/Password/Password"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
                                                 </ul>
                                             </div>
                                             <!-- user-profile-menu end-->
                                             <!-- user-profile-menu-->
                                             <div class="user-profile-menu">
                                                 <h3>Listings</h3>
-                                                <ul>
-                                                    <li><a href="~/Templates/Citybook/citybook/dashboard-listing-table.html"><i class="fa fa-th-list"></i> Saved Houses</a></li>
-                                                    <li><a href="~/Templates/Citybook/citybook/dashboard-bookings.html"> <i class="fa fa-calendar-check-o"></i> My matches <span>2</span></a></li>
-                                                    <li><a href="~/Templates/Citybook/citybook/dashboard-review.html"><i class="fa fa-comments-o"></i> Reviews </a></li>
+                                                <ul>                                                   
                                                     <li><a href="~/Templates/Citybook/citybook/dashboard-add-listing.html"><i class="fa fa-plus-square-o"></i> Add My House</a></li>
                                                 </ul>
                                             </div>

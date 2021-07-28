@@ -173,8 +173,13 @@
     <Compile Include="Controllers\EditProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\HousesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
+    <Compile Include="Controllers\PasswordController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1226,6 +1231,11 @@
     <Content Include="Views\Shared\_MenuBar.cshtml" />
     <Content Include="Views\MyAccount\MyAccount.cshtml" />
     <Content Include="Views\EditProfile\EditProfile.cshtml" />
+    <Content Include="Views\People\People.cshtml" />
+    <Content Include="Views\Houses\Houses.cshtml" />
+    <Content Include="Views\Messages\Messages.cshtml" />
+    <Content Include="Views\Password\Password.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
