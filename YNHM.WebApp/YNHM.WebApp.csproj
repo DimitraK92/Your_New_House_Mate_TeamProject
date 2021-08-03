@@ -1236,7 +1236,6 @@
     <Content Include="Views\Messages\Messages.cshtml" />
     <Content Include="Views\Password\Password.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
-    <Content Include="Views\Test\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
