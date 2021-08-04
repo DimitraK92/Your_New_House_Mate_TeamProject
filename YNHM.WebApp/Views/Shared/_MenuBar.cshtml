@@ -9,7 +9,7 @@
     <header class="main-header dark-header fs-header sticky">
         <div class="header-inner">
             <div class="logo-holder">
-                <a href="~/Templates/Citybook/citybook/index.html"><img src="~/Templates/Citybook/citybook/images/logo.png" alt=""></a>
+                <a href="@Url.Action("Index","HomePage")"><img src="~/Templates/Citybook/citybook/images/logo.png" alt=""></a>
             </div>
 
             <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
@@ -25,16 +25,20 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="~/HomePage/Index" class="act-link">Home</a>
+                            @Html.ActionLink("Home","Index","HomePage")
+                            @*<a href="~/HomePage/Index" class="act-link">Home</a>*@
                         </li>
                         <li>
-                            <a href="~/People/People">People</a>
+                            @Html.ActionLink("People", "People", "HomePage")
+                            @*<a href="~/HomePage/People">People</a>*@
                         </li>
                         <li>
-                            <a href="~/Houses/Houses">Houses</a>
+                            @Html.ActionLink("Houses", "Houses", "HomePage")
+                            @*<a href="~/HomePage/Houses">Houses</a>*@
                         </li>
                         <li>
-                            <a href="~/MyAccount/MyAccount">My Account<i class="fa"></i></a>
+                            @Html.ActionLink("My Account", "MyAccount", "MyAccount");
+                            @*<a href="~/MyAccount/MyAccount">My Account<i class="fa"></i></a>*@
                         </li>
                     </ul>
                 </nav>

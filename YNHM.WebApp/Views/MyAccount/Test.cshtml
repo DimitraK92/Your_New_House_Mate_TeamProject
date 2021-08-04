@@ -1,0 +1,217 @@
+﻿
+        <!--wrapper-->
+        <div id="wrapper">
+            content
+            <div class="content">
+                <!--section-->
+                <section>
+                    <!--container-->
+                    <div class="container">
+                        <!--profile-edit-wrap-->
+                        <div class="profile-edit-wrap">
+                            <div class="profile-edit-page-header">
+                                <h2>Edit profile</h2>                              
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="fixed-bar fl-wrap">
+                                        @Html.Partial("_AdminPanelLeftMenu")
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="container mt-sm-5 my-1">
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>1. Do you love animals?</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Yes
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    No
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>2. Do you have a pet?</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Yes
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    No
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>3. Are you smoking?</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Yes
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    No
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>4. Choose your favorite kind of music</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Rock/Metal
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    Pop
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    Hip-Hop
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    Reggae
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>5. Do you bothered by the guests in a home?</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Yes
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    No
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>6.Are you looking for cheap or expensive rents?  </b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Cheap
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    Expensive
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+                                        <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                            <div class="py-2 h5"><b>7. Do you prefer a big or a small house?</b></div>
+                                            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                                <label class="options">
+                                                    Big
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="options">
+                                                    Small
+                                                    <input type="radio" name="radio">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            @*<div class="d-flex align-items-center pt-3">
+                    <div id="prev"> <button class="btn btn-primary">Previous</button> </div>
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Next</button> </div>
+                </div>*@
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="edit-profile-photo fl-wrap">
+                                        <img src="images/avatar/1.jpg" class="respimg" alt="">
+                                        <div class="change-photo-btn">
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                <input type="file" class="upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--profile-edit-wrap end -->
+                    </div>
+                    <!--container end -->
+                </section>
+                <!-- section end -->
+                <div class="limit-box fl-wrap"></div>
+                section
+                <section class="gradient-bg">
+                    <div class="cirle-bg">
+                        <div class="bg" data-bg="images/bg/circle.png"></div>
+                    </div>
+                    <div class="container">
+                        <div class="join-wrap fl-wrap">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3>Do You Have Questions ?</h3>
+                                    <p>Lorem ipsum dolor sit amet, harum dolor nec in, usu molestiae at no.</p>
+                                </div>
+                                <div class="col-md-4"><a href="contacts.html" class="join-wrap-btn">Get In Touch <i class="fa fa-envelope-o"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- section end -->
+            </div>
+        </div>
+        <!-- wrapper end -->
+        
+
+
