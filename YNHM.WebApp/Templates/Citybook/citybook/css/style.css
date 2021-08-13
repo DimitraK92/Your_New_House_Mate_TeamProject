@@ -1483,18 +1483,18 @@ section.gray-section .section-separator {
 }
 .card-listing  .listing-avatar {
 	position:absolute;
-	top:-30px;
+	top:30px;
 	right:20px;
 	width:60px;
 	height:60px;
 	z-index:10;
 }
-.card-listing  .listing-avatar img {
-	width:60px;
-	height:60px;
-	border:6px solid rgba(255,255,255,0.4);
- 	border-radius:100%;
-}
+	.card-listing .listing-avatar img {
+		width: 60px;
+		height: 60px;
+		border: 6px solid rgba(255,255,255,0.4);
+		border-radius: 100%;
+	}
 .avatar-tooltip {
 	position:absolute;
 	top:-50px;

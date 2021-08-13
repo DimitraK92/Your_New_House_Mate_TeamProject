@@ -1,0 +1,114 @@
+﻿@model YNHM.Database.Mockup.Person
+
+
+<!-- wrapper -->
+<div id="wrapper">
+    <!--Content -->
+    <div class="content">
+        <!--section -->
+        <section class="parallax-section small-par color-bg">
+            <div class="shapes-bg-big"></div>
+            <div class="container">
+                <div class="section-title center-align">
+                    <h2><span>@Model.FirstName @Model.LastName</span></h2>
+                    <div class="user-profile-avatar"><img src="~/Models/FakeImages/person1.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="header-sec-link">
+                <div class="container"><a href="#sec1" class="custom-scroll-link">About user</a></div>
+            </div>
+        </section>
+        <!-- section end -->
+        <!--section -->
+        <section class="gray-bg" id="sec1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="list-single-main-item fl-wrap">
+                            <div class="list-single-main-item-title fl-wrap">
+                                <h3>About <span> @Model.FirstName @Model.LastName</span></h3>
+                            </div>
+                            <p>@Model.Description</p>
+                        </div>
+                    </div>
+                    <!--box-widget-wrap -->
+                    <div class="col-md-4">
+                        <div class="fl-wrap">
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>User Contacts : </h3>
+                                </div>
+                                <div class="box-widget">
+                                    <div class="box-widget-content">
+                                        <div class="list-author-widget-contacts list-item-widget-contacts">
+                                            <ul>
+                                                <li><span><i class="fa fa-map-marker"></i> Address :</span> <a href="#"></a></li>
+                                                <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">@Model.Phone</a></li>
+                                                <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">@Model.Email</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-widget-social">
+                                            <ul>
+                                                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>Get in Touch : </h3>
+                                </div>
+                                <div class="box-widget">
+                                    <div class="box-widget-content">
+                                        <form id="add-comment" class="add-comment custom-form">
+                                            <fieldset>
+                                                <label><i class="fa fa-user-o"></i></label>
+                                                <input type="text" placeholder="Your Name *" value="" />
+                                                <div class="clearfix"></div>
+                                                <label><i class="fa fa-envelope-o"></i>  </label>
+                                                <input type="text" placeholder="Email Address*" value="" />
+                                                <textarea cols="40" rows="3" placeholder="Your message:"></textarea>
+                                            </fieldset>
+                                            <button class="btn  big-btn  color-bg flat-btn">Send Message<i class="fa fa-angle-right"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                        </div>
+                    </div>
+                    <!--box-widget-wrap end-->
+                </div>
+            </div>
+        </section>
+        <!-- section end -->
+        <div class="limit-box fl-wrap"></div>
+        <!--section -->
+        <section class="gradient-bg">
+            <div class="cirle-bg">
+                <div class="bg" data-bg="images/bg/circle.png"></div>
+            </div>
+            <div class="container">
+                <div class="join-wrap fl-wrap">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>Join our online community</h3>
+                            <p>Grow your marketing and be happy with your online business</p>
+                        </div>
+                        <div class="col-md-4"><a href="#" class="join-wrap-btn modal-open">Sign Up <i class="fa fa-sign-in"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section end -->
+    </div>
+    <!-- content end -->
+</div>
+<!-- wrapper end -->
