@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YNHM.Database;
 using YNHM.Database.Mockup;
 
 namespace YNHM.WebApp.Controllers
@@ -12,7 +13,7 @@ namespace YNHM.WebApp.Controllers
     public class HomePageController : Controller
     {
         private readonly MockupDb mockupDbContext = new MockupDb();
-
+        private readonly ApplicationDbContext dbContext = new ApplicationDbContext();
 
 
         // GET: HomePage
@@ -21,11 +22,10 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        public ActionResult People(IEnumerable<Person> ListOfPeople)
+        public ActionResult People()
         {
-            ListOfPeople = mockupDbContext.MockupPeople.OrderByDescending(x => x.MatchPercent).ThenBy(x=>x.Age).ToList();
+            return View(dbContext.People.OrderByDescending(x => x.MatchPercent).ThenBy(x => x.Age).ToList());
 
-            return View(ListOfPeople);
         }
 
         public ActionResult PersonalProfile(int? id)
