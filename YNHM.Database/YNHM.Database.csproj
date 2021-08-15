@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Mockup\House.cs" />
     <Compile Include="Mockup\MockupDb.cs" />
     <Compile Include="Mockup\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

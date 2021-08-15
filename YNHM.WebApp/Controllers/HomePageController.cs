@@ -39,9 +39,23 @@ namespace YNHM.WebApp.Controllers
             return View(person);
         }
 
-        public ActionResult Houses()
+        public ActionResult Houses(IEnumerable<House>ListOfHouses)
         {
-            return View("Houses");
+            ListOfHouses = mockupDbContext.MockupHouses.OrderBy(x => x.Rent).ThenBy(x => x.Area).ThenBy(x => x.Bedrooms).ToList();
+
+            return View(ListOfHouses);
+        }
+
+        public ActionResult SingleListing(int? houseId)
+        {
+            var id = houseId;
+            if (houseId == null)
+            {
+                return View("Error");
+            }
+
+            var house = mockupDbContext.MockupHouses.Find(h => h.HouseId == houseId);
+            return View(house);
         }
     }
 }

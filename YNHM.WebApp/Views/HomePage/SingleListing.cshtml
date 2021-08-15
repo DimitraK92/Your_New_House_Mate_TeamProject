@@ -1,0 +1,309 @@
+﻿@model YNHM.Database.Mockup.House
+
+<!-- wrapper -->
+<div id="wrapper">
+    <!--  content-->
+    <div class="content">
+        <!--  carousel-->
+        <div class="list-single-carousel-wrap fl-wrap" id="sec1">
+            <div class="fw-carousel fl-wrap full-height lightgallery">
+                <!-- slick-slide-item -->
+                @foreach (var url in Model.PhotoUrls)
+                {
+                    <div class="slick-slide-item">
+                        <div class="box-item">
+                            <img src="@url" alt="">
+                            <a href="@url" class="gal-link popup-image"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                }
+                <!-- slick-slide-item end -->
+            </div>
+            <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
+            <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
+        </div>
+        <!--  carousel  end-->
+        
+        <!--  section   -->
+        <section class="gray-section no-top-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- list-single-main-wrapper -->
+                        <div class="list-single-main-wrapper fl-wrap" id="sec2"
+                            <!-- list-single-header -->
+                            <div class="list-single-header list-single-header-inside fl-wrap">
+                                <div class="container">
+                                    <div class="list-single-header-item">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="list-single-header-item-opt fl-wrap">
+                                                    <div class="list-single-header-cat fl-wrap">
+                                                        <a href="#">@Model.Title</a>
+                                                    </div>
+                                                </div>
+                                                <h2> <span> - Rented By </span><a href="author-single.html">@Model.Manager.FirstName @Model.Manager.LastName</a> </h2>
+                                                <span class="section-separator"></span>
+                                                <div class="list-post-counter single-list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="fl-wrap list-single-header-column">
+                                                    <span class="viewed-counter"><i class="fa fa-eye"></i> Viewed -  156 </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- list-single-header end -->
+                            <div class="list-single-facts fl-wrap gradient-bg">
+                                <!-- inline-facts -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <i class="fa fa-home"></i>
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" data-num="@Model.Area">0</div>
+                                            </div>
+                                        </div>
+                                        <h6>Area</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                                <!-- inline-facts  -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <i class="fa fa-bed"></i>
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" data-num="@Model.Bedrooms">0</div>
+                                            </div>
+                                        </div>
+                                        <h6>Bedrooms</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                                <!-- inline-facts  -->
+                                <div class="inline-facts-wrap">
+                                    <div class="inline-facts">
+                                        <i class="fa fa-money"></i>
+                                        <div class="milestone-counter">
+                                            <div class="stats animaper">
+                                                <div class="num" data-content="0" data-num="@Model.Rent">0</div>
+                                            </div>
+                                        </div>
+                                        <h6>Rent per Month</h6>
+                                    </div>
+                                </div>
+                                <!-- inline-facts end -->
+                            </div>
+                            <div class="list-single-main-item fl-wrap">
+                                <div class="list-single-main-item-title fl-wrap">
+                                    <h3>Amenities</h3>
+                                </div>
+                                <div class="listing-features fl-wrap">
+                                    <ul>
+                                        <li><i class="fa fa-rocket"></i> Elevator in building</li>
+                                        <li><i class="fa fa-wifi"></i> Free Wi Fi</li>
+                                        <li><i class="fa fa-motorcycle"></i> Free Parking</li>
+                                        <li><i class="fa fa-cloud"></i> Air Conditioned</li>
+                                        <li><i class="fa fa-shopping-cart"></i> Online Ordering</li>
+                                        <li><i class="fa fa-paw"></i> Pet Friendly</li>
+                                        <li><i class="fa fa-tree"></i> Outdoor Seating</li>
+                                        <li><i class="fa fa-wheelchair"></i> Wheelchair Friendly</li>
+                                    </ul>
+                                </div>
+                                <span class="fw-separator"></span>
+                                <div class="list-single-main-item-title fl-wrap">
+                                    <h3>Tags</h3>
+                                </div>
+                                <div class="list-single-tags tags-stylwrap">
+                                    <a href="#">Hotel</a>
+                                    <a href="#">Hostel</a>
+                                    <a href="#">Room</a>
+                                    <a href="#">Spa</a>
+                                    <a href="#">Restourant</a>
+                                    <a href="#">Parking</a>
+                                </div>
+                            </div>
+                            <!-- list-single-main-item-->
+                            <!-- list-single-main-item end -->
+                            <div class="accordion">
+                                <a class="toggle act-accordion" href="#"> Details option   <i class="fa fa-angle-down"></i></a>
+                                <div class="accordion-inner visible">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                </div>
+                                <a class="toggle" href="#"> Details option 2  <i class="fa fa-angle-down"></i></a>
+                                <div class="accordion-inner">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                </div>
+                                <a class="toggle" href="#"> Details option 3  <i class="fa fa-angle-down"></i></a>
+                                <div class="accordion-inner">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--box-widget-wrap -->
+                    <div class="col-md-4">
+                        <div class="box-widget-wrap">
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>Book a Reservation: </h3>
+                                </div>
+                                <div class="box-widget opening-hours">
+                                    <div class="box-widget-content">
+                                        <form class="add-comment custom-form">
+                                            <fieldset>
+                                                <label><i class="fa fa-user-o"></i></label>
+                                                <input type="text" placeholder="Your Name *" value="" />
+                                                <div class="clearfix"></div>
+                                                <label><i class="fa fa-envelope-o"></i>  </label>
+                                                <input type="text" placeholder="Email Address*" value="" />
+                                                <div class="quantity fl-wrap">
+                                                    <span><i class="fa fa-user-plus"></i>Persons : </span>
+                                                    <div class="quantity-item">
+                                                        <input type="button" value="-" class="minus">
+                                                        <input type="text" name="quantity" title="Qty" class="qty" min="1" max="3" step="1" value="1">
+                                                        <input type="button" value="+" class="plus">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label><i class="fa fa-calendar-check-o"></i>  </label>
+                                                        <input type="text" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" value="" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label><i class="fa fa-clock-o"></i>  </label>
+                                                        <input type="text" placeholder="Time" class="timepicker" value="12:00 am" />
+                                                    </div>
+                                                </div>
+                                                <textarea cols="40" rows="3" placeholder="Additional Information:"></textarea>
+                                            </fieldset>
+                                            <button class="btn  big-btn  color-bg flat-btn book-btn">Book Now<i class="fa fa-angle-right"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>Location / Contacts : </h3>
+                                </div>
+                                <div class="box-widget">
+                                    <div class="map-container">
+                                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
+                                    </div>
+                                    <div class="box-widget-content">
+                                        <div class="list-author-widget-contacts list-item-widget-contacts">
+                                            <ul>
+                                                <li><span><i class="fa fa-map-marker"></i> Adress :</span> <a href="#">USA 27TH Brooklyn NY</a></li>
+                                                <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">+7(123)987654</a></li>
+                                                <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">AlisaNoory@domain.com</a></li>
+                                                <li><span><i class="fa fa-globe"></i> Website :</span> <a href="#">themeforest.net</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-widget-social">
+                                            <ul>
+                                                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                                                <li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>Hosted by : </h3>
+                                </div>
+                                <div class="box-widget list-author-widget">
+                                    <div class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
+                                        <span class="list-author-widget-link">@Html.ActionLink($"{Model.Manager.FirstName} {Model.Manager.LastName}", $"PersonalProfile/{Model.Manager.Id}", "HomePage")</span>
+                                        <img src="~/Models/FakeImages/person2.jpg" alt="">
+                                    </div>
+                                    <div class="box-widget-content">
+                                        <div class="list-author-widget-text">
+                                            <div class="list-author-widget-contacts">
+                                                <ul>
+                                                    <li><span><i class="fa fa-phone"></i> Phone :</span> @Model.Manager.Phone</li>
+                                                    <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">@Model.Manager.Email</a></li>
+                                                    <li><span><i class="fa fa-globe"></i> Website :</span> <a href="#">@Model.Manager.Facebook</a></li>
+                                                </ul>
+                                            </div>
+                                            <a href="author-single.html" class="btn transparent-btn">View Profile <i class="fa fa-eye"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                            <!--box-widget-item -->
+                            <div class="box-widget-item fl-wrap">
+                                <div class="box-widget-item-header">
+                                    <h3>More from this employer : </h3>
+                                </div>
+                                <div class="box-widget widget-posts">
+                                    <div class="box-widget-content">
+                                        <ul>
+                                            <li class="clearfix">
+                                                <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" alt=""></a>
+                                                <div class="widget-posts-descr">
+                                                    <a href="#" title="">Cafe "Lollipop"</a>
+                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 21 Mar 2017 </span>
+                                                </div>
+                                            </li>
+                                            <li class="clearfix">
+                                                <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" alt=""></a>
+                                                <div class="widget-posts-descr">
+                                                    <a href="#" title=""> Apartment in the Center</a>
+                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 7 Mar 2017 </span>
+                                                </div>
+                                            </li>
+                                            <li class="clearfix">
+                                                <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" alt=""></a>
+                                                <div class="widget-posts-descr">
+                                                    <a href="#" title="">Event in City Mol</a>
+                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 7 Mar 2017 </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <a class="widget-posts-link" href="#">See All Listing<span><i class="fa fa-angle-right"></i></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--box-widget-item end -->
+                        </div>
+                    </div>
+                    <!--box-widget-wrap end -->
+                </div>
+            </div>
+        </section>
+        <!--  section  end-->
+        <div class="limit-box fl-wrap"></div>
+        <!--  section   -->
+        <section class="gradient-bg">
+            <div class="cirle-bg">
+                <div class="bg" data-bg="images/bg/circle.png"></div>
+            </div>
+            <div class="container">
+                <div class="join-wrap fl-wrap">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>Join our online community</h3>
+                            <p>Grow your marketing and be happy with your online business</p>
+                        </div>
+                        <div class="col-md-4"><a href="#" class="join-wrap-btn modal-open">Sign Up <i class="fa fa-sign-in"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  section  end-->
+    </div>
+    <!--  content  end-->
+</div>
+<!-- wrapper end -->

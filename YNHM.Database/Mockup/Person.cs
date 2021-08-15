@@ -20,6 +20,16 @@ namespace YNHM.Database.Mockup
         public string Description { get; set; }
 
 
+        public Person(int id, string firstName, string lastName, string photoUrl, string phone, string email, string facebook)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            PhotoUrl = photoUrl;
+            Email = email;
+            Facebook = facebook;
+        }
+
         public Person(int id, string firstName, string lastName, int age, string photoUrl, int matchPercent,string description,string phone, string email, string facebook)
         {
             Id = id;
