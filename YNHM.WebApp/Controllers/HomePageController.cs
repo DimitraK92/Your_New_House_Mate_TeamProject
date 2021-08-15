@@ -4,8 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 using YNHM.Database;
+using YNHM.Database.Mockup;
 using YNHM.Database.Models;
+using Person = YNHM.Database.Models.Person;
 
 namespace YNHM.WebApp.Controllers
 {
@@ -13,7 +16,7 @@ namespace YNHM.WebApp.Controllers
     //TODO: Fix active tab on the navbar
     public class HomePageController : Controller
     {
-        //private readonly MockupDb mockupDbContext = new MockupDb();
+        private readonly MockupDb mockupDbContext = new MockupDb();
         private readonly ApplicationDbContext dbContext = new ApplicationDbContext();
 
 
@@ -25,7 +28,7 @@ namespace YNHM.WebApp.Controllers
 
         public ActionResult People()
         {
-            List<Person> people = new List<Person>();
+            List<Database.Models.Person> people = new List<Database.Models.Person>();
             try
             {
                 people = dbContext.People
