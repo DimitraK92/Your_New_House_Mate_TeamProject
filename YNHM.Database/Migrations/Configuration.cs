@@ -21,7 +21,7 @@ namespace YNHM.Database.Migrations
             {
                 new Person(){
                     FirstName ="Jane",
-                    Lastname = "Doe",
+                    LastName = "Doe",
                     Age = 36,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 95,
@@ -32,7 +32,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Jim",
-                    Lastname = "Do",
+                    LastName = "Do",
                     Age = 10,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 32,
@@ -43,7 +43,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Max",
-                    Lastname = "Dont",
+                    LastName = "Dont",
                     Age = 48,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 95,
@@ -54,7 +54,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Min",
-                    Lastname = "Donot",
+                    LastName = "Donot",
                     Age = 82,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 29,
@@ -65,7 +65,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Jill",
-                    Lastname = "Cannot",
+                    LastName = "Cannot",
                     Age = 30,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 77,
@@ -76,7 +76,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Jake",
-                    Lastname = "Shallnot",
+                    LastName = "Shallnot",
                     Age = 63,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 63,
@@ -87,7 +87,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Bill",
-                    Lastname = "Shall",
+                    LastName = "Shall",
                     Age = 27,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 1,
@@ -98,7 +98,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Andy",
-                    Lastname = "Can",
+                    LastName = "Can",
                     Age = 51,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 48,
@@ -109,7 +109,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Andria",
-                    Lastname = "Could",
+                    LastName = "Could",
                     Age = 18,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 87,
@@ -120,7 +120,7 @@ namespace YNHM.Database.Migrations
                 },
                 new Person(){
                     FirstName ="Maria",
-                    Lastname = "Couldnot",
+                    LastName = "Couldnot",
                     Age = 36,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
                     MatchPercent = 95,

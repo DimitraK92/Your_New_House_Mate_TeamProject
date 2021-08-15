@@ -9,7 +9,7 @@ namespace YNHM.Database.Models
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
 
         public int Age { get; set; }
 
