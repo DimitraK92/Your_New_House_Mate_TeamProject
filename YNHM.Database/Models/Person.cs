@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using YNHM.Database.Models.Base;
 
 namespace YNHM.Database.Models
@@ -14,9 +14,6 @@ namespace YNHM.Database.Models
 
         public int Age { get; set; }
 
-        [Display(Name = "Photograph URL")]
-        public string PhotoUrl { get; set; }
-
         [Display(Name = "Match Percentage")]
         public int MatchPercent { get; set; }
 
@@ -30,6 +27,10 @@ namespace YNHM.Database.Models
 
         public string Description { get; set; }
 
+        public string PhotoUrl { get; set; }
+
+        public virtual ICollection<House> OwnsHouses { get; set; }
+
         /// <summary>
         /// Used when the Description property of a Person object is too long.
         /// </summary>
@@ -42,5 +43,6 @@ namespace YNHM.Database.Models
             }
             return Description.Substring(0, maxSize);
         }
+
     }
 }

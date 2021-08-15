@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 using YNHM.Database;
-using YNHM.Database.Mockup;
 using YNHM.Database.Models;
-using Person = YNHM.Database.Models.Person;
 
 namespace YNHM.WebApp.Controllers
 {
@@ -16,7 +13,7 @@ namespace YNHM.WebApp.Controllers
     //TODO: Fix active tab on the navbar
     public class HomePageController : Controller
     {
-        private readonly MockupDb mockupDbContext = new MockupDb();
+        //private readonly MockupDb mockupDbContext = new MockupDb();
         private readonly ApplicationDbContext dbContext = new ApplicationDbContext();
 
 
@@ -28,7 +25,7 @@ namespace YNHM.WebApp.Controllers
 
         public ActionResult People()
         {
-            List<Database.Models.Person> people = new List<Database.Models.Person>();
+            List<Person> people = new List<Person>();
             try
             {
                 people = dbContext.People
@@ -43,7 +40,7 @@ namespace YNHM.WebApp.Controllers
             return View(people);
         }
 
-        public ActionResult PersonalProfile(Guid? id)
+        public ActionResult PersonalProfile(int? id)
         {
             if (id == null)
             {
@@ -67,22 +64,43 @@ namespace YNHM.WebApp.Controllers
             return View(person);
         }
 
-        public ActionResult Houses(IEnumerable<House>ListOfHouses)
+        public ActionResult Houses()
         {
-            ListOfHouses = mockupDbContext.MockupHouses.OrderBy(x => x.Rent).ThenBy(x => x.Area).ThenBy(x => x.Bedrooms).ToList();
-
-            return View(ListOfHouses);
+            try
+            {
+                var houses = dbContext.Houses
+                    .OrderBy(x => x.Rent)
+                    .ThenBy(x => x.Area)
+                    .ThenBy(x => x.Bedrooms)
+                    .ToList();
+                return View(houses);
+            }
+            catch (Exception e)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, e.Message);
+            }
         }
-
-        public ActionResult SingleListing(int? houseId)
+        
+        public ActionResult SingleListing(int? id)
         {
-            var id = houseId;
-            if (houseId == null)
+            if (id == null)
             {
                 return View("Error");
             }
-
-            var house = mockupDbContext.MockupHouses.Find(h => h.HouseId == houseId);
+            var houseId = id.GetValueOrDefault();
+            House house = null;
+            try
+            {
+                house = dbContext.Houses.FirstOrDefault(h => h.Id == houseId);
+            }
+            catch (Exception e)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, e.Message);
+            }
+            if (house == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
             return View(house);
         }
     }

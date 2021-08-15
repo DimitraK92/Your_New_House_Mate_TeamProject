@@ -1,4 +1,4 @@
-﻿@model YNHM.Database.Mockup.House
+﻿@model YNHM.Database.Models.House
 
 <!-- wrapper -->
 <div id="wrapper">
@@ -8,12 +8,12 @@
         <div class="list-single-carousel-wrap fl-wrap" id="sec1">
             <div class="fw-carousel fl-wrap full-height lightgallery">
                 <!-- slick-slide-item -->
-                @foreach (var url in Model.PhotoUrls)
+                @foreach (var photo in Model.Photos)
                 {
                     <div class="slick-slide-item">
                         <div class="box-item">
-                            <img src="@url" alt="">
-                            <a href="@url" class="gal-link popup-image"><i class="fa fa-search"></i></a>
+                            <img src="@photo.PhotoUrl" alt="">
+                            <a href="@photo.PhotoUrl" class="gal-link popup-image"><i class="fa fa-search"></i></a>
                         </div>
                     </div>
                 }

@@ -16,6 +16,55 @@ namespace YNHM.Database.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+            #region houses seed
+            Person geokthmonas = new Person()
+            {
+                FirstName = "Gianna",
+                LastName = "Mesitria",
+                Age = 36,
+                PhotoUrl = @"~/Models/FakeImages/person1.jpg",
+                MatchPercent = 95,
+                Phone = "694 656 6566",
+                Email = @"gianna.mesitria@gmail.com",
+                Facebook = @"https://el-gr.facebook.com/generic-user-name",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            };
+            context.People.Add(geokthmonas);
+            Random random = new Random();
+            string[] addresses = new string[]
+            {
+                "Fokionos Negri 45",
+                "Kypselis 32",
+                "Frynis 56",
+                "Patision 165",
+                "Kerkyras 98",
+                "Naxou 134",
+                "Themistokleous 87",
+                "Kallidromiou 60",
+                "Voulgaroktonou 1",
+                "Agias Zonis 27"
+            };
+            List<House> houses = new List<House>();
+            foreach (var address in addresses)
+            {
+                houses.Add(new House()
+                {
+                    Title = "Ugly exterior with surprising interior",
+                    Address = address,
+                    PostalCode = (10000 + random.Next(1000, 9999)).ToString(),
+                    Area = random.Next(60, 200),
+                    Floor = random.Next(6),
+                    Bedrooms = random.Next(1, 3),
+                    Rent = random.Next(250, 400),
+                    District = "City Center",
+                    MapLocation = "https://goo.gl/maps/2LMwmuBWZW5SvDEe6",
+                    Photos = CreateSyntheticPhotos(context),
+                    Manager = geokthmonas
+                });
+            }
+            context.Houses.AddRange(houses);
+            #endregion
+
             #region people seed
             List<Person> syntheticPeople = new List<Person>() //TODO create if not exists
             {
@@ -134,5 +183,21 @@ namespace YNHM.Database.Migrations
             #endregion
             context.SaveChanges();
         }
+
+        private List<Photo> CreateSyntheticPhotos(ApplicationDbContext context)
+        {
+            List<Photo> photos = new List<Photo>()
+            {
+                new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/05/96/1e/05961e1ce9e6492a11292042263c44de.jpg"},
+                new Photo(){PhotoUrl = @"http://cdn.home-designing.com/wp-content/uploads/2014/10/simple-small-bedroom.jpeg"},
+                new Photo(){PhotoUrl = @"https://cdn.decoratorist.com/wp-content/uploads/design-house-interior-contemporary-living-room-367286.jpg"},
+                new Photo(){PhotoUrl = @"https://hative.com/wp-content/uploads/2013/05/white-small-bathroom-decorating-layout-2502.jpg"},
+                new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/59/05/a4/5905a473f3cc38b72e79a5ee2bc40705.jpg"},
+                new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/4d/19/59/4d195933bb3df785114a7af88b02fdf1.jpg"}
+            };
+            context.Photos.AddRange(photos);
+            return photos;
+        }
+        
     }
 }

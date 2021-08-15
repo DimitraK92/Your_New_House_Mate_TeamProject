@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace YNHM.Database.Mockup
 {
+    [NotMapped]
     public class MockupDb
     {
         private static List<string> PhotoUrls = new List<string>()
