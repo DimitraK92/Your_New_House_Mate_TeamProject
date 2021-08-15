@@ -17,7 +17,7 @@ namespace YNHM.Database.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             #region people seed
-            List<Person> syntheticPeople = new List<Person>()
+            List<Person> syntheticPeople = new List<Person>() //TODO create if not exists
             {
                 new Person(){
                     FirstName ="Jane",
