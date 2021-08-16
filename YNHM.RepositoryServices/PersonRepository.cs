@@ -9,7 +9,7 @@ using YNHM.Database.Models;
 
 namespace YNHM.RepositoryServices
 {
-    class PersonRepository
+    public class PersonRepository
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
 
@@ -79,7 +79,7 @@ namespace YNHM.RepositoryServices
         public void Attach (Person person)
         {
             db.People.Attach(person);
-            db.Entry(person).Collection("Houses").Load();
+            db.Entry(person).Collection("OwnsHouses").Load();
         }
 
         readonly bool disposed = false;

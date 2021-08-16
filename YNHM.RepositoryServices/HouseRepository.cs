@@ -9,7 +9,7 @@ using YNHM.Database.Models;
 
 namespace YNHM.RepositoryServices
 {
-    class HouseRepository
+    public class HouseRepository
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
 

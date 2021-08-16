@@ -9,7 +9,7 @@ using YNHM.Database.Models;
 
 namespace YNHM.RepositoryServices
 {
-    class PhotoRepository
+    public class PhotoRepository
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
 
