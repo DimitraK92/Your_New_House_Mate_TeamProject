@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using System.Linq;
 using YNHM.Database.Models;
-using YNHM.Database.Models.Base;
 
 namespace YNHM.Database
 {
@@ -20,32 +19,6 @@ namespace YNHM.Database
         {
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
-        }
-
-        public override int SaveChanges()
-        {
-            this.ChangeTracker.DetectChanges();
-            var changed = this.ChangeTracker.Entries()
-                        .Where(t => t.State == EntityState.Added || t.State == EntityState.Modified)
-                        .ToList();
-
-            foreach (var entry in changed)
-            {
-                if (entry.Entity is BaseModel)
-                {
-                    var track = entry.Entity as BaseModel;
-                    if (entry.State == EntityState.Added)
-                    {
-                        track.CreationDate = DateTime.UtcNow;
-                        track.UpdateDate = DateTime.UtcNow;
-                    }
-                    else
-                    {
-                        track.UpdateDate = DateTime.UtcNow;
-                    }
-                }
-            }
-            return base.SaveChanges();
         }
     }
 }

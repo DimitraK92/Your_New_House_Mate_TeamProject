@@ -53,7 +53,6 @@
     <Compile Include="Mockup\House.cs" />
     <Compile Include="Mockup\MockupDb.cs" />
     <Compile Include="Mockup\Person.cs" />
-    <Compile Include="Models\Base\BaseModel.cs" />
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Photo.cs" />

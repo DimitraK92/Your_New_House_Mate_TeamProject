@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using YNHM.Database.Models.Base;
 
 namespace YNHM.Database.Models
 {
-    public class House : BaseModel
+    public class House
     {
+        public int HouseId { get; set; }
         public string Title { get; set; }
         public string Address { get; set; }
         public string PostalCode { get; set; }

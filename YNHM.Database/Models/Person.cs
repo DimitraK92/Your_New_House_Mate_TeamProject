@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using YNHM.Database.Models.Base;
 
 namespace YNHM.Database.Models
 {
-    public class Person : BaseModel
+    public class Person
     {
+        public int PersonId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using YNHM.Database.Models.Base;
+﻿
 
 namespace YNHM.Database.Models
 {
-    public class Photo : BaseModel
+    public class Photo
     {
+        public int PhotoId { get; set; }
         public string PhotoUrl { get; set; }
 
         public int? HouseId { get; set; }
