@@ -42,7 +42,7 @@
                                                 <div class="list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                @Html.ActionLink($"{@house.Title}",$"SingleListing/{house.Id}", new { houseId = @house.Id }, new { @class = "listing-geodir-category"})
+                                                @Html.ActionLink($"{@house.Title}",$"SingleListing/{house.HouseId}", new { houseId = @house.HouseId }, new { @class = "listing-geodir-category"})
                                                 @*<a class="listing-geodir-category" href="listing.html">@house.Title</a>*@
                                                 <div class="listing-avatar">
                                                     <a href="author-single.html"><img src="~/Models/FakeImages/person2.jpg" alt=""></a>
@@ -50,7 +50,7 @@
                                                 </div>
                                                 @*<h3><a href="listing-single.html">@house.Title</a></h3>*@
                                             <h3>                                                
-                                                @Html.ActionLink($"{@house.Title}", $"SingleListing/{house.Id}", new { houseId = @house.Id }  )
+                                                @Html.ActionLink($"{@house.Title}", $"SingleListing/{house.HouseId}", new { houseId = @house.HouseId }  )
                                             </h3>
                                                 <p><strong>Rent per month: € @house.Rent</strong></p>
                                                 <p><strong>Area: @house.Area m<sup>2</sup></strong></p>

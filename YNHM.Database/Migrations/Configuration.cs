@@ -44,9 +44,22 @@ namespace YNHM.Database.Migrations
                 "Voulgaroktonou 1",
                 "Agias Zonis 27"
             };
-            List<House> houses = new List<House>();
+
+            
             foreach (var address in addresses)
             {
+                #region photo seeding
+                List<Photo> photos = new List<Photo>()
+                {
+                    new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/05/96/1e/05961e1ce9e6492a11292042263c44de.jpg" },
+                    new Photo(){PhotoUrl = @"http://cdn.home-designing.com/wp-content/uploads/2014/10/simple-small-bedroom.jpeg" },
+                    new Photo(){PhotoUrl = @"https://cdn.decoratorist.com/wp-content/uploads/design-house-interior-contemporary-living-room-367286.jpg" },
+                    new Photo(){PhotoUrl = @"https://hative.com/wp-content/uploads/2013/05/white-small-bathroom-decorating-layout-2502.jpg" },
+                    new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/59/05/a4/5905a473f3cc38b72e79a5ee2bc40705.jpg" },
+                    new Photo(){PhotoUrl = @"https://i.pinimg.com/originals/4d/19/59/4d195933bb3df785114a7af88b02fdf1.jpg" }
+                };
+                context.Photos.AddRange(photos);
+                #endregion
                 var house = new House()
                 {
                     Title = "Ugly exterior with surprising interior",
@@ -58,7 +71,7 @@ namespace YNHM.Database.Migrations
                     Rent = random.Next(250, 400),
                     District = "City Center",
                     MapLocation = "https://goo.gl/maps/2LMwmuBWZW5SvDEe6",
-                    Photos = CreateSyntheticPhotos(context),
+                    Photos = photos,
                     Manager = geokthmonas
                 };
                 context.Houses.AddOrUpdate(h => h.Address, house);
@@ -186,32 +199,6 @@ namespace YNHM.Database.Migrations
             #endregion
             context.SaveChanges();
         }
-
-        private List<Photo> CreateSyntheticPhotos(ApplicationDbContext context)
-        {
-            HashSet<string> photos = new HashSet<string>()
-            {
-                @"https://i.pinimg.com/originals/05/96/1e/05961e1ce9e6492a11292042263c44de.jpg",
-                @"http://cdn.home-designing.com/wp-content/uploads/2014/10/simple-small-bedroom.jpeg",
-                @"https://cdn.decoratorist.com/wp-content/uploads/design-house-interior-contemporary-living-room-367286.jpg",
-                @"https://hative.com/wp-content/uploads/2013/05/white-small-bathroom-decorating-layout-2502.jpg",
-                @"https://i.pinimg.com/originals/59/05/a4/5905a473f3cc38b72e79a5ee2bc40705.jpg",
-                @"https://i.pinimg.com/originals/4d/19/59/4d195933bb3df785114a7af88b02fdf1.jpg"
-            };
-            foreach (var photo in photos)
-            {
-                context.Photos.AddOrUpdate(p => p.PhotoUrl, new Photo() { PhotoUrl = photo });
-            }
-            try
-            {
-                context.SaveChanges();
-                return context.Photos.Where(p => photos.Contains(p.PhotoUrl)).ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        
+                
     }
 }

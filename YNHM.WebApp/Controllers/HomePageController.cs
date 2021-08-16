@@ -50,7 +50,7 @@ namespace YNHM.WebApp.Controllers
             Person person = null;
             try
             {
-                person = dbContext.People.FirstOrDefault(x=>x.Id==personId);
+                person = dbContext.People.FirstOrDefault(x=>x.PersonId==personId);
             }
             catch (Exception e)
             {
@@ -91,7 +91,7 @@ namespace YNHM.WebApp.Controllers
             House house = null;
             try
             {
-                house = dbContext.Houses.FirstOrDefault(h => h.Id == houseId);
+                house = dbContext.Houses.FirstOrDefault(h => h.HouseId == houseId);
             }
             catch (Exception e)
             {
