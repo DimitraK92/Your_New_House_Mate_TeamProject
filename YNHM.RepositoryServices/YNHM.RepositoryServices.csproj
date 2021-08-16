@@ -48,11 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
+      <Project>{6233ffcb-4dee-4d89-af64-0777a1436d63}</Project>
+      <Name>YNHM.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YNHM.Entities\YNHM.Entities.csproj">
+      <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
+      <Name>YNHM.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
