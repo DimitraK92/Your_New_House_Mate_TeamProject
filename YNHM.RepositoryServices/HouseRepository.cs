@@ -11,7 +11,7 @@ namespace YNHM.RepositoryServices
 {
     class HouseRepository
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        readonly ApplicationDbContext db = new ApplicationDbContext();
 
         public List<House> GetAll()
         {
@@ -80,7 +80,7 @@ namespace YNHM.RepositoryServices
             db.Entry(house).Collection("Photos").Load();
         }
 
-        private bool disposed = false;
+        readonly bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)

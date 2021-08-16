@@ -11,7 +11,7 @@ namespace YNHM.RepositoryServices
 {
     class PhotoRepository
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        readonly ApplicationDbContext db = new ApplicationDbContext();
 
         public List<Photo> GetAll()
         {
@@ -51,7 +51,7 @@ namespace YNHM.RepositoryServices
             }
         }
 
-        private bool disposed = false;
+        readonly bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
