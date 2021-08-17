@@ -72,7 +72,16 @@ namespace YNHM.Database.Migrations
                     District = "City Center",
                     MapLocation = "https://goo.gl/maps/2LMwmuBWZW5SvDEe6",
                     Photos = photos,
-                    Manager = geokthmonas
+                    Manager = geokthmonas,
+                    PageViews = 0,
+                    //TODO test view at edge case none present
+                    ElevatorInBuilding = random.Next(2) == 0,
+                    FreeWiFi = random.Next(2) == 0,
+                    Parking = random.Next(2) == 0,
+                    AirCondition = random.Next(2) == 0,
+                    PetFriendly = random.Next(2) == 0,
+                    OutdoorSeating = random.Next(2) == 0,
+                    WheelchairFriendly = random.Next(2) == 0
                 };
                 context.Houses.AddOrUpdate(h => h.Address, house);
             }
