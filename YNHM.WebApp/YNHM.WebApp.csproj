@@ -170,16 +170,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\RedundantControllers\AccountController.cs" />
-    <Compile Include="Controllers\RedundantControllers\EditProfileController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\RedundantControllers\HousesController.cs" />
     <Compile Include="Controllers\RedundantControllers\ManageController.cs" />
-    <Compile Include="Controllers\RedundantControllers\MessagesController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
-    <Compile Include="Controllers\RedundantControllers\PasswordController.cs" />
-    <Compile Include="Controllers\RedundantControllers\PeopleController.cs" />
-    <Compile Include="Controllers\RedundantControllers\ProfileController.cs" />
-    <Compile Include="Controllers\RedundantControllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1108,24 +1101,24 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\Login.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\Register.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ResetPassword.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\SendCode.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Account\VerifyCode.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\Index.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\SetPassword.cshtml" />
-    <Content Include="Views\0_ASPDefaults\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -1256,6 +1249,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
+    <Folder Include="Views\0_ASPDefaults\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
