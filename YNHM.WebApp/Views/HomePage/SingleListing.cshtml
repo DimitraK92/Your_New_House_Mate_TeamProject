@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="fl-wrap list-single-header-column">
-                                                    <span class="viewed-counter"><i class="fa fa-eye"></i> Viewed -  156 </span>
+                                                    <span class="viewed-counter"><i class="fa fa-eye"></i> Viewed -  @Model.PageViews </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,17 +103,44 @@
                                 </div>
                                 <div class="listing-features fl-wrap">
                                     <ul>
-                                        <li><i class="fa fa-rocket"></i> Elevator in building</li>
-                                        <li><i class="fa fa-wifi"></i> Free Wi Fi</li>
-                                        <li><i class="fa fa-motorcycle"></i> Free Parking</li>
-                                        <li><i class="fa fa-cloud"></i> Air Conditioned</li>
-                                        <li><i class="fa fa-shopping-cart"></i> Online Ordering</li>
-                                        <li><i class="fa fa-paw"></i> Pet Friendly</li>
-                                        <li><i class="fa fa-tree"></i> Outdoor Seating</li>
-                                        <li><i class="fa fa-wheelchair"></i> Wheelchair Friendly</li>
+                                        @if (Model.ElevatorInBuilding)
+                                        {
+                                            <li><i class="fa fa-rocket"></i> Elevator in building</li>
+                                        }
+                                        @if (Model.FreeWiFi)
+                                        {
+                                            <li><i class="fa fa-wifi"></i> Free Wi Fi</li>
+                                        }
+                                        @if (Model.Parking)
+                                        {
+                                            <li><i class="fa fa-motorcycle"></i> Free Parking</li>
+                                        }
+                                        @if (Model.AirCondition)
+                                        {
+                                            <li><i class="fa fa-cloud"></i> Air Conditioned</li>
+                                        }
+                                        @if (Model.PetFriendly)
+                                        {
+                                            <li><i class="fa fa-paw"></i> Pet Friendly</li>
+                                        }
+                                        @if (Model.OutdoorSeating)
+                                        {
+                                            <li><i class="fa fa-tree"></i> Outdoor Seating</li>
+                                        }
+                                        @if (Model.OutdoorSeating)
+                                        {
+                                            <li><i class="fa fa-tree"></i> Outdoor Seating</li>
+                                        }
+                                        @if (Model.WheelchairFriendly)
+                                        {
+                                            <li><i class="fa fa-wheelchair"></i> Wheelchair Friendly</li>
+                                        }
+                                        @if (!Model.AirCondition && !Model.ElevatorInBuilding && !Model.FreeWiFi && !Model.OutdoorSeating && !Model.Parking && !Model.PetFriendly && !Model.WheelchairFriendly){
+                                            <li>No amenities available. For any questions, contact the owner.</li>
+                                        }
                                     </ul>
                                 </div>
-                                <span class="fw-separator"></span>
+                                @*<span class="fw-separator"></span>
                                 <div class="list-single-main-item-title fl-wrap">
                                     <h3>Tags</h3>
                                 </div>
@@ -124,7 +151,7 @@
                                     <a href="#">Spa</a>
                                     <a href="#">Restourant</a>
                                     <a href="#">Parking</a>
-                                </div>
+                                </div>*@
                             </div>
                             <!-- list-single-main-item-->
                             <!-- list-single-main-item end -->

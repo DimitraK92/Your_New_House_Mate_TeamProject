@@ -101,6 +101,8 @@ namespace YNHM.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+            house.PageViews++;
+            dbContext.SaveChanges();
             return View(house);
         }
     }
