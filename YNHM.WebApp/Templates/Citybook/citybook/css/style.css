@@ -1268,7 +1268,7 @@ section.gray-section .section-separator {
     overflow:hidden;
 }
 .main-register-holder {
-	max-width:480px;
+	max-width:600px;
 	margin:100px auto 50px;
 	position:relative;
 	z-index:5;

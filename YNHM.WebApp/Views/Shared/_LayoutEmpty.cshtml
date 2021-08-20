@@ -1,0 +1,35 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <!--=============== basic  ===============-->
+    <meta charset="UTF-8">
+    <title>Your New House Mate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!--=============== css  ===============-->
+    <link type="text/css" rel="stylesheet" href="~/Templates/Citybook/citybook/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="~/Templates/Citybook/citybook/css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="~/Templates/Citybook/citybook/css/style.css">
+    <link type="text/css" rel="stylesheet" href="~/Templates/Citybook/citybook/css/color.css">
+    <!--=============== favicons ===============-->
+    <link rel="shortcut icon" href="~/Templates/Citybook/citybook/images/favicon.ico">
+</head>
+<body>
+    
+            @RenderBody()
+
+
+
+
+
+    <script type="text/javascript" src="~/Templates/Citybook/citybook/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Templates/Citybook/citybook/js/plugins.js"></script>
+    <script type="text/javascript" src="~/Templates/Citybook/citybook/js/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&libraries=places&callback=initAutocomplete"></script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

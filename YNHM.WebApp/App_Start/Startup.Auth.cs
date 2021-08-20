@@ -46,17 +46,17 @@ namespace YNHM.WebApp
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "422a7ad3-d52d-484a-93f0-4944af2408e1",
+                clientSecret: "BG0ckZacA-Y87-9uoXP5jwf1tv_it6iI.E");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "365516301869174",
+               appSecret: "2e71afbcd9eee7f9f9e51e828cafa6a4");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

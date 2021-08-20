@@ -1,11 +1,11 @@
 ﻿@model YNHM.WebApp.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Use another service to log in.</h4>
-<hr />
+<h3>For faster login or register use your social account.</h3>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-    if (loginProviders.Count() == 0) {
+    if (loginProviders.Count() == 0)
+    {
         <div>
             <p>
                 There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
@@ -13,15 +13,26 @@
             </p>
         </div>
     }
-    else {
-        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "custom-form" }))
+        {
             @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                    @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+            <div id="socialLoginList" class="soc-log fl-wrap form-group">
+                @foreach (AuthenticationDescription p in loginProviders)
+                {
+                <button type="submit" class="btn log-submit-btn" id="@p.AuthenticationType" style="margin:5px"
+                        name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                    @if (p.AuthenticationType.Equals("Facebook"))
+                    {
+                        @Html.Raw("<i class='fa fa-facebook-official'></i>  ") @p.AuthenticationType
                     }
-                </p>
+                    else
+                    {
+                        @p.AuthenticationType
+                    }
+                </button>
+                }
             </div>
         }
     }

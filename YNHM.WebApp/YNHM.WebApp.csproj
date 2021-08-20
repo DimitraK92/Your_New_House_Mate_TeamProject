@@ -169,9 +169,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\RedundantControllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\RedundantControllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1244,9 +1244,14 @@
     <Content Include="Views\MyAccount\Test.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
     <Content Include="Views\HomePage\SingleListing.cshtml" />
+    <Content Include="Views\1_MessyFolders\Backups\LoginInitial.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\1_MessyFolders\Backups\RegisterInitial.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\RedundantControllers\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
     <Folder Include="Views\0_ASPDefaults\" />
