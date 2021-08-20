@@ -54,5 +54,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
+      <Project>{6233ffcb-4dee-4d89-af64-0777a1436d63}</Project>
+      <Name>YNHM.Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using YNHM.Database.Models;
 
 namespace YNHM.Database
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Person> People { get; set; }
         public DbSet<House> Houses { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public ApplicationDbContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ONOMA;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        public ApplicationDbContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ONOMA;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False", throwIfV1Schema: false)
         {
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
@@ -20,5 +21,11 @@ namespace YNHM.Database
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
         }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
     }
 }

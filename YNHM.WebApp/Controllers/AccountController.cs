@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using YNHM.Database.Models;
 using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp.Controllers
