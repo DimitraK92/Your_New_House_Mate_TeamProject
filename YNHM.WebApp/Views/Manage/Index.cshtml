@@ -1,11 +1,166 @@
 ﻿@model YNHM.WebApp.Models.IndexViewModel
-@{
-    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
-}
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
 
 @{
     ViewBag.Title = "Manage";
 }
+
+
+
+
+
+
+@*αν θέλουμε το παρακάτω κουμπί για LogOut αντί να είναι dropdown στο avatar θα πρέπει με κάποια μορφοποίηση να μην πέφτει πάνω στα υπόλοιπα*@
+@*<a href="#" class="log-out-btn">Log Out</a>*@
+<div class="nav-button-wrap color-bg">
+    <div class="nav-button">
+        <span></span><span></span><span></span>
+    </div>
+</div>
+<!-- wrapper -->
+<div id="wrapper">
+    <!--content -->
+    <div class="content">
+        <!--section -->
+        <section id="sec1">
+            <!-- container -->
+            <div class="container">
+                <!-- profile-edit-wrap -->
+                <div class="profile-edit-wrap">
+                    <div class="profile-edit-page-header">
+                        <h2>Admin Panel</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="fixed-bar fl-wrap">
+                                @Html.Partial("_AdminPanelLeftMenu")
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <!-- profile-edit-container-->
+                            <div class="profile-edit-container">
+                                <div class="profile-edit-header fl-wrap" style="margin-top:30px">
+                                    <h4>Hello , <span></span></h4>
+                                </div>
+                                @if (!String.IsNullOrEmpty(ViewBag.StatusMessage))
+                                {
+                                    <div class="notification success fl-wrap">
+                                        <p>@ViewBag.StatusMessage</p>
+                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+                                }
+
+                                <!-- statistic-container-->
+                                <div class="statistic-container fl-wrap">
+                                    <!-- statistic-item-wrap-->
+                                    <div class="statistic-item-wrap">
+                                        <div class="statistic-item gradient-bg fl-wrap">
+                                            <i class="fa fa-map-marker"></i>
+                                            <div class="statistic-item-numder">21</div>
+                                            <h5>Active Listings</h5>
+                                        </div>
+                                    </div>
+                                    <!-- statistic-item-wrap end-->
+                                    <!-- statistic-item-wrap-->
+                                    <div class="statistic-item-wrap">
+                                        <div class="statistic-item gradient-bg fl-wrap">
+                                            <i class="fa fa fa-eye"></i>
+                                            <div class="statistic-item-numder">1054</div>
+                                            <h5>Listing Views</h5>
+                                        </div>
+                                    </div>
+                                    <!-- statistic-item-wrap end-->
+                                    <!-- statistic-item-wrap-->
+                                    <div class="statistic-item-wrap">
+                                        <div class="statistic-item gradient-bg fl-wrap">
+                                            <i class="fa fa-comments-o"></i>
+                                            <div class="statistic-item-numder">675</div>
+                                            <h5>Total Reviews</h5>
+                                        </div>
+                                    </div>
+                                    <!-- statistic-item-wrap end-->
+                                    <!-- statistic-item-wrap-->
+                                    <div class="statistic-item-wrap">
+                                        <div class="statistic-item gradient-bg fl-wrap">
+                                            <i class="fa fa-heart-o"></i>
+                                            <div class="statistic-item-numder">154</div>
+                                            <h5>Times Bookmarked</h5>
+                                        </div>
+                                    </div>
+                                    <!-- statistic-item-wrap end-->
+                                </div>
+                                <!-- statistic-container end-->
+                            </div>
+                            <!-- profile-edit-container end-->
+
+                            <div class="dashboard-list-box fl-wrap activities">
+                                <div class="dashboard-header fl-wrap">
+                                    <h3>Recent Activities</h3>
+                                </div>
+                                <!-- dashboard-list end-->
+                                <div class="dashboard-list">
+                                    <div class="dashboard-message">
+                                        <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+
+                                        <div class="dashboard-message-text">
+                                            <p><i class="fa fa-check"></i> Your listing <a href="#">Luxury Restourant</a> has been approved! </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- dashboard-list end-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--profile-edit-wrap end -->
+            </div>
+            <!--container end -->
+        </section>
+        <!-- section end -->
+        <div class="limit-box fl-wrap"></div>
+    </div>
+</div>
+<!-- wrapper end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <h2>@ViewBag.Title.</h2>
 
@@ -40,8 +195,8 @@
 
              Uncomment the following block after you have set up two-factor authentication
         *@
-        @*
-            <dt>Phone Number:</dt>
+        
+            @*<dt>Phone Number:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
                 @if (Model.PhoneNumber != null)
@@ -56,10 +211,11 @@
                 }
                 else
                 {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
                 }
-            </dd>
-        *@
+                
+            </dd>*@
+        
         <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>

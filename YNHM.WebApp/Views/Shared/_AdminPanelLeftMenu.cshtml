@@ -3,11 +3,22 @@
     <div class="user-profile-menu">
         <h3>Main</h3>
         <ul>
-            <li><a class="act-link user-profile-act" href="@Url.Action("MyAccount", "MyAccount")"><i class="fa fa-gears"></i>Dashboard</a></li>
+            <li><a class="act-link user-profile-act" href="@Url.Action("Index", "Manage")"><i class="fa fa-gears"></i>Dashboard</a></li>
             <li><a href="@Url.Action("EditProfile", "MyAccount")"><i class="fa fa-user-o"></i> Edit profile</a></li>
             <li><a href="@Url.Action("Messages", "MyAccount")"><i class="fa fa-envelope-o"></i> Messages <span>3</span></a></li>
-            <li><a href="@Url.Action("Password", "MyAccount")"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
+
+            <li>
+                User Account Controls
+                <ul>
+                    <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
+                    <li><a href="@Url.Action("ManageLogins", "Manage")"><i class="fa fa-unlock-alt"></i>Manage External Logins</a></li>
+                    <li><a href="@Url.Action("AddPhoneNumber", "Manage")"><i class="fa fa-unlock-alt"></i>Add Phone Number</a></li>
+                    <li><a href="@Url.Action("VerifyPhoneNumber", "Manage")"><i class="fa fa-unlock-alt"></i>Verify Phone Number</a></li>
+                </ul>
+            </li>
             <li><a href="@Url.Action("Test", "MyAccount")"><i class="fa fa-list"></i>Test</a></li>
+
+
         </ul>
     </div>
     <!-- user-profile-menu end-->
