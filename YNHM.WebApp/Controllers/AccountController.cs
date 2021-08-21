@@ -203,7 +203,7 @@ namespace YNHM.WebApp.Controllers
                     var userId = User.Identity.GetUserId();
                     var user = UserManager.FindById(userId);
                     user.PersonId = person.PersonId;
-                    UserManager.UpdateAsync(user);
+                    UserManager.Update(user);
                 }
                 AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
 
