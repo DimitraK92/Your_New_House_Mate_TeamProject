@@ -90,6 +90,15 @@ namespace YNHM.Database.Migrations
             #region people seed
             List<Person> syntheticPeople = new List<Person>()
             {
+                new Person()
+                {
+                    FirstName="Vassilis",
+                    LastName= "Kotsmanidis",
+                    Age=34
+                },
+
+
+
                 new Person(){
                     FirstName ="Jane",
                     LastName = "Doe",

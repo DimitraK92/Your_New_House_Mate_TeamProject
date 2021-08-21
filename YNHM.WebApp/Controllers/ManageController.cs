@@ -32,9 +32,9 @@ namespace YNHM.WebApp.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -98,6 +98,46 @@ namespace YNHM.WebApp.Controllers
             }
             return RedirectToAction("ManageLogins", new { Message = message });
         }
+
+        //
+        //GET: /Manage/UserDetails
+        public ActionResult UserDetails()
+        {
+            return View();
+        }
+
+        //POST: /Manage/UserDetails
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDetails(PersonDetailsVM personDetailsVM)
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            var person = user.Person;
+            personDetailsVM = new PersonDetailsVM()
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Age = person.Age,
+                Description = person.Description,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Facebook = person.Facebook,
+                PhotoUrl = person.PhotoUrl
+            };
+            person.Age = personDetailsVM.Age;
+            if (!ModelState.IsValid)
+            {
+                return View(personDetailsVM);
+            }
+
+
+
+            return View(personDetailsVM);
+        }
+
+
+
 
         //
         // GET: /Manage/AddPhoneNumber
@@ -333,7 +373,7 @@ namespace YNHM.WebApp.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +424,6 @@ namespace YNHM.WebApp.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

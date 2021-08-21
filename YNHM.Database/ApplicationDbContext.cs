@@ -6,7 +6,7 @@ using YNHM.Database.Models;
 
 namespace YNHM.Database
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Person> People { get; set; }
         public DbSet<House> Houses { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using YNHM.WebApp.Models.CustomValidations;
 
 namespace YNHM.WebApp.Models
 {
@@ -65,6 +66,13 @@ namespace YNHM.WebApp.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name ="Username")]
+        [MinLength(6,ErrorMessage ="Username must have at least 6 characters")]
+        [MaxLength(15,ErrorMessage ="Username must have up to 15 characters")]
+        [UniqueUsername]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +87,10 @@ namespace YNHM.WebApp.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool SearchingForHouse { get; set; }
     }
 
     public class ResetPasswordViewModel
