@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using YNHM.Database.Models;
+using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp.Controllers
@@ -76,7 +77,7 @@ namespace YNHM.WebApp.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -152,7 +153,7 @@ namespace YNHM.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email/*, FirstName = model.FirstName, LastName = model.LastName*/ };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -164,7 +165,7 @@ namespace YNHM.WebApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "HomePage");
+                    return RedirectToAction("ProvideAdditionalInfo", "Account");
                 }
                 AddErrors(result);
             }
@@ -172,6 +173,45 @@ namespace YNHM.WebApp.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //
+        //GET: Account/ProvideAdditionalInfo
+        public ActionResult ProvideAdditionalInfo()
+        {
+            AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
+            return View(vm);
+        }
+
+        //
+        // POST: /Account/ProvideAdditionalInfo
+        [HttpPost]
+        public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Description,Phone,Facebook")]Person person, string submitButton)
+        {
+
+
+            if (submitButton.Equals("Continue Later"))
+            {
+                return RedirectToAction("Index", "Manage");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    PersonRepository pr = new PersonRepository();
+                    pr.Create(person, null);
+
+                    var userId = User.Identity.GetUserId();
+                    var user = UserManager.FindById(userId);
+                    user.PersonId = person.PersonId;
+                    UserManager.UpdateAsync(user);
+                }
+                AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
+
+                return RedirectToAction("Index", "Manage");
+            }
+
+        }
+
 
         //
         // GET: /Account/ConfirmEmail

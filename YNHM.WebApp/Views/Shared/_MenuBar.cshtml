@@ -40,16 +40,8 @@
                             @*<a href="~/HomePage/Houses">Houses</a>*@
                         </li>
                         <li>
-                            @Html.ActionLink("My Account", "MyAccount", "MyAccount")
+                            @Html.ActionLink("My Account", "MyAccount", "MyAccount");
                             @*<a href="~/MyAccount/MyAccount">My Account<i class="fa"></i></a>*@
-                        </li>
-                        <li>
-                            <a href="#">Admin <i class="fa fa-caret-down"></i></a>
-                            <!--second level -->
-                            <ul>
-                                <li>@Html.ActionLink("People","Index","People")</li>
-                                <li>@Html.ActionLink("Houses", "Index", "Houses")</li>                               
-                            </ul>
                         </li>
                         <li>
                             @Html.Partial("_LoginPartial")
