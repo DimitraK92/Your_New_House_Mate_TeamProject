@@ -21,7 +21,7 @@ namespace YNHM.WebApp.Controllers
         public ActionResult Index()
         {
             var houses = hr.GetAll();
-            return View("~/Views/Administrator/Houses/Index.cshtml",houses);
+            return View("~/Views/Administrator/Houses/Index",houses);
         }
 
         // GET: Houses/Details/5
@@ -36,13 +36,13 @@ namespace YNHM.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Details.cshtml", house);
+            return View("~/Views/Administrator/Houses/Details", house);
         }
 
         // GET: Houses/Create
         public ActionResult Create()
         {
-            return View("~/Views/Administrator/Houses/Create.cshtml");
+            return View("~/Views/Administrator/Houses/Create");
         }
 
         // POST: Houses/Create
@@ -60,7 +60,7 @@ namespace YNHM.WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("~/Views/Administrator/Houses/Create.cshtml",house);
+            return View("~/Views/Administrator/Houses/Create",house);
         }
 
         // GET: Houses/Edit/5
@@ -75,7 +75,7 @@ namespace YNHM.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Edit.cshtml",house);
+            return View("~/Views/Administrator/Houses/Edit",house);
         }
 
         // POST: Houses/Edit/5
@@ -92,7 +92,7 @@ namespace YNHM.WebApp.Controllers
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View("~/Views/Administrator/Houses/Edit.cshtml",house);
+            return View("~/Views/Administrator/Houses/Edit",house);
         }
 
         // GET: Houses/Delete/5
@@ -107,7 +107,7 @@ namespace YNHM.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Delete.cshtml", house);
+            return View("~/Views/Administrator/Houses/Delete", house);
         }
 
         // POST: Houses/Delete/5
