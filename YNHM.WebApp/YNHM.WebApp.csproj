@@ -1255,6 +1255,18 @@
     <Content Include="Views\1_MessyFolders\Backups\ChangePasswordInitial.cshtml" />
     <Content Include="Views\1_MessyFolders\Backups\PhoneNumbersInitial.cshtml" />
     <Content Include="Views\Manage\UserDetails.cshtml" />
+    <Content Include="Views\Account\ProvideAdditionalInfo.cshtml" />
+    <Content Include="Views\Administrator\Houses\Create.cshtml" />
+    <Content Include="Views\Administrator\Houses\Delete.cshtml" />
+    <Content Include="Views\Administrator\Houses\Details.cshtml" />
+    <Content Include="Views\Administrator\Houses\Edit.cshtml" />
+    <Content Include="Views\Administrator\Houses\Index.cshtml" />
+    <Content Include="Views\Administrator\People\Create.cshtml" />
+    <Content Include="Views\Administrator\People\Delete.cshtml" />
+    <Content Include="Views\Administrator\People\Details.cshtml" />
+    <Content Include="Views\Administrator\People\Edit.cshtml" />
+    <Content Include="Views\Administrator\People\Index.cshtml" />
+    <Content Include="Views\Manage\EditUserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1277,6 +1289,10 @@
     <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
       <Project>{6233FFCB-4DEE-4D89-AF64-0777A1436D63}</Project>
       <Name>YNHM.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YNHM.RepositoryServices\YNHM.RepositoryServices.csproj">
+      <Project>{c0a4b18e-af71-405d-bddf-98af7361bbe1}</Project>
+      <Name>YNHM.RepositoryServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
