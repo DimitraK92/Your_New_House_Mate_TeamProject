@@ -87,8 +87,9 @@ namespace YNHM.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(house).State = EntityState.Modified;
-                db.SaveChanges();
+                hr.Create(house, null);
+                //db.Entry(house).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View("~/Views/Administrator/Houses/Edit.cshtml",house);
