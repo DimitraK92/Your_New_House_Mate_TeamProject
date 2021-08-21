@@ -50,9 +50,9 @@ namespace YNHM.WebApp.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Username")]
-        //[EmailAddress]
-        public string Username { get; set; }
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

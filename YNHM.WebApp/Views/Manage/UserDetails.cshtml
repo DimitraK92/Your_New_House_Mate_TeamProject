@@ -1,5 +1,5 @@
 ﻿@model YNHM.WebApp.Models.PersonDetailsVM
-
+    @*@model YNHM.Database.Models.Person*@
 
 
 <!--wrapper-->
@@ -29,26 +29,31 @@
                                     <h4>My Account</h4>
                                 </div>
                                 <div class="custom-form">
-                                    @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    @using (Html.BeginForm("UserDetails", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                                     {
                                         @Html.AntiForgeryToken()
-                                        @Html.HiddenFor(m => m.Person.PersonId);
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.FirstName, new { @class = "col-md-2 control-label" })
+                                            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
                                             <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.FirstName, new { @class = "form-control" })
+                                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.LastName, new { @class = "col-md-2 control-label" })
+                                            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
                                             <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.LastName, new { @class = "form-control" })
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.Age, new { @class = "col-md-2 control-label" })
+                                            @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
                                             <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.Age, new { @class = "form-control" })
+                                                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "datetime" })
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -60,6 +65,25 @@
 
 
                                 </div>
+
+
+
+                                @*<div class="custom-form">
+                                    <label>First Name <i class="fa fa-user-o"></i></label>
+                                    <input type="" placeholder="@Model.FirstName" value="" />
+                                    <label>First Name <i class="fa fa-user-o"></i></label>
+                                    <input type="text" placeholder="@Model.LastName" value="" />
+                                    <label>Email Address<i class="fa fa-envelope-o"></i>  </label>
+                                    <input type="text" placeholder="@Model.Email" value="" />
+                                    <label>Phone<i class="fa fa-phone"></i>  </label>
+                                    <input type="text" placeholder="@Model.Phone" value="" />
+                                    <label> Adress <i class="fa fa-map-marker"></i>  </label>
+                                    <input type="text" placeholder="USA 27TH Brooklyn NY" value="" />
+                                    <label> Notes</label>
+                                    <textarea cols="40" rows="3" placeholder="About Me"></textarea>
+                                </div>
+                            </div>*@
+
                             <!--profile-edit-container end-->
                             <!--profile-edit-container-->
                             <div class="profile-edit-container add-list-container">

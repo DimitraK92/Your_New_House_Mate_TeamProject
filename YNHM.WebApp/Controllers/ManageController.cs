@@ -6,8 +6,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using YNHM.Database.Models;
-using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp.Controllers
@@ -15,9 +13,6 @@ namespace YNHM.WebApp.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        PersonRepository pr = new PersonRepository();
-
-
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -105,42 +100,40 @@ namespace YNHM.WebApp.Controllers
         }
 
         //
-        //GET: /Manage/EditUserDetails
-        public ActionResult EditUserDetails()
+        //GET: /Manage/UserDetails
+        public ActionResult UserDetails()
+        {
+            return View();
+        }
+
+        //POST: /Manage/UserDetails
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDetails(PersonDetailsVM personDetailsVM)
         {
             var userId = User.Identity.GetUserId();
             var user = UserManager.FindById(userId);
-
-            var personId = user.PersonId;
-
-            var person = pr.GetById(personId);
-
-            if (personId == 0||person==null)
+            var person = user.Person;
+            personDetailsVM = new PersonDetailsVM()
             {
-                return RedirectToAction("ProvideAdditionalInfo", "Account");
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Age = person.Age,
+                Description = person.Description,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Facebook = person.Facebook,
+                PhotoUrl = person.PhotoUrl
+            };
+            person.Age = personDetailsVM.Age;
+            if (!ModelState.IsValid)
+            {
+                return View(personDetailsVM);
             }
 
-            PersonDetailsVM vm = new PersonDetailsVM(person);
-            return View(vm);
-        }
 
-        //POST: /Manage/EditUserDetails
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] Person person)
-        {
 
-            if (ModelState.IsValid)
-            {
-                pr.Edit(person, null);
-                return RedirectToAction("EditUserDetails");
-            }
-
-            pr.Attach(person);
-
-            PersonDetailsVM vm = new PersonDetailsVM(person);
-
-            return View(vm);
+            return View(personDetailsVM);
         }
 
 

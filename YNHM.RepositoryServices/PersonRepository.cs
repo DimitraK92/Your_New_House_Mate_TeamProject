@@ -49,27 +49,23 @@ namespace YNHM.RepositoryServices
         {
             Attach(person);
            
-            //person.OwnsHouses.Clear();
-            ////db.SaveChangesAsync();
-            //db.SaveChanges();
+            person.OwnsHouses.Clear();
+            db.SaveChanges();
 
-            //if(!(SelectedHousesIds is null))
-            //{
-            //    foreach (var id in SelectedHousesIds)
-            //    {
-            //        House house = db.Houses.Find(id);
-            //        if(house != null)
-            //        {
-            //            person.OwnsHouses.Add(house);
-            //        }
-            //    }
-            //}
+            if(!(SelectedHousesIds is null))
+            {
+                foreach (var id in SelectedHousesIds)
+                {
+                    House house = db.Houses.Find(id);
+                    if(house != null)
+                    {
+                        person.OwnsHouses.Add(house);
+                    }
+                }
+            }
             db.Entry(person).State = EntityState.Modified;
-            //db.SaveChangesAsync();
             db.SaveChanges();
         }
-
-
 
         public void Delete(int id)
         {
