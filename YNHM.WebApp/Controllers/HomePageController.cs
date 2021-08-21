@@ -23,6 +23,7 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
+        
         public ActionResult People()
         {
             List<Person> people = new List<Person>();
@@ -39,7 +40,7 @@ namespace YNHM.WebApp.Controllers
             }
             return View(people);
         }
-
+        
         public ActionResult PersonalProfile(int? id)
         {
             if (id == null)
@@ -64,6 +65,7 @@ namespace YNHM.WebApp.Controllers
             return View(person);
         }
 
+        
         public ActionResult Houses()
         {
             try

@@ -15,7 +15,7 @@ namespace YNHM.Database.Models
         public int Age { get; set; }
 
         [Display(Name = "Match Percentage")]
-        public int MatchPercent { get; set; }
+        public int? MatchPercent { get; set; }
 
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
