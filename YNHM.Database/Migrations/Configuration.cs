@@ -72,7 +72,7 @@ namespace YNHM.Database.Migrations
                     District = "City Center",
                     MapLocation = "https://goo.gl/maps/2LMwmuBWZW5SvDEe6",
                     Photos = photos,
-                    Manager = geokthmonas,
+                    Person = geokthmonas,
                     PageViews = 0,
                     //TODO test view at edge case none present
                     ElevatorInBuilding = random.Next(2) == 0,
