@@ -21,7 +21,7 @@ namespace YNHM.WebApp.Controllers
         public ActionResult Index()
         {
             var houses = hr.GetAll();
-            return View("~/Views/Administrator/Houses/Index.cshtml",houses);
+            return View("~/Views/Administrator/Houses/Index.cshtml", houses);
         }
 
         // GET: Houses/Details/5
