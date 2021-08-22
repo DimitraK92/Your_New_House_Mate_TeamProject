@@ -54,7 +54,7 @@ namespace YNHM.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                hr.Create(house,null);
+                hr.Create(house, null);
                 //db.Houses.Add(house);
                 //db.SaveChanges();
                 return RedirectToAction("Index");

@@ -22,7 +22,6 @@ namespace YNHM.RepositoryServices
         {
             return db.Houses.Find(id);
         }
-
         public void Create(House house, IEnumerable<int?> SelectedPhotoIds)
         {
             Attach(house);
@@ -41,26 +40,27 @@ namespace YNHM.RepositoryServices
                 }
             }
             db.Entry(house).State = EntityState.Added;
-            db.SaveChanges();
+            db.SaveChangesAsync();
+            //db.SaveChanges();
         }
 
         public void Edit(House house, IEnumerable<int?> SelectedPhotoIds)
         {
             Attach(house);
-            house.Photos.Clear();
-            db.SaveChanges();
+            //house.Photos.Clear();
+            //db.SaveChanges();
 
-            if (!(SelectedPhotoIds is null))
-            {
-                foreach (var id in SelectedPhotoIds)
-                {
-                    Photo photo = db.Photos.Find(id);
-                    if (photo != null)
-                    {
-                        house.Photos.Add(photo);
-                    }
-                }
-            }
+            //if (!(SelectedPhotoIds is null))
+            //{
+            //    foreach (var id in SelectedPhotoIds)
+            //    {
+            //        Photo photo = db.Photos.Find(id);
+            //        if (photo != null)
+            //        {
+            //            house.Photos.Add(photo);
+            //        }
+            //    }
+            //}
             db.Entry(house).State = EntityState.Modified;
             db.SaveChanges();
         }
