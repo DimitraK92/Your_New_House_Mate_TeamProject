@@ -15,7 +15,7 @@ namespace YNHM.RepositoryServices
 
         public List<House> GetAll()
         {
-            return db.Houses.ToList();          
+            return db.Houses.ToList();      
         }
 
         public House GetById(int? id)
