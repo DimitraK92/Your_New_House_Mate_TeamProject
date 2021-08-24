@@ -105,6 +105,20 @@ namespace YNHM.WebApp.Controllers
         }
 
         //
+        //GET: /Manage/ViewProfile
+        public ActionResult ViewProfile()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var person = pr.GetById(user.PersonId);
+            PersonDetailsVM vm = new PersonDetailsVM(person);
+
+            return View(vm);
+        }
+
+
+
+
+        //
         //GET: /Manage/EditUserDetails
         public ActionResult EditUserDetails()
         {

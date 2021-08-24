@@ -52,15 +52,29 @@ namespace YNHM.WebApp
                 RequireUniqueEmail = true
             };
 
+            //TODO: Change Password Validations
             // Configure validation logic for passwords
+
+            //Simple validation for testing
+            //Comment out and enable custom or default
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = false,
             };
+            
+            //Uncomment to change to default validation
+            //manager.PasswordValidator = new PasswordValidator
+            //{
+            //    RequiredLength = 6,
+            //    RequireNonLetterOrDigit = true,
+            //    RequireDigit = true,
+            //    RequireLowercase = true,
+            //    RequireUppercase = true,
+            //};
 
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;

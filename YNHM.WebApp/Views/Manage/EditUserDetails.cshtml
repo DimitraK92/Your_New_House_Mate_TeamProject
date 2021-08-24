@@ -26,13 +26,14 @@
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
                                 <div class="profile-edit-header fl-wrap">
-                                    <h4>My Account</h4>
+                                    <h4>My Details</h4>
                                 </div>
                                 <div class="custom-form">
                                     @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.HiddenFor(m => m.Person.PersonId);
+
                                         <div class="form-group">
                                             @Html.LabelFor(m => m.Person.FirstName, new { @class = "col-md-2 control-label" })
                                             <div class="col-md-10">
@@ -52,6 +53,24 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            @Html.LabelFor(m => m.Person.Email, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(m => m.Person.Email, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Person.Phone, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(m => m.Person.Phone, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Person.Facebook, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(m => m.Person.Facebook, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <div class="col-md-offset-2 col-md-10">
                                                 <input type="submit" class="btn btn-default" value="Confirm Changes" />
                                             </div>
@@ -61,47 +80,6 @@
 
                                 </div>
                             <!--profile-edit-container end-->
-                            <!--profile-edit-container-->
-                            <div class="profile-edit-container add-list-container">
-                                <div class="profile-edit-header fl-wrap">
-                                    <h4>Subscription</h4>
-                                </div>
-                                <div class="custom-form">
-                                    <div class="row">
-                                        <!--col-->
-                                        <div class="col-md-4">
-                                            <div class="add-list-media-header">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender">
-                                                    <span>Basic 99$</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!--col end-->
-                                        <!--col-->
-                                        <div class="col-md-4">
-                                            <div class="add-list-media-header">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender" checked>
-                                                    <span>Extended 99$</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!--col end-->
-                                        <!--col-->
-                                        <div class="col-md-4">
-                                            <div class="add-list-media-header">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender">
-                                                    <span>Professional 149$</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!--col end-->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- profile-edit-container end-->
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
                                 <div class="profile-edit-header fl-wrap" style="margin-top:30px">

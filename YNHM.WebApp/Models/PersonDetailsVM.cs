@@ -9,9 +9,6 @@ namespace YNHM.WebApp.Models
 {
     public class PersonDetailsVM
     {
-   
-
-
         public Person Person { get; set; }
 
         public PersonDetailsVM(Person person)
@@ -44,7 +41,11 @@ namespace YNHM.WebApp.Models
 
         public string Instagram { get; set; }
         public string Twitter { get; set; }
+
+
+        public string GetUsersName()
+        {
+            return $"{Person.FirstName} {Person.LastName}";
+        }
     }
-
-
 }

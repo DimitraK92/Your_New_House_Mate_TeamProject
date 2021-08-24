@@ -9,6 +9,7 @@ namespace YNHM.Database.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
@@ -96,8 +97,6 @@ namespace YNHM.Database.Migrations
                     LastName= "Kotsmanidis",
                     Age=34
                 },
-
-
 
                 new Person(){
                     FirstName ="Jane",
@@ -214,6 +213,9 @@ namespace YNHM.Database.Migrations
             {
                 context.People.AddOrUpdate(p => new { p.FirstName, p.LastName }, person);
             }
+            #endregion
+
+            #region users seed
             #endregion
             context.SaveChanges();
         }
