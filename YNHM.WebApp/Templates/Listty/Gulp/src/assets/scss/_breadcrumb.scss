@@ -1,0 +1,19 @@
+/* Breadcrumb */
+.breadcrumb-title {
+  font-size: 1.56rem;
+  font-weight: normal;
+  @include media-breakpoint-up(md){
+    font-size: 2.5rem;
+  }
+}
+
+
+/* Breadcrumb 2 */
+.breadcrumb-2 {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  @include media-breakpoint-up(md){
+    flex-direction: row;
+  }
+}

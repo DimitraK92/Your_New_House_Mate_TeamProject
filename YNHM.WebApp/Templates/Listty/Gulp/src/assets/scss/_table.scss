@@ -1,0 +1,227 @@
+/* Tabale */
+.table {
+  thead {
+    tr {
+      th{
+        border-bottom: 0;
+      }
+    }
+  }
+  tbody{
+    td {
+      vertical-align: middle;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-top-color: lighten($border-color, 4%);
+      &:first-child {
+        padding-left: 1.25rem;
+      }
+    }
+    tr {
+      background-color: $white;
+      &:hover {
+        background-color: $gray-200;
+      }
+      &:first-child {
+        td {
+          border-top: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Td Details */
+.td-details {
+  max-width: 300px;
+  min-width: 230px;
+  white-space: normal !important;
+}
+
+/* Td No White Space */
+.td-no-white-space {
+  white-space: nowrap;
+}
+
+/* Td bttons */
+.td-buttons-2 {
+  width: 200px;
+  .btn {
+    width: 100px;
+    margin-bottom: .625rem;
+    @include media-breakpoint-up(lg){
+      width: auto;
+    }
+  }
+}
+/* td title */
+.td-title {
+  max-width: 200px;
+}
+
+/* Data Table */
+.table-data-default {
+  border-bottom-color: transparent !important;
+  thead {
+    th {
+      border-top: 1px solid $border-color !important;
+      border-bottom-color: $border-color !important;
+      background-color: $white;
+      &:first-child {
+        border-left: 1px solid $border-color;
+        border-top-left-radius: $border-radius;
+        padding-left: 1.4375rem;
+      }
+      &:last-child {
+        border-right: 1px solid $border-color;
+        border-top-right-radius: $border-radius;
+      }
+    }
+  }
+  tbody {
+    td {
+      .dropdown-toggle {
+        display: block;
+        text-align: center;
+      }
+      &:first-child {
+        border-left: 1px solid $border-color;
+        padding-left: 1.4375rem;
+      }
+      &:last-child {
+        border-right: 1px solid $border-color;
+      }
+    }
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 1px solid $border-color;
+          &:first-child {
+            border-bottom-left-radius: $border-radius;
+          }
+          &:last-child {
+            border-bottom-right-radius: $border-radius;
+          }
+        }
+      }
+    }
+
+  }
+  &.table-head-top-border-none {
+    thead {
+      th {
+        border-top: none !important;
+      }
+    }
+  }
+  &.dataTable.display tbody td {
+      border-top-color: lighten($border-color, 4%);
+    }
+}
+
+/* Border Radius None */
+.card {
+  .table-data-default {
+    thead {
+      th {
+        &:first-child {
+        border-left: 0;
+        border-top-left-radius: 0;
+        }
+        &:last-child {
+          border-right: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+    tbody {
+      td {
+        &:first-child {
+          border-left: 0;
+        }
+        &:last-child {
+          border-right: 0;
+        }
+      }
+      tr {
+        &:last-child {
+          td {
+            border-bottom: 0;
+            &:first-child {
+              border-bottom-left-radius: 0;
+            }
+            &:last-child {
+              border-bottom-right-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Hover for Table */
+table.dataTable tbody tr {
+  background-color: $white !important;
+  &:hover {
+    background-color: $gray-200 !important;
+  }
+}
+
+/* Datatables Wrapper */
+.dataTables_wrapper {
+  .dataTables_paginate {
+    padding-top: 3.125rem;
+    .paginate_button {
+      border-color: $border-color;
+      background-color: $white;
+      &:hover {
+        background: $primary !important;
+        border-color: $primary;
+      }
+      &.current {
+        background: $primary !important;
+        border-color: $primary;
+        color: $white !important;
+        &:hover {
+          color: $white !important;
+        }
+      }
+      &.disabled {
+        border-color: $border-color;
+        &:hover {
+          background: transparent !important;
+          border-color: $border-color;
+        }
+      }
+    }
+  }
+}
+table.dataTable thead th,
+table.dataTable.display tbody td {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  color: $primary;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* Table Reviews */
+#table-reviews {
+  .dtr-details {
+    .dtr-data {
+      white-space: normal !important;
+    }
+  }
+}
+

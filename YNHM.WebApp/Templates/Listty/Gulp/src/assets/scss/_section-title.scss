@@ -1,0 +1,39 @@
+/* Section Title */
+.section-title {
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+  @include media-breakpoint-up(md){
+    margin-bottom: 3.625rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 550px;
+  }
+  @include media-breakpoint-up(lg){
+    width: 650px;
+  }
+
+  h2 {
+    color: $dark;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Section Padding */
+.sec-pb-70 {
+  @include media-breakpoint-up(md){
+    padding-bottom: 4.375rem !important;
+  }
+}
+
+/* Single Listing Title */
+.single-listing-title {
+  font-size: 1.80875rem;
+  @include media-breakpoint-up(md){
+    font-size: 2.80875rem;
+  }
+}

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace YNHM.WebApp.Controllers
 {
 
-    //TODO: Fix active tab on the left side menu
+    //TODO: VASSILIS Fix active tab on the left side menu
     public class MyAccountController : Controller
     {
         // GET: MyAccount

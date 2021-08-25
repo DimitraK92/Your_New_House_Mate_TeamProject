@@ -141,6 +141,9 @@ namespace YNHM.WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var roles = new UserAndRoleRepository().AllRoles().Where(r => r.Name != "Admin").ToList();
+            ViewBag.Name = new SelectList(roles, "Name", "Name");
+
             return View();
         }
 
@@ -151,13 +154,18 @@ namespace YNHM.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email/*, FirstName = model.FirstName, LastName = model.LastName*/ };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                    await UserManager.AddToRoleAsync(user.Id, model.UserRole);
+
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -167,8 +175,12 @@ namespace YNHM.WebApp.Controllers
 
                     return RedirectToAction("ProvideAdditionalInfo", "Account");
                 }
+
+
                 AddErrors(result);
             }
+            var roles = new UserAndRoleRepository().AllRoles().Where(r => r.Name != "Admin").ToList();
+            ViewBag.Name = new SelectList(roles, "Name", "Name");
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -176,6 +188,7 @@ namespace YNHM.WebApp.Controllers
 
         //
         //GET: Account/ProvideAdditionalInfo
+        [Authorize]
         public ActionResult ProvideAdditionalInfo()
         {
             AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
@@ -185,10 +198,9 @@ namespace YNHM.WebApp.Controllers
         //
         // POST: /Account/ProvideAdditionalInfo
         [HttpPost]
+        [Authorize]
         public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Description,Phone,Facebook")]Person person, string submitButton)
         {
-
-
             if (submitButton.Equals("Continue Later"))
             {
                 return RedirectToAction("Index", "Manage");

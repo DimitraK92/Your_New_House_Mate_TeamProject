@@ -38,6 +38,7 @@ namespace YNHM.WebApp.Models
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
+
     }
 
     public class ForgotViewModel
@@ -69,7 +70,7 @@ namespace YNHM.WebApp.Models
         [Display(Name ="Username")]
         [MinLength(6,ErrorMessage ="Username must have at least 6 characters")]
         [MaxLength(15,ErrorMessage ="Username must have up to 15 characters")]
-        [UniqueUsername]
+        //[UniqueUsername]
         public string UserName { get; set; }
 
         [Required]
@@ -88,9 +89,9 @@ namespace YNHM.WebApp.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public bool SearchingForHouse { get; set; }
+        [Required]
+        [Display(Name = "User Role")]
+        public string UserRole { get; set; }
     }
 
     public class ResetPasswordViewModel
