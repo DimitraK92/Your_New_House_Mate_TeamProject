@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.WebApp.Models;
+using YNHM.WebApp.Models.CustomValidations;
 
 namespace YNHM.WebApp.Controllers.Administrator
 {
@@ -51,7 +52,7 @@ namespace YNHM.WebApp.Controllers.Administrator
         }
 
         //
-        // GET: /Account/Login
+        // GET: /Administrator/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -60,11 +61,11 @@ namespace YNHM.WebApp.Controllers.Administrator
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Administrator/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(AdminLoginVM model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +74,7 @@ namespace YNHM.WebApp.Controllers.Administrator
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, true , shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -81,7 +82,7 @@ namespace YNHM.WebApp.Controllers.Administrator
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl});
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -89,8 +90,9 @@ namespace YNHM.WebApp.Controllers.Administrator
             }
         }
 
-        // GET: Admin
-        [Authorize(Roles ="Admin")]
+
+        // GET: Administrator/Index
+        [CustomAuthorization(LoginPage = "~/Administrator/Login", Role ="Admin")]
         public ActionResult Index()
         {
             return View();
@@ -100,6 +102,18 @@ namespace YNHM.WebApp.Controllers.Administrator
 
 
 
+        //
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "HomePage");
+        }
+
+
+        //TODO: VASSILIS: Create separate login helper class
         #region Helpers
         private IAuthenticationManager AuthenticationManager
         {

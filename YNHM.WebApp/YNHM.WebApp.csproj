@@ -184,6 +184,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddPersonalDetailsVM.cs" />
+    <Compile Include="Models\AdminLoginVM.cs" />
+    <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PersonDetailsVM.cs" />
@@ -1388,7 +1390,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
-    <Folder Include="Views\0_ASPDefaults\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
