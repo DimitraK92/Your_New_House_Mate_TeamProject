@@ -10,7 +10,7 @@ using YNHM.Database.Models;
 namespace YNHM.WebApp.Controllers
 {
 
-    //TODO: Fix active tab on the navbar
+    //TODO: VASSILIS Fix active tab on the navbar
     public class HomePageController : Controller
     {
         //private readonly MockupDb mockupDbContext = new MockupDb();
@@ -23,7 +23,7 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        
+        [Authorize(Roles ="Admin,HouseSeeker")]
         public ActionResult People()
         {
             List<Person> people = new List<Person>();

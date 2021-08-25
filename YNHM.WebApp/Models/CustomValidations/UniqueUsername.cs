@@ -4,26 +4,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using YNHM.Database;
+using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Models.CustomValidations
 {
     public class UniqueUsername : ValidationAttribute
     {
+        //TODO: VASSILIS: Fix "The function evaluation requires all threads to run"
+        ApplicationDbContext db = new ApplicationDbContext();
+
         public override bool IsValid(object value)
         {
-            using (ApplicationDbContext ctx = new ApplicationDbContext())
-            {
-                if (ctx.Users.Select(x => x.UserName).Contains(value as string))
-                    return false;
-            }
-
-
-            return true;
+            //return ur.CheckIfExists(value as string);
+            return db.Users.Select(u => u.UserName).ToList().Contains(value as string);
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return $"This username already exists! Please choose another.";
+            return $"This {name} already exists! Please choose another.";
         }
 
     }

@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Administrator\AdministratorController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\Administrator\HousesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1366,7 +1367,6 @@
     <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
     <Content Include="Views\1_MessyFolders\Backups\ChangePasswordInitial.cshtml" />
     <Content Include="Views\1_MessyFolders\Backups\PhoneNumbersInitial.cshtml" />
-    <Content Include="Views\Manage\UserDetails.cshtml" />
     <Content Include="Views\Account\ProvideAdditionalInfo.cshtml" />
     <Content Include="Views\Administrator\Houses\Create.cshtml" />
     <Content Include="Views\Administrator\Houses\Delete.cshtml" />
@@ -1380,6 +1380,9 @@
     <Content Include="Views\Administrator\People\Index.cshtml" />
     <Content Include="Views\Manage\EditUserDetails.cshtml" />
     <Content Include="Views\Manage\ViewProfile.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Administrator\Login.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

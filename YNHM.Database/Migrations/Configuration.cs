@@ -75,7 +75,7 @@ namespace YNHM.Database.Migrations
                     Photos = photos,
                     Manager = geokthmonas,
                     PageViews = 0,
-                    //TODO test view at edge case none present
+                    //TODO: KOSTAS test view at edge case none present
                     ElevatorInBuilding = random.Next(2) == 0,
                     FreeWiFi = random.Next(2) == 0,
                     Parking = random.Next(2) == 0,

@@ -52,7 +52,7 @@ namespace YNHM.WebApp
                 RequireUniqueEmail = true
             };
 
-            //TODO: Change Password Validations
+            //TODO: VASSILIS Change Password Validations
             // Configure validation logic for passwords
 
             //Simple validation for testing
