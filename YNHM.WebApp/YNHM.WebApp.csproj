@@ -172,13 +172,18 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdministratorController.cs" />
+    <Compile Include="Areas\Administration\Controllers\HousesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\PeopleController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\AdminLoginVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Administrator\AdministratorController.cs" />
+    <Compile Include="Controllers\0_Reduntant\Administrator\AdministratorController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\Administrator\HousesController.cs" />
+    <Compile Include="Controllers\0_Reduntant\Administrator\HousesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
-    <Compile Include="Controllers\Administrator\PeopleController.cs" />
+    <Compile Include="Controllers\0_Reduntant\Administrator\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -339,6 +344,23 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Models\FakeImages\This Person Does Not Exist.url" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\Houses\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Houses\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Houses\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Houses\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Houses\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\People\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\People\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\People\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\People\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\People\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Administrator\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Administrator\Login.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminLoginLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminSidebarMenu.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminNavbar.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1359,7 +1381,7 @@
     <Content Include="Views\MyAccount\EditProfile.cshtml" />
     <Content Include="Views\MyAccount\Profile.cshtml" />
     <Content Include="Views\MyAccount\0_TestNonFunctional.cshtml" />
-    <Content Include="Views\Shared\_AdminPanelLeftMenu.cshtml" />
+    <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
     <Content Include="Views\MyAccount\Test.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
     <Content Include="Views\HomePage\SingleListing.cshtml" />
@@ -1370,26 +1392,33 @@
     <Content Include="Views\1_MessyFolders\Backups\ChangePasswordInitial.cshtml" />
     <Content Include="Views\1_MessyFolders\Backups\PhoneNumbersInitial.cshtml" />
     <Content Include="Views\Account\ProvideAdditionalInfo.cshtml" />
-    <Content Include="Views\Administrator\Houses\Create.cshtml" />
-    <Content Include="Views\Administrator\Houses\Delete.cshtml" />
-    <Content Include="Views\Administrator\Houses\Details.cshtml" />
-    <Content Include="Views\Administrator\Houses\Edit.cshtml" />
-    <Content Include="Views\Administrator\Houses\Index.cshtml" />
-    <Content Include="Views\Administrator\People\Create.cshtml" />
-    <Content Include="Views\Administrator\People\Delete.cshtml" />
-    <Content Include="Views\Administrator\People\Details.cshtml" />
-    <Content Include="Views\Administrator\People\Edit.cshtml" />
-    <Content Include="Views\Administrator\People\Index.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Houses\Create.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Houses\Delete.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Houses\Details.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Houses\Edit.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Houses\Index.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\People\Create.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\People\Delete.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\People\Details.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\People\Edit.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\People\Index.cshtml" />
     <Content Include="Views\Manage\EditUserDetails.cshtml" />
     <Content Include="Views\Manage\ViewProfile.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Administrator\Login.cshtml" />
-    <Content Include="Views\Administrator\Index.cshtml" />
+    <Content Include="Views\0_Redundant\Layouts\Admin\_AdminLayout.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Login.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\Index.cshtml" />
+    <Content Include="Views\0_Redundant\NavAndSideBars\Admin\_AdminNavbar.cshtml" />
+    <Content Include="Views\0_Redundant\NavAndSideBars\Admin\_AdminSidebarMenu.cshtml" />
+    <Content Include="Views\0_Redundant\Layouts\Admin\_AdminLoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Data\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
+    <Folder Include="Views\0_Redundant\Layouts\Main\" />
+    <Folder Include="Views\0_Redundant\NavAndSideBars\Main\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

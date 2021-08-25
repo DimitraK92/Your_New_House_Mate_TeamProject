@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using YNHM.WebApp.Models;
 using YNHM.WebApp.Models.CustomValidations;
 
-namespace YNHM.WebApp.Controllers.Administrator
+namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
 {
     public class AdministratorController : Controller
     {
@@ -92,7 +92,7 @@ namespace YNHM.WebApp.Controllers.Administrator
 
 
         // GET: Administrator/Index
-        [CustomAuthorization(LoginPage = "~/Administrator/Login", Role ="Admin")]
+        [CustomAuthorization(LoginPage = "~/Administration/Administrator/Login", Role ="Admin")]
         public ActionResult Index()
         {
             return View();

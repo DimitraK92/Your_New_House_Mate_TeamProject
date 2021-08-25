@@ -10,111 +10,109 @@ using YNHM.Database;
 using YNHM.Database.Models;
 using YNHM.RepositoryServices;
 
-namespace YNHM.WebApp.Controllers
+namespace YNHM.WebApp.Areas.Administration.Controllers
 {
-    public class HousesController : Controller
+    public class PeopleController : Controller
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
-        readonly HouseRepository hr = new HouseRepository();
+        readonly PersonRepository pr = new PersonRepository();
 
-        // GET: Houses
+        // GET: People
         public ActionResult Index()
         {
-            var houses = hr.GetAll();
-            return View("~/Views/Administrator/Houses/Index.cshtml", houses);
+            var people = pr.GetAll();
+
+            return View("~/Views/Administrator/People/Index.cshtml",people);
         }
 
-        // GET: Houses/Details/5
+        // GET: People/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            House house = hr.GetById(id);
-            if (house == null)
+            Person person = pr.GetById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Details.cshtml", house);
+            return View("~/Views/Administrator/People/Details.cshtml",person);
         }
 
-        // GET: Houses/Create
+        // GET: People/Create
         public ActionResult Create()
         {
-            return View("~/Views/Administrator/Houses/Create.cshtml");
+            return View("~/Views/Administrator/People/Create.cshtml");
         }
 
-        // POST: Houses/Create
+        // POST: People/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,ManagerId")] House house)
+        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
         {
             if (ModelState.IsValid)
             {
-                hr.Create(house,null);
-                //db.Houses.Add(house);
-                //db.SaveChanges();
+                pr.Create(person, null);                
                 return RedirectToAction("Index");
             }
 
-            return View("~/Views/Administrator/Houses/Create.cshtml",house);
+            return View("~/Views/Administrator/People/Create.cshtml",person);
         }
 
-        // GET: Houses/Edit/5
+        // GET: People/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            House house = hr.GetById(id);
-            if (house == null)
+            Person person = pr.GetById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Edit.cshtml",house);
+            return View("~/Views/Administrator/People/Edit.cshtml",person);
         }
 
-        // POST: Houses/Edit/5
+        // POST: People/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,ManagerId")] House house)
+        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(house).State = EntityState.Modified;
-                db.SaveChanges();
+                pr.Edit(person, null);
                 return RedirectToAction("Index");
             }
-            return View("~/Views/Administrator/Houses/Edit.cshtml",house);
+            return View("~/Views/Administrator/People/Edit.cshtml",person);
         }
 
-        // GET: Houses/Delete/5
+        // GET: People/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            House house = hr.GetById(id);
-            if (house == null)
+            Person person = pr.GetById(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/Houses/Delete.cshtml", house);
+            return View("~/Views/Administrator/People/Delete.cshtml",person);
         }
 
-        // POST: Houses/Delete/5
+        // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            hr.Delete(id);
+            pr.Delete(id);
             return RedirectToAction("Index");
         }
 
