@@ -1,0 +1,8 @@
+/* Lazy Load Image */
+img {
+  transition: filter 0.3s;
+}
+
+img.lazyestload {
+  filter: blur(8px);
+}

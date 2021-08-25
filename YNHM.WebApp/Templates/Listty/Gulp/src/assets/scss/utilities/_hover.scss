@@ -1,0 +1,47 @@
+// Hover Bg Primary
+.hover-bg-primary {
+  transition: all .3s ease-in-out;
+  span.h5 {
+    transition: color .3s ease-in-out;
+    font-weight: 400;
+  }
+  &:hover {
+    background-color: $primary !important;
+    color: $white;
+    text-decoration: none;
+    span.h5 {
+      color: $white;
+    }
+    .icon-md {
+      i {
+        color: $white;
+      }
+    }
+  }
+}
+.hover-text-color {
+  color: $text-color;
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+.hover-text-decoration-none {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* Text Hover Primary */
+.text-hover-primary {
+  &:Hover {
+    color: $primary !important;
+  }
+}
+
+/* Hover Bg Light */
+.hover-bg-light {
+  &:hover {
+    background-color: $gray-200;
+  }
+}

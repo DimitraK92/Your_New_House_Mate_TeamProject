@@ -1,0 +1,301 @@
+/* Card */
+.card {
+  margin-bottom: 1.88rem;
+  .card-body {
+    .meta-post {
+      margin-bottom: 1rem;
+      .meta-author a {
+        color: $primary;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    .card-title {
+      margin-bottom: 1.25rem;
+      a {
+        display: block;
+        color: $dark;
+        text-transform: capitalize;
+        transition: color .3s ease-in-out;
+        &:hover {
+          text-decoration: none;
+          color: $primary;
+        }
+      }
+    }
+  }
+  .custom-file {
+    .custom-file-label {
+      left: 50px;
+      right: 50px;
+      border: 0;
+      text-transform: capitalize;
+      font-family: $font-family-secondary;
+      color: $text-color;
+      &::after {
+        font-family: 'thin-line-icons';
+        content: "\eb49";
+        background-color: transparent;
+      }
+    }
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1.25rem;
+    .text-content {
+      text-transform: capitalize;
+      font-size: 1rem;
+      color: $dark;
+      font-family: $font-family-secondary;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 400;
+      padding-left: .7em;
+      padding-right: .7em;
+    }
+  }
+  .card-footer {
+    a {
+      font-size: 0.75rem;
+    }
+  }
+
+  .widget-content {
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+    .widget-content-title {
+      font-size: 2.25rem;
+      display: block;
+      font-weight: 300;
+    }
+    .btn {
+      font-size: 0.6875rem;
+      padding-left: 0;
+      padding-bottom: 0;
+      padding-top: 0.25rem;
+    }
+  }
+}
+
+/* Card Hover Overlay */
+.card-hover-overlay {
+  transition: all 0.4s;
+  &:hover {
+    .card-img-overlay {
+      background-color: rgba($primary, .5);
+      h3 {
+        i {
+          color: $white;
+        }
+      }
+    }
+  }
+  .card-img-overlay {
+    background-color: rgba($black, .5);
+    transition: background-color .4s;
+    padding: 1.25rem;
+    @include media-breakpoint-up(xl){
+      padding: 2.5rem 1.875rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      @include media-breakpoint-up(lg){
+        font-size: 1.25rem;
+      }
+      @include media-breakpoint-up(xl){
+        font-size: 1.5rem;
+      }
+
+      a {
+        color: $white;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      i {
+          color: $primary;
+          margin-left: 0.3125rem;
+          transition: color .4s;
+        }
+    }
+  }
+}
+
+/* Card Scale Hoverable */
+.card-hoverable-scale {
+  .card-img {
+    height: 330px;
+    overflow: hidden;
+    border-radius: 0.3125rem;
+    display: block;
+  }
+  .card-img-top {
+    border-radius: 0.3125rem;
+    transform: scale(1.1);
+    transition: all .6s ease-in-out;
+    object-fit: cover;
+    height: 100%;
+  }
+  .card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+
+  }
+  &:hover {
+    .card-img-top {
+      transform: scale(1);
+    }
+  }
+  &:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, .2);
+    content: '';
+    border-radius: 0.3125rem;
+  }
+}
+
+/* Card Pricing */
+.card-pricing {
+  .card-title {
+    padding-top: 1.6rem;
+    padding-bottom: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 40px;
+    color: $black;
+    margin-bottom: 0.625rem;
+    font-weight: 400;
+    em {
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      display: block;
+    }
+  }
+  .pricing {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: $gray-300;
+    padding: 1.875rem 0;
+    font-family: $font-family-secondary;
+    .price {
+      font-size: 3.125rem;
+      line-height: 1;
+      color: $dark;
+
+    }
+    .year {
+      font-size: 1.125rem;
+      color: $text-color;
+    }
+  }
+  .list-unstyled {
+    li {
+      color: $text-color;
+      font-weight: 700;
+      &.active {
+        >i {
+          color: $primary;
+        }
+      }
+    }
+    i {
+      font-size: 1.125rem;
+      margin-right: 0.3125rem;
+      color: lighten($text-color, 30%);
+    }
+    .list-unstyled {
+      li {
+        font-weight: 400;
+      }
+      i {
+        font-size: $font-size-base;
+      }
+    }
+  }
+  .card-body p {
+    font-size: 0.8125rem;
+    a {
+      text-decoration: underline;
+    }
+  }
+  .card-footer {
+    a {
+      font-size: 100%;
+    }
+    .btn-outline-secondary {
+      color: $text-color;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+
+/* Card List */
+.card-list {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+  margin-bottom: 0;
+  .card-list-img {
+    position: relative;
+    img {
+      max-width: 100%;
+      border-radius: $border-radius;
+      @include media-breakpoint-up(md){
+        height: 215px;
+        object-fit: cover;
+      }
+      @include media-breakpoint-up(lg){
+        height: 230px;
+      }
+      @include media-breakpoint-up(lg){
+        height: 210px;
+      }
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: .75rem;
+      padding: 0.3125rem 0.625rem;
+    }
+  }
+  .list-inline-rating {
+    margin-top: .625rem;
+    @include media-breakpoint-up(md){
+      margin-top: 0;
+    }
+  }
+}
+
+/* Card Profile */
+.card-profile {
+  .card-profile-img {
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      max-width: 170px;
+      max-height: 170px;
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+/* Selectric Default */
+.selectric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select-default {
+  .selectric {
+    background-color: $gray-200;
+    border: 1px solid $border-color;
+    .label {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      margin-right: 0;
+      font-size: $font-size-base;
+      color: $text-color;
+    }
+    .arrow-button {
+      width: 46px;
+      height: 41px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.125rem;
+      i {
+        // font-size: 1.25rem;
+        &::before {
+          content: "\f078";
+        }
+      }
+    }
+
+  }
+  .selectric-open .selectric {
+    margin-top: 0;
+  }
+  .selectric-items {
+    &::before,
+    &::after {
+      display: none;
+    }
+    margin: 0;
+    padding: 0;
+    border-color: $border-color;
+    .selectric-scroll {
+      li {
+        border-bottom: 1px solid $border-color;
+        padding: 0.8125rem 1.875rem 0.8125rem 0.9375rem;
+        font-size: $font-size-base;
+        color: $text-color;
+        &:hover {
+          background-color: lighten($gray-300, 5%);
+          color: $primary;
+        }
+        &.highlighted {
+          background-color: lighten($gray-300, 5%);
+          color: $primary;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  &.bg-white {
+    .selectric {
+      background-color: $white;
+      .label {
+        color: $dark;
+      }
+    }
+
+  }
+}
+
+/* Select BG Transparent */
+.select-bg-transparent {
+  margin-right: 0.625rem;
+  width: 125px;
+  .selectric-open .selectric {
+    margin-top: 0;
+  }
+  .selectric {
+    background-color: transparent;
+    border: 0;
+    .label {
+      font-size: 0.875rem;
+      color: $text-color;
+    }
+  }
+  .selectric-items {
+    margin: 0;
+    padding: 0;
+    border-color: $border-color;
+    &::before,
+    &::after {
+      display: none;
+    }
+    .selectric-scroll {
+      li {
+        border-bottom: 1px solid $border-color;
+        padding: .5rem .75rem;
+        font-size: $font-size-base;
+        color: $text-color;
+        &:hover {
+          background-color: lighten($gray-300, 5%);
+          color: $primary;
+        }
+        &.highlighted {
+          background-color: lighten($gray-300, 5%);
+          color: $primary;
+          &::after {
+            display: none;
+          }
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  &.select-border {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    .selectric {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      .label {
+        padding: 0;
+        margin-right: 0;
+      }
+      .arrow-button {
+        i {
+          font-size: .6rem;
+          &::before {
+            content: "\f078";
+          }
+        }
+      }
+    }
+  }
+}

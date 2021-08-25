@@ -1,0 +1,422 @@
+@@include('header-dashboard-list-admin.htm', {
+  "title": "Edit Listing - Listty",
+  "parent": "Admin",
+
+  "selectric": "<link href='assets/plugins/selectric/selectric.css' rel='stylesheet'>",
+
+	"dzs_parallaxer": "",
+
+	"fancy_box": "",
+
+	"owl_carousel": "",
+
+	"owl_theme": "",
+
+	"revolution_settings": "",
+
+	"map": "<link href='assets/plugins/map/css/map.css' rel='stylesheet'>",
+
+	"rateyo": "",
+
+	"data_tables": "",
+
+	"data_tables_responsive": "",
+
+	"date_range_picker": ""
+})
+
+@@include('navbar-list-admin.htm', {
+  "active": "listings"
+})
+
+<!-- ====================================
+———	Edit Listing
+===================================== -->
+<section class="bg-light py-5 height100vh">
+  <div class="container">
+    <nav class="bg-transparent breadcrumb breadcrumb-2 px-0 mb-5" aria-label="breadcrumb">
+      <h2 class="font-weight-normal mb-4 mb-md-0">Edit Listings</h2>
+      <ul class="list-unstyled d-flex p-0 m-0">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="dashboard-list-admin.html">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Listings</li>
+      </ul>
+    </nav>
+    <form>
+      <!-- About -->
+      <div class="card">
+        <div class="card-body px-6 pt-6 pb-1">
+          <h3 class="h4 mb-4">About</h3>
+          <p class="mb-5">We are not responsible for any damages caused by the use of this website, or by posting business
+            listings here. Please use our site at your own discretion and exercise good judgement as well as common sense when
+            advertising business here.</p>
+          <form action="index.html" method="post">
+            <div class="row">
+              <div class="form-group col-md-6 mb-6">
+                <label for="listingTitle">Listing Title</label>
+                <input type="text" class="form-control" placeholder="Listing Title" value="New City Hotel">
+              </div>
+
+              <div class="form-group col-md-6 mb-6">
+                <label for="exampleFormControlSelect1">Category</label>
+                <div class="select-default bg-white">
+                  <select class="select-location">
+                    <option>All Categories</option>
+                    <option selected>Restaurants</option>
+                    <option>Bar</option>
+                    <option>Cafe</option>
+                    <option>Cafe</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-12 mb-6">
+                <label for="discribeTheListing">Discribe the listing</label>
+                <textarea class="form-control discribeTheListing" rows="6" placeholder="Discribe the listing">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</textarea>
+              </div>
+
+              <div class="form-group col-md-12 mb-6">
+                <label for="addTags">Tags</label>
+                <input type="text" class="form-control" id="addTags" placeholder="Add Tags" value="Parking, TV, Free wi fi, Parking">
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="card">
+        <div class="card-body p-6">
+          <h3 class="h4 mb-4">Contact</h3>
+          <p class="mb-5">We are not responsible for any damages caused by the use of this website, or by posting business
+            listings here.
+            Please use our site at your own discretion and exercise good judgement as well as common sense when advertising
+            business here.</p>
+
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group mb-6">
+                <label for="exampleFormControlSelect1">Listing Region</label>
+                <div class="select-default bg-white">
+                  <select class="select-location">
+                    <option>All Location</option>
+                    <option >UK</option>
+                    <option selected>Canada</option>
+                    <option>USA</option>
+                    <option>Australia</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group mb-6">
+                <label for="listingPhone">Listing Phone</label>
+                <input type="phone" class="form-control" placeholder="546 - 545 - 2546" value="546 - 545 - 2546">
+              </div>
+
+              <div class="form-group mb-6">
+                <label for="listingEmail">Listing Email</label>
+                <input type="email" class="form-control" placeholder="hello@example.com" value="hello@example.com">
+              </div>
+
+              <div class="form-group mb-6">
+                <label for="listingWebsite">Listing Website</label>
+                <input type="text" class="form-control" id="listingWebsite" placeholder="http://" value="http://newcityhotel.com">
+              </div>
+
+            </div>
+
+            <div class="col-md-6 map-place-search-wrapper">
+              <div class="form-group mb-0 ">
+                <label for="listingAddress">Listing Address</label>
+                <input type="text" class="form-control" id="listingAddress" placeholder="Type Location">
+              </div>
+
+              <div class="map-place-search">
+                <div id="map-add-edit"></div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="card">
+        <div class="card-body p-6">
+          <h3 class="h4 mb-4">Gallery</h3>
+          <p class="mb-5">We are not responsible for any damages caused by the use of this website, or by posting business
+            listings here.
+            Please use our site at your own discretion and exercise good judgement as well as common sense when advertising
+            business here.</p>
+
+          <div class="row mb-4">
+            <div class="col-md-4 position-relative">
+              <img src="assets/img/listing/listing-1.jpg" data-src="assets/img/listing/listing-1.jpg" alt="Image Listing" class="img-fluid mb-4 mb-md-0 lazyestload">
+              <button class="close-btn">
+                <div class="fas fa-times"></div>
+              </button>
+            </div>
+
+            <div class="col-md-4 position-relative">
+              <img src="assets/img/listing/listing-2.jpg" data-src="assets/img/listing/listing-2.jpg" alt="Image Listing" class="img-fluid mb-4 mb-md-0 lazyestload">
+              <button class="close-btn">
+                <div class="fas fa-times"></div>
+              </button>
+            </div>
+            
+            <div class="col-md-4 position-relative">
+              <img src="assets/img/listing/listing-3.jpg" data-src="assets/img/listing/listing-3.jpg" alt="Image Listing" class="img-fluid mb-4 mb-md-0 lazyestload">
+              <button class="close-btn">
+                <div class="fas fa-times"></div>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group position-relative mb-6 form-group-dragable">
+            <input type="file" class="custom-file-input">
+            <label class="custom-file-label" for="customFile">
+              Click or Drag images here
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="videoUrl">Video URL</label>
+            <input type="text" class="form-control" id="videoUrl" placeholder="http://">
+          </div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="card">
+        <div class="card-body p-6">
+          <h3 class="h4 mb-4">Social</h3>
+          <p class="mb-5">We are not responsible for any damages caused by the use of this website, or by posting business listings here.
+            Please use our site at your own discretion and exercise good judgement as well as common sense when advertising
+            business here.</p>
+
+          <div class="row">
+
+            <div class="form-group col-md-6 mb-6">
+              <label for="linkedUrl">Linked in URL</label>
+              <input type="text" class="form-control" placeholder="http://linkedin.com/listty" value="http://linkedin.com/listty">
+            </div>
+
+            <div class="form-group col-md-6 mb-6">
+              <label for="facebookUrl">Facebook URL</label>
+              <input type="text" class="form-control" placeholder="http://facebook.com/listty" value="http://facebook.com/listty">
+            </div>
+
+            <div class="form-group col-md-6 mb-6">
+              <label for="twitterUrl">Twitter URL</label>
+              <input type="text" class="form-control" placeholder="http://twitter.com/listty" value="http://twitter.com/listty">
+            </div>
+
+            <div class="form-group col-md-6 mb-6">
+              <label for="youtubeUrl">You Tube URL</label>
+              <input type="text" class="form-control" placeholder="http://youtube.com/listty" value="http://youtube.com/listty">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="card">
+        <div class="card-body p-6">
+          <h3 class="h4 mb-4">Opening Hours</h3>
+          <p class="mb-5">Example: 10.00am - 5.00pm or 10.00 - 17.00</p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6 ">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="monday" checked>
+                    <label class="form-check-label" for="monday">Monday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6 ">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Tuesday" checked>
+                    <label class="form-check-label" for="Tuesday">Tuesday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6 form-check-readonly">
+                <div class="row align-items-center">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Wednesday" checked>
+                    <label class="form-check-label" for="Wednesday">Wednesday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6 ">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Thrusday" checked>
+                    <label class="form-check-label" for="Thrusday">Thrusday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Friday" checked>
+                    <label class="form-check-label" for="Friday">Friday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6 ">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Staurday" checked>
+                    <label class="form-check-label" for="Staurday">Staurday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" value="10:00am">
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" value="05:00pm">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group form-check mb-6">
+                <div class="row align-items-center form-check-readonly">
+                  <div class="col-3">
+                    <input type="checkbox" class="form-check-input" id="Sunday">
+                    <label class="form-check-label" for="Sunday">Sunday</label>
+                  </div>
+                  <div class="col-3 pr-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="10:00am" readonly>
+                  </div>
+                  <div class="col-1 text-center px-0">-</div>
+                  <div class="col-3 pl-0">
+                    <input type="text" class="form-control form-control-sm" placeholder="05:00pm" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6 col-xl-5">
+          <div class="mb-6">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">submit</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+@@include('footer-dashboard-map.htm', {
+  
+	"selectric": "<script src='assets/plugins/selectric/jquery.selectric.min.js'></script>",
+	
+	"dzs_parallaxer": "",
+	
+	"isotope": "",
+	
+	"images_loaded_pkgd": "",
+	
+	"fancy_box": "",
+	
+	"date_range_picker_moment": "",
+	
+	"date_range_picker": "",
+	
+	"revolution_themepunch_tools": "",
+	
+	"revolution_themepunch": "",
+	
+	"owl_carousel": "",
+	
+	"rateyo": "",
+	
+	"apex_charts": "",
+	
+	"data_tables": "",
+	
+  "data_tables_responsive": "",
+  
+  "velocity": "",
+	
+	"maps_api_key": "<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY&libraries=places' defer></script>",
+
+	"map_markerclusterer": "",
+
+	"map_rich_marker": "",
+
+	"map_info_box_packed": "",
+
+	"map": "<script src='assets/js/map.js'></script>",
+
+	"flot": "",
+
+	"flot_time": "",
+
+	"chart": ""
+})

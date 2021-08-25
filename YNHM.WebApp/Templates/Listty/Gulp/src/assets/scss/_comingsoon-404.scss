@@ -1,0 +1,25 @@
+/* 404 */
+.text-content-404 {
+  text-align: center;
+
+  h1 {
+    font-size: 8.125rem;
+    @include media-breakpoint-up(lg){
+      font-size: 12.5rem;
+    }
+  }
+  p {
+    font-size: 1.25rem;
+    line-height: 30px;
+  }
+}
+
+
+/* Comingsoon */
+.comingsoon-wrapper {
+  @include media-breakpoint-up(md){
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}

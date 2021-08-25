@@ -1,0 +1,75 @@
+/* List Gray */
+.list-gray {
+  li {
+    a {
+      color: $text-color;
+      transition: color .3s ease-in-out;
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.list-category {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-flow: row wrap;
+  li {
+    width: 49%;
+    @include media-breakpoint-up(lg){
+      width: 33%;
+    }
+  }
+}
+
+.list-inline-icon {
+  a {
+    color: $text-color;
+    font-size: 1.25rem;
+  }
+  @include media-breakpoint-up(lg){
+    margin-bottom: 0;
+  }
+}
+
+/* List Payment Logo */
+.list-payment-logo {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  li{
+    margin-right: 0.8125rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.paypal {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+}
+
+
+/* List inline rating */
+.list-inline-rating {
+  margin-bottom: 0.3125rem;
+  .list-inline-item {
+    margin-right: 0;
+    font-size: 0.625rem;
+    color: $warning;
+  }
+}
+
+/* List inline rating */
+.list-inline-rating-lg {
+  margin-bottom: 0.3125rem;
+  .list-inline-item {
+    margin-right: 0;
+    font-size: 1.25rem;
+    color: $warning;
+  }
+}

@@ -1,0 +1,52 @@
+/* Perfect Scroll For Message */
+#message {
+  position: relative;
+  height: 373px;
+  overflow: auto;
+  @include media-breakpoint-up(xl){
+    height: 465px;
+  }
+}
+
+/* Perfect Scroll For Chats */
+#chats {
+  position: relative;
+  height: 325px;
+  overflow: auto;
+  @include media-breakpoint-up(xl){
+    height: 415px;
+  }
+}
+
+/* width */
+.discribeTheListing::-webkit-scrollbar,
+#message::-webkit-scrollbar,
+#chats::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.discribeTheListing::-webkit-scrollbar-track,
+#message::-webkit-scrollbar-track,
+#chats::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+.discribeTheListing::-webkit-scrollbar-thumb,
+#message::-webkit-scrollbar-thumb,
+#chats::-webkit-scrollbar-thumb {
+  background-color: $border-color;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.discribeTheListing::-webkit-scrollbar-thumb:hover,
+#message::-webkit-scrollbar-thumb:hover,
+#chats::-webkit-scrollbar-thumb:hover {
+  background-color: rgba($text-color, .5);
+}
+
+span.dtr-data {
+  white-space: initial;
+}

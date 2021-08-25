@@ -1,0 +1,196 @@
+/*=== 16. MAP HALF ===*/
+.inner-container {
+  position: relative;
+  .map-lg-fixed {
+    @include media-breakpoint-up(lg){
+      position: fixed;
+      top: 0;
+      width: 50%;
+      height: 100vh;
+      .map-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 990;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#iw-container {
+	padding-right: 1.25rem;
+}
+
+.grid-two-items {
+  .inner-container .map-lg-fixed {
+    @include media-breakpoint-up(lg){
+      width: 66.66666667%;
+    }
+    @include media-breakpoint-up(xl){
+      width: 50%;
+    }
+  }
+}
+
+/* List Link*/
+.list-link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+/*  Boxed Layout Map */
+body.boxed {
+  .inner-container {
+    .map-fixed {
+      .map-container {
+        @include media-breakpoint-up(lg){
+          width: 470px;
+        }
+        @include media-breakpoint-up(xl){
+          width: 615px;
+        }
+      }
+    }
+  }
+}
+
+
+/* Google Map Cluster */
+
+.cluster img{
+  display: none;
+}
+
+.cluster div{
+  background: #2196f3;
+  text-align: center;
+  font-size: 0.9375rem!important;
+  color: #fff!important;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 40px!important;
+  height: 40px!important;
+  line-height: 38px!important;
+  box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.1);
+  border: 2px solid #fff;
+  transition: all 100ms 3inear;
+  animation: cluster-animation 1.5s infinite;
+}
+
+@keyframes cluster-animation{
+  0%,100%{
+    box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.1);
+  }
+
+  50%{
+    box-shadow: 0px 0px 0px 9px rgba(0,0,0,0.1);
+  }
+}
+
+
+#map-add-edit{
+  height: 100%;
+}
+
+/* Map Sidebar */
+.map-sidebar {
+  width: 100%;
+  #single-listing-map {
+    border-radius: $border-radius;
+    position:relative;
+    height: 250px;
+  }
+  .btn-map-view {
+    background-color: $white;
+    padding-top: .5rem ;
+    padding-right: .5rem ;
+    padding-bottom: .5rem ;
+    padding-left: 2rem ;
+    font-size: 14px;
+    cursor: pointer;
+    top: 8px !important;
+    left: 8px !important;
+    &:hover {
+      text-decoration: underline;
+      color: $primary;
+    }
+    &:before {
+      font-family: 'Font Awesome 5 Free';
+      content: "\f279";
+      font-weight: 900;
+      left: 12px;
+      position: absolute;
+    }
+  }
+}
+
+.map-right{
+	float: right;
+}
+.map-margin-btm{
+	margin-bottom: 2.5rem;
+}
+.mapArea{
+	height: 290px;
+}
+.mapArea #map-canvas{
+	height: 260px;
+}
+
+.map-place-search {
+  height: 363px;
+}
+
+/* Map Half */
+.map-half {
+  width: 100%;
+  height: 438px;
+  margin-bottom: 30px;
+  @include media-breakpoint-up(lg){
+    height: 100%;
+  }
+}
+
+/* Map listing Full */
+.map-listing-full {
+  margin: 0;
+	padding: 0;
+	height: 538px;
+	max-width: none;
+}
+
+// Map place search wrapper
+.map-place-search-wrapper {
+  .form-control {
+    left: 10px !important;
+    width: auto ;
+    top: 55px !important;
+    @include media-breakpoint-up(lg){
+      left: 213px !important;
+      top: 7px !important;
+    }
+  }
+}
+
+/* Google Map Infobox */
+.infoBox {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+
+/* Google Map Iframe Style Overwrite */
+.gmnoprint .gm-style-mtc{
+  div span{
+    vertical-align: initial !important;
+
+    img{
+      vertical-align: initial !important;
+    }
+  }
+}

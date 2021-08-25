@@ -1,0 +1,16 @@
+/* Banner Info */
+.banner {
+  min-height: 624px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  .banner-info {
+    margin: 3.75rem 0 3.75rem;
+    h1 {
+      font-weight: 500;
+    }
+  }
+
+}
