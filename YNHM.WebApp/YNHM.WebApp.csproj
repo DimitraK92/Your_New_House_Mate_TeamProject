@@ -320,6 +320,7 @@
     <Content Include="Models\FakeImages\person2.jpg" />
     <Content Include="Models\FakeImages\person3.jpg" />
     <Content Include="Models\FakeImages\person4.jpg" />
+    <Content Include="Models\FakeImages\person5.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

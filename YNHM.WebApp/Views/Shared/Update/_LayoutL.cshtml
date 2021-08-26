@@ -10,6 +10,8 @@
     <title>Your New House Mate</title>
 
     <!-- PLUGINS CSS STYLE -->
+
+    @Styles.Render("~/Templates/Listty/StaticHTML/assets/basicStyle")
     @{
 
         //TODO: VASSILIS: Create separate method for styles and scripts or fix bundles
@@ -18,23 +20,25 @@
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/mainStyle")
         }
-        else if (routeValues.ContainsValue("Houses"))
+        else if (routeValues.ContainsValue("Houses")||routeValues.ContainsValue("People"))
         {
-            @Styles.Render("~/Templates/Listty/StaticHTML/assets/houseStyle");
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/listingStyle");
         }
         else if (routeValues.ContainsValue("SingleListing"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/singleListing")
         }
-        else if (routeValues.ContainsValue("Login"))
+        @*else if (routeValues.ContainsValue("Login"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/loginStyle")
-        }
+        }*@
         else if (routeValues.ContainsValue("Register"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/signupStyle")
         }
     }
+
+    @Styles.Render("~/Templates/Listty/StaticHTML/assets/styleAndColor")
 
 
 
@@ -86,6 +90,8 @@
 
 
     <!-- JAVASCRIPTS -->
+
+    @Scripts.Render("~/Templates/Listty/StaticHTML/assets/basicScripts")
     @{
         if (routeValues.ContainsValue("Index"))
         {
@@ -96,12 +102,17 @@
         {
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/houseScripts")
 
+        }        
+        else if (routeValues.ContainsValue("People"))
+        {
+            @Scripts.Render("~/Templates/Listty/StaticHTML/assets/peopleScripts")
+
         }
         else if (routeValues.ContainsValue("SingleListing"))
         {
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/singleListingScripts")
         }
-        else if (routeValues.ContainsValue("Login"))
+        else if (routeValues.ContainsValue("Login") || routeValues.ContainsValue("PersonalProfile"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/loginScripts")
         }
