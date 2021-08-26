@@ -63,7 +63,7 @@ namespace YNHM.Database.Migrations
                 #endregion
                 var house = new House()
                 {
-                    Title = "Ugly exterior with surprising interior",
+                    Title = "Apartment",
                     Address = address,
                     PostalCode = (10000 + random.Next(1000, 9999)).ToString(),
                     Area = random.Next(60, 200),

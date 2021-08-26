@@ -4,21 +4,48 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "act-link" }))
     {
         @Html.AntiForgeryToken()
-        @*nav navbar-nav navbar-right*@
-        @*<ul class="nav-holder main-menu">*@
-        <li>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        @*</ul>*@
+
+
+        //TODO: VASSILIS: Fix User dropdown
+        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-outline-primary" })
+        <a class="btn btn-outline-primary" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
     }
 }
 else
 {
-    <li>
-        <a href="@Url.Action("Login", "Account")" class="show-reg-form"><i class="fa fa-sign-in"></i>Sign In/Sign Up</a>
-    </li>
-    @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
-
+    <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary"><i class="fa fa-sign-in"></i>Sign In/Sign Up</a>
 }
+
+
+
+@*<div class="avatar">
+    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" data-display="static"
+       aria-expanded="false">
+        <img class="avatar-img" src="assets/img/user/user-3.jpg" alt="Image">
+        <span class="avatar-name">
+            Michael
+            <span class="small">List Admin</span>
+        </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="d-flex flex-wrap align-items-center" href="profile-list-admin.html">
+                <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                <span>My Profile</span>
+            </a>
+        </li>
+        <li>
+            <a class="d-flex flex-wrap align-items-center" href="messages.html">
+                <i class="fa fa-envelope mr-2" aria-hidden="true"></i>
+                <span>Messages</span>
+            </a>
+        </li>
+        <li>
+            <a class="d-flex flex-wrap align-items-center" href="#">
+                <i class="fa fa-diamond mr-2" aria-hidden="true"></i>
+                <span>Activity</span>
+            </a>
+        </li>
+    </ul>
+
+</div>*@

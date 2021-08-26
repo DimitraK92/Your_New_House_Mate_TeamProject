@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Listty</title>
+    <title>Sign Up - Listty</title>
 
     <!-- PLUGINS CSS STYLE -->
     <link href='assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
     <link href='assets/plugins/listtyicons/style.css' rel='stylesheet'>
     <link href='assets/plugins/menuzord/css/menuzord.css' rel='stylesheet'>
 
-    
+    <link href='assets/plugins/selectric/selectric.css' rel='stylesheet'>
     
     
     
@@ -252,39 +252,125 @@
 
 
 <!-- ====================================
-———	LOGIN PAGE
+———	SIGN UP
 ===================================== -->
-<section class="py-7 py-md-10 bg-light ">
+<section class="py-7 py-md-10 bg-light height100vh">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-5">
-        <div class="card">
-          <div class="bg-primary text-center py-4">
-            <h2 class="text-white mb-0 h4">Members Log In</h2>
-          </div>
-          <div class="card-body px-7 pt-7 pb-0">
-            <form>
-              <div class="form-group mb-7">
-                <label for="exampleInputText">User Name*</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" required>
-                <em>Enter your Foundation username.</em>
+      <div class="col-md-9 col-xl-7">
+        <div class="bg-white p-5 rounded border">
+          <h2 class="font-weight-normal mb-4">Account Registration</h2>
+          <p>Please fill out the fields below to create your account. We will send your account information to the email address
+            you enter. Your email address and information will NOT be sold or shared with any 3rd party. If you already have an
+            account, please,
+            <a href="login.html">click here</a>.</p>
+
+          <form class="py-7" action="#">
+
+            <div class="bg-light p-5 mb-8 rounded">
+              <h3 class="h4 font-weight-normal mb-4">Subscriptions</h3>
+              <div class="row justify-content-between">
+                <div class="col-md-6">
+                  <div class="select-bg-transparent select-border w-100">
+                    <select class="select-location">
+                      <option>Free</option>
+                      <option>Premium-119 USD/YEAR</option>
+                      <option>Lifetime 299 USD/YEAR</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex justify-content-md-end">
+                    <a class="btn btn-link pl-0" href="pricing-table.html">Veiw Pricing Details</a>
+                  </div>
+                </div>
               </div>
-              <div class="form-group mb-7">
-                <label for="exampleInputPassword1">Password*</label>
-                <input type="password" class="form-control">
-                <em>Enter the password that accompanies your username.</em>
+            </div>
+
+            <h3 class="h4 font-weight-normal mb-4">Contact Information</h3>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="inputtext">First Name*</label>
+                <input type="text" class="form-control" placeholder="" required>
               </div>
-              <div class="form-group d-flex justify-content-between align-items-center mb-7">
-                <button type="submit" class="btn btn-outline-primary text-uppercase">
-                  Log in
-                </button>
-                <a href="#FogotPassword">Fogot Password?</a>
+              <div class="form-group col-md-6">
+                <label for="inputText">Last Name*</label>
+                <input type="text" class="form-control" placeholder="">
               </div>
-            </form>
+            </div>
+            <div class="form-group mb-8">
+              <label for="inputAddress">Email Address*</label>
+              <input type="email" class="form-control" placeholder="">
+            </div>
+
+            <h3 class="h4 font-weight-normal mb-4 mt-7">Account Information</h3>
+            <div class="form-group">
+              <label for="inputText">Username*</label>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+            <div class="row mb-6">
+              <div class="form-group col-md-6 mb-4">
+                <label for="inputPassword">Password*</label>
+                <input type="password" class="form-control" placeholder="">
+              </div>
+              <div class="form-group col-md-6 mb-4">
+                <label for="inputPassword">Password (re-type)*</label>
+                <input type="password" class="form-control" placeholder="">
+              </div>
+            </div>
+
+            <h3 class="h4 font-weight-normal mb-4 mt-7">Security Control</h3>
+            <div class="form-group mb-7">
+              <label for="usernames" class="control-label">
+                Confirm that you are human*
+              </label> <br>
+              <img src="assets/img/business/recaptcha.jpg" data-src="assets/img/business/recaptcha.jpg" alt="Image captcha" class="img-fluid lazyestload">
+            </div>
+
+            <div class="form-group mb-6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox">
+                  I agree to the <a href="terms-of-services.html">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>. Your
+                  business listing is fully backed by our 100% money back guarantee.
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary"> Create Account </button>
+
+          </form>
+
+          <div class="border rounded d-inline-block p-3 mb-4 position-relative">
+            <img class="paypal lazyestload" data-src="assets/img/business/paypal.png" src="assets/img/business/paypal.png" alt="paypal">
+            <ul class="list-unstyled list-payment-logo">
+              <li>
+                <a href="#visa">
+                  <img class="lazyestload" data-src="assets/img/business/visa.jpg" src="assets/img/business/visa.jpg" alt="visa.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#master-card">
+                  <img class="lazyestload" data-src="assets/img/business/master-card.jpg" src="assets/img/business/master-card.jpg" alt="master-card.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#american-express">
+                  <img class="lazyestload" data-src="assets/img/business/american-express.jpg" src="assets/img/business/american-express.jpg" alt="american-express.jpg">
+                </a>
+              </li>
+              <li>
+                <a href="#discover">
+                  <img class="lazyestload" data-src="assets/img/business/discover.jpg" src="assets/img/business/discover.jpg" alt="discover.jpg">
+                </a>
+              </li>
+            </ul>
           </div>
-          <div class="card-footer bg-transparent text-center py-3">
-            <p class="mb-0">Not a member yet? <a href="sign-up.html" class="link">Sign up</a></p>
-          </div>
+          <p class="mb-0">We use <span class="text-dark">PayPal</span> to process all transactions securely. <span
+              class="text-dark">Payments can be made using any major credit card, without the need for a PayPal account</span>. If
+            you already have a PayPal account, you can also pay with PayPal funds or through your bank account. We don't keep any
+            credit card information stored on our site. No tax is added to your order. For more information <a
+              href="https://www.paypal.com" target="_blank">www.paypal.com</a></p>
         </div>
       </div>
     </div>
@@ -411,29 +497,11 @@
     <script src='assets/plugins/bootstrap/js/bootstrap.bundle.js'></script>
     <script src='assets/plugins/menuzord/js/menuzord.js'></script>
 
-    
-    
-    
-    
-    
-    
-    
-    
+    <script src='assets/plugins/selectric/jquery.selectric.min.js'></script>
     
     <script src='assets/plugins/smoothscroll/SmoothScroll.js'></script>
     <script src='assets/plugins/lazyestload/lazyestload.js'></script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     
     <script>

@@ -23,7 +23,7 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Admin,HouseSeeker")]
+        [Authorize(Roles = "Admin, HouseSeeker")]
         public ActionResult People()
         {
             List<Person> people = new List<Person>();
@@ -40,7 +40,8 @@ namespace YNHM.WebApp.Controllers
             }
             return View(people);
         }
-        
+
+        [Authorize]
         public ActionResult PersonalProfile(int? id)
         {
             if (id == null)
@@ -65,7 +66,7 @@ namespace YNHM.WebApp.Controllers
             return View(person);
         }
 
-        
+        [Authorize]
         public ActionResult Houses()
         {
             try
@@ -83,6 +84,7 @@ namespace YNHM.WebApp.Controllers
             }
         }
         
+        [Authorize]
         public ActionResult SingleListing(int? id)
         {
             if (id == null)

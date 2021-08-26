@@ -49,16 +49,16 @@ namespace YNHM.Database.Mockup
 
         public List<House> MockupHouses { get; set; } = new List<House>
         {
-            new House(1, "Ugly exterior with surprising interior", "Fokionos Negri 45", "11361", 60, 2, 2, 300, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(2, "Ugly exterior with surprising interior", "Kypselis 32","12541",75, 3, 4, 450, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(3, "Ugly exterior with surprising interior", "Frynis 56","13341",50, 1, 2, 250, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(4, "Ugly exterior with surprising interior", "Patision 165","11322", 105, 5, 3, 500, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(5, "Ugly exterior with surprising interior", "Kerkyras 98","16376", 84, 2, 4, 405, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(6, "Ugly exterior with surprising interior", "Naxou 134","13334", 93, 3, 3, 365, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(7, "Ugly exterior with surprising interior", "Themistokleous 87","15331", 102, 6, 3, 420, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(8, "Ugly exterior with surprising interior", "Kallidromiou 60","13341", 200, 5, 4,740, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(9, "Ugly exterior with surprising interior", "Voulgaroktonou 1", "11363",45, 0, 2, 250, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
-            new House(10, "Ugly exterior with surprising interior", "Agias Zonis 27", "11354",65, 3, 3, 365, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(1, "Apartment", "Fokionos Negri 45", "11361", 60, 2, 2, 300, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(2, "Apartment", "Kypselis 32","12541",75, 3, 4, 450, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(3, "Apartment", "Frynis 56","13341",50, 1, 2, 250, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(4, "Apartment", "Patision 165","11322", 105, 5, 3, 500, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(5, "Apartment", "Kerkyras 98","16376", 84, 2, 4, 405, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(6, "Apartment", "Naxou 134","13334", 93, 3, 3, 365, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(7, "Apartment", "Themistokleous 87","15331", 102, 6, 3, 420, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(8, "Apartment", "Kallidromiou 60","13341", 200, 5, 4,740, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(9, "Apartment", "Voulgaroktonou 1", "11363",45, 0, 2, 250, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
+            new House(10, "Apartment", "Agias Zonis 27", "11354",65, 3, 3, 365, PhotoUrls, Districts[0],"https://goo.gl/maps/2LMwmuBWZW5SvDEe6",HouseManager),
         };
 
 

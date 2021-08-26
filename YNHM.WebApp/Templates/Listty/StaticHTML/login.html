@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Listing Grid Right Sidebar - Listty</title>
+    <title>Login - Listty</title>
 
     <!-- PLUGINS CSS STYLE -->
     <link href='assets/plugins/fontawesome-5.15.2/css/all.min.css' rel='stylesheet'>
@@ -15,17 +15,6 @@
     <link href='assets/plugins/listtyicons/style.css' rel='stylesheet'>
     <link href='assets/plugins/menuzord/css/menuzord.css' rel='stylesheet'>
 
-    <link href='assets/plugins/selectric/selectric.css' rel='stylesheet'>
-    
-    
-    
-    
-    
-    <link href='assets/plugins/map/css/map.css' rel='stylesheet'>
-    
-    
-    
-    
 
     <!-- GOOGLE FONT --><!-- font-family: 'Mulish', sans-serif; --><!-- font-family: 'Poppins', sans-serif; -->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -76,7 +65,7 @@
                     <li><a href="index-4.html">Home Automobile</a></li>
                   </ul>
                 </li>
-                <li class="active">
+                <li class="">
                   <a href="javascript:0">Listing</a>
                   <div class="megamenu">
                     <div class="megamenu-row">
@@ -198,7 +187,7 @@
                 <li class="">
                   <a href="blog.html">Blog</a>
                 </li>
-                <li class="">
+                <li class="active">
                   <a href="javascript:0">Admin</a>
                   <ul class="dropdown">
                     <li>
@@ -251,392 +240,41 @@
       </header>
 
 
-<!-- MAP LISTING -->
-<div class="map-container">
-  <div id="listing-main-map" class="map-half map-listing-full"></div>
-</div>
-
-
 <!-- ====================================
-———	CATEGORY GRID RIGHT SIDEBAR
+———	LOGIN PAGE
 ===================================== -->
-<section class="py-7 py-md-10">
+<section class="py-7 py-md-10 bg-light ">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="search-result-bar">
-          <p>We found <span> 6 </span> results for <span> Restaurents </span> near <span> Shinn Street, NY </span> </p>
-          <div class="ml-md-auto d-flex align-items-center justify-content-between">
-            <div class="select-bg-transparent select-border">
-              <select class="select-location">
-                <option>Popular</option>
-                <option>Nearest</option>
-                <option>Recent</option>
-              </select>
-            </div>
-            <div class="icons">
-              <a class="mr-2 active" href="listing-grid-right-sidebar.html">
-                <i class="fa fa-th" aria-hidden="true"></i>
-              </a>
-              <a href="listing-list-right-sidebar.html">
-                <i class="fa fa-th-list" aria-hidden="true"></i>
-              </a>
-            </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card">
+          <div class="bg-primary text-center py-4">
+            <h2 class="text-white mb-0 h4">Members Log In</h2>
+          </div>
+          <div class="card-body px-7 pt-7 pb-0">
+            <form>
+              <div class="form-group mb-7">
+                <label for="exampleInputText">User Name*</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" required>
+                <em>Enter your Foundation username.</em>
+              </div>
+              <div class="form-group mb-7">
+                <label for="exampleInputPassword1">Password*</label>
+                <input type="password" class="form-control">
+                <em>Enter the password that accompanies your username.</em>
+              </div>
+              <div class="form-group d-flex justify-content-between align-items-center mb-7">
+                <button type="submit" class="btn btn-outline-primary text-uppercase">
+                  Log in
+                </button>
+                <a href="#FogotPassword">Fogot Password?</a>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer bg-transparent text-center py-3">
+            <p class="mb-0">Not a member yet? <a href="sign-up.html" class="link">Sign up</a></p>
           </div>
         </div>
-
-        <div class="row">
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.922125" data-lag="151.159277" data-id="1">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-4.jpg" src="assets/img/listing/listing-4.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="far fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-reservation.html">
-                      Think Coffee <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">215 Terry Lane, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>8 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Eat & Drink</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.92148" data-lag="151.162852" data-id="2"
-              data-varified="true">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-5.jpg" src="assets/img/listing/listing-5.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-reservation.html">
-                      Burger House<i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">2726 Shinn Street, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>9.2 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Eat & Drink</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.923803" data-lag="151.162723" data-id="3">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-10.jpg" src="assets/img/listing/listing-10.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="far fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-reservation.html">
-                      Tom's Restaurant<i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">964 School Street, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>9.5 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Eat & Drink</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.925335" data-lag="151.160577" data-id="4">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-1.jpg" src="assets/img/listing/listing-1.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-event.html">
-                      The City Theater
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">155 1st Avenue, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>9.5 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Movie Theaters</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.921329" data-lag="151.151071" data-id="5">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-7.jpg" src="assets/img/listing/listing-7.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="far fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-event.html">
-                      Sticky Band<i class="fa fa-check-circle" aria-hidden="true"></i>
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">Bishop Avenue, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>5.9 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Nightclubs</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card rounded-0 card-hover-overlay card-listing" data-lat="-33.923323" data-lag="151.157219" data-id="6">
-              <div class="position-relative">
-                <img class="card-img rounded-0 listing-img lazyestload" data-src="assets/img/listing/listing-8.jpg" src="assets/img/listing/listing-8.jpg" alt="Card image cap">
-                <div class="card-img-overlay">
-                  <ul class="list-inline list-inline-rating">
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                    <li class="list-inline-item">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    </li>
-                  </ul>
-                  <h3 class="listing-title">
-                    <a href="listing-rental.html">
-                      Hotel Govendor
-                    </a>
-                  </h3>
-                  <p class="text-white listing-address">78 Country Street, New York</p>
-                </div>
-              </div>
-
-              <div class="card-footer bg-transparent">
-                <ul class="list-unstyled d-flex mb-0 py-2">
-                  <li>
-                    <button class="btn-like px-2" data-toggle="tooltip" data-placement="top" title="Favourite this listing">
-                      <i class="far fa-heart text-primary" aria-hidden="true"></i>
-                      <span>5 k</span>
-                    </button>
-                  </li>
-                  <li class="ml-auto">
-                    <a class="px-2" href="listings-half-screen-map-list.html">Hotels</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- ====================================
-———	pagination
-===================================== -->
-<section class="my-5">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item mr-2">
-        <a class="page-link" href="javascript:void(0)">
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </a>
-      </li>
-      <li class="page-item active mr-2"><a class="page-link" href="javascript:void(0)">1</a></li>
-      <li class="page-item mr-2"><a class="page-link" href="javascript:void(0)">2</a></li>
-      <li class="page-item mr-2"><a class="page-link" href="javascript:void(0)">3</a></li>
-      <li class="page-item mr-2"><a class="page-link" href="javascript:void(0)">4</a></li>
-      <li class="page-item mr-2"><a class="page-link" href="javascript:void(0)">5</a></li>
-      <li class="page-item">
-        <a class="page-link" href="javascript:void(0)">
-          <i class="fa fa-angle-right" aria-hidden="true"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</section>
-
-      </div>
-
-      <div class="col-lg-4 pl-xl-6">
-        <div class="mb-6">
-          <label class="mb-4 h5 font-weight-normal text-dark" for="enter-keyowrd">What are you looking for?</label>
-          <input type="text" class="form-control" id="enter-keyowrd" placeholder="Enter Keyword">
-        </div>
-
-        <div class="mb-6">
-          <label class="mb-4 h5 font-weight-normal text-dark" for="enter-keyowrd">Find By Location</label>
-          <input type="text" class="form-control" id="enter-location" placeholder="Enter Location">
-        </div>
-
-        <div class="mb-6">
-          <h5 class="mb-4 font-weight-normal">Filter by Area</h5>
-          <ul class="list-unstyled list-gray">
-            <li class="mb-2"><a href="#Dhaka">Dhaka</a></li>
-            <li class="mb-2"><a href="#Chittagong">Chittagong</a></li>
-            <li class="mb-2"><a href="#Rajshahi">Rajshahi</a></li>
-            <li class="mb-2"><a href="#Khulna">Khulna</a></li>
-            <li class="mb-2"><a href="#Barisal">Barisal</a></li>
-            <li class="mb-2"><a href="#Barisal">Sylhet</a></li>
-            <li class="mb-2"><a href="#Barisal">Rangpure</a></li>
-            <li class="mb-2"><a href="#Barisal">Gazipure</a></li>
-            <li class="mb-2"><a href="#Pabna">Pabna</a></li>
-          </ul>
-        </div>
-
-        <div class="mb-6">
-          <h5 class="mb-4 font-weight-normal">Related Categories</h5>
-          <ul class="list-unstyled list-gray">
-            <li class="mb-2"><a href="#Fast-food">Fast food</a></li>
-            <li class="mb-2"><a href="#Chinese">Chinese restaurants</a></li>
-            <li class="mb-2"><a href="#Creole">Creole restaurants</a></li>
-            <li class="mb-2"><a href="#Seafood">Seafood</a></li>
-            <li class="mb-2"><a href="#Thai">Thai restaurants</a></li>
-            <li class="mb-2"><a href="#Street">Street food</a></li>
-            <li class="mb-2"><a href="#Japanese">Japanese restaurants</a></li>
-            <li class="mb-2"><a href="#Greek">Greek restaurants</a></li>
-          </ul>
-        </div>
-
       </div>
     </div>
   </div>
@@ -761,31 +399,9 @@
     <script src='assets/plugins/jquery/jquery-3.4.1.min.js'></script>
     <script src='assets/plugins/bootstrap/js/bootstrap.bundle.js'></script>
     <script src='assets/plugins/menuzord/js/menuzord.js'></script>
-
-    <script src='assets/plugins/selectric/jquery.selectric.min.js'></script>
-    
-    
-    
-    
-    
-    
-    
     
     <script src='assets/plugins/smoothscroll/SmoothScroll.js'></script>
     <script src='assets/plugins/lazyestload/lazyestload.js'></script>
-    
-    
-    
-    
-    
-    
-    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDU79W1lu5f6PIiuMqNfT1C6M0e_lq1ECY'></script>
-    <script src='assets/plugins/map/js/markerclusterer.js'></script>
-    <script src='assets/plugins/map/js/rich-marker.js'></script>
-    <script src='assets/plugins/map/js/infobox_packed.js'></script>
-    <script src='assets/js/map.js'></script>
-    
-    
     
     <script>
       var d = new Date();
