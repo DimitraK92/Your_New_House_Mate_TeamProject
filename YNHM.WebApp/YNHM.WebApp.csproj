@@ -5924,7 +5924,7 @@
     <Content Include="Views\MyAccount\EditProfile.cshtml" />
     <Content Include="Views\MyAccount\Profile.cshtml" />
     <Content Include="Views\MyAccount\0_TestNonFunctional.cshtml" />
-    <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
+    <Content Include="Views\2_Old\_UserDashboardPanelLeftMenu.cshtml" />
     <Content Include="Views\MyAccount\Test.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
     <Content Include="Views\HomePage\SingleListing.cshtml" />
@@ -6424,6 +6424,20 @@
     <Content Include="Views\2_Old\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\2_Old\Account\SendCode.cshtml" />
     <Content Include="Views\2_Old\Account\VerifyCode.cshtml" />
+    <Content Include="Views\2_Old\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\2_Old\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\2_Old\Manage\EditUserDetails.cshtml" />
+    <Content Include="Views\2_Old\Manage\Index.cshtml" />
+    <Content Include="Views\2_Old\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\2_Old\Manage\SetPassword.cshtml" />
+    <Content Include="Views\2_Old\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\2_Old\Manage\ViewProfile.cshtml" />
+    <Content Include="Views\Shared\Update\Dashboard\_FooterDashboard.cshtml" />
+    <Content Include="Views\Shared\Update\Dashboard\_NavbarDashboard.cshtml" />
+    <Content Include="Views\Shared\Update\Dashboard\_LayoutDashboard.cshtml" />
+    <Content Include="Views\Shared\Update\Dashboard\_MainNavbarDashboard.cshtml" />
+    <Content Include="Views\Shared\Update\_LoginRightMenu.cshtml" />
+    <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

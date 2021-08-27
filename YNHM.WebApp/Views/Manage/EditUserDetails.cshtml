@@ -1,136 +1,163 @@
 ﻿@model YNHM.WebApp.Models.PersonDetailsVM
+@{ 
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
+}
 
 
-
-<!--wrapper-->
-<div id="wrapper">
-    content
-    <div class="content">
-        <!--section-->
-        <section>
-            <!--container-->
-            <div class="container">
-                <!--profile-edit-wrap-->
-                <div class="profile-edit-wrap">
-                    <div class="profile-edit-page-header">
-                        <h2>Edit profile</h2>
+<!-- ====================================
+———	MY PROFILE
+===================================== -->
+<section class="bg-light py-5 height100vh">
+    <div class="container">
+        <nav class="bg-transparent breadcrumb breadcrumb-2 py-4" aria-label="breadcrumb">
+            <h2 class="font-weight-normal mb-4 mb-md-0">My Profile</h2>
+            <ul class="list-unstyled d-flex p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="pricing-table.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+            </ul>
+        </nav>
+        <div class="row">
+            <div class="col-md-5 col-lg-4">
+                <div class="card card-profile">
+                    <div class="card-profile-img py-6">
+                        <img class="rounded-circle lazyestload" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Image">
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-
-                            <div class="fixed-bar fl-wrap">
-                                @Html.Partial("_AdminPanelLeftMenu")
-                            </div>
+                    <form class="px-6">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                            <label class="custom-file-label" for="customFileLang">Upload a Picture</label>
                         </div>
-                        <div class="col-md-7">
-                            <!-- profile-edit-container-->
-                            <div class="profile-edit-container">
-                                <div class="profile-edit-header fl-wrap">
-                                    <h4>My Details</h4>
-                                </div>
-                                <div class="custom-form">
-                                    @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post, new { @class = "custom-form", role = "form" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.HiddenFor(m => m.Person.PersonId);
+                    </form>
 
-                                        <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.FirstName, new { @class = "col-md-2 control-label" })
-                                            <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.FirstName, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.LastName, new { @class = "col-md-2 control-label" })
-                                            <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.LastName, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.Age, new { @class = "col-md-2 control-label" })
-                                            <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.Age, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.Email, new { @class = "col-md-2 control-label" })
-                                            <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.Email, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(m => m.Person.Phone, new { @class = "col-md-2 control-label" })
-                                            <div class="col-md-10">
-                                                @Html.TextBoxFor(m => m.Person.Phone, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" class="btn btn-default" value="Confirm Changes" />
-                                            </div>
-                                        </div>
+                    <hr>
 
-
-
-                                    }
-
-
-                                </div>
-                            <!--profile-edit-container end-->
-                            <!-- profile-edit-container-->
-                            <div class="profile-edit-container">
-                                <div class="profile-edit-header fl-wrap" style="margin-top:30px">
-                                    <h4>My Socials</h4>
-                                </div>
-                                <div class="custom-form">
-                                    <label>Facebook <i class="fa fa-facebook"></i></label>
-                                    <input type="text" placeholder="https://www.facebook.com/" value="" />
-                                    <label>Twitter<i class="fa fa-twitter"></i>  </label>
-                                    <input type="text" placeholder="https://twitter.com/" value="" />
-                                    <label>Instagram<i class="fa fa-instagram"></i>  </label>
-                                    <input type="text" placeholder="https://www.instagram.com/" value="" />
-                                    <button class="btn  big-btn  color-bg flat-btn">Save Changes<i class="fa fa-angle-right"></i></button>
-                                </div>
-                            </div>
-                            <!-- profile-edit-container end-->
-                        </div>
-                        <div class="col-md-2">
-                            <div class="edit-profile-photo fl-wrap">
-                                <img src="images/avatar/1.jpg" class="respimg" alt="">
-                                <div class="change-photo-btn">
-                                    <div class="photoUpload">
-                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                        <input type="file" class="upload">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="card-body text-center">
+                        <p>Your Current Plan</p>
+                        <h3 class="font-weight-normal mb-4">Platinum Package</h3>
+                        <span class="d-block mb-4">Next Payment: <span class="text-primary" id="current_date"></span> </span>
+                        <a href="pricing-table.html" class="btn btn-secondary btn-sm mb-3">Change</a>
                     </div>
                 </div>
-                <!--profile-edit-wrap end -->
+
             </div>
-            <!--container end -->
-        </section>
-        <!-- section end -->
-        <div class="limit-box fl-wrap"></div>
-        section
-        <section class="gradient-bg">
-            <div class="cirle-bg">
-                <div class="bg" data-bg="images/bg/circle.png"></div>
-            </div>
-            <div class="container">
-                <div class="join-wrap fl-wrap">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3>Do You Have Questions ?</h3>
-                            <p>Lorem ipsum dolor sit amet, harum dolor nec in, usu molestiae at no.</p>
-                        </div>
-                        <div class="col-md-4"><a href="contacts.html" class="join-wrap-btn">Get In Touch <i class="fa fa-envelope-o"></i></a></div>
+
+
+            <div class="col-md-7 col-lg-8">
+                <div class="card">
+                    <div class="card-body p-6">
+                        <h2 class="font-weight-normal mb-4">Your Profile Information</h2>
+                        <p>
+                            @Model.Description
+                        </p>
                     </div>
                 </div>
+                @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Person.PersonId);
+                    <div class="card">
+                        <div class="card-body p-6">
+                            <h3 class="font-weight-normal mb-4">About You</h3>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.Person.FirstName)
+                                    @Html.TextBoxFor(m => m.Person.FirstName, new { @class = "form-control", id = "firstNameProfile", placeholder = "First Name" })
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.Person.LastName)
+                                    @Html.TextBoxFor(m => m.Person.LastName, new { @class = "form-control", id = "lastNameProfile", placeholder = "Last Name" })
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.Person.Age)
+                                    @Html.TextBoxFor(m => m.Person.Age, new { @class = "form-control", placeholder = "Your Age" })
+                                </div>
+                                <div class="form-group col-md-12">
+                                    @Html.LabelFor(m => m.Description)
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "5", id = "aboutYou", placeholder = "About You" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body p-6">
+                            <h3 class="font-weight-normal mb-4">Social Networks</h3>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.Person.Email)
+                                    @Html.TextBoxFor(m => m.Person.Email, new { type = "email", @class = "form-control", placeholder = "Email", })
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.Person.Phone)
+                                    @Html.TextBoxFor(m => m.Person.Phone, new { @class = "form-control", placeholder = "Phone" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(m => m.Facebook)
+                                    @Html.TextBoxFor(m => m.Facebook, new { type = "url", @class = "form-control", placeholder = "Facebook" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(m => m.Instagram)
+                                    @Html.TextBoxFor(m => m.Instagram, new { type = "url", @class = "form-control", placeholder = "Instagram" })
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button class="btn btn-primary text-uppercase" type="submit">
+                                    Save Change
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+
+                @{ 
+                    //TODO: VASSILIS: Add password change form
+                }
+                <form>
+                    <div class="card">
+                        <div class="card-body p-6">
+                            <h3 class="font-weight-normal mb-4">Update Password</h3>
+                            <div class="row">
+
+                                <div class="form-group col-12">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" class="form-control" placeholder="********" autocomplete="current-password">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" class="form-control" placeholder="New Password" autocomplete="new-password">
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="confirmPassword">Confirm Password</label>
+                                    <input type="password" class="form-control" placeholder="Confirm Password" autocomplete="new-password">
+                                </div>
+                                <div class="form-group col-12 mt-4">
+                                    <button class="btn btn-outline-primary" type="button">Change Password</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-        </section>
-        <!-- section end -->
+        </div>
     </div>
-</div>
-<!-- wrapper end -->
+</section>
+    
+    <script>
+        // Date object
+        var today = new Date();
+
+        // Current Date
+        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+        document.getElementById("current_date").innerHTML = date;
+    </script>
+
+

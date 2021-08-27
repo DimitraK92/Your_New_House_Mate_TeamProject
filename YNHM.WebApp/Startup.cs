@@ -42,6 +42,7 @@ namespace YNHM.WebApp
                 {
                     UserName = "VassilisK",
                     Email = "vassilis.kotsman@gmail.com",
+                    PersonId=12
                 };
                 string adminPassword = "Admin123!";
 

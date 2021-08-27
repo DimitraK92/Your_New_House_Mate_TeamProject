@@ -98,10 +98,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
             return View();
         }
 
-
-
-
-
         //
         // POST: /Account/LogOff
         [HttpPost]

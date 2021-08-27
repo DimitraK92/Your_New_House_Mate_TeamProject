@@ -95,7 +95,13 @@ namespace YNHM.Database.Migrations
                 {
                     FirstName="Vassilis",
                     LastName= "Kotsmanidis",
-                    Age=34
+                    Age=34,
+                    Email="vassilis.kotsman@gmail.com",
+                    PersonId=2,
+                    MatchPercent=0,
+                    Phone="6945666666",
+                    Facebook="https://www.facebook.com/vassilis.geko",
+                    Description="Junior Web Developer fucking trying to fucking finish this fucking project!"
                 },
 
                 new Person(){

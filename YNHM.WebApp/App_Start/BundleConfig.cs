@@ -18,6 +18,13 @@ namespace YNHM.WebApp
                 "~/Templates/Listty/StaticHTML/assets/plugins/bootstrap/js/bootstrap.bundle.js",
                 "~/Templates/Listty/StaticHTML/assets/plugins/menuzord/js/menuzord.js"));
 
+            //Scroll and lazyestload
+            bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad").Include(
+                "~/Templates/Listty/StaticHTML/assets/plugins/smoothscroll/SmoothScroll.js",
+                "~/Templates/Listty/StaticHTML/assets/plugins/lazyestload/lazyestload.js"
+                ));
+
+
             //Index
             bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/mainScripts").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/dzsparallaxer/dzsparallaxer.js",

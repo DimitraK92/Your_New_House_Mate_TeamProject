@@ -68,6 +68,8 @@ namespace YNHM.WebApp.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
+            //ViewBag.UserRole =
+
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
@@ -112,7 +114,8 @@ namespace YNHM.WebApp.Controllers
             var person = pr.GetById(user.PersonId);
             PersonDetailsVM vm = new PersonDetailsVM(person);
 
-            return View(vm);
+            return RedirectToAction($"PersonalProfile/{user.PersonId}", "HomePage");
+            //return View(vm);
         }
 
 
@@ -129,10 +132,10 @@ namespace YNHM.WebApp.Controllers
 
             var person = pr.GetById(personId);
 
-            if (personId == 0||person==null)
-            {
-                return RedirectToAction("ProvideAdditionalInfo", "Account");
-            }
+            //if (personId == 0||person==null)
+            //{
+            //    return RedirectToAction("ProvideAdditionalInfo", "Account");
+            //}
 
             PersonDetailsVM vm = new PersonDetailsVM(person);
             return View(vm);

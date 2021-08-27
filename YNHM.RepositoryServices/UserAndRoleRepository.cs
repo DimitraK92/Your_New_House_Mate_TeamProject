@@ -50,5 +50,19 @@ namespace YNHM.RepositoryServices
             return db.Users.Where(u=>u.Roles.Select(r=>r.RoleId).Contains(roleId)).ToList();
         }
 
+        public string GetUserRole(IdentityUser user)
+        {
+            var userRoles = user.Roles as List<string>;
+            if (userRoles.Contains("Admin"))
+            {
+                return "Administrator";
+            }
+            else
+            {
+                return userRoles.FirstOrDefault();
+            }
+            
+        }
+
     }
 }

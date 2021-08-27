@@ -3,243 +3,737 @@
 
 @{
     ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
 
+<!-- ====================================
+——— DASHBOARD
+===================================== -->
+<section class="bg-light pt-5 height100vh">
+    <div class="container">
+        <nav class="bg-transparent breadcrumb breadcrumb-2 px-0 mb-5" aria-label="breadcrumb">
+            <h2 class="font-weight-normal mb-4 mb-md-0">Dashboard</h2>
+            <ul class="list-unstyled d-flex p-0 m-0">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","HomePage")">Home</a></li>
+                <li class="breadcrumb-item">Dashboard</li>
+            </ul>
+        </nav>
 
 
 
-
-@*αν θέλουμε το παρακάτω κουμπί για LogOut αντί να είναι dropdown στο avatar θα πρέπει με κάποια μορφοποίηση να μην πέφτει πάνω στα υπόλοιπα*@
-@*<a href="#" class="log-out-btn">Log Out</a>*@
-<div class="nav-button-wrap color-bg">
-    <div class="nav-button">
-        <span></span><span></span><span></span>
-    </div>
-</div>
-<!-- wrapper -->
-<div id="wrapper">
-    <!--content -->
-    <div class="content">
-        <!--section -->
-        <section id="sec1">
-            <!-- container -->
-            <div class="container">
-                <!-- profile-edit-wrap -->
-                <div class="profile-edit-wrap">
-                    <div class="profile-edit-page-header">
-                        <h2>Admin Panel</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Messages -->
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <span class="text-content">Messages</span>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="fixed-bar fl-wrap">
-                                @Html.Partial("_UserDashboardPanelLeftMenu")
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <!-- profile-edit-container-->
-                            <div class="profile-edit-container">
-                                <div class="profile-edit-header fl-wrap" style="margin-top:30px">
-                                    <h4>Hello , <span></span></h4>
-                                </div>
-                                @if (!String.IsNullOrEmpty(ViewBag.StatusMessage))
-                                {
-                                    <div class="notification success fl-wrap">
-                                        <p>@ViewBag.StatusMessage</p>
-                                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                    <div class="card-body px-0">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-xs-1.jpg" src="assets/img/user/user-xs-1.jpg" alt="Image">
+                                        <span class="status away"></span>
                                     </div>
-                                }
-
-                                <!-- statistic-container-->
-                                <div class="statistic-container fl-wrap">
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-map-marker"></i>
-                                            <div class="statistic-item-numder">21</div>
-                                            <h5>Active Listings</h5>
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Aaren</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
                                         </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa fa-eye"></i>
-                                            <div class="statistic-item-numder">1054</div>
-                                            <h5>Listing Views</h5>
-                                        </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-comments-o"></i>
-                                            <div class="statistic-item-numder">675</div>
-                                            <h5>Total Reviews</h5>
-                                        </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
-                                    <!-- statistic-item-wrap-->
-                                    <div class="statistic-item-wrap">
-                                        <div class="statistic-item gradient-bg fl-wrap">
-                                            <i class="fa fa-heart-o"></i>
-                                            <div class="statistic-item-numder">154</div>
-                                            <h5>Times Bookmarked</h5>
-                                        </div>
-                                    </div>
-                                    <!-- statistic-item-wrap end-->
-                                </div>
-                                <!-- statistic-container end-->
-                            </div>
-                            <!-- profile-edit-container end-->
 
-                            <div class="dashboard-list-box fl-wrap activities">
-                                <div class="dashboard-header fl-wrap">
-                                    <h3>Recent Activities</h3>
-                                </div>
-                                <!-- dashboard-list end-->
-                                <div class="dashboard-list">
-                                    <div class="dashboard-message">
-                                        <span class="new-dashboard-item"><i class="fa fa-times"></i></span>
+                                        <span class="date">12 Jun</span>
 
-                                        <div class="dashboard-message-text">
-                                            <p><i class="fa fa-check"></i> Your listing <a href="#">Luxury Restourant</a> has been approved! </p>
-
-                                        </div>
                                     </div>
-                                </div>
-                                <!-- dashboard-list end-->
-                            </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-xs-2.jpg" src="assets/img/user/user-xs-2.jpg" alt="Image">
+                                        <span class="status active"></span>
+                                    </div>
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Abby</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
 
-                        </div>
+                                        <span class="date">25 July</span>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-xs-3.jpg" src="assets/img/user/user-xs-3.jpg" alt="Image">
+                                        <span class="status away"></span>
+                                    </div>
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Abriel</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
+
+                                        <span class="date">09 Feb</span>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-1.jpg" src="assets/img/user/user-1.jpg" alt="Image">
+                                        <span class="status active"></span>
+                                    </div>
+
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Emma</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
+
+                                        <span class="date">05 Jan</span>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-2.jpg" src="assets/img/user/user-2.jpg" alt="Image">
+                                        <span class="status away"></span>
+                                    </div>
+
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Emily</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
+
+                                        <span class="date">17 Mar</span>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-3.jpg" src="assets/img/user/user-3.jpg" alt="Image">
+                                        <span class="status away"></span>
+                                    </div>
+
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">William</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
+
+                                        <span class="date">27 May</span>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="media media-message">
+                                    <div class="position-relative mr-3">
+                                        <img class="rounded-circle lazyestload" data-src="assets/img/user/user-4.jpg" src="assets/img/user/user-4.jpg" alt="Image">
+                                        <span class="status active"></span>
+                                    </div>
+
+                                    <div class="media-body d-flex justify-content-between">
+                                        <div class="message-contents">
+                                            <h4 class="title">Sophia</h4>
+                                            <p class="last-msg">
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam itaque
+                                                doloremque odio,
+                                                eligendi delectus vitae.
+                                            </p>
+                                        </div>
+
+                                        <span class="date">20 Jun</span>
+
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="message-users.html" class="btn btn-link p-0">All messages</a>
                     </div>
                 </div>
-                <!--profile-edit-wrap end -->
             </div>
-            <!--container end -->
-        </section>
-        <!-- section end -->
-        <div class="limit-box fl-wrap"></div>
+
+            <div class="col-lg-6">
+                <!-- My Bookings -->
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <span class="text-content">My Bookings</span>
+                    </div>
+
+                    <div class="card-body p-0 table-responsive">
+                        <table class="table mb-0" style="width:100%">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-03.jpg" src="assets/img/listing/listing-03.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">think Coffee</a>
+                                    </td>
+                                    <td class="text-capitalize"> Eat & Drink </td>
+                                    <td>
+                                        <span class="badge badge-warning px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-5.jpg" src="assets/img/listing/listing-5.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Burger House</a>
+                                    </td>
+                                    <td class="text-capitalize"> Eat & Drink </td>
+                                    <td>
+                                        <span class="badge badge-warning px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-8.jpg" src="assets/img/listing/listing-8.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Hotel Govendor</a>
+                                    </td>
+                                    <td class="text-capitalize"> Hotels </td>
+                                    <td>
+                                        <span class="badge badge-warning px-2 py-1">Pending</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-04.jpg" src="assets/img/listing/listing-04.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Tom's Restaurant</a>
+                                        <span class="text-capitalize d-block"></span>
+                                    </td>
+                                    <td class="text-capitalize">Eat & Drink</td>
+                                    <td>
+                                        <span class="badge badge-success px-2 py-1">Approved</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-7.jpg" src="assets/img/listing/listing-7.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-event.html">Sticky Band</a>
+                                    </td>
+                                    <td class="text-capitalize">Events</td>
+                                    <td>
+                                        <span class="badge badge-danger px-2 py-1">Canceled</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <img class="img-sm rounded lazyestload" data-src="assets/img/listing/listing-9.jpg" src="assets/img/listing/listing-9.jpg" alt="Image">
+                                    </td>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">The Mayfair Hotel</a>
+                                    </td>
+                                    <td class="text-capitalize">Hotels</td>
+                                    <td>
+                                        <span class="badge badge-danger px-2 py-1">Canceled</span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="my-bookings.html" class="btn btn-link p-0">all bookings</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Reviews -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <span class="text-content">My Reviews</span>
+                    </div>
+
+                    <div class="card-body p-0 table-responsive">
+                        <table class="table mb-0" style="width:100%">
+
+                            <tbody>
+                                <tr>
+                                    <td class="text-capitalize td-title">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">The Missiisipi Hotel</a>
+                                    </td>
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Lorem ipsum dolor </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize ">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">think Coffee</a>
+                                    </td>
+
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                    <td class="td-details">
+                                        Quisquam, saepe sint! Aspernatur
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Sticky Band</a>
+                                    </td>
+
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Neque amet, doloremque</td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Hotel Govendor</a>
+                                    </td>
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Iste tempore sint odio</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">John F. Kennedy Airport</a>
+                                    </td>
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Atque maxime quo nisi </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">Water Grill</a>
+                                    </td>
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Asaepe id quas voluptas vero.</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-capitalize">
+                                        <a class="text-hover-primary text-muted" href="listing-rental.html">The Missiisipi Hotel</a>
+                                    </td>
+                                    <td class="td-no-white-space">
+                                        <ul class="list-inline list-inline-rating">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="td-details">Iusto quos dolorem voluptatum</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="my-reviews.html" class="btn btn-link p-0">My Reviews</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Favorites -->
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <span class="text-content">My Favorites</span>
+                    </div>
+
+                    <div class="card-body px-0">
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-reservation.html">Think Coffee</a>
+                                </h3>
+                                <span class="text-small">215 Terry Lane, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="far fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>8k
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-reservation.html">Burger House</a>
+                                </h3>
+                                <span class="text-small">2726 Shinn Street, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>9.2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-reservation.html">Tom's Restaurant</a>
+                                </h3>
+                                <span class="text-small">964 School Street, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>9.2
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-event.html">The City Theater</a>
+                                </h3>
+                                <span class="text-small">155 1st Avenue, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>9.5
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-event.html">Sticky Band</a>
+                                </h3>
+                                <span class="text-small">Bishop Avenue, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>5.9k
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-rental.html">Hotel Govendor</a>
+                                </h3>
+                                <span class="text-small">78 Country Street,, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>5k
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center hover-bg-light px-3 py-2 rounded">
+                            <div>
+                                <h3 class="h5 font-weight-normal mb-0">
+                                    <a class="text-dark" href="listing-reservation.html">Water Grill</a>
+                                </h3>
+                                <span class="text-small">31 Union Square, New York</span>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-end">
+                                <ul class="list-inline list-inline-rating mb-0">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </li>
+                                </ul>
+
+                                <div class="text-small">
+                                    <i class="far fa-heart primaryColor text-primary pr-1" aria-hidden="true"></i>10k
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="my-favourites.html" class="btn btn-link p-0">my favourites</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-<!-- wrapper end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-
-             See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        
-            @*<dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
-                }
-                
-            </dd>*@
-        
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
-</div>
+</section>

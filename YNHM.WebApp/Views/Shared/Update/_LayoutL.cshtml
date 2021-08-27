@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,6 +75,13 @@
 
     <div class="main-wrapper">
         <!-- HEADER -->
+
+        @{
+        //TODO: VASSILIS: Fix navbar. Styles and scripts need to be compared with the dashboard
+        }
+        @*@Html.Partial("~/Views/Shared/Update/Dashboard/_MainNavbarDashboard.cshtml")*@
+
+
         <header class="header">
             @Html.Partial("~/Views/Shared/Update/_MainNavbar.cshtml")
         </header>
@@ -119,6 +125,10 @@
         else if (routeValues.ContainsValue("Register"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/signupScripts")
+        }
+        else if (routeValues.ContainsValue("Register"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad")
         }
     }
 
