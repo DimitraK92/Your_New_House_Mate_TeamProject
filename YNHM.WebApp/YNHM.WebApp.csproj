@@ -364,6 +364,16 @@
     <Content Include="Areas\Administration\Views\Shared\_AdminSidebarMenu.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AdminNavbar.cshtml" />
     <Content Include="Areas\Administration\Views\Administrator\Login.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\Houses\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\Houses\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\Houses\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\Houses\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\Houses\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\People\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\People\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\People\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\People\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\old_admin\People\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

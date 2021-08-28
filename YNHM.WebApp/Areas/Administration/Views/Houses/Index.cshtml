@@ -5,132 +5,91 @@
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Houses</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PageViews)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Area)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Floor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bedrooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.District)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MapLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ElevatorInBuilding)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FreeWiFi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Parking)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AirCondition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PetFriendly)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OutdoorSeating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WheelchairFriendly)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManagerId)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PageViews)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Area)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Floor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bedrooms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.District)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MapLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ElevatorInBuilding)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FreeWiFi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Parking)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AirCondition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PetFriendly)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OutdoorSeating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WheelchairFriendly)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ManagerId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HouseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HouseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HouseId })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="page-content">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Create New", "Create")</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="block">
+                        <div class="title text-center"><strong>Houses</strong></div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                                        <th>@Html.DisplayNameFor(model => model.PostalCode)</th>
+                                        <th>@Html.DisplayNameFor(model => model.PageViews)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Area)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Floor)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Bedrooms)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Rent)</th>
+                                        <th>@Html.DisplayNameFor(model => model.District)</th>
+                                        <th>@Html.DisplayNameFor(model => model.ManagerId)</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int count = 0;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@String.Format($"{++count}")</th>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PostalCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PageViews)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Area)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Floor)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Bedrooms)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Rent)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.District)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ManagerId)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.HouseId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.HouseId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.HouseId })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
