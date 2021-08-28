@@ -6448,6 +6448,16 @@
     <Content Include="Views\Shared\Update\Dashboard\_MainNavbarDashboard.cshtml" />
     <Content Include="Views\Shared\Update\_LoginRightMenu.cshtml" />
     <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\Houses\Create.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\Houses\Delete.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\Houses\Details.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\Houses\Edit.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\Houses\Index.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\People\Create.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\People\Delete.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\People\Details.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\People\Edit.cshtml" />
+    <Content Include="Views\0_Redundant\Administrator\admin_old\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
