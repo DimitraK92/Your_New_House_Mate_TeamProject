@@ -5,159 +5,185 @@
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>House</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">House Details</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+            <li class="breadcrumb-item">@Html.ActionLink("Edit", "Edit", new { id = Model.HouseId })</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Form Elements -->
+                <div class="col">
+                    <div class="block">
+                        <div class="block-body">
+                            <form class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Title)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Title)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Manager</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@String.Format($"{Html.DisplayFor(model => model.Manager.FirstName)} {Html.DisplayFor(model => model.Manager.LastName)}")" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.PageViews)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.PageViews)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Location</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Address):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Address)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.PostalCode):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.PostalCode)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.District):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.District)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.MapLocation):</span></div>
+                                                <div>
+                                                    <a class="form-control" href="@Html.DisplayFor(model => model.MapLocation)">@Html.DisplayFor(model => model.MapLocation)</a>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <a class="form-control btn btn-primary" href="@Html.DisplayFor(model => model.MapLocation)">Go!</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Basic Info</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Floor):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Floor)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Area):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Area)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Bedrooms):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Bedrooms)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Rent): $ </span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Rent)" disabled>
+                                            </div>
+                                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Extra services</label>
+                                    <div class="col-sm-9">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </dt>
+                                        @*small problem with checkboxes -
+                                        they work but the template css does not apply on them.
+                                        If you use raw html insted of Html Helper methods in order to have the templateCSS, 
+                                        then they do not work dinamically - that needs to be fixed
+                                        (they are either always checked or always unchecked)*@
+                                        
 
-        <dd>
-            @Html.DisplayFor(model => model.PostalCode)
-        </dd>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.ElevatorInBuilding, new { @id = "checkboxCustom", @type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.ElevatorInBuilding)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.ElevatorInBuilding)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.FreeWiFi, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.FreeWiFi)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.FreeWiFi)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.Parking, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.Parking)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.Parking)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.AirCondition, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.AirCondition)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.AirCondition)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.OutdoorSeating, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")"class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.OutdoorSeating)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Accessibility &amp; Inclusion</label>
+                                    <div class="col-sm-9">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PageViews)
-        </dt>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.PetFriendly, new { id = "checkboxCustom", type = "checkbox", @class="checkbox-template" })
+                                            @*<input id="checkboxCustom"value="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.PetFriendly)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.WheelchairFriendly, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.WheelchairFriendly)}")" disabled="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.WheelchairFriendly)</label>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PageViews)
-        </dd>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 ml-auto">
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.HouseId, @class = "btn btn-secondary" }) |
+                                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Area)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Area)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Floor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Floor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bedrooms)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bedrooms)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rent)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rent)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.District)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.District)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MapLocation)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MapLocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ElevatorInBuilding)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ElevatorInBuilding)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FreeWiFi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FreeWiFi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Parking)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Parking)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AirCondition)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AirCondition)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PetFriendly)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PetFriendly)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OutdoorSeating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OutdoorSeating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WheelchairFriendly)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WheelchairFriendly)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ManagerId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ManagerId)
-        </dd>
-
-    </dl>
+    </section>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HouseId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
