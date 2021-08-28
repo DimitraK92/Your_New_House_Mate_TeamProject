@@ -121,11 +121,11 @@
                                     <div class="col-sm-9">
 
                                         @*small problem with checkboxes -
-                                        they work but the template css does not apply on them.
-                                        If you use raw html insted of Html Helper methods in order to have the templateCSS, 
-                                        then they do not work dinamically - that needs to be fixed
-                                        (they are either always checked or always unchecked)*@
-                                        
+                they work but the template css does not apply on them.
+                If you use raw html insted of Html Helper methods in order to have the templateCSS,
+                then they do not work dinamically - that needs to be fixed
+                (they are either always checked or always unchecked)*@
+
 
                                         <div class="i-checks">
                                             @Html.DisplayFor(model => model.ElevatorInBuilding, new { @id = "checkboxCustom", @type = "checkbox", @class = "checkbox-template" })
@@ -160,7 +160,7 @@
                                     <div class="col-sm-9">
 
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.PetFriendly, new { id = "checkboxCustom", type = "checkbox", @class="checkbox-template" })
+                                            @Html.DisplayFor(model => model.PetFriendly, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
                                             @*<input id="checkboxCustom"value="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" class="checkbox-template">*@
                                             <label for="checkboxCustom">@Html.DisplayNameFor(model => model.PetFriendly)</label>
                                         </div>
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="line"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 ml-auto">
                                         @Html.ActionLink("Edit", "Edit", new { id = Model.HouseId, @class = "btn btn-secondary" }) |
