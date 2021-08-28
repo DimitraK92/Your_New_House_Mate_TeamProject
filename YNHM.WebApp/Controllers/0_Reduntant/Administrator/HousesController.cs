@@ -25,7 +25,7 @@
 //            return View("~/Views/Administrator/Data/Index.cshtml", houses);
 //        }
 
-//        // GET: Houses/Details/5
+        // GET: Houses/Details/5
 //        public ActionResult Details(int? id)
 //        {
 //            if (id == null)

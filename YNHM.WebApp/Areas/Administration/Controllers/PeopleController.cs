@@ -22,7 +22,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             var people = pr.GetAll();
 
-            return View("~/Views/Administrator/People/Index.cshtml",people);
+            return View(people);
         }
 
         // GET: People/Details/5
@@ -37,13 +37,13 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/People/Details.cshtml",person);
+            return View(person);
         }
 
         // GET: People/Create
         public ActionResult Create()
         {
-            return View("~/Views/Administrator/People/Create.cshtml");
+            return View();
         }
 
         // POST: People/Create
@@ -59,7 +59,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("~/Views/Administrator/People/Create.cshtml",person);
+            return View(person);
         }
 
         // GET: People/Edit/5
@@ -74,7 +74,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/People/Edit.cshtml",person);
+            return View(person);
         }
 
         // POST: People/Edit/5
@@ -89,7 +89,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 pr.Edit(person, null);
                 return RedirectToAction("Index");
             }
-            return View("~/Views/Administrator/People/Edit.cshtml",person);
+            return View(person);
         }
 
         // GET: People/Delete/5
@@ -104,7 +104,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
-            return View("~/Views/Administrator/People/Delete.cshtml",person);
+            return View(person);
         }
 
         // POST: People/Delete/5

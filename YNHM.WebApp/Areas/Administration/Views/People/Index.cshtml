@@ -9,13 +9,13 @@
 
 
 
-<!-- wrapper -->
-<div id="wrapper">
+<!--<!-- wrapper -->
+<!--<div id="wrapper">-->
     <!--  content  -->
-    <div class="content">
+    <!--<div class="content">-->
         <!--  section  end-->
         <!--  section  -->
-        <section class="parallax-section" data-scrollax-parent="true">
+        <!--<section class="parallax-section" data-scrollax-parent="true">
             <div class="bg par-elem " data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
             <div class="overlay"></div>
             <div class="container">
@@ -27,16 +27,15 @@
             <div class="header-sec-link">
                 <div class="container"><a href="#sec1" class="custom-scroll-link">Do the test and find your matches!</a></div>
             </div>
-        </section>
+        </section>-->
         <!--  section  end-->
         <!--  section  -->
-        <section class="gray-bg no-pading no-top-padding" id="sec1">
+        <!--<section class="gray-bg no-pading no-top-padding" id="sec1">
             <div class="col-list-wrap fh-col-list-wrap  left-list">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="listsearch-header fl-wrap">
-                                <h3><span>@Html.ActionLink("Create New Person", "Create")</span></h3>
                             </div>
                         </div>
                     </div>
@@ -50,15 +49,15 @@
                                         <li><a class="list" href="#"><i class="fa fa-list-ul"></i></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>-->
 
                             <!-- list-main-wrap-->
-                            <div class="list-main-wrap fl-wrap card-listing">
+                            <!--<div class="list-main-wrap fl-wrap card-listing">
 
-                                @foreach (var person in Model)
-                                {
+                            
+                              
                                     <!-- listing-item -->
-                                    <div class="listing-item">
+                                    <!--<div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
                                                 <img src="~/Models/FakeImages/person1.jpg" alt="">
@@ -66,19 +65,13 @@
 
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <a class="listing-geodir-category" href="listing.html">@person.MatchPercent %</a>
-                                                <p> <h3><i>@Html.ActionLink("Edit", "Edit", new { id = person.PersonId })</i></h3></p>
-                                                <p><h3><i> @Html.ActionLink("Delete", "Delete", new { id = person.PersonId })</i></h3></p>
-                                                <h3>@Html.ActionLink($"{@person.FirstName} {@person.LastName}", $"Details/{@person.PersonId}", "People")</h3>
-                                                <p>@person.Description</p>
-                                            </div>
-                                        </article>
-                                    </div>
+                                                <a class="listing-geodir-category" href="listing.html
+                                    </div>-->
                                     <!-- listing-item end-->
-                                }
+                                <!--}-->
 
                                 <!-- pagination-->
-                                <div class="pagination">
+                                <!--<div class="pagination">
                                     <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
                                     <a href="#" class="blog-page transition">1</a>
                                     <a href="#" class="blog-page current-page transition">2</a>
@@ -86,13 +79,13 @@
                                     <a href="#" class="blog-page transition">4</a>
                                     <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
                                 </div>
-                            </div>
+                            </div>-->
                             <!-- list-main-wrap end-->
-                        </div>
+                        <!--</div>
                         <div class="col-md-4">
-                            <div class="fl-wrap">
+                            <div class="fl-wrap">-->
                                 <!-- listsearch-input-wrap  -->
-                                <div class="listsearch-input-wrap fl-wrap">
+                                <!--<div class="listsearch-input-wrap fl-wrap">
                                     <div class="listsearch-input-item">
                                         <i class="mbri-key single-i"></i>
                                         <input type="text" placeholder="Keywords?" value="" />
@@ -107,20 +100,20 @@
                                             <option>West</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div>-->
                                 @*<div class="listsearch-input-text" id="autocomplete-container">
                                         <label><i class="mbri-map-pin"></i> Enter Addres </label>
                                         <input type="text" placeholder="Destination , Area , Street" id="autocomplete-input" class="qodef-archive-places-search" value="" />
                                         <a href="#" class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></a>
                                     </div>*@
-                                <div class="distance-input fl-wrap">
+                                @*<div class="distance-input fl-wrap">
                                     <div class="distance-title"> Match Percentage <span></span> %</div>
                                     <div class="distance-radius-wrap fl-wrap">
                                         <input class="distance-radius rangeslider--horizontal" type="range" min="1" max="100" step="1" value="1" data-title="Radius around selected destination">
                                     </div>
-                                </div>
+                                </div>-->
                                 <!-- Checkboxes -->
-                                <div class=" fl-wrap filter-tags">
+                                <!--<div class=" fl-wrap filter-tags">
                                     <h4>Filter by Tags</h4>
                                     <div class="filter-tags-wrap">
                                         <input id="check-b" type="checkbox" name="check">
@@ -142,20 +135,20 @@
                                         <input id="check-d" type="checkbox" name="check">
                                         <label for="check-d">Vegetarian</label>
                                     </div>
-                                </div>
+                                </div>-->
                                 <!-- hidden-listing-filter end -->
-                                <button class="button fs-map-btn">Update</button>
-                            </div>
+                                <!--<button class="button fs-map-btn">Update</button>
+                            </div>-->
                             <!-- listsearch-input-wrap end -->
-                        </div>
+                        <!--</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!--  section  end-->
-        <div class="limit-box fl-wrap"></div>
+        <!--<div class="limit-box fl-wrap"></div>-->
         <!--  section  -->
-        <section class="gradient-bg">
+        <!--<section class="gradient-bg">
             <div class="cirle-bg">
                 <div class="bg" data-bg="images/bg/circle.png"></div>
             </div>
@@ -170,20 +163,23 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!--  section  end-->
-    </div>
+    <!--</div>-->
     <!-- content end-->
-</div>
-<!-- wrapper end -->
+<!--</div>-->
+<!-- wrapper end -->*@
 
 
 
 
 
 @*Scafolding Index View*@
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
-@*<table class="table">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -253,4 +249,4 @@
         </tr>
     }
 
-</table>*@
+</table>
