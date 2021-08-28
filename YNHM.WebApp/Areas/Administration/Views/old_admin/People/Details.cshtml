@@ -1,0 +1,138 @@
+﻿@model YNHM.Database.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- wrapper -->
+<div id="wrapper">
+    <!--Content -->
+    <div class="content">
+        <!--section -->
+        <section class="parallax-section small-par color-bg">
+            <div class="shapes-bg-big"></div>
+            <div class="container">
+                <div class="section-title center-align">
+                    <h2><span>@Model.FirstName @Model.LastName</span></h2>
+                    <div class="user-profile-avatar"><img src="~/Models/FakeImages/person1.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="header-sec-link">
+                <div class="container"><a href="#sec1" class="custom-scroll-link">About user</a></div>
+            </div>
+        </section>
+        <!-- section end -->
+        <!--section -->
+        <section class="gray-bg" id="sec1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="list-single-main-item fl-wrap">
+                            <div class="list-single-main-item-title fl-wrap">
+                                <h3>About <span> @Model.FirstName @Model.LastName</span></h3>
+                            </div>
+                            <p>@Model.Description</p>
+                        </div>
+
+                        <div>
+
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FirstName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LastName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Age)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Age)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MatchPercent)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.MatchPercent)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Phone)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Facebook)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Facebook)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Description)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PhotoUrl)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PhotoUrl)
+                                </dd>
+
+                            </dl>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <!-- section end -->
+        <div class="col-md-8">
+            <h2><i> @Html.ActionLink("Back to List", "Index")</i></h2>
+        </div>
+        <div class="limit-box fl-wrap"></div>
+        <!--section -->
+        <section class="gradient-bg">
+            <div class="cirle-bg">
+                <div class="bg" data-bg="images/bg/circle.png"></div>
+            </div>
+        </section>
+        <!-- section end -->
+    </div>
+    <!-- content end -->
+</div>
+<!-- wrapper end -->
