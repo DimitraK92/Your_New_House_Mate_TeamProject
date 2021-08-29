@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace YNHM.Database.Models
 {
@@ -26,7 +27,9 @@ namespace YNHM.Database.Models
 
         public virtual ICollection<Photo> Photos { get; set; }
 
-        public int ManagerId { get; set; }
-        public virtual Person Manager { get; set; }
+        [DisplayName("Manager Id")]
+        public int PersonId { get; set; }
+        [DisplayName("Manager")]
+        public virtual Person Person { get; set; }
     }
 }
