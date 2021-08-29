@@ -46,7 +46,8 @@ namespace YNHM.RepositoryServices
 
         public void Edit(House house, IEnumerable<int?> SelectedPhotoIds)
         {
-            Attach(house);
+            db.Houses.Attach(house);
+            db.Entry(house).Collection("Photos").Load();
             house.Photos.Clear();
             db.SaveChanges();
 
@@ -60,6 +61,7 @@ namespace YNHM.RepositoryServices
                         house.Photos.Add(photo);
                     }
                 }
+                db.SaveChanges();
             }
             db.Entry(house).State = EntityState.Modified;
             db.SaveChanges();

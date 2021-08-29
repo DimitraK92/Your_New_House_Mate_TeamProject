@@ -34,9 +34,9 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Manager</label>
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" value="@String.Format($"{Html.DisplayFor(model => model.Manager.FirstName)} {Html.DisplayFor(model => model.Manager.LastName)}")" disabled>
+                                        <input type="text" class="form-control" value="@String.Format($"{Html.DisplayFor(model => model.Person.FirstName)} {Html.DisplayFor(model => model.Person.LastName)}")" disabled>
                                     </div>
                                 </div>
                                 <div class="line"></div>
@@ -121,36 +121,36 @@
                                     <div class="col-sm-9">
 
                                         @*small problem with checkboxes -
-                they work but the template css does not apply on them.
-                If you use raw html insted of Html Helper methods in order to have the templateCSS,
-                then they do not work dinamically - that needs to be fixed
-                (they are either always checked or always unchecked)*@
+                                            they work but the template css does not apply on them.
+                                            If you use raw html instead of Html Helper methods in order to have the templateCSS,
+                                            then they do not work properly - that needs to be fixed
+                                            (they are either always checked or always unchecked)*@
 
 
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.ElevatorInBuilding, new { @id = "checkboxCustom", @type = "checkbox", @class = "checkbox-template" })
+                                            @Html.DisplayFor(model => model.ElevatorInBuilding, new { htmlAttributes = new { @class = "checkbox-template" } })
                                             @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.ElevatorInBuilding)}")" disabled="" checked="" class="checkbox-template">*@
-                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.ElevatorInBuilding)</label>
+                                            <label>@Html.DisplayNameFor(model => model.ElevatorInBuilding)</label>
                                         </div>
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.FreeWiFi, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @Html.DisplayFor(model => model.FreeWiFi, new { @class = "checkbox-template" })
                                             @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.FreeWiFi)}")" disabled="" checked="" class="checkbox-template">*@
-                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.FreeWiFi)</label>
+                                            <label>@Html.DisplayNameFor(model => model.FreeWiFi)</label>
                                         </div>
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.Parking, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @Html.DisplayFor(model => model.Parking, new { @class = "checkbox-template" })
                                             @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.Parking)}")" disabled="" checked="" class="checkbox-template">*@
-                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.Parking)</label>
+                                            <label>@Html.DisplayNameFor(model => model.Parking)</label>
                                         </div>
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.AirCondition, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @Html.DisplayFor(model => model.AirCondition, new { @class = "checkbox-template" })
                                             @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.AirCondition)}")" disabled="" checked="" class="checkbox-template">*@
-                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.AirCondition)</label>
+                                            <label>@Html.DisplayNameFor(model => model.AirCondition)</label>
                                         </div>
                                         <div class="i-checks">
-                                            @Html.DisplayFor(model => model.OutdoorSeating, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @Html.DisplayFor(model => model.OutdoorSeating, new { @class = "checkbox-template" })
                                             @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")"class="checkbox-template">*@
-                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.OutdoorSeating)</label>
+                                            <label>@Html.DisplayNameFor(model => model.OutdoorSeating)</label>
                                         </div>
                                     </div>
                                 </div>
