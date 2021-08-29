@@ -51,7 +51,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,ManagerId")] House house)
+        public ActionResult Create([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,PersonId")] House house)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +62,19 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             return View(house);
+        }
+
+        public void CreateManagerViewBag()
+        {
+            var managers = db.People.ToList()
+                .Select(m => new
+                {
+                    PersonId = m.PersonId,
+                    Fullname = String.Format($"{m.FirstName} {m.LastName}")
+                });
+
+            ViewBag.PersonId = new SelectList(managers, "PersonId", "Fullname");
+
         }
 
         // GET: Houses/Edit/5
@@ -76,6 +89,9 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
+
+            CreateManagerViewBag();
+
             return View(house);
         }
 
@@ -84,14 +100,16 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,ManagerId")] House house)
+        public ActionResult Edit([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,PersonId")] House house)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(house).State = EntityState.Modified;
-                db.SaveChanges();
+                hr.Edit(house, null);
+                //db.Entry(house).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            CreateManagerViewBag();
             return View(house);
         }
 
