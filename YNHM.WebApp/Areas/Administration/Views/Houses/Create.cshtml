@@ -5,12 +5,230 @@
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
+
+
+
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Create a new House</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Form Elements -->
+                <div class="col">
+                    <div class="block">
+                        <div class="block-body">
+                            @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Title)</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.PersonId, "Manager", htmlAttributes: new { @class = "form-control-label col-sm-3" })
+                                    <div class="col-sm-9">
+                                        @Html.DropDownList("PersonId", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    @Html.LabelFor(model => model.PageViews, htmlAttributes: new { @class = "form-control-label col-sm-3" })
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.PageViews, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PageViews, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Location</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Address):</span></div>
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.PostalCode):</span></div>
+                                                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.District):</span></div>
+                                                @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.MapLocation):</span></div>
+                                                @Html.EditorFor(model => model.MapLocation, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MapLocation, "", new { @class = "text-danger" })
+                                                <div class="input-group-append">
+                                                    <a class="form-control btn btn-primary" href="@Html.DisplayFor(model => model.MapLocation)">Go!</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Basic Info</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Floor):</span></div>
+                                                @Html.EditorFor(model => model.Floor, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Floor, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Area):</span></div>
+                                                @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Bedrooms):</span></div>
+                                                @Html.EditorFor(model => model.Bedrooms, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Bedrooms, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Rent): $ </span></div>
+                                                @Html.EditorFor(model => model.Rent, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Rent, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Extra services</label>
+                                    <div class="col-sm-9">
+                                        <div class="i-checks">
+
+                                            @Html.EditorFor(model => model.ElevatorInBuilding, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.ElevatorInBuilding, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.ElevatorInBuilding)
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.FreeWiFi, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.FreeWiFi, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.FreeWiFi)
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.Parking, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.Parking, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.Parking)
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.AirCondition, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.AirCondition, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.AirCondition)
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.OutdoorSeating, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.OutdoorSeating, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.OutdoorSeating)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Accessibility &amp; Inclusion</label>
+                                    <div class="col-sm-9">
+
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.PetFriendly, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.PetFriendly, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.PetFriendly)
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.EditorFor(model => model.WheelchairFriendly, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @Html.ValidationMessageFor(model => model.WheelchairFriendly, "", new { @class = "text-danger" })
+                                            @Html.LabelFor(model => model.WheelchairFriendly)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 ml-auto">
+                                        <button type="submit" class="btn btn-primary">Create</button> |
+                                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>House</h4>
         <hr />
@@ -183,4 +401,4 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@

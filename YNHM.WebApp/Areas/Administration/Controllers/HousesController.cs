@@ -43,6 +43,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: Houses/Create
         public ActionResult Create()
         {
+            CreateManagerViewBag();
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            CreateManagerViewBag();
             return View(house);
         }
 
