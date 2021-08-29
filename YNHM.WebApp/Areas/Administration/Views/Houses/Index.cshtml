@@ -39,7 +39,7 @@
                                         <th>@Html.DisplayNameFor(model => model.Bedrooms)</th>
                                         <th>@Html.DisplayNameFor(model => model.Rent)</th>
                                         <th>@Html.DisplayNameFor(model => model.District)</th>
-                                        <th>@Html.DisplayNameFor(model => model.ManagerId)</th>
+                                        <th>Manager</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -79,7 +79,7 @@
                                                 @Html.DisplayFor(modelItem => item.District)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.ManagerId)
+                                                @String.Format($"{Html.DisplayFor(modelItem => item.Person.FirstName)} {Html.DisplayFor(modelItem => item.Person.LastName)}")
                                             </td>
                                             <td>
                                                 @Html.ActionLink("Edit", "Edit", new { id = item.HouseId }) |
