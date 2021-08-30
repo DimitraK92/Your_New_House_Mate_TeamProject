@@ -48,7 +48,7 @@ namespace YNHM.RepositoryServices
         {
             Attach(person);
             person.OwnsHouses.Clear();
-            db.SaveChanges();
+            db.SaveChangesAsync();
 
             if (!(SelectedHousesIds is null))
             {
