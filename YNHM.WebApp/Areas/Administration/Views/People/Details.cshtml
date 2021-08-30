@@ -4,134 +4,111 @@
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!-- wrapper -->
-<div id="wrapper">
-    <!--Content -->
-    <div class="content">
-        <!--section -->
-        <section class="parallax-section small-par color-bg">
-            <div class="shapes-bg-big"></div>
-            <div class="container">
-                <div class="section-title center-align">
-                    <h2><span>@Model.FirstName @Model.LastName</span></h2>
-                    <div class="user-profile-avatar"><img src="~/Models/FakeImages/person1.jpg" alt=""></div>
-                </div>
-            </div>
-            <div class="header-sec-link">
-                <div class="container"><a href="#sec1" class="custom-scroll-link">About user</a></div>
-            </div>
-        </section>
-        <!-- section end -->
-        <!--section -->
-        <section class="gray-bg" id="sec1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="list-single-main-item fl-wrap">
-                            <div class="list-single-main-item-title fl-wrap">
-                                <h3>About <span> @Model.FirstName @Model.LastName</span></h3>
-                            </div>
-                            <p>@Model.Description</p>
-                        </div>
-
-                        <div>
-
-                            <hr />
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.FirstName)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.FirstName)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.LastName)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.LastName)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Age)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Age)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.MatchPercent)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.MatchPercent)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Phone)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Phone)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Email)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Email)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Facebook)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Facebook)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Description)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.PhotoUrl)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.PhotoUrl)
-                                </dd>
-
-                            </dl>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </section>
-        <!-- section end -->
-        <div class="col-md-8">
-            <h2><i> @Html.ActionLink("Back to List", "Index")</i></h2>
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Person Details</h2>
         </div>
-        <div class="limit-box fl-wrap"></div>
-        <!--section -->
-        <section class="gradient-bg">
-            <div class="cirle-bg">
-                <div class="bg" data-bg="images/bg/circle.png"></div>
-            </div>
-        </section>
-        <!-- section end -->
     </div>
-    <!-- content end -->
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+            <li class="breadcrumb-item">@Html.ActionLink("Edit", "Edit", new { id = Model.PersonId })</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Form Elements -->
+                <div class="col">
+                    <div class="block">
+                        <div class="block-body">
+                            @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                            {
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.PhotoUrl)</label>
+                                    <div class="col-sm-9">
+                                        <img style="max-width:150px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.FirstName)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.FirstName)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.LastName)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.LastName)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Age)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Age)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Help text</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"><small class="help-block-none">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Contact Info</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Phone):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Phone)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Email):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Email)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Facebook):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Facebook)" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Houses</label>
+                                    <div class="col-sm-9">
+                                        <ul class="list-unstyled">
+                                            @foreach (var house in Model.OwnsHouses)
+                                            {
+                                                <li>@house.Title</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 ml-auto">
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.PersonId, @class = "btn btn-secondary" }) |
+                                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </div>
-<!-- wrapper end -->
