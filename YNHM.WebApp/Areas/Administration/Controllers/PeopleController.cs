@@ -7,8 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
+using YNHM.Database.Models;
+using YNHM.Database.Models.ViewModels;
 using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
+
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
@@ -43,8 +46,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
-            return View();
+            PersonCreateViewModel vm = new PersonCreateViewModel();
+
+            return View(vm);
         }
+
 
         // POST: People/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -59,6 +65,9 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 return RedirectToAction("Index");
             }
 
+            PersonCreateViewModel vm = new PersonCreateViewModel();
+            
+            return View(vm);
             return View(houseSeeker);
         }
 
@@ -74,6 +83,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
+
+            PersonEditViewModel vm = new PersonEditViewModel(person);
+
+            return View(vm);
             return View(houseSeeker);
         }
 
@@ -89,6 +102,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 pr.Edit(houseSeeker, null);
                 return RedirectToAction("Index");
             }
+
+            pr.Attach(person);
+            PersonEditViewModel vm = new PersonEditViewModel(person);
+
+            return View(vm);
             return View(houseSeeker);
         }
 
