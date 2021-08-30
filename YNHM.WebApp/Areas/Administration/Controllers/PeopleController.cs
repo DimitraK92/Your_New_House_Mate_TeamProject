@@ -7,8 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
+using YNHM.Database.Models;
+using YNHM.Database.Models.ViewModels;
 using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
+
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
@@ -32,7 +35,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person houseSeeker = pr.GetById(id);
+            HouseSeeker houseSeeker = pr.GetById(id);
             if (houseSeeker == null)
             {
                 return HttpNotFound();
@@ -43,8 +46,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
-            return View();
+            PersonCreateViewModel vm = new PersonCreateViewModel();
+
+            return View(vm);
         }
+
 
         // POST: People/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

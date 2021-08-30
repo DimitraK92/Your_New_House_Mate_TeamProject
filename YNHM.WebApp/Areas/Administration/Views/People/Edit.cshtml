@@ -1,4 +1,5 @@
-﻿@model YNHM.Entities.Models.HouseSeeker
+﻿@model YNHM.Database.Models.ViewModels.PersonEditViewModel
+@model YNHM.Entities.Models.HouseSeeker
 
 @{
     ViewBag.Title = "Edit";
@@ -6,189 +7,103 @@
 }
 
 
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Create a new Person</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Form Elements -->
+                <div class="col">
+                    <div class="block">
+                        <div class="block-body">
+                            @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Person.PersonId)
+                                
 
-
-<!-- wrapper -->
-<div id="wrapper">
-    <!--  content  -->
-    <div class="content">
-        <!--  section  end-->
-        <!--  section  -->
-        <section class="parallax-section" data-scrollax-parent="true">
-            <div class="bg par-elem " data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="section-title center-align">
-                    <h2><span>Edit House Seeker</span></h2>
-                    <span class="section-separator"></span>
-                </div>
-            </div>
-        </section>
-        <!--  section  end-->
-        <!--  section  -->
-        <section class="gray-bg no-pading no-top-padding" id="sec1">
-
-            <div class="col-list-wrap fh-col-list-wrap  left-list">
-                <div class="container">
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="listsearch-header fl-wrap">
-                                <div class="listing-view-layout">
-                                    <ul>
-                                        <li><a class="grid active" href="#"><i class="fa fa-th-large"></i></a></li>
-                                        <li><a class="list" href="#"><i class="fa fa-list-ul"></i></a></li>
-                                    </ul>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.FirstName)</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Person.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Person.FirstName, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h2><i> @Html.ActionLink("Back to List", "Index")</i></h2>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.LastName)</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Person.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Person.LastName, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- list-main-wrap-->
-                            <div class="list-main-wrap fl-wrap card-listing">
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.Age)</label>
+                                    <div class="col-sm-9">
+                                        @Html.EditorFor(model => model.Person.Age, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Person.Age, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="line"></div>
 
-                                <!-- listing-item -->
-                                <div class="listing-item">
-                                    <article class="geodir-category-listing fl-wrap">
-                                        <div class="geodir-category-img">
-                                            <img src="~/Models/FakeImages/person1.jpg" alt="">
-                                            <div class="overlay"></div>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Contact Info</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Phone):</span></div>
+                                                @Html.EditorFor(model => model.Person.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Person.Phone, "", new { @class = "text-danger" })
+                                            </div>
                                         </div>
-                                        <div class="geodir-category-content fl-wrap">
-
-                                            @using (Html.BeginForm())
-                                            {
-                                                @Html.AntiForgeryToken()
-
-                                                <div class="form-horizontal">
-                                                    <hr />
-                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                                    @Html.HiddenFor(model => model.HouseSeekerId)
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.MatchPercent, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.MatchPercent, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.MatchPercent, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Facebook, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.PhotoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                        <div class="col-md-10">
-                                                            @Html.EditorFor(model => model.PhotoUrl, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.PhotoUrl, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <div class="col-md-offset-2 col-md-10 fl-wrap">
-                                                            <input type="submit" value="Save" class="button fs-map-btn" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
-
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Email):</span></div>
+                                                @Html.EditorFor(model => model.Person.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Person.Email, "", new { @class = "text-danger" })
+                                            </div>
                                         </div>
-                                    </article>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Facebook):</span></div>
+                                                @Html.EditorFor(model => model.Person.Facebook, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Person.Facebook, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- listing-item end-->
-                                <!-- pagination-->
-                                <div class="pagination">
-                                    <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                    <a href="#" class="blog-page transition">1</a>
-                                    <a href="#" class="blog-page current-page transition">2</a>
-                                    <a href="#" class="blog-page transition">3</a>
-                                    <a href="#" class="blog-page transition">4</a>
-                                    <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    @Html.Label("SelectedHousesIds", "Houses", htmlAttributes: new { @class = "control-label col-sm-3" })
+                                    <div class="col-sm-9">
+                                        @Html.ListBox("SelectedHousesIds", null, htmlAttributes: new { @class = "form-control", size = "5" })
+                                        @*@Html.ValidationMessage("SelectedHousesIds", "", new { @class = "text-danger" })*@
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- list-main-wrap end-->
-                        </div>
-                        <div class="col-md-4">
-                            <div class="fl-wrap">
-
-
-                            </div>
-                            <!-- listsearch-input-wrap end -->
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 ml-auto">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button> |
+                                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--  section  end-->
-        <div class="limit-box fl-wrap"></div>
-        <!--  section  -->
-        <section class="gradient-bg">
-            <div class="cirle-bg">
-                <div class="bg" data-bg="images/bg/circle.png"></div>
-            </div>
+        </div>
 
-        </section>
-        <!--  section  end-->
-    </div>
-    <!-- content end-->
+    </section>
 </div>
-<!-- wrapper end -->
-
