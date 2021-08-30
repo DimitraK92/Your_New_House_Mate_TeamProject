@@ -24,6 +24,8 @@ namespace YNHM.Database.Models.ViewModels
                 }
                 else
                 {
+                    //if (Person.OwnsHouses == null) { return SelectedHousesIds.DefaultIfEmpty(); }
+
                     var housesIds = Person.OwnsHouses.Select(x => x.HouseId);
 
                     return db.Houses.ToList().Select(x => new SelectListItem()
@@ -41,7 +43,7 @@ namespace YNHM.Database.Models.ViewModels
 
         public PersonEditViewModel(Person person)
         {
-            Person = person;
+            Person = person;           
         }
     }
 }
