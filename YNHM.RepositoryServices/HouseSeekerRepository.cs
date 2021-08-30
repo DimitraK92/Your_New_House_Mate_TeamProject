@@ -48,7 +48,7 @@ namespace YNHM.RepositoryServices
         {
             Attach(person);
             person.OwnsHouses.Clear();
-            db.SaveChanges();
+            db.SaveChangesAsync();
 
             if (!(SelectedHousesIds is null))
             {
@@ -69,7 +69,7 @@ namespace YNHM.RepositoryServices
 
         public void Delete(int id)
         {
-            Person person = db.HouseSeekers.Find(id);
+            HouseSeeker person = db.HouseSeekers.Find(id);
             //person.OwnsHouses.Clear();
 
             db.Entry(person).State = EntityState.Deleted;
