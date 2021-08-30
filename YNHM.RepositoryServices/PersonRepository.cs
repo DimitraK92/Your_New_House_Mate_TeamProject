@@ -49,7 +49,7 @@ namespace YNHM.RepositoryServices
         {
             Attach(person);
             person.OwnsHouses.Clear();
-            db.SaveChangesAsync();
+            db.SaveChanges();
 
             if (!(SelectedHousesIds is null))
             {

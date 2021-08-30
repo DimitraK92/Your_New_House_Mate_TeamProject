@@ -45,41 +45,41 @@
                                     }
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <th scope="row">@String.Format($"{++count}")</th>
-                                            <td>
-                                                @*TODO: DISPLAY EACH PERSON'S IMAGE WITH item.PhotoUrl*@
-                                                <img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FirstName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.LastName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Age)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Phone)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Email)
-                                            </td>
-                                            <td>
-                                                <ul class="list-unstyled">
-                                                    @foreach (var house in item.OwnsHouses)
-                                                    {
-                                                        <li>@house.Title</li>
-                                                    }
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
-                                                @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <th scope="row">@String.Format($"{++count}")</th>
+                                        <td>
+                                            @*TODO: DISPLAY EACH PERSON'S IMAGE WITH item.PhotoUrl*@
+                                            <img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Age)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            <ul class="list-unstyled">
+                                                @foreach (var house in item.OwnsHouses)
+                                                {
+                                                    <li>@house.Title</li>
+                                                }
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>
