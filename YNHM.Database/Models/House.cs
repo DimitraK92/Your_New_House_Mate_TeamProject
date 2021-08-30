@@ -28,7 +28,7 @@ namespace YNHM.Database.Models
         public virtual ICollection<Photo> Photos { get; set; }
 
         [DisplayName("Manager Id")]
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         [DisplayName("Manager")]
         public virtual Person Person { get; set; }
     }
