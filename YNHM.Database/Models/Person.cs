@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace YNHM.Database.Models
@@ -27,6 +28,7 @@ namespace YNHM.Database.Models
 
         public string Description { get; set; }
 
+        [DisplayName("Photo")]
         public string PhotoUrl { get; set; }
 
         public virtual ICollection<House> OwnsHouses { get; set; }
