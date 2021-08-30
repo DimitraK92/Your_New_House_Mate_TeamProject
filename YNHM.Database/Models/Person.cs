@@ -30,7 +30,6 @@ namespace YNHM.Database.Models
 
         [DisplayName("Photo")]
         public string PhotoUrl { get; set; }
-
         public virtual ICollection<House> OwnsHouses { get; set; }
 
         /// <summary>
