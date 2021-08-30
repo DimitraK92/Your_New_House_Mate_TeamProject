@@ -48,7 +48,8 @@
                                         <tr>
                                             <th scope="row">@String.Format($"{++count}")</th>
                                             <td>
-                                                <img style="max-width:60px" src=@item.PhotoUrl alt="Person Photo" />
+                                                @*TODO: DISPLAY EACH PERSON'S IMAGE WITH item.PhotoUrl*@
+                                                <img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.FirstName)

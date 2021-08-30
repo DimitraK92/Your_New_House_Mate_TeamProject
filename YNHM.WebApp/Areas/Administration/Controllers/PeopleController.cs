@@ -8,7 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Database.Models;
+using YNHM.Database.Models.ViewModels;
 using YNHM.RepositoryServices;
+
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
@@ -43,23 +45,28 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
-            return View();
+            PersonCreateViewModel vm = new PersonCreateViewModel();
+
+            return View(vm);
         }
+
 
         // POST: People/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
+        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person, IEnumerable<int?> SelectedHousesIds)
         {
             if (ModelState.IsValid)
             {
-                pr.Create(person, null);                
+                pr.Create(person, SelectedHousesIds);                
                 return RedirectToAction("Index");
             }
 
-            return View(person);
+            PersonCreateViewModel vm = new PersonCreateViewModel();
+            
+            return View(vm);
         }
 
         // GET: People/Edit/5
@@ -74,7 +81,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return HttpNotFound();
             }
-            return View(person);
+
+            PersonEditViewModel vm = new PersonEditViewModel(person);
+
+            return View(vm);
         }
 
         // POST: People/Edit/5
@@ -82,14 +92,18 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person, IEnumerable<int?> SelectedHousesIds)
         {
             if (ModelState.IsValid)
             {
-                pr.Edit(person, null);
+                pr.Edit(person, SelectedHousesIds);
                 return RedirectToAction("Index");
             }
-            return View(person);
+
+            pr.Attach(person);
+            PersonEditViewModel vm = new PersonEditViewModel(person);
+
+            return View(vm);
         }
 
         // GET: People/Delete/5
