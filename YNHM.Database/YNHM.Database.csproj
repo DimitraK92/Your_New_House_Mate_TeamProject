@@ -110,5 +110,8 @@
       <DependentUpon>202109020016325_CreateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\ViewModels\Administrator\HouseViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
