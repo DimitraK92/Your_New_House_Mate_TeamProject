@@ -100,6 +100,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\ViewModels\Administrator\HouseViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\YNHM.Entities\YNHM.Entities.csproj">
       <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
       <Name>YNHM.Entities</Name>

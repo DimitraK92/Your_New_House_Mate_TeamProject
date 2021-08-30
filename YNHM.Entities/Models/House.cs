@@ -29,5 +29,9 @@ namespace YNHM.Entities.Models
         public virtual ICollection<Photo> Photos { get; set; }
 
         public virtual int? OwnerId { get; set; }
+        [DisplayName("Manager Id")]
+        public int? PersonId { get; set; }
+        [DisplayName("Manager")]
+        public virtual Person Person { get; set; }
     }
 }
