@@ -24,7 +24,7 @@ namespace YNHM.RepositoryServices
             return db.People.Find(id);
         }
 
-        public void Create (Person person, IEnumerable<int?> SelectedHousesIds)
+        public void Create (Person person, IEnumerable<int> SelectedHousesIds)
         {
             Attach(person);
             person.OwnsHouses.Clear();
@@ -45,11 +45,11 @@ namespace YNHM.RepositoryServices
             db.SaveChanges();
         }
 
-        public void Edit(Person person, IEnumerable<int?> SelectedHousesIds)
+        public void Edit(Person person, IEnumerable<int> SelectedHousesIds)
         {
             Attach(person);
             person.OwnsHouses.Clear();
-            db.SaveChanges();
+            db.SaveChangesAsync();
 
             if (!(SelectedHousesIds is null))
             {
