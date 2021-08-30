@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
@@ -15,7 +15,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
     public class PeopleController : Controller
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
-        readonly PersonRepository pr = new PersonRepository();
+        readonly HouseSeekerRepository pr = new HouseSeekerRepository();
 
         // GET: People
         public ActionResult Index()
@@ -32,12 +32,12 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = pr.GetById(id);
-            if (person == null)
+            Person houseSeeker = pr.GetById(id);
+            if (houseSeeker == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(houseSeeker);
         }
 
         // GET: People/Create
@@ -51,15 +51,15 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
+        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
         {
             if (ModelState.IsValid)
             {
-                pr.Create(person, null);                
+                pr.Create(houseSeeker, null);                
                 return RedirectToAction("Index");
             }
 
-            return View(person);
+            return View(houseSeeker);
         }
 
         // GET: People/Edit/5
@@ -69,12 +69,12 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = pr.GetById(id);
-            if (person == null)
+            Person houseSeeker = pr.GetById(id);
+            if (houseSeeker == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(houseSeeker);
         }
 
         // POST: People/Edit/5
@@ -82,14 +82,14 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
         {
             if (ModelState.IsValid)
             {
-                pr.Edit(person, null);
+                pr.Edit(houseSeeker, null);
                 return RedirectToAction("Index");
             }
-            return View(person);
+            return View(houseSeeker);
         }
 
         // GET: People/Delete/5
@@ -99,12 +99,12 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = pr.GetById(id);
-            if (person == null)
+            Person houseSeeker = pr.GetById(id);
+            if (houseSeeker == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(houseSeeker);
         }
 
         // POST: People/Delete/5

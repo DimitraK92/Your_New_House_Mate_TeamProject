@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 
 [assembly: OwinStartupAttribute(typeof(YNHM.WebApp.Startup))]
 namespace YNHM.WebApp
@@ -42,7 +42,7 @@ namespace YNHM.WebApp
                 {
                     UserName = "VassilisK",
                     Email = "vassilis.kotsman@gmail.com",
-                    PersonId=12
+                    HouseSeekerId = 1
                 };
                 string adminPassword = "Admin123!";
 

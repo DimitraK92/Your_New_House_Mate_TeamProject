@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 
 namespace YNHM.WebApp.Models
 {
     public class PersonDetailsVM
     {
-        public Person Person { get; set; }
+        public HouseSeeker HouseSeeker { get; set; }
 
-        public PersonDetailsVM(Person person)
+        public PersonDetailsVM(HouseSeeker houseSeeker)
         {
-            Person = person;
+            HouseSeeker = houseSeeker;
         }
 
 
@@ -45,7 +45,7 @@ namespace YNHM.WebApp.Models
 
         public string GetUsersName()
         {
-            return $"{Person.FirstName} {Person.LastName}";
+            return $"{HouseSeeker.FirstName} {HouseSeeker.LastName}";
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp

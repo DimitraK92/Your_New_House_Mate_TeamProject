@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers

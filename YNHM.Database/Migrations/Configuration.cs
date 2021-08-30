@@ -2,10 +2,8 @@ namespace YNHM.Database.Migrations
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-    using YNHM.Database.Models;
+    using YNHM.Entities.Models;
     using YNHM.Entities.TestResources;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
@@ -13,25 +11,24 @@ namespace YNHM.Database.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(ApplicationDbContext context)
         {
             #region houses seed
-            Person geokthmonas = new Person()
+            HouseManager geokthmonas = new HouseManager()
             {
                 FirstName = "Gianna",
                 LastName = "Mesitria",
                 Age = 36,
                 PhotoUrl = @"~/Models/FakeImages/person1.jpg",
-                MatchPercent = 95,
                 Phone = "694 656 6566",
                 Email = @"gianna.mesitria@gmail.com",
                 Facebook = @"https://el-gr.facebook.com/generic-user-name",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             };
-            context.People.AddOrUpdate(p => new { p.FirstName, p.LastName }, geokthmonas);
+            context.HouseManagers.AddOrUpdate(p => new { p.FirstName, p.LastName }, geokthmonas);
             Random random = new Random();
             string[] addresses = new string[]
             {
@@ -90,22 +87,20 @@ namespace YNHM.Database.Migrations
             #endregion
 
             #region people seed
-            List<Person> syntheticPeople = new List<Person>()
+            List<HouseSeeker> syntheticPeople = new List<HouseSeeker>()
             {
-                new Person()
+                new HouseSeeker()
                 {
                     FirstName="Vassilis",
                     LastName= "Kotsmanidis",
                     Age=34,
                     Email="vassilis.kotsman@gmail.com",
-                    PersonId=2,
                     MatchPercent=0,
                     Phone="6945666666",
                     Facebook="https://www.facebook.com/vassilis.geko",
                     Description="Junior Web Developer fucking trying to fucking finish this fucking project!"
                 },
-
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Jane",
                     LastName = "Doe",
                     Age = 36,
@@ -116,7 +111,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/janedoe/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Jim",
                     LastName = "Do",
                     Age = 10,
@@ -127,7 +122,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/jimdo/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci phasellus egestas tellus rutrum."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Max",
                     LastName = "Dont",
                     Age = 48,
@@ -138,7 +133,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/maxdont/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Min",
                     LastName = "Donot",
                     Age = 82,
@@ -149,7 +144,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/mindonot/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci phasellus egestas tellus rutrum."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Jill",
                     LastName = "Cannot",
                     Age = 30,
@@ -160,7 +155,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/jillcannot/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Jake",
                     LastName = "Shallnot",
                     Age = 63,
@@ -171,7 +166,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/jakeshallnot/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci phasellus egestas tellus rutrum."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Bill",
                     LastName = "Shall",
                     Age = 27,
@@ -182,7 +177,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/billshall/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Andy",
                     LastName = "Can",
                     Age = 51,
@@ -193,7 +188,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/andycan/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Andria",
                     LastName = "Could",
                     Age = 18,
@@ -204,7 +199,7 @@ namespace YNHM.Database.Migrations
                     Facebook = @"https://www.facebook.com/andriacould/",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci phasellus egestas tellus rutrum."
                 },
-                new Person(){
+                new HouseSeeker(){
                     FirstName ="Maria",
                     LastName = "Couldnot",
                     Age = 36,
@@ -218,7 +213,7 @@ namespace YNHM.Database.Migrations
             };
             foreach (var person in syntheticPeople)
             {
-                context.People.AddOrUpdate(p => new { p.FirstName, p.LastName }, person);
+                context.HouseSeekers.AddOrUpdate(p => new { p.FirstName, p.LastName }, person);
             }
             #endregion
 
@@ -260,7 +255,7 @@ namespace YNHM.Database.Migrations
                     new Question() { QuestionId = 19, Text = "Do you mind others smoking weed in the house?" }
                 }
             };
-            context.QuestionSets.Add(houseMateMatching);
+            context.QuestionSets.AddOrUpdate(houseMateMatching);
             #endregion
 
 

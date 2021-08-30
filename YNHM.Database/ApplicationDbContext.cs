@@ -2,14 +2,17 @@
 using System;
 using System.Data.Entity;
 using System.Linq;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.Entities.TestResources;
 
 namespace YNHM.Database
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
-        public DbSet<Person> People { get; set; }
+        //public DbSet<Person> People { get; set; }
+
+        public DbSet<HouseSeeker> HouseSeekers{ get; set; }
+        public DbSet<HouseManager> HouseManagers { get; set; }
         public DbSet<House> Houses { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Test> Tests { get; set; }

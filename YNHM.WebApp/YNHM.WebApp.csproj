@@ -5924,7 +5924,6 @@
     <Content Include="Views\MyAccount\Messages.cshtml" />
     <Content Include="Views\MyAccount\EditProfile.cshtml" />
     <Content Include="Views\MyAccount\Profile.cshtml" />
-    <Content Include="Views\MyAccount\0_TestNonFunctional.cshtml" />
     <Content Include="Views\2_Old\_UserDashboardPanelLeftMenu.cshtml" />
     <Content Include="Views\MyAccount\Test.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
@@ -6464,6 +6463,10 @@
     <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
       <Project>{6233FFCB-4DEE-4D89-AF64-0777A1436D63}</Project>
       <Name>YNHM.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YNHM.Entities\YNHM.Entities.csproj">
+      <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
+      <Name>YNHM.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\YNHM.RepositoryServices\YNHM.RepositoryServices.csproj">
       <Project>{c0a4b18e-af71-405d-bddf-98af7361bbe1}</Project>

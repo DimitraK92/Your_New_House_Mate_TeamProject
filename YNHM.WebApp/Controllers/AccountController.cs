@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
@@ -199,7 +199,7 @@ namespace YNHM.WebApp.Controllers
         // POST: /Account/ProvideAdditionalInfo
         [HttpPost]
         [Authorize]
-        public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Description,Phone,Facebook")]Person person, string submitButton)
+        public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Description,Phone,Facebook")] HouseSeeker houseSeeker, string submitButton)
         {
             if (submitButton.Equals("Continue Later"))
             {
@@ -209,12 +209,12 @@ namespace YNHM.WebApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    PersonRepository pr = new PersonRepository();
-                    pr.Create(person, null);
+                    HouseSeekerRepository pr = new HouseSeekerRepository();
+                    pr.Create(houseSeeker, null);
 
                     var userId = User.Identity.GetUserId();
                     var user = UserManager.FindById(userId);
-                    user.PersonId = person.PersonId;
+                    user.HouseSeekerId = houseSeeker.HouseSeekerId;
                     UserManager.Update(user);
                 }
                 AddPersonalDetailsVM vm = new AddPersonalDetailsVM();

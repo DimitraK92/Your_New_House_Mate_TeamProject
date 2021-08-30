@@ -1,4 +1,4 @@
-﻿@model YNHM.Database.Models.Person
+﻿@model YNHM.Entities.Models.HouseSeeker
 
 @{
     ViewBag.Title = "Edit";
@@ -19,7 +19,7 @@
             <div class="overlay"></div>
             <div class="container">
                 <div class="section-title center-align">
-                    <h2><span>Edit Person</span></h2>
+                    <h2><span>Edit House Seeker</span></h2>
                     <span class="section-separator"></span>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                                                 <div class="form-horizontal">
                                                     <hr />
                                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                                    @Html.HiddenFor(model => model.PersonId)
+                                                    @Html.HiddenFor(model => model.HouseSeekerId)
 
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })

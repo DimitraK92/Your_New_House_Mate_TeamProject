@@ -76,14 +76,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\202108302258284_CreateDatabase.cs" />
+    <Compile Include="Migrations\202108302258284_CreateDatabase.Designer.cs">
+      <DependentUpon>202108302258284_CreateDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mockup\House.cs" />
     <Compile Include="Mockup\MockupDb.cs" />
     <Compile Include="Mockup\Person.cs" />
-    <Compile Include="Models\House.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +95,11 @@
       <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
       <Name>YNHM.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202108302258284_CreateDatabase.resx">
+      <DependentUpon>202108302258284_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

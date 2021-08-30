@@ -1,4 +1,4 @@
-﻿@model IEnumerable<YNHM.Database.Models.Person>
+﻿@model IEnumerable<YNHM.Entities.Models.HouseSeeker>
 
 @{
     ViewBag.Title = "Index";
@@ -242,9 +242,9 @@
                 @Html.DisplayFor(modelItem => item.PhotoUrl)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.HouseSeekerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.HouseSeekerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.HouseSeekerId })
             </td>
         </tr>
     }

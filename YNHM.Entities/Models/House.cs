@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace YNHM.Database.Models
+namespace YNHM.Entities.Models
 {
     public class House
     {
@@ -27,6 +27,6 @@ namespace YNHM.Database.Models
         public virtual ICollection<Photo> Photos { get; set; }
 
         public int ManagerId { get; set; }
-        public virtual Person Manager { get; set; }
+        public virtual HouseManager Manager { get; set; }
     }
 }

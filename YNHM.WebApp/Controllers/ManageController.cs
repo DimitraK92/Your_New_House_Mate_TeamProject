@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
@@ -15,7 +15,7 @@ namespace YNHM.WebApp.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        PersonRepository pr = new PersonRepository();
+        HouseSeekerRepository pr = new HouseSeekerRepository();
 
 
         private ApplicationSignInManager _signInManager;
@@ -111,10 +111,10 @@ namespace YNHM.WebApp.Controllers
         public ActionResult ViewProfile()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            var person = pr.GetById(user.PersonId);
-            PersonDetailsVM vm = new PersonDetailsVM(person);
+            var houseSeeker = pr.GetById(user.HouseSeekerId);
+            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
 
-            return RedirectToAction($"PersonalProfile/{user.PersonId}", "HomePage");
+            return RedirectToAction($"PersonalProfile/{user.HouseSeekerId}", "HomePage");
             //return View(vm);
         }
 
@@ -128,34 +128,34 @@ namespace YNHM.WebApp.Controllers
             var userId = User.Identity.GetUserId();
             var user = UserManager.FindById(userId);
 
-            var personId = user.PersonId;
+            var personId = user.HouseSeekerId;
 
-            var person = pr.GetById(personId);
+            var houseSeeker = pr.GetById(personId);
 
-            //if (personId == 0||person==null)
+            //if (personId == 0||houseSeeker==null)
             //{
             //    return RedirectToAction("ProvideAdditionalInfo", "Account");
             //}
 
-            PersonDetailsVM vm = new PersonDetailsVM(person);
+            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
             return View(vm);
         }
 
         //POST: /Manage/EditUserDetails
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] Person person)
+        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] HouseSeeker houseSeeker)
         {
 
             if (ModelState.IsValid)
             {
-                pr.Edit(person, null);
+                pr.Edit(houseSeeker, null);
                 return RedirectToAction("EditUserDetails");
             }
 
-            pr.Attach(person);
+            pr.Attach(houseSeeker);
 
-            PersonDetailsVM vm = new PersonDetailsVM(person);
+            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
 
             return View(vm);
         }

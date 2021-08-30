@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 
 namespace YNHM.RepositoryServices
 {

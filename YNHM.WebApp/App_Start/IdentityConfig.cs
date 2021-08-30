@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<YNHM.Database.Models.Person>
+﻿@model IEnumerable<YNHM.Entities.Models.HouseSeeker>
 
 @{
     Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
@@ -51,7 +51,7 @@
                                     <img class="card-img rounded-0" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Person photo">
                                     <div class="card-img-overlay">
                                         <h3>
-                                            <a href="@Url.Action($"PersonalProfile/{person.PersonId}")">
+                                            <a href="@Url.Action($"PersonalProfile/{person.HouseSeekerId}")">
                                                 @person.FirstName <i class="fa fa-check-circle" aria-hidden="true"></i>
                                             </a>
                                         </h3>

@@ -1,6 +1,6 @@
 ﻿
 
-namespace YNHM.Database.Models
+namespace YNHM.Entities.Models
 {
     public class Photo
     {

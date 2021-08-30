@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 using YNHM.Entities.TestResources;
 using YNHM.RepositoryServices;
 using System;

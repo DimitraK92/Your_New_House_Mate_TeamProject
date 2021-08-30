@@ -55,23 +55,23 @@
                 @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.HiddenFor(m => m.Person.PersonId);
+                    @Html.HiddenFor(m => m.HouseSeeker.HouseSeekerId);
                     <div class="card">
                         <div class="card-body p-6">
                             <h3 class="font-weight-normal mb-4">About You</h3>
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Person.FirstName)
-                                    @Html.TextBoxFor(m => m.Person.FirstName, new { @class = "form-control", id = "firstNameProfile", placeholder = "First Name" })
+                                    @Html.LabelFor(m => m.HouseSeeker.FirstName)
+                                    @Html.TextBoxFor(m => m.HouseSeeker.FirstName, new { @class = "form-control", id = "firstNameProfile", placeholder = "First Name" })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Person.LastName)
-                                    @Html.TextBoxFor(m => m.Person.LastName, new { @class = "form-control", id = "lastNameProfile", placeholder = "Last Name" })
+                                    @Html.LabelFor(m => m.HouseSeeker.LastName)
+                                    @Html.TextBoxFor(m => m.HouseSeeker.LastName, new { @class = "form-control", id = "lastNameProfile", placeholder = "Last Name" })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Person.Age)
-                                    @Html.TextBoxFor(m => m.Person.Age, new { @class = "form-control", placeholder = "Your Age" })
+                                    @Html.LabelFor(m => m.HouseSeeker.Age)
+                                    @Html.TextBoxFor(m => m.HouseSeeker.Age, new { @class = "form-control", placeholder = "Your Age" })
                                 </div>
                                 <div class="form-group col-md-12">
                                     @Html.LabelFor(m => m.Description)
@@ -87,12 +87,12 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Person.Email)
-                                    @Html.TextBoxFor(m => m.Person.Email, new { type = "email", @class = "form-control", placeholder = "Email", })
+                                    @Html.LabelFor(m => m.HouseSeeker.Email)
+                                    @Html.TextBoxFor(m => m.HouseSeeker.Email, new { type = "email", @class = "form-control", placeholder = "Email", })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Person.Phone)
-                                    @Html.TextBoxFor(m => m.Person.Phone, new { @class = "form-control", placeholder = "Phone" })
+                                    @Html.LabelFor(m => m.HouseSeeker.Phone)
+                                    @Html.TextBoxFor(m => m.HouseSeeker.Phone, new { @class = "form-control", placeholder = "Phone" })
                                 </div>
                                 <div class="form-group col-md-6">
                                     @Html.LabelFor(m => m.Facebook)

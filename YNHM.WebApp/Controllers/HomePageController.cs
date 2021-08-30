@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-
 using YNHM.Database;
-using YNHM.Database.Models;
+using YNHM.Entities.Models;
 
 namespace YNHM.WebApp.Controllers
 {
@@ -26,10 +25,10 @@ namespace YNHM.WebApp.Controllers
         [Authorize(Roles = "Admin, HouseSeeker")]
         public ActionResult People()
         {
-            List<Person> people = new List<Person>();
+            List<HouseSeeker> people = new List<HouseSeeker>();
             try
             {
-                people = dbContext.People
+                people = dbContext.HouseSeekers
                     .OrderByDescending(x => x.MatchPercent)
                     .ThenBy(x => x.Age)
                     .ToList();
@@ -52,7 +51,7 @@ namespace YNHM.WebApp.Controllers
             Person person = null;
             try
             {
-                person = dbContext.People.FirstOrDefault(x=>x.PersonId==personId);
+                person = dbContext.HouseSeekers.FirstOrDefault(x=>x.HouseSeekerId==personId);
             }
             catch (Exception e)
             {

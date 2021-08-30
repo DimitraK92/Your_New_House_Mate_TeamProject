@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using YNHM.Entities.TestResources;
 
-namespace YNHM.Database.Models
+namespace YNHM.Entities.Models
 {
     public class Person
     {
-        public int PersonId { get; set; }
+        //public int PersonId { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -15,8 +14,8 @@ namespace YNHM.Database.Models
 
         public int Age { get; set; }
 
-        [Display(Name = "Match Percentage")]
-        public int? MatchPercent { get; set; }
+        //[Display(Name = "Match Percentage")]
+        //public int? MatchPercent { get; set; }
 
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
@@ -31,10 +30,7 @@ namespace YNHM.Database.Models
         public string PhotoUrl { get; set; }
 
         //Navigation properties
-        public virtual ICollection<House> OwnsHouses { get; set; }
-
-        public virtual int TestId { get; set; }
-        public virtual Test Test { get; set; }
+        //public virtual ICollection<House> OwnsHouses { get; set; }
 
         /// <summary>
         /// Used when the Description property of a Person object is too long.
