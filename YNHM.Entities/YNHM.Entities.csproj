@@ -48,9 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\HouseSeeker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestResources\Answer.cs" />
     <Compile Include="TestResources\AnswerType.cs" />
+    <Compile Include="TestResources\QuestionSet.cs" />
     <Compile Include="TestResources\Importance.cs" />
+    <Compile Include="TestResources\Question.cs" />
     <Compile Include="TestResources\Test.cs" />
     <Compile Include="TestResources\TestComparison.cs" />
   </ItemGroup>
@@ -58,11 +62,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
-      <Project>{6233ffcb-4dee-4d89-af64-0777a1436d63}</Project>
-      <Name>YNHM.Database</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

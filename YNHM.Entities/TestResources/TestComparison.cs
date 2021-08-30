@@ -67,6 +67,20 @@ namespace YNHM.Entities.TestResources
         #endregion
 
         #region Preference with accepted answers list
+
+
+        //TODO: VASSILIS: Problem with result calculation.
+        //Some tests yield few points, because there are less
+        //accepted answers or award less points and, therefore, some users score above the
+        //available points. If both users score more, percentage is more than 100%.
+        /// <summary>
+        /// Calculates points for one question, (marked "userAnswer") to the answers of another test (marked "acceptedAnswers")
+        /// </summary>
+        /// <param name="acceptedAnswers"></param>
+        /// <param name="comparedAnswer"></param>
+        /// <param name="importance"></param>
+        /// <param name="userAnswer"></param>
+        /// <returns></returns>
         private double CalculateScoreWithAcceptedAnswers(List<AnswerType> acceptedAnswers, AnswerType comparedAnswer, Importance importance, AnswerType userAnswer)
         {
             //if ((acceptedAnswers.Count == 0 || acceptedAnswers.Count == 5) || acceptedAnswers == null)
@@ -102,12 +116,13 @@ namespace YNHM.Entities.TestResources
                 else return 1;
             }
             else return 1;
-                
-
-
-
         }
-
+        /// <summary>
+        /// Compares answers from two tests
+        /// </summary>
+        /// <param name="toBeCompared"></param>
+        /// <param name="comparedToThis"></param>
+        /// <returns></returns>
         private double CompareWithAcceptedAnswers(List<Answer> toBeCompared, List<Answer> comparedToThis)
         {
             double userScore = 0;
@@ -124,9 +139,14 @@ namespace YNHM.Entities.TestResources
             return userScore;
         }
 
+        /// <summary>
+        /// Calculates the results from two tests. Tests should have lists with AcceptedAnswers.
+        /// </summary>
+        /// <param name="test1"></param>
+        /// <param name="test2"></param>
+        /// <returns></returns>
         public int CalculateMatchPercentageWithAcceptedAnswers(Test test1, Test test2)
         {
-            
             double userOneScore = CompareWithAcceptedAnswers(test1.Answers, test2.Answers);
             double possibleUserOneScore = CompareWithAcceptedAnswers(test1.Answers, test1.Answers);
 
@@ -136,6 +156,19 @@ namespace YNHM.Entities.TestResources
             double userOnePercentage = CalculatePercentage(userOneScore, possibleUserTwoScore);
             double userTwoPercentage = CalculatePercentage(userTwoScore, possibleUserOneScore);
 
+            //ViewErraticDataInConsole(userOneScore, possibleUserOneScore, 
+            //                            userTwoScore, possibleUserTwoScore, 
+            //                            userOnePercentage, userTwoPercentage);
+
+            double percentageMultiplication = userOnePercentage * userTwoPercentage;
+            double multiplicationSqrt = Math.Sqrt(percentageMultiplication);
+            return (int)Math.Round(multiplicationSqrt);
+        }
+
+        private static void ViewErraticDataInConsole(double userOneScore, double possibleUserOneScore, 
+                                                        double userTwoScore, double possibleUserTwoScore, 
+                                                        double userOnePercentage, double userTwoPercentage)
+        {
             if (userOnePercentage > 100 || userTwoPercentage > 100)
             {
                 Console.WriteLine($"\n\t\t\t\t\tProblem:\n" +
@@ -144,11 +177,6 @@ namespace YNHM.Entities.TestResources
                                   $"\t\t\t\t\tUser 2  Percentage {userTwoPercentage}\n" +
                                   $"\t\t\t\t\t        Score: {userTwoScore} vs {possibleUserOneScore}\n");
             }
-
-
-            double percentageMultiplication = userOnePercentage * userTwoPercentage;
-            double multiplicationSqrt = Math.Sqrt(percentageMultiplication);
-            return (int)Math.Round(multiplicationSqrt);
         }
 
         #endregion

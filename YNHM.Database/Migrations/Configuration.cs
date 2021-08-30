@@ -6,6 +6,7 @@ namespace YNHM.Database.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using YNHM.Database.Models;
+    using YNHM.Entities.TestResources;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -220,6 +221,48 @@ namespace YNHM.Database.Migrations
                 context.People.AddOrUpdate(p => new { p.FirstName, p.LastName }, person);
             }
             #endregion
+
+            #region QuestionSets
+            QuestionSet houseMateMatching = new QuestionSet()
+            {
+                Name = "Housemate Matching",
+                Questions = new List<Question>()
+                {
+                    //Housework
+                    new Question() { QuestionId = 1, Text = "How much does cleanliness matter in general?" },
+                    new Question() { QuestionId = 2, Text = "How much are you bothered by a sink full with plates?" },
+                    new Question() { QuestionId = 3, Text = "Do you mind the house being dusty?" },
+                    new Question() { QuestionId = 4, Text = "Is cleaning the toilet every day important to you?" },
+                    
+                    //Noise
+                    new Question() { QuestionId = 5, Text = "How much does noise matter in general?" },
+                    new Question() { QuestionId = 6, Text = "Do you listen to music loud?" },
+                    new Question() { QuestionId = 7, Text = "How much do you value quiet in the house" },
+                    new Question() { QuestionId = 8, Text = "How bothered will you be with playing musical instruments?" },
+
+                    //Food
+                    new Question() { QuestionId = 9, Text = "Is a vegan or vegetarian diet important to you?" },
+                    new Question() { QuestionId = 10, Text = "Do you cook every day?" },
+                    new Question() { QuestionId = 11, Text = "How important is keeping your own groceries separate?" },
+                    new Question() { QuestionId = 12, Text = "How important is eating with your housemates?" },
+
+                    //Animals
+                    new Question() { QuestionId = 13, Text = "Do you like animal companions?" },
+                    new Question() { QuestionId = 14, Text = "How much do you mind caring for the housemate's animal companions, if they are absent?" },
+
+                    //Friends
+                    new Question() { QuestionId = 15, Text = "How much do you mind friends coming over?" },
+                    new Question() { QuestionId = 16, Text = "Do you mind friends or significant others staying overnight?" },
+                    new Question() { QuestionId = 17, Text = "How much does hanging out with your housemates matter?" },
+
+                    //Smoking
+                    new Question() { QuestionId = 18, Text = "Do you mind others smoking in the house?" },
+                    new Question() { QuestionId = 19, Text = "Do you mind others smoking weed in the house?" }
+                }
+            };
+            context.QuestionSets.Add(houseMateMatching);
+            #endregion
+
 
             #region users seed
             #endregion

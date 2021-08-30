@@ -90,6 +90,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\YNHM.Entities\YNHM.Entities.csproj">
+      <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
+      <Name>YNHM.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

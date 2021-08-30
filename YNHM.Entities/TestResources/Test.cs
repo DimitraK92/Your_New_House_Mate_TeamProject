@@ -8,9 +8,20 @@ namespace YNHM.Entities.TestResources
 {
     public class Test
     {
+        public Test()
+        {
+
+        }
+        //TODO: VASSILIS: Bind test to person
+        public Test(QuestionSet questionSet)
+        {
+            QuestionSet = questionSet;
+            Name = questionSet.Name;
+            Answers = new List<Answer>();
+        }
+
         public int TestId { get; set; }
         public string Name { get; set; }
-
         public List<Question> Questions { get; set; }
         public List<Answer> Answers { get; set; }
 
@@ -19,6 +30,12 @@ namespace YNHM.Entities.TestResources
         //TODO: VASSILIS: Change this
         public string PersonName { get; set; }
 
+        public virtual int QuestionSetId { get; set; }
+        public virtual QuestionSet QuestionSet { get; set; }
+
+
+
+        //Methods
         public void AnswerQuestions(Question question, AnswerType userAnswer, AnswerType importance,AnswerType preferedAnswer)
         {
             Answer a = new Answer(question);
@@ -28,34 +45,6 @@ namespace YNHM.Entities.TestResources
             a.PreferedAnswer = preferedAnswer;
             Answers.Add(a);
         }
-    }
-
-    public class Answer
-    {
-        public Question Question{ get; set; }
-        public Answer(Question question)
-        {
-            Question = question;
-        }
-
-        public AnswerType MyAnswer { get; set; }
-        public AnswerType PreferedAnswer { get; set; }
-        public AnswerType Importance { get; set; }
-
-        public List<AnswerType> AcceptedAnswers { get; set; }
-        public Importance Significance { get; set; }
-    }
-
-    public class Question
-    {
-        public int QuestionId { get; set; }
-        public string Text { get; set; }
-    }
-
-    public class HouseMateMatching
-    {
-        public string Name { get; set; }
-        public List<Question> Questions { get; set; }
     }
 
 }

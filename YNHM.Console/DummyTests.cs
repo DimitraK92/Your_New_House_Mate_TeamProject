@@ -9,7 +9,7 @@ namespace YNHM.Console
 {
     public class DummyTests
     {
-        public static HouseMateMatching HouseMateMatching = new HouseMateMatching()
+        public static QuestionSet HouseMateMatching = new QuestionSet()
         {
             Name = "Housemate matching",
             Questions = new List<Question>()

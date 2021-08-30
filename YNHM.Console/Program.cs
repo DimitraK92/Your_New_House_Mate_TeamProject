@@ -16,7 +16,7 @@ namespace YNHM.Console
             Random rnd = new Random();
             int digit;
             DummyTests dt = new DummyTests();
-            HouseMateMatching houseMateMatching = new HouseMateMatching()
+            QuestionSet houseMateMatching = new QuestionSet()
             {
                 Name = "Housemate Matching",
                 Questions = new List<Question>()
