@@ -20,6 +20,12 @@
                     <li class="">
                         @if (User.IsInRole("Admin") || User.IsInRole("HouseSeeker"))
                         {
+                            @Html.ActionLink("Test", "Index", "Test")
+                        }
+                    </li>
+                    <li class="">
+                        @if (User.IsInRole("Admin") || User.IsInRole("HouseSeeker"))
+                        {
                             @Html.ActionLink("People", "People", "HomePage")
                         }
                     </li>
@@ -30,8 +36,8 @@
                         }
                     </li>
                     @*<li class="">
-                        @Html.Partial("_LoginPartial")
-                    </li>*@
+            @Html.Partial("_LoginPartial")
+        </li>*@
 
                 </ul>
 

@@ -11,8 +11,9 @@ namespace YNHM.WebApp.Controllers
     {
 
         // GET: Test
-        public ActionResult Test()
+        public ActionResult Index()
         {
+
             return View();
         }
     }

@@ -6438,6 +6438,7 @@
     <Content Include="Views\Shared\Update\Dashboard\_MainNavbarDashboard.cshtml" />
     <Content Include="Views\Shared\Update\_LoginRightMenu.cshtml" />
     <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
