@@ -3,26 +3,10 @@ namespace YNHM.Database.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDatabase : DbMigration
+    public partial class CreateDb : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.HouseManagers",
-                c => new
-                    {
-                        HouseManagerId = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        Age = c.Int(nullable: false),
-                        Phone = c.String(),
-                        Email = c.String(),
-                        Facebook = c.String(),
-                        Description = c.String(),
-                        PhotoUrl = c.String(),
-                    })
-                .PrimaryKey(t => t.HouseManagerId);
-            
             CreateTable(
                 "dbo.Houses",
                 c => new
@@ -45,12 +29,9 @@ namespace YNHM.Database.Migrations
                         PetFriendly = c.Boolean(nullable: false),
                         OutdoorSeating = c.Boolean(nullable: false),
                         WheelchairFriendly = c.Boolean(nullable: false),
-                        ManagerId = c.Int(nullable: false),
-                        Manager_HouseManagerId = c.Int(),
+                        OwnerId = c.Int(),
                     })
-                .PrimaryKey(t => t.HouseId)
-                .ForeignKey("dbo.HouseManagers", t => t.Manager_HouseManagerId)
-                .Index(t => t.Manager_HouseManagerId);
+                .PrimaryKey(t => t.HouseId);
             
             CreateTable(
                 "dbo.Photos",
@@ -70,6 +51,7 @@ namespace YNHM.Database.Migrations
                     {
                         HouseSeekerId = c.Int(nullable: false, identity: true),
                         MatchPercent = c.Int(nullable: false),
+                        HouseId = c.Int(),
                         FirstName = c.String(),
                         LastName = c.String(),
                         Age = c.Int(nullable: false),
@@ -224,7 +206,6 @@ namespace YNHM.Database.Migrations
             DropForeignKey("dbo.Answers", "Test_TestId", "dbo.Tests");
             DropForeignKey("dbo.Answers", "Question_QuestionId", "dbo.Questions");
             DropForeignKey("dbo.Photos", "HouseId", "dbo.Houses");
-            DropForeignKey("dbo.Houses", "Manager_HouseManagerId", "dbo.HouseManagers");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -238,7 +219,6 @@ namespace YNHM.Database.Migrations
             DropIndex("dbo.Tests", new[] { "QuestionSetId" });
             DropIndex("dbo.HouseSeekers", new[] { "Test_TestId" });
             DropIndex("dbo.Photos", new[] { "HouseId" });
-            DropIndex("dbo.Houses", new[] { "Manager_HouseManagerId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -251,7 +231,6 @@ namespace YNHM.Database.Migrations
             DropTable("dbo.HouseSeekers");
             DropTable("dbo.Photos");
             DropTable("dbo.Houses");
-            DropTable("dbo.HouseManagers");
         }
     }
 }

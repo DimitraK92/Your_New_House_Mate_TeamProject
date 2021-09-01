@@ -24,9 +24,9 @@ namespace YNHM.Entities.Models
         public bool OutdoorSeating { get; set; }
         public bool WheelchairFriendly { get; set; }
 
+        //Navigation Properties
         public virtual ICollection<Photo> Photos { get; set; }
 
-        public int ManagerId { get; set; }
-        public virtual HouseManager Manager { get; set; }
+        public virtual int? OwnerId { get; set; }
     }
 }

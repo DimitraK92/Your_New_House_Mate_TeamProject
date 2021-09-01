@@ -11,7 +11,7 @@ namespace YNHM.Entities.Models
         public int HouseManagerId { get; set; }
 
         //Navigation properties
-        public virtual ICollection<House> OwnsHouses { get; set; }
+        //public virtual ICollection<House> OwnsHouses { get; set; }
 
 
 

@@ -3,6 +3,7 @@ namespace YNHM.Database.Migrations
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+    using System.Linq;
     using YNHM.Entities.Models;
     using YNHM.Entities.TestResources;
 
@@ -17,18 +18,6 @@ namespace YNHM.Database.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             #region houses seed
-            HouseManager geokthmonas = new HouseManager()
-            {
-                FirstName = "Gianna",
-                LastName = "Mesitria",
-                Age = 36,
-                PhotoUrl = @"~/Models/FakeImages/person1.jpg",
-                Phone = "694 656 6566",
-                Email = @"gianna.mesitria@gmail.com",
-                Facebook = @"https://el-gr.facebook.com/generic-user-name",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            };
-            context.HouseManagers.AddOrUpdate(p => new { p.FirstName, p.LastName }, geokthmonas);
             Random random = new Random();
             string[] addresses = new string[]
             {
@@ -44,7 +33,7 @@ namespace YNHM.Database.Migrations
                 "Agias Zonis 27"
             };
 
-            
+
             foreach (var address in addresses)
             {
                 #region photo seeding
@@ -71,7 +60,6 @@ namespace YNHM.Database.Migrations
                     District = "City Center",
                     MapLocation = "https://goo.gl/maps/2LMwmuBWZW5SvDEe6",
                     Photos = photos,
-                    Manager = geokthmonas,
                     PageViews = 0,
                     //TODO: KOSTAS test view at edge case none present
                     ElevatorInBuilding = random.Next(2) == 0,
@@ -217,6 +205,32 @@ namespace YNHM.Database.Migrations
             }
             #endregion
 
+            #region People and houses
+            int houseIndex = context.Houses.Count() / 2;
+            int seekerIndex = context.HouseSeekers.Count() / 2;
+
+            var houses = context.Houses.ToList();
+            var seekers = context.HouseSeekers.ToList();
+
+            for (int i = 0, j = 0; i < houseIndex; i++, j++)
+            {
+
+                context.Houses.Attach(houses[i]);
+                context.HouseSeekers.Attach(seekers[j]);
+
+                seekers[j].HouseId = houses[i].HouseId;
+                houses[i].OwnerId = seekers[j].HouseSeekerId;
+
+                context.Houses.AddOrUpdate(houses[i]);
+                context.HouseSeekers.AddOrUpdate(seekers[j]);
+                context.Entry(houses[i]).State = System.Data.Entity.EntityState.Modified;
+                context.Entry(seekers[j]).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+
+            #endregion
+
+
             #region QuestionSets
             QuestionSet houseMateMatching = new QuestionSet()
             {
@@ -263,6 +277,6 @@ namespace YNHM.Database.Migrations
             #endregion
             context.SaveChanges();
         }
-                
+
     }
 }

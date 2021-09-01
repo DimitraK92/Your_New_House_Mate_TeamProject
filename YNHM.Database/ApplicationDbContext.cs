@@ -12,7 +12,7 @@ namespace YNHM.Database
         //public DbSet<Person> People { get; set; }
 
         public DbSet<HouseSeeker> HouseSeekers{ get; set; }
-        public DbSet<HouseManager> HouseManagers { get; set; }
+        //public DbSet<HouseManager> HouseManagers { get; set; }
         public DbSet<House> Houses { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Test> Tests { get; set; }

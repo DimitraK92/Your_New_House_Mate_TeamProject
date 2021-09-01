@@ -12,9 +12,12 @@ namespace YNHM.Entities.Models
         public int HouseSeekerId { get; set; }
         public int MatchPercent { get; set; }
 
+
         //
-        //public virtual int TestId { get; set; }
         public virtual Test Test { get; set; }
+
+        public virtual int? HouseId { get; set; }
+
 
     }
 }
