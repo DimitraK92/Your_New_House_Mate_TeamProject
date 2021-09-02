@@ -111,10 +111,13 @@
 
         <div class="py-7 py-md-0 bg-light">
             <div class="container position-relative px-md-0 d-flex justify-content-center">
-                <button class="btn btn-primary">Click here to continue!</button>
+                @using (Html.BeginForm("NewTest", "Test", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Click here to continue!</button>
+                }
             </div>
         </div>
 
     </div>
 </section>
-

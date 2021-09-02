@@ -19,7 +19,7 @@
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/mainStyle")
         }
-        else if (routeValues.ContainsValue("Houses")||routeValues.ContainsValue("People"))
+        else if (routeValues.ContainsValue("Houses")||routeValues.ContainsValue("People")|| routeValues.ContainsValue("TakeTest"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/listingStyle");
         }
@@ -108,8 +108,8 @@
         {
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/houseScripts")
 
-        }        
-        else if (routeValues.ContainsValue("People"))
+        }
+        else if (routeValues.ContainsValue("People")|| routeValues.ContainsValue("TakeTest"))
         {
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/peopleScripts")
 

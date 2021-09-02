@@ -76,9 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\202109012130592_CreateDb.cs" />
-    <Compile Include="Migrations\202109012130592_CreateDb.Designer.cs">
-      <DependentUpon>202109012130592_CreateDb.cs</DependentUpon>
+    <Compile Include="Migrations\202109020016325_CreateDB.cs" />
+    <Compile Include="Migrations\202109020016325_CreateDB.Designer.cs">
+      <DependentUpon>202109020016325_CreateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mockup\House.cs" />
@@ -97,8 +97,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109012130592_CreateDb.resx">
-      <DependentUpon>202109012130592_CreateDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109020016325_CreateDB.resx">
+      <DependentUpon>202109020016325_CreateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

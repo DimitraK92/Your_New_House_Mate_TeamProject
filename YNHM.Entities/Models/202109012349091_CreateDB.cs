@@ -3,7 +3,7 @@ namespace YNHM.Database.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDb : DbMigration
+    public partial class CreateDB : DbMigration
     {
         public override void Up()
         {

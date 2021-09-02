@@ -249,7 +249,6 @@ namespace YNHM.Console
                 {
                     Test myTest = new Test()
                     {
-                        PersonName = $"Person {i}",
                         Answers = AnswersList[j],
                         Questions = HouseMateMatching.Questions
                     };

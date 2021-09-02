@@ -59,23 +59,20 @@ namespace YNHM.Console
             Test myTest = new Test()
             {
                 Name = houseMateMatching.Name,
-                Questions = houseMateMatching.Questions,
-                PersonName = $"Vassilis",
+                Questions = houseMateMatching.Questions,                
                 Answers = dt.BigTestAnswers[0]
             };
             Test yourTest = new Test()
             {
                 Name = houseMateMatching.Name,
                 Questions = houseMateMatching.Questions,
-                PersonName = $"Tasos",
                 Answers = dt.BigTestAnswers[1]
             };
             TestComparison tc = new TestComparison();
             int result = tc.CalculateMatchPercentageWithAcceptedAnswers(myTest, yourTest);
             //int result2 = tc.CalculateMatchPercentage(myTest, yourTest);
 
-            System.Console.WriteLine($"Results for {myTest.PersonName} vs {yourTest.PersonName}:\n" +
-                                     $"Accepted Answers:\t\t{result}\n" +
+            System.Console.WriteLine($"Accepted Answers:\t\t{result}\n" +
                                      $"Point system    :\t\t{0}");
             #endregion
 
@@ -92,7 +89,6 @@ namespace YNHM.Console
                     {
                         Name = houseMateMatching.Name,
                         Questions = houseMateMatching.Questions,
-                        PersonName = $"Person {i}",
                         Answers = new List<Answer>()
                     };
 
@@ -294,7 +290,6 @@ namespace YNHM.Console
 
         private static void PrintResults(Test test)
         {
-            System.Console.WriteLine(test.PersonName);
             foreach (var answer in test.Answers)
             {
                 System.Console.WriteLine($"{answer.Question.QuestionId} {answer.Question.Text}\n" +

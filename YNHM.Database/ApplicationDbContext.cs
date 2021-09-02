@@ -17,6 +17,7 @@ namespace YNHM.Database
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<QuestionSet> QuestionSets { get; set; }
+        public DbSet<Question> Questions { get; set; }
 
         public ApplicationDbContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HouseMate;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False", throwIfV1Schema: false)
         {

@@ -26,12 +26,11 @@ namespace YNHM.Entities.TestResources
         public List<Answer> Answers { get; set; }
 
         //Navigation properties
-        //public virtual int PersonId { get; set; }
+        public virtual int PersonId { get; set; }
         //TODO: VASSILIS: Change this
-        public string PersonName { get; set; }
-
         public virtual int QuestionSetId { get; set; }
         public virtual QuestionSet QuestionSet { get; set; }
+
 
 
 
