@@ -47,7 +47,7 @@ namespace YNHM.RepositoryServices
         public void Edit(HouseSeeker person, IEnumerable<int?> SelectedHousesIds)
         {
             Attach(person);
-            person.OwnsHouses.Clear();
+            //person.OwnsHouses.Clear();
             db.SaveChanges();
 
             if (!(SelectedHousesIds is null))
@@ -57,7 +57,7 @@ namespace YNHM.RepositoryServices
                     House house = db.Houses.Find(id);
                     if (house != null)
                     {
-                        person.OwnsHouses.Add(house);
+                        //person.OwnsHouses.Add(house);
                     }
                 }
             }

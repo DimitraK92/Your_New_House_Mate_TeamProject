@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using YNHM.Entities.Models;
 
 namespace YNHM.Database.Models.ViewModels
 {
@@ -22,6 +23,6 @@ namespace YNHM.Database.Models.ViewModels
             }
         }
 
-        public Person Person { get; set; }
+        public HouseSeeker HouseSeeker { get; set; }
     }
 }

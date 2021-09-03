@@ -3,47 +3,37 @@ namespace YNHM.Database.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDB : DbMigration
+    public partial class CreateDb : DbMigration
     {
         public override void Up()
         {
             CreateTable(
                 "dbo.Houses",
                 c => new
-                    {
-                        HouseId = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Address = c.String(),
-                        PostalCode = c.String(),
-                        PageViews = c.Int(nullable: false),
-                        Area = c.Int(nullable: false),
-                        Floor = c.Int(nullable: false),
-                        Bedrooms = c.Int(nullable: false),
-                        Rent = c.Int(nullable: false),
-                        District = c.String(),
-                        MapLocation = c.String(),
-                        ElevatorInBuilding = c.Boolean(nullable: false),
-                        FreeWiFi = c.Boolean(nullable: false),
-                        Parking = c.Boolean(nullable: false),
-                        AirCondition = c.Boolean(nullable: false),
-                        PetFriendly = c.Boolean(nullable: false),
-                        OutdoorSeating = c.Boolean(nullable: false),
-                        WheelchairFriendly = c.Boolean(nullable: false),
-                        OwnerId = c.Int(),
-                    })
-                .PrimaryKey(t => t.HouseId);
-            
-            CreateTable(
-                "dbo.Photos",
-                c => new
-                    {
-                        PhotoId = c.Int(nullable: false, identity: true),
-                        PhotoUrl = c.String(),
-                        HouseId = c.Int(),
-                    })
-                .PrimaryKey(t => t.PhotoId)
-                .ForeignKey("dbo.Houses", t => t.HouseId)
-                .Index(t => t.HouseId);
+                {
+                    HouseSeekerId = c.Int(nullable: false),
+                    HouseId = c.Int(nullable: false,identity:true),
+                    Title = c.String(),
+                    Address = c.String(),
+                    PostalCode = c.String(),
+                    PageViews = c.Int(nullable: false),
+                    Area = c.Int(nullable: false),
+                    Floor = c.Int(nullable: false),
+                    Bedrooms = c.Int(nullable: false),
+                    Rent = c.Int(nullable: false),
+                    District = c.String(),
+                    MapLocation = c.String(),
+                    ElevatorInBuilding = c.Boolean(nullable: false),
+                    FreeWiFi = c.Boolean(nullable: false),
+                    Parking = c.Boolean(nullable: false),
+                    AirCondition = c.Boolean(nullable: false),
+                    PetFriendly = c.Boolean(nullable: false),
+                    OutdoorSeating = c.Boolean(nullable: false),
+                    WheelchairFriendly = c.Boolean(nullable: false),
+                })
+                .PrimaryKey(t => t.HouseId)
+                .ForeignKey("dbo.HouseSeekers", t => t.HouseSeekerId)
+                .Index(t => t.HouseSeekerId);
             
             CreateTable(
                 "dbo.HouseSeekers",
@@ -51,6 +41,7 @@ namespace YNHM.Database.Migrations
                     {
                         HouseSeekerId = c.Int(nullable: false, identity: true),
                         MatchPercent = c.Int(nullable: false),
+                        TestId = c.Int(),
                         HouseId = c.Int(),
                         FirstName = c.String(),
                         LastName = c.String(),
@@ -60,23 +51,22 @@ namespace YNHM.Database.Migrations
                         Facebook = c.String(),
                         Description = c.String(),
                         PhotoUrl = c.String(),
-                        Test_TestId = c.Int(),
                     })
-                .PrimaryKey(t => t.HouseSeekerId)
-                .ForeignKey("dbo.Tests", t => t.Test_TestId)
-                .Index(t => t.Test_TestId);
+                .PrimaryKey(t => t.HouseSeekerId);
             
             CreateTable(
                 "dbo.Tests",
                 c => new
                     {
-                        TestId = c.Int(nullable: false, identity: true),
+                        HouseSeekerId = c.Int(nullable: false),
+                        TestId = c.Int(nullable: false,identity:true),
                         Name = c.String(),
-                        PersonName = c.String(),
                         QuestionSetId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.TestId)
+                .PrimaryKey(t => t.HouseSeekerId)
+                .ForeignKey("dbo.HouseSeekers", t => t.HouseSeekerId)
                 .ForeignKey("dbo.QuestionSets", t => t.QuestionSetId, cascadeDelete: true)
+                .Index(t => t.HouseSeekerId)
                 .Index(t => t.QuestionSetId);
             
             CreateTable(
@@ -89,13 +79,13 @@ namespace YNHM.Database.Migrations
                         Importance = c.Int(nullable: false),
                         Significance = c.Int(nullable: false),
                         Question_QuestionId = c.Int(),
-                        Test_TestId = c.Int(),
+                        Test_HouseSeekerId = c.Int(),
                     })
                 .PrimaryKey(t => t.AnswerId)
                 .ForeignKey("dbo.Questions", t => t.Question_QuestionId)
-                .ForeignKey("dbo.Tests", t => t.Test_TestId)
+                .ForeignKey("dbo.Tests", t => t.Test_HouseSeekerId)
                 .Index(t => t.Question_QuestionId)
-                .Index(t => t.Test_TestId);
+                .Index(t => t.Test_HouseSeekerId);
             
             CreateTable(
                 "dbo.Questions",
@@ -103,13 +93,13 @@ namespace YNHM.Database.Migrations
                     {
                         QuestionId = c.Int(nullable: false, identity: true),
                         Text = c.String(),
-                        Test_TestId = c.Int(),
+                        Test_HouseSeekerId = c.Int(),
                         QuestionSet_QuestionSetId = c.Int(),
                     })
                 .PrimaryKey(t => t.QuestionId)
-                .ForeignKey("dbo.Tests", t => t.Test_TestId)
+                .ForeignKey("dbo.Tests", t => t.Test_HouseSeekerId)
                 .ForeignKey("dbo.QuestionSets", t => t.QuestionSet_QuestionSetId)
-                .Index(t => t.Test_TestId)
+                .Index(t => t.Test_HouseSeekerId)
                 .Index(t => t.QuestionSet_QuestionSetId);
             
             CreateTable(
@@ -120,6 +110,19 @@ namespace YNHM.Database.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.QuestionSetId);
+            
+            CreateTable(
+                "dbo.Photos",
+                c => new
+                    {
+                        PhotoId = c.Int(nullable: false, identity: true),
+                        PhotoUrl = c.String(),
+                        HouseId = c.Int(),
+                        House_HouseSeekerId = c.Int(),
+                    })
+                .PrimaryKey(t => t.PhotoId)
+                .ForeignKey("dbo.Houses", t => t.HouseId)
+                .Index(t => t.HouseId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -199,37 +202,39 @@ namespace YNHM.Database.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.HouseSeekers", "Test_TestId", "dbo.Tests");
+            DropForeignKey("dbo.Photos", "House_HouseSeekerId", "dbo.Houses");
+            DropForeignKey("dbo.Houses", "HouseSeekerId", "dbo.HouseSeekers");
             DropForeignKey("dbo.Tests", "QuestionSetId", "dbo.QuestionSets");
             DropForeignKey("dbo.Questions", "QuestionSet_QuestionSetId", "dbo.QuestionSets");
-            DropForeignKey("dbo.Questions", "Test_TestId", "dbo.Tests");
-            DropForeignKey("dbo.Answers", "Test_TestId", "dbo.Tests");
+            DropForeignKey("dbo.Questions", "Test_HouseSeekerId", "dbo.Tests");
+            DropForeignKey("dbo.Tests", "HouseSeekerId", "dbo.HouseSeekers");
+            DropForeignKey("dbo.Answers", "Test_HouseSeekerId", "dbo.Tests");
             DropForeignKey("dbo.Answers", "Question_QuestionId", "dbo.Questions");
-            DropForeignKey("dbo.Photos", "HouseId", "dbo.Houses");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Photos", new[] { "House_HouseSeekerId" });
             DropIndex("dbo.Questions", new[] { "QuestionSet_QuestionSetId" });
-            DropIndex("dbo.Questions", new[] { "Test_TestId" });
-            DropIndex("dbo.Answers", new[] { "Test_TestId" });
+            DropIndex("dbo.Questions", new[] { "Test_HouseSeekerId" });
+            DropIndex("dbo.Answers", new[] { "Test_HouseSeekerId" });
             DropIndex("dbo.Answers", new[] { "Question_QuestionId" });
             DropIndex("dbo.Tests", new[] { "QuestionSetId" });
-            DropIndex("dbo.HouseSeekers", new[] { "Test_TestId" });
-            DropIndex("dbo.Photos", new[] { "HouseId" });
+            DropIndex("dbo.Tests", new[] { "HouseSeekerId" });
+            DropIndex("dbo.Houses", new[] { "HouseSeekerId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Photos");
             DropTable("dbo.QuestionSets");
             DropTable("dbo.Questions");
             DropTable("dbo.Answers");
             DropTable("dbo.Tests");
             DropTable("dbo.HouseSeekers");
-            DropTable("dbo.Photos");
             DropTable("dbo.Houses");
         }
     }

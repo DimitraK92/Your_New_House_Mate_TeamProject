@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YNHM.Entities.Models;
 
 namespace YNHM.Entities.TestResources
 {
@@ -26,13 +29,16 @@ namespace YNHM.Entities.TestResources
         public List<Answer> Answers { get; set; }
 
         //Navigation properties
-        public virtual int PersonId { get; set; }
+        [Key,ForeignKey("HouseSeeker")]
+        public int HouseSeekerId { get; set; }
+        [Required]
+        public virtual HouseSeeker HouseSeeker{ get; set; }
+        
+        
         //TODO: VASSILIS: Change this
-        public virtual int QuestionSetId { get; set; }
+
+        public int QuestionSetId { get; set; }
         public virtual QuestionSet QuestionSet { get; set; }
-
-
-
 
         //Methods
         public void AnswerQuestions(Question question, AnswerType userAnswer, AnswerType importance,AnswerType preferedAnswer)

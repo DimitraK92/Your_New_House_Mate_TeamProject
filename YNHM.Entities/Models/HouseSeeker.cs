@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +15,14 @@ namespace YNHM.Entities.Models
         public int MatchPercent { get; set; }
 
 
-        //
+        //Navigation Properties
+        //[ForeignKey("Test")]
+        public int? TestId { get; set; }
         public virtual Test Test { get; set; }
 
-        public virtual int? HouseId { get; set; }
-
+        //[ForeignKey("House")]
+        //public int? HouseId { get; set; }
+        public virtual House House { get; set; }
 
     }
 }

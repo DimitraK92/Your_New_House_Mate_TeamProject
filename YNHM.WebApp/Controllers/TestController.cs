@@ -82,7 +82,7 @@ namespace YNHM.WebApp.Controllers
 
             QuestionSet questionSet = db.QuestionSets.Find(1);
             Test test = new Test(questionSet);
-            test.PersonId = seeker.HouseSeekerId;
+            //test.HouseSeekerId= seeker.HouseSeekerId;
             seeker.Test = test;
 
             if (!ModelState.IsValid)

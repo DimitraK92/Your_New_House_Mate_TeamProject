@@ -67,10 +67,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
         public void CreateManagerViewBag()
         {
-            var managers = db.People.ToList()
+            var managers = db.HouseSeekers.ToList()
                 .Select(m => new
                 {
-                    PersonId = m.PersonId,
+                    PersonId = m.HouseSeekerId,
                     Fullname = String.Format($"{m.FirstName} {m.LastName}")
                 });
 

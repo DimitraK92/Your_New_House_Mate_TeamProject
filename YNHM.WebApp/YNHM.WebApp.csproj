@@ -6473,8 +6473,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\YNHM.Database\YNHM.Database.csproj">
-      <Project>{6233FFCB-4DEE-4D89-AF64-0777A1436D63}</Project>
+      <Project>{6233ffcb-4dee-4d89-af64-0777a1436d63}</Project>
       <Name>YNHM.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\YNHM.Entities\YNHM.Entities.csproj">

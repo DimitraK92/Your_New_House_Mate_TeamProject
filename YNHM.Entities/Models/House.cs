@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YNHM.Entities.Models
 {
     public class House
     {
+        
         public int HouseId { get; set; }
         public string Title { get; set; }
         public string Address { get; set; }
@@ -28,6 +31,10 @@ namespace YNHM.Entities.Models
         //Navigation Properties
         public virtual ICollection<Photo> Photos { get; set; }
 
-        public virtual int? OwnerId { get; set; }
+
+        [Key,ForeignKey("HouseSeeker")]
+        public int HouseSeekerId { get; set; }
+        [Required]
+        public virtual HouseSeeker HouseSeeker { get; set; }
     }
 }
