@@ -114,27 +114,27 @@
                     <h3 class="font-weight-normal mb-6">Added By </h3>
                     <div class="media mb-7">
                         <div class="media-img">
-                            <img src="@Model.Manager.PhotoUrl" data-src="@Model.Manager.PhotoUrl" class="mr-3 media-object rounded-circle lazyestload" alt="Manager's image'">
+                            <img src="@Model.HouseSeeker.PhotoUrl" data-src="@Model.HouseSeeker.PhotoUrl" class="mr-3 media-object rounded-circle lazyestload" alt="Manager's image'">
                         </div>
                         <div class="media-body">
-                            <h5 class="media-heading">@Model.Manager.FirstName @Model.Manager.LastName</h5>
+                            <h5 class="media-heading">@Model.HouseSeeker.FirstName @Model.HouseSeeker.LastName</h5>
                             <div class="d-flex flex-column flex-lg-row align-items-lg-center">
                                 <ul class="list-inline d-flex flex-column flex-lg-row mb-0">
 
                                     <li class="list-inline-item">
                                         <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.Manager.Phone</span>
+                                        <span class="ml-2">@Model.HouseSeeker.Phone</span>
                                     </li>
                                     <li class="list-inline-item">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.Manager.Email</span>
+                                        <span class="ml-2">@Model.HouseSeeker.Email</span>
                                     </li>
 
                                 </ul>
 
                                 <ul class="list-inline list-inline-icon ml-lg-auto">
                                     <li class="list-inline-item">
-                                        <a class="mr-2" href="@Model.Manager.Facebook" target="_blank">
+                                        <a class="mr-2" href="@Model.HouseSeeker.Facebook" target="_blank">
                                             <i class="fab fa-facebook-square" aria-hidden="true"></i>
                                         </a>
                                     </li>

@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
+using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Controllers
 {
@@ -14,7 +15,8 @@ namespace YNHM.WebApp.Controllers
     {
         //private readonly MockupDb mockupDbContext = new MockupDb();
         private readonly ApplicationDbContext dbContext = new ApplicationDbContext();
-
+        private readonly HouseRepository hr = new HouseRepository();
+        private readonly HouseSeekerRepository hsr = new HouseSeekerRepository();
 
         // GET: HomePage
         public ActionResult Index()
@@ -51,7 +53,7 @@ namespace YNHM.WebApp.Controllers
             Person person = null;
             try
             {
-                person = dbContext.HouseSeekers.FirstOrDefault(x=>x.HouseSeekerId==personId);
+                person = hsr.GetById(personId);
             }
             catch (Exception e)
             {
@@ -92,9 +94,10 @@ namespace YNHM.WebApp.Controllers
             }
             var houseId = id.GetValueOrDefault();
             House house = null;
+            
             try
             {
-                house = dbContext.Houses.FirstOrDefault(h => h.HouseId == houseId);
+                house = hr.GetById(houseId);
             }
             catch (Exception e)
             {

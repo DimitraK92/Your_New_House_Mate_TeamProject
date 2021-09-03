@@ -149,7 +149,7 @@ namespace YNHM.WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                pr.Edit(houseSeeker, null);
+                pr.Edit(houseSeeker);
                 return RedirectToAction("EditUserDetails");
             }
 

@@ -61,7 +61,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                pr.Create(houseSeeker, null);                
+                pr.Create(houseSeeker);                
                 return RedirectToAction("Index");
             }
 
@@ -92,7 +92,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                pr.Edit(houseSeeker, null);
+                pr.Edit(houseSeeker);
                 return RedirectToAction("Index");
             }
             return View(houseSeeker);

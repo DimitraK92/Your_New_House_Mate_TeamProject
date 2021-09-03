@@ -52,7 +52,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,PersonId")] House house)
+        public ActionResult Create([Bind(Include = "HouseId,Title,Address,PostalCode,PageViews,Area,Floor,Bedrooms,Rent,District,MapLocation,ElevatorInBuilding,FreeWiFi,Parking,AirCondition,PetFriendly,OutdoorSeating,WheelchairFriendly,HouseSeekerId")] House house)
         {
             if (ModelState.IsValid)
             {

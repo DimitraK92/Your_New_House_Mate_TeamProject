@@ -79,12 +79,12 @@
                                                 @Html.DisplayFor(modelItem => item.District)
                                             </td>
                                             <td>
-                                                @String.Format($"{Html.DisplayFor(modelItem => item.Person.FirstName)} {Html.DisplayFor(modelItem => item.Person.LastName)}")
+                                                @String.Format($"{Html.DisplayFor(modelItem => item.HouseSeeker.FirstName)} {Html.DisplayFor(modelItem => item.HouseSeeker.LastName)}")
                                             </td>
                                             <td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.HouseId }) |
-                                                @Html.ActionLink("Details", "Details", new { id = item.HouseId }) |
-                                                @Html.ActionLink("Delete", "Delete", new { id = item.HouseId })
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.HouseSeekerId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.HouseSeekerId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.HouseSeekerId })
                                             </td>
                                         </tr>
                                     }

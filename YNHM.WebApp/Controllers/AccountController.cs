@@ -209,7 +209,7 @@ namespace YNHM.WebApp.Controllers
                 if (ModelState.IsValid)
                 {
                     HouseSeekerRepository pr = new HouseSeekerRepository();
-                    pr.Create(houseSeeker, null);
+                    pr.Create(houseSeeker);
 
                     var userId = User.Identity.GetUserId();
                     var user = UserManager.FindById(userId);

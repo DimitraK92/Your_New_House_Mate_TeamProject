@@ -16,6 +16,7 @@ namespace YNHM.RepositoryServices
             return db.Houses.ToList();          
         }
 
+        //House has no id of its own
         public House GetById(int? id)
         {
             return db.Houses.Find(id);
@@ -65,6 +66,7 @@ namespace YNHM.RepositoryServices
             db.SaveChanges();
         }
 
+        //Same as above with id
         public void Delete(int id)
         {
             House house = db.Houses.Find(id);

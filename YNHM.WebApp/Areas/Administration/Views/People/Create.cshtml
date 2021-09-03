@@ -1,6 +1,4 @@
-﻿@model YNHM.Database.Models.ViewModels.PersonCreateViewModel
-
-@model YNHM.Entities.Models.HouseSeeker
+﻿@model YNHM.Entities.Models.HouseSeeker
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
@@ -32,34 +30,34 @@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.FirstName)</label>
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.FirstName)</label>
                                     <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Person.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Person.FirstName, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.LastName)</label>
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.LastName)</label>
                                     <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Person.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Person.LastName, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.Age)</label>
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Age)</label>
                                     <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Person.Age, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Person.Age, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Person.Description)</label>
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Description)</label>
                                     <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Person.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Person.Description, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>
@@ -69,23 +67,23 @@
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Phone):</span></div>
-                                                @Html.EditorFor(model => model.Person.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Person.Phone, "", new { @class = "text-danger" })
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Phone):</span></div>
+                                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Email):</span></div>
-                                                @Html.EditorFor(model => model.Person.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Person.Email, "", new { @class = "text-danger" })
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Email):</span></div>
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Person.Facebook):</span></div>
-                                                @Html.EditorFor(model => model.Person.Facebook, new { htmlAttributes = new { @class = "form-control" } })
-                                                @Html.ValidationMessageFor(model => model.Person.Facebook, "", new { @class = "text-danger" })
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Facebook):</span></div>
+                                                @Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                     </div>
@@ -94,8 +92,8 @@
                                 <div class="form-group row">
                                     @Html.Label("SelectedHousesIds", "Houses", htmlAttributes: new { @class = "control-label col-sm-3" })
                                     <div class="col-sm-9">
-                                        @Html.ListBoxFor(model => model.SelectedHousesIds, null, htmlAttributes: new { @class = "form-control", size = "5" })
-                                        @Html.ValidationMessageFor(model => model.SelectedHousesIds, "", new { @class = "text-danger" })
+                                        @Html.ListBoxFor(model => model.House, null, htmlAttributes: new { @class = "form-control", size = "5" })
+                                        @Html.ValidationMessageFor(model => model.House, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>

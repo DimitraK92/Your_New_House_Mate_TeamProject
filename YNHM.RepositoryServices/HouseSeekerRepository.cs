@@ -14,7 +14,6 @@ namespace YNHM.RepositoryServices
         public List<HouseSeeker> GetAll()
         {
             return db.HouseSeekers.ToList();
-
         }
 
         public HouseSeeker GetById(int? id)
@@ -23,43 +22,27 @@ namespace YNHM.RepositoryServices
         }
 
         //TODO: VASSILIS: Fix owns houses
-        public void Create (HouseSeeker person, IEnumerable<int?> SelectedHousesIds)
+        public void Create (HouseSeeker person)
         {
             Attach(person);
-            //person.OwnsHouses.Clear();
             db.SaveChanges();
 
-           if(!(SelectedHousesIds is null))
+           if(!(person.House is null))
             {
-                foreach(var id in SelectedHousesIds)
-                {
-                    House house = db.Houses.Find(id);
-                    if(house != null)
-                    {
-                        //person.OwnsHouses.Add(house);
-                    }
-                }
+                House house = db.Houses.Find(person.HouseSeekerId);
             }
             db.Entry(person).State = EntityState.Added;
             db.SaveChanges();
         }
 
-        public void Edit(HouseSeeker person, IEnumerable<int?> SelectedHousesIds)
+        public void Edit(HouseSeeker person)
         {
             Attach(person);
-            //person.OwnsHouses.Clear();
             db.SaveChanges();
 
-            if (!(SelectedHousesIds is null))
+            if (!(person.House is null))
             {
-                foreach (var id in SelectedHousesIds)
-                {
-                    House house = db.Houses.Find(id);
-                    if (house != null)
-                    {
-                        //person.OwnsHouses.Add(house);
-                    }
-                }
+                House house = db.Houses.Find(person.HouseSeekerId);
             }
             db.Entry(person).State = EntityState.Modified;
             db.SaveChanges();
@@ -70,7 +53,6 @@ namespace YNHM.RepositoryServices
         public void Delete(int id)
         {
             HouseSeeker person = db.HouseSeekers.Find(id);
-            //person.OwnsHouses.Clear();
 
             db.Entry(person).State = EntityState.Deleted;
             db.SaveChanges();

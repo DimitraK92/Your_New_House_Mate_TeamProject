@@ -35,7 +35,7 @@
                                         <th>@Html.DisplayNameFor(model => model.Age)</th>
                                         <th>@Html.DisplayNameFor(model => model.Phone)</th>
                                         <th>@Html.DisplayNameFor(model => model.Email)</th>
-                                        <th>Houses</th>
+                                        <th>House</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -45,6 +45,7 @@
                                     }
                                     @foreach (var item in Model)
                                     {
+
                                     <tr>
                                         <th scope="row">@String.Format($"{++count}")</th>
                                         <td>
@@ -67,17 +68,15 @@
                                             @Html.DisplayFor(modelItem => item.Email)
                                         </td>
                                         <td>
-                                            <ul class="list-unstyled">
-                                                @foreach (var house in item.OwnsHouses)
-                                                {
-                                                    <li>@house.Title</li>
-                                                }
-                                            </ul>
+                                            @if (item.House != null)
+                                            {
+                                                <a href="@Url.Action($"Details/{item.HouseSeekerId}","Houses")" ><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>
+                                            }
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.HouseSeekerId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.HouseSeekerId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.HouseSeekerId })
                                         </td>
                                     </tr>
                                     }
