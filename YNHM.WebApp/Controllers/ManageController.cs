@@ -15,7 +15,7 @@ namespace YNHM.WebApp.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        HouseSeekerRepository pr = new HouseSeekerRepository();
+        RoomieRepository pr = new RoomieRepository();
 
 
         private ApplicationSignInManager _signInManager;
@@ -111,10 +111,10 @@ namespace YNHM.WebApp.Controllers
         public ActionResult ViewProfile()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            var houseSeeker = pr.GetById(user.HouseSeekerId);
-            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
+            var roomie = pr.GetById(user.RoomieId);
+            PersonDetailsVM vm = new PersonDetailsVM(roomie);
 
-            return RedirectToAction($"PersonalProfile/{user.HouseSeekerId}", "HomePage");
+            return RedirectToAction($"PersonalProfile/{user.RoomieId}", "HomePage");
             //return View(vm);
         }
 
@@ -128,14 +128,9 @@ namespace YNHM.WebApp.Controllers
             var userId = User.Identity.GetUserId();
             var user = UserManager.FindById(userId);
 
-            var personId = user.HouseSeekerId;
+            var roomieId = user.RoomieId;
 
-            var houseSeeker = pr.GetById(personId);
-
-            //if (personId == 0||houseSeeker==null)
-            //{
-            //    return RedirectToAction("ProvideAdditionalInfo", "Account");
-            //}
+            var houseSeeker = pr.GetById(roomieId);
 
             PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
             return View(vm);
@@ -144,18 +139,18 @@ namespace YNHM.WebApp.Controllers
         //POST: /Manage/EditUserDetails
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] HouseSeeker houseSeeker)
+        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] Roomie roomie)
         {
 
             if (ModelState.IsValid)
             {
-                pr.Edit(houseSeeker);
+                pr.Edit(roomie);
                 return RedirectToAction("EditUserDetails");
             }
 
-            pr.Attach(houseSeeker);
+            pr.Attach(roomie);
 
-            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
+            PersonDetailsVM vm = new PersonDetailsVM(roomie);
 
             return View(vm);
         }

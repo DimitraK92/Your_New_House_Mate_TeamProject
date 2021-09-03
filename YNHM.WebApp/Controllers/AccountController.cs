@@ -141,9 +141,6 @@ namespace YNHM.WebApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var roles = new UserAndRoleRepository().AllRoles().Where(r => r.Name != "Admin").ToList();
-            ViewBag.Name = new SelectList(roles, "Name", "Name");
-
             return View();
         }
 
@@ -163,7 +160,7 @@ namespace YNHM.WebApp.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    await UserManager.AddToRoleAsync(user.Id, model.UserRole);
+                    await UserManager.AddToRoleAsync(user.Id, "Roomie");
 
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -174,13 +171,8 @@ namespace YNHM.WebApp.Controllers
 
                     return RedirectToAction("ProvideAdditionalInfo", "Account");
                 }
-
-
                 AddErrors(result);
             }
-            var roles = new UserAndRoleRepository().AllRoles().Where(r => r.Name != "Admin").ToList();
-            ViewBag.Name = new SelectList(roles, "Name", "Name");
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -198,7 +190,7 @@ namespace YNHM.WebApp.Controllers
         // POST: /Account/ProvideAdditionalInfo
         [HttpPost]
         [Authorize]
-        public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Description,Phone,Facebook")] HouseSeeker houseSeeker, string submitButton)
+        public ActionResult ProvideAdditionalInfo([Bind(Include = "FirstName, LastName,Age,Phone,Facebook")] Roomie roomie, string submitButton)
         {
             if (submitButton.Equals("Continue Later"))
             {
@@ -208,12 +200,9 @@ namespace YNHM.WebApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    HouseSeekerRepository pr = new HouseSeekerRepository();
-                    pr.Create(houseSeeker);
-
                     var userId = User.Identity.GetUserId();
                     var user = UserManager.FindById(userId);
-                    user.HouseSeekerId = houseSeeker.HouseSeekerId;
+                    user.RoomieId= roomie.Id;
                     UserManager.Update(user);
                 }
                 AddPersonalDetailsVM vm = new AddPersonalDetailsVM();

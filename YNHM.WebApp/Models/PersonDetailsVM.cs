@@ -9,11 +9,11 @@ namespace YNHM.WebApp.Models
 {
     public class PersonDetailsVM
     {
-        public HouseSeeker HouseSeeker { get; set; }
+        public Roomie Roomie { get; set; }
 
-        public PersonDetailsVM(HouseSeeker houseSeeker)
+        public PersonDetailsVM(Roomie roomie)
         {
-            HouseSeeker = houseSeeker;
+            Roomie = roomie;
         }
 
 
@@ -23,10 +23,7 @@ namespace YNHM.WebApp.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
-
-        public string Description { get; set; }
 
         public string PhotoUrl { get; set; }
 
@@ -39,13 +36,9 @@ namespace YNHM.WebApp.Models
         [Display(Name = "Facebook Profile")]
         public string Facebook { get; set; }
 
-        public string Instagram { get; set; }
-        public string Twitter { get; set; }
-
-
         public string GetUsersName()
         {
-            return $"{HouseSeeker.FirstName} {HouseSeeker.LastName}";
+            return $"{Roomie.FirstName} {Roomie.LastName}";
         }
     }
 }

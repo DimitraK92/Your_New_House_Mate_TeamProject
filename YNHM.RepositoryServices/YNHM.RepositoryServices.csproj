@@ -54,9 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HouseRepository.cs" />
-    <Compile Include="HouseSeekerRepository.cs" />
-    <Compile Include="PhotoRepository.cs" />
+    <Compile Include="RoomieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAndRoleRepository.cs" />
   </ItemGroup>

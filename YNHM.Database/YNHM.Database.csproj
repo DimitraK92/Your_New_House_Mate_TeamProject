@@ -79,17 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\202109030036556_CreateDb.cs" />
-    <Compile Include="Migrations\202109030036556_CreateDb.Designer.cs">
-      <DependentUpon>202109030036556_CreateDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109030050158_Users.cs" />
-    <Compile Include="Migrations\202109030050158_Users.Designer.cs">
-      <DependentUpon>202109030050158_Users.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ViewModels\Administrator\PersonViewModels\PersonCreateViewModel.cs" />
-    <Compile Include="Models\ViewModels\Administrator\PersonViewModels\PersonEditViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,17 +91,6 @@
       <Project>{7eacfd69-720c-4263-8273-92cb10fa0822}</Project>
       <Name>YNHM.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\ViewModels\Administrator\HouseViewModels\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109030036556_CreateDb.resx">
-      <DependentUpon>202109030036556_CreateDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109030050158_Users.resx">
-      <DependentUpon>202109030050158_Users.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

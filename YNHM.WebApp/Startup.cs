@@ -42,7 +42,7 @@ namespace YNHM.WebApp
                 {
                     UserName = "VassilisK",
                     Email = "vassilis.kotsman@gmail.com",
-                    HouseSeekerId = 1
+                    RoomieId = 1
                 };
                 string adminPassword = "Admin123!";
 
@@ -54,24 +54,14 @@ namespace YNHM.WebApp
                 }
             }
 
-            if (!roleManager.RoleExists("HouseSeeker"))
+            if (!roleManager.RoleExists("Roomie"))
             {
-                var houseSeeker = new IdentityRole()
+                var roomie = new IdentityRole()
                 {
-                    Name = "HouseSeeker"
+                    Name = "Roomie"
                 };
 
-                roleManager.Create(houseSeeker);
-            }
-
-            if (!roleManager.RoleExists("HouseManager"))
-            {
-                var houseManager = new IdentityRole()
-                {
-                    Name = "HouseManager"
-                };
-
-                roleManager.Create(houseManager);
+                roleManager.Create(roomie);
             }
 
         }

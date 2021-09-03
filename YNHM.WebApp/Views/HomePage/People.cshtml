@@ -1,8 +1,31 @@
-﻿@model IEnumerable<YNHM.Entities.Models.HouseSeeker>
+﻿@using YNHM.Entities.Models
+@model YNHM.WebApp.Models.PercentageVM
+
 
 @{
     Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
 }
+
+@functions{
+    public int GetPercentage(Roomie current, Roomie compare)
+    {
+        int percentage = 0;
+
+        bool[] currentAnswer = { current.IsSmoking, current.IsVegan, current.IsNoisy, current.LikesCleaning, current.IsCatPerson };
+        bool[] compared = { compare.IsSmoking, compare.IsVegan, compare.IsNoisy, compare.LikesCleaning, compare.IsCatPerson };
+
+        for (int i = 0; i < currentAnswer.Length; i++)
+        {
+            if (currentAnswer[i]==compared[i])
+            {
+                percentage += 20;
+            }
+        }
+        return percentage;
+    }
+}
+
+
 
 
 <!-- ====================================
@@ -14,7 +37,7 @@
             <div class="col-lg-8">
                 <div class="search-result-bar">
                     <p>You matched with <span> 666 </span> people. </p>
-                    
+
                     <div class="ml-md-auto d-flex align-items-center justify-content-between">
                         <div class="select-bg-transparent select-border">
                             <select class="select-location">
@@ -36,23 +59,18 @@
 
                 <div class="row">
 
-                    @foreach (var person in Model)
+                    @foreach (var roomie in Model.Roomies)
                     {
                         <div class="col-md-6">
 
                             <div class="card rounded-0 card-hover-overlay">
 
                                 <div class="position-relative">
-
-                                    @{ 
-                                        //TODO: VASSILIS: Fix image display with person.PhotoUrl
-                                        //TODO: VASSILIS: Fix percentage display
-                                    }
                                     <img class="card-img rounded-0" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Person photo">
                                     <div class="card-img-overlay">
                                         <h3>
-                                            <a href="@Url.Action($"PersonalProfile/{person.HouseSeekerId}")">
-                                                @person.FirstName <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                            <a href="@Url.Action($"PersonalProfile/{roomie.Id}")">
+                                                @roomie.FirstName <i class="fa fa-check-circle" aria-hidden="true"></i>
                                             </a>
                                         </h3>
                                     </div>
@@ -61,7 +79,7 @@
                                 <div class="card-footer bg-transparent">
                                     <ul class="list-unstyled d-flex mb-0 py-2">
                                         <li>
-                                            <h4>@person.MatchPercent <i class="fa fa-percent" aria-hidden="false"></i> match</h4>
+                                            <h4>@GetPercentage(Model.CurrentUser, roomie) <i class="fa fa-percent" aria-hidden="false"></i> match</h4>
                                         </li>
                                     </ul>
                                 </div>
