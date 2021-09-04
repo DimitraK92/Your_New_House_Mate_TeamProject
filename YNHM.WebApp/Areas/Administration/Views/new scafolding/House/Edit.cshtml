@@ -1,8 +1,7 @@
-﻿@model YNHM.Database.Models.House
+﻿@model YNHM.Entities.Models.House
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -15,7 +14,15 @@
         <h4>House</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.HouseId)
+        @Html.HiddenFor(model => model.HouseSeekerId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HouseId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HouseId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HouseId, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -164,14 +171,6 @@
                     @Html.EditorFor(model => model.WheelchairFriendly)
                     @Html.ValidationMessageFor(model => model.WheelchairFriendly, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PersonId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PersonId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -1,0 +1,190 @@
+﻿@model YNHM.Entities.Models.House
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">House Details</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+            <li class="breadcrumb-item">@Html.ActionLink("Edit", "Edit", new { id = Model.HouseId })</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Form Elements -->
+                <div class="col">
+                    <div class="block">
+                        <div class="block-body">
+                            <form class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Title)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Title)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.HouseSeeker)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@String.Format($"{Html.DisplayFor(model => model.HouseSeeker.FirstName)} {Html.DisplayFor(model => model.HouseSeeker.LastName)}")" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.PageViews)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.PageViews)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Location</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Address):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Address)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.PostalCode):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.PostalCode)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.District):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.District)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.MapLocation):</span></div>
+                                                <div>
+                                                    <a class="form-control" href="@Html.DisplayFor(model => model.MapLocation)">@Html.DisplayFor(model => model.MapLocation)</a>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <a class="form-control btn btn-primary" href="@Html.DisplayFor(model => model.MapLocation)">Go!</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Basic Info</label>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Floor):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Floor)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Area):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Area)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Bedrooms):</span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Bedrooms)" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text"> @Html.DisplayNameFor(model => model.Rent): $ </span></div>
+                                                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Rent)" disabled>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Extra services</label>
+                                    <div class="col-sm-9">
+
+                                        @*small problem with checkboxes -
+                                            they work but the template css does not apply on them.
+                                            If you use raw html instead of Html Helper methods in order to have the templateCSS,
+                                            then they do not work properly - that needs to be fixed
+                                            (they are either always checked or always unchecked)*@
+
+
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.ElevatorInBuilding, new { htmlAttributes = new { @class = "checkbox-template" } })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.ElevatorInBuilding)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label>@Html.DisplayNameFor(model => model.ElevatorInBuilding)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.FreeWiFi, new { @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.FreeWiFi)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label>@Html.DisplayNameFor(model => model.FreeWiFi)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.Parking, new { @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.Parking)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label>@Html.DisplayNameFor(model => model.Parking)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.AirCondition, new { @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.AirCondition)}")" disabled="" checked="" class="checkbox-template">*@
+                                            <label>@Html.DisplayNameFor(model => model.AirCondition)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.OutdoorSeating, new { @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.OutdoorSeating)}")"class="checkbox-template">*@
+                                            <label>@Html.DisplayNameFor(model => model.OutdoorSeating)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Accessibility &amp; Inclusion</label>
+                                    <div class="col-sm-9">
+
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.PetFriendly, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom"value="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" disabled="" checked="@String.Format($"{Html.DisplayFor(model => model.PetFriendly)}")" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.PetFriendly)</label>
+                                        </div>
+                                        <div class="i-checks">
+                                            @Html.DisplayFor(model => model.WheelchairFriendly, new { id = "checkboxCustom", type = "checkbox", @class = "checkbox-template" })
+                                            @*<input id="checkboxCustom" type="checkbox" value="@String.Format($"{Html.DisplayFor(model => model.WheelchairFriendly)}")" disabled="" class="checkbox-template">*@
+                                            <label for="checkboxCustom">@Html.DisplayNameFor(model => model.WheelchairFriendly)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 ml-auto">
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.HouseId, @class = "btn btn-secondary" }) |
+                                        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

@@ -13,7 +13,7 @@ namespace YNHM.Database.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         

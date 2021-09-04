@@ -1,16 +1,32 @@
-﻿@model YNHM.Database.Models.House
+﻿@model YNHM.Entities.Models.House
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>House</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseSeeker.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseSeeker.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseId)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -147,17 +163,14 @@
             @Html.DisplayFor(model => model.WheelchairFriendly)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonId)
-        </dd>
-
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HouseId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,17 +1,22 @@
-﻿@model IEnumerable<YNHM.Database.Models.House>
+﻿@model IEnumerable<YNHM.Entities.Models.House>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Houses</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseSeeker.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -63,14 +68,17 @@
         <th>
             @Html.DisplayNameFor(model => model.WheelchairFriendly)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManagerId)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HouseSeeker.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HouseId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -123,12 +131,9 @@
             @Html.DisplayFor(modelItem => item.WheelchairFriendly)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ManagerId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HouseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HouseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HouseId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.HouseSeekerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HouseSeekerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HouseSeekerId })
         </td>
     </tr>
 }

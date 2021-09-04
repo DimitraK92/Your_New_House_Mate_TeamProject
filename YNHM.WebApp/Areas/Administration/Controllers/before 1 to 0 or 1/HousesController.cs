@@ -12,7 +12,7 @@ using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
-    
+
     public class HousesController : Controller
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
@@ -43,7 +43,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: Houses/Create
         public ActionResult Create()
         {
-            CreateManagerViewBag();
+            //CreateManagerViewBag();
             return View();
         }
 
@@ -56,27 +56,27 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                hr.Create(house,null);
+                hr.Create(house, null);
                 //db.Houses.Add(house);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            CreateManagerViewBag();
+            //CreateManagerViewBag();
             return View(house);
         }
 
-        public void CreateManagerViewBag()
-        {
-            var managers = db.HouseSeekers.ToList()
-                .Select(m => new
-                {
-                    PersonId = m.HouseSeekerId,
-                    Fullname = String.Format($"{m.FirstName} {m.LastName}")
-                });
+        //public void CreateManagerViewBag()
+        //{
+        //    var managers = db.HouseSeekers.ToList()
+        //        .Select(m => new
+        //        {
+        //            PersonId = m.HouseSeekerId,
+        //            Fullname = String.Format($"{m.FirstName} {m.LastName}")
+        //        });
 
-            ViewBag.PersonId = new SelectList(managers, "PersonId", "Fullname");
+        //    ViewBag.PersonId = new SelectList(managers, "PersonId", "Fullname");
 
-        }
+        //}
 
         // GET: Houses/Edit/5
         public ActionResult Edit(int? id)
@@ -91,7 +91,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 return HttpNotFound();
             }
 
-            CreateManagerViewBag();
+            //CreateManagerViewBag();
 
             return View(house);
         }
@@ -110,7 +110,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            CreateManagerViewBag();
+            //CreateManagerViewBag();
             return View(house);
         }
 

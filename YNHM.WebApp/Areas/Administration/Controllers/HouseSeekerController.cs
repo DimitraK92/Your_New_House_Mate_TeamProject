@@ -7,35 +7,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
-using YNHM.Database.Models;
-using YNHM.Database.Models.ViewModels;
 using YNHM.Entities.Models;
-using YNHM.RepositoryServices;
-
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
-    public class PeopleController : Controller
+    public class HouseSeekerController : Controller
     {
-        readonly ApplicationDbContext db = new ApplicationDbContext();
-        readonly HouseSeekerRepository pr = new HouseSeekerRepository();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: People
+        // GET: Administration/HouseSeeker
         public ActionResult Index()
         {
-            var people = pr.GetAll();
-
-            return View(people);
+            var houseSeekers = db.HouseSeekers.Include(h => h.House).Include(h => h.Test);
+            return View(houseSeekers.ToList());
         }
 
-        // GET: People/Details/5
+        // GET: Administration/HouseSeeker/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HouseSeeker houseSeeker = pr.GetById(id);
+            HouseSeeker houseSeeker = db.HouseSeekers.Find(id);
             if (houseSeeker == null)
             {
                 return HttpNotFound();
@@ -43,69 +37,76 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             return View(houseSeeker);
         }
 
-        // GET: People/Create
+        // GET: Administration/HouseSeeker/Create
         public ActionResult Create()
         {
-            PersonCreateViewModel vm = new PersonCreateViewModel();
-
-            return View(vm);
+            ViewBag.HouseSeekerId = new SelectList(db.Houses, "HouseSeekerId", "Title");
+            ViewBag.HouseSeekerId = new SelectList(db.Tests, "HouseSeekerId", "Name");
+            return View();
         }
 
-
-        // POST: People/Create
+        // POST: Administration/HouseSeeker/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
+        public ActionResult Create([Bind(Include = "HouseSeekerId,MatchPercent,TestId,FirstName,LastName,Age,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
         {
             if (ModelState.IsValid)
             {
-                pr.Create(houseSeeker);                
+                db.HouseSeekers.Add(houseSeeker);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.HouseSeekerId = new SelectList(db.Houses, "HouseSeekerId", "Title", houseSeeker.HouseSeekerId);
+            ViewBag.HouseSeekerId = new SelectList(db.Tests, "HouseSeekerId", "Name", houseSeeker.HouseSeekerId);
             return View(houseSeeker);
         }
 
-        // GET: People/Edit/5
+        // GET: Administration/HouseSeeker/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person houseSeeker = pr.GetById(id);
+            HouseSeeker houseSeeker = db.HouseSeekers.Find(id);
             if (houseSeeker == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.HouseSeekerId = new SelectList(db.Houses, "HouseSeekerId", "Title", houseSeeker.HouseSeekerId);
+            ViewBag.HouseSeekerId = new SelectList(db.Tests, "HouseSeekerId", "Name", houseSeeker.HouseSeekerId);
             return View(houseSeeker);
         }
 
-        // POST: People/Edit/5
+        // POST: Administration/HouseSeeker/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
+        public ActionResult Edit([Bind(Include = "HouseSeekerId,MatchPercent,TestId,FirstName,LastName,Age,Phone,Email,Facebook,Description,PhotoUrl")] HouseSeeker houseSeeker)
         {
             if (ModelState.IsValid)
             {
-                pr.Edit(houseSeeker);
+                db.Entry(houseSeeker).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.HouseSeekerId = new SelectList(db.Houses, "HouseSeekerId", "Title", houseSeeker.HouseSeekerId);
+            ViewBag.HouseSeekerId = new SelectList(db.Tests, "HouseSeekerId", "Name", houseSeeker.HouseSeekerId);
             return View(houseSeeker);
         }
 
-        // GET: People/Delete/5
+        // GET: Administration/HouseSeeker/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person houseSeeker = pr.GetById(id);
+            HouseSeeker houseSeeker = db.HouseSeekers.Find(id);
             if (houseSeeker == null)
             {
                 return HttpNotFound();
@@ -113,12 +114,14 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             return View(houseSeeker);
         }
 
-        // POST: People/Delete/5
+        // POST: Administration/HouseSeeker/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            pr.Delete(id);
+            HouseSeeker houseSeeker = db.HouseSeekers.Find(id);
+            db.HouseSeekers.Remove(houseSeeker);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

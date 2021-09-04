@@ -12,7 +12,7 @@ namespace YNHM.Entities.Models
     public class HouseSeeker : Person
     {
         public int HouseSeekerId { get; set; }
-        public int MatchPercent { get; set; }
+        public int? MatchPercent { get; set; }
 
 
         //Navigation Properties

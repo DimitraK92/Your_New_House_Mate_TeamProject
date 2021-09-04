@@ -35,5 +35,7 @@ namespace YNHM.Database
             return new ApplicationDbContext();
         }
 
+        
+
     }
 }
