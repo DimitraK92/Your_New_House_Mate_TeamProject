@@ -75,7 +75,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\House.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\RoomiesPair.cs" />
     <Compile Include="Models\Roomie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestResources\Answer.cs" />

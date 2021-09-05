@@ -7,6 +7,8 @@ namespace YNHM.Database
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Roomie> Roomies { get; set; }
+        public DbSet<RoomiesPair> RoomiesPair { get; set; }
+        public DbSet<House> Houses { get; set; }
         public ApplicationDbContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HouseMate;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False", throwIfV1Schema: false)
         {
             this.Configuration.LazyLoadingEnabled = true;

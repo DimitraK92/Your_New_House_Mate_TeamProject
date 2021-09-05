@@ -2,8 +2,10 @@ namespace YNHM.Database.Migrations
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
+    using System.Linq;
     using YNHM.Entities.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
@@ -20,26 +22,29 @@ namespace YNHM.Database.Migrations
 
             try
             {
-                #region people seed
-                List<Roomie> roomies = new List<Roomie>()
-            {
-                new Roomie()
+                #region roomies seed
+                //List<Roomie> roomies = new List<Roomie>()
+                //{
+                Roomie r1 = new Roomie()
                 {
-                    FirstName="Vassilis",
-                    LastName= "Kotsmanidis",
-                    Age=34,
-                    Email="vassilis.kotsman@gmail.com",
-                    Phone="6945666666",
-                    Facebook="https://www.facebook.com/vassilis.geko",
+                    FirstName = "Vassilis",
+                    LastName = "Kotsmanidis",
+                    Age = 34,
+                    Email = "vassilis.kotsman@gmail.com",
+                    Phone = "6945666666",
+                    Facebook = "https://www.facebook.com/vassilis.geko",
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = true,
-                    IsVegan = true
-                },
-                new Roomie(){
-                    FirstName ="Jane",
+                    IsVegan = true,
+
+                };
+
+                Roomie r2 = new Roomie() 
+                {
+                    FirstName = "Jane",
                     LastName = "Doe",
                     Age = 36,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -49,12 +54,18 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = false,
                     IsCatPerson = false,
-                    IsNoisy= false,
+                    IsNoisy = false,
                     LikesCleaning = false,
-                    IsVegan = false
-                },
-                new Roomie(){
-                    FirstName ="Jim",
+                    IsVegan = false,
+
+                    HasHouse = true,
+                    IsMatched = true
+
+                };
+
+                Roomie r3 = new Roomie()
+                {
+                    FirstName = "Jim",
                     LastName = "Do",
                     Age = 10,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -64,12 +75,17 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = false,
-                    IsNoisy= false,
+                    IsNoisy = false,
                     LikesCleaning = false,
-                    IsVegan = false
-                },
-                new Roomie(){
-                    FirstName ="Max",
+                    IsVegan = false,
+
+                    HasHouse = true,
+                    IsMatched = true
+
+                };
+                Roomie r4 = new Roomie()
+                {
+                    FirstName = "Max",
                     LastName = "Dont",
                     Age = 48,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -79,12 +95,15 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= false,
+                    IsNoisy = false,
                     LikesCleaning = false,
-                    IsVegan = false
-                },
-                new Roomie(){
-                    FirstName ="Min",
+                    IsVegan = false,
+
+                    HasHouse = true
+                };
+
+                Roomie r5 = new Roomie() {
+                    FirstName = "Min",
                     LastName = "Donot",
                     Age = 82,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -94,12 +113,15 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = false,
-                    IsVegan = false
-                },
-                new Roomie(){
-                    FirstName ="Jill",
+                    IsVegan = false,
+
+                    IsMatched = true
+                };
+
+                Roomie r6 = new Roomie() {
+                    FirstName = "Jill",
                     LastName = "Cannot",
                     Age = 30,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -109,12 +131,15 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = true,
-                    IsVegan = false
-                },
-                new Roomie(){
-                    FirstName ="Jake",
+                    IsVegan = false,
+
+                    IsMatched = true
+                };
+
+                Roomie r7 = new Roomie() {
+                    FirstName = "Jake",
                     LastName = "Shallnot",
                     Age = 63,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -124,12 +149,15 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = true,
-                    IsVegan = true
-                },
-                new Roomie(){
-                    FirstName ="Bill",
+                    IsVegan = true,
+
+                    HasHouse = true
+                };
+
+                Roomie r8 = new Roomie() {
+                    FirstName = "Bill",
                     LastName = "Shall",
                     Age = 27,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -139,12 +167,13 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = true,
-                    IsNoisy= false,
+                    IsNoisy = false,
                     LikesCleaning = true,
                     IsVegan = true
-                },
-                new Roomie(){
-                    FirstName ="Andy",
+                };
+
+                Roomie r9 = new Roomie() {
+                    FirstName = "Andy",
                     LastName = "Can",
                     Age = 51,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -154,12 +183,13 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = true,
                     IsCatPerson = false,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = false,
-                    IsVegan = true
-                },
-                new Roomie(){
-                    FirstName ="Andria",
+                    IsVegan = true,
+                };
+
+                Roomie r10 = new Roomie() {
+                    FirstName = "Andria",
                     LastName = "Could",
                     Age = 18,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -169,13 +199,15 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = false,
                     IsCatPerson = false,
-                    IsNoisy= true,
+                    IsNoisy = true,
                     LikesCleaning = true,
                     IsVegan = false
 
-                },
-                new Roomie(){
-                    FirstName ="Maria",
+                };
+
+                Roomie r11 = new Roomie()
+                {
+                    FirstName = "Maria",
                     LastName = "Couldnot",
                     Age = 36,
                     PhotoUrl = @"https://thispersondoesnotexist.com/",
@@ -185,27 +217,134 @@ namespace YNHM.Database.Migrations
 
                     IsSmoking = false,
                     IsCatPerson = true,
-                    IsNoisy= false,
+                    IsNoisy = false,
                     LikesCleaning = true,
                     IsVegan = false
-                }
-            };
-                foreach (var roomie in roomies)
-                {
-                    if (roomie.Age%5==0)
-                    {
-                        roomie.IsMatched = true;
-                    }
+                };
+                //};
+                //foreach (var roomie in roomies)
+                //{
+                //    if (roomie.Age%5==0)
+                //    {
+                //        roomie.IsMatched = true;
+                //    }
 
-                    if (roomie.FirstName.Contains("i"))
-                    {
-                        roomie.HasHouse = true;
-                    }
-                    context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, roomie);
-                }
+                //    //if (!roomie.FirstName.Contains("i"))
+                //    //{
+                //    //    roomie.HasHouse = true;
+                //    //}
+
+                //    //context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, roomie);
+                //}
+                #endregion
+                #region houses_seed
+
+                //List<House> houses = new List<House>()
+                //{
+
+                House h1 = new House()
+                {
+                    Address = "Fokionos Negri 45",
+                    District = "Kipseli",
+                    Floor = 2,
+                    Area = 123,
+                    Bedrooms = 2,
+                    Rent = 250,
+                };
+
+                House h2 = new House()
+                {
+                    Address = "Kerkiras 98",
+                    District = "Kipseli",
+                    Floor = 3,
+                    Area = 68,
+                    Bedrooms = 2,
+                    Rent = 200,
+                };
+
+                House h3 = new House()
+                {
+                    Address = "Frinis 56",
+                    District = "Pagkrati",
+                    Floor = 5,
+                    Area = 90,
+                    Bedrooms = 3,
+                    Rent = 350,
+                };
+
+                House h4 = new House()
+                {
+                    Address = "Markou Mpotsari 32",
+                    District = "Koukaki",
+                    Floor = 4,
+                    Area = 73,
+                    Bedrooms = 3,
+                    Rent = 300,                   
+                };
+
+
+                //};
+
+
+                //foreach (var house in houses)
+                //{
+                //    context.Houses.AddOrUpdate(p => new {p.Address, p.District }, house);
+                //}
+
+
                 #endregion
 
+                #region houses-roomies
+                h1.Roomies = new List<Roomie> { r2 };
+                h2.Roomies = new List<Roomie> { r3 };
+                h3.Roomies = new List<Roomie> { r4 };
+                h4.Roomies = new List<Roomie> { r7 };
+
+                r2.House = h1;
+                r3.House = h2;
+                r4.House = h3;
+                r7.House = h4;
+
+                //var roomiesWithHouse = roomies.Where(r => r.HasHouse).ToList();
+                //var housesInDb = houses.ToList();
+                //for (int i = 0; i < housesInDb.Count; i++)
+                //{
+                //    housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
+                //roomiesWithHouse[i].House = housesInDb[i];
+
+
+                //context.Houses.Attach(housesInDb[i]);
+                //context.Entry(housesInDb[i]).Collection("Roomies").Load();
+                //housesInDb[i].Roomies.Clear();
+                //context.SaveChanges();
+
+                //housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
+                //context.Entry(housesInDb[i]).State = EntityState.Modified;
+                //context.SaveChanges();
+
+                //}
+                #endregion
+
+
+
+                #region add to Db
+
+                context.Houses.AddOrUpdate(p => new { p.Address, p.District }, h1,h2,h3,h4);
+                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r5,r6,r8,r9,r10,r11);
+
+                //foreach (var roomie in roomies)
+                //{
+                //    context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, roomie);
+                //}
+                //foreach (var house in houses)
+                //{
+                //    context.Houses.AddOrUpdate(p => new { p.Address, p.District }, house);
+                //}
+
                 context.SaveChanges();
+
+                #endregion
+
             }
             catch (DbEntityValidationException e)
             {

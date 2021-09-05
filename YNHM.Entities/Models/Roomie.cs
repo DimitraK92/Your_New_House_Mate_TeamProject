@@ -42,5 +42,9 @@ namespace YNHM.Entities.Models
             IsMatched = false;
             HasHouse = false;
         }
+        //public House House { get; set; }
+
+        public House House = new House();
+
     }
 }
