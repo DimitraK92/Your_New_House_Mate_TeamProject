@@ -1,0 +1,74 @@
+﻿@using YNHM.WebApp.Models
+
+@model YNHM.WebApp.Models.TakeTestVM
+@{
+    ViewBag.Title = "TakeTest";
+    Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
+}
+
+
+<section class="bg-light py-5 height100vh">
+    <div class="container">
+
+            <div class="col-md-7 col-lg-8">
+                <div class="card">
+                    <div class="card-body p-6">
+                        <h2 class="font-weight-normal mb-4">Take the Test!</h2>
+                    </div>
+                </div>
+                @using (Html.BeginForm("TakeTest", "Manage", FormMethod.Post, new { @class="form-horizontal"}))
+                {
+                    @Html.AntiForgeryToken()
+                    
+                    <div class="card">
+                        <div class="card-body p-6">
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.IsSmoking)
+                                    <div class="select-default bg-white">
+                                        @Html.CheckBoxFor(m => m.IsSmoking)
+                                        @*@Html.DropDownListFor(m => m.IsSmoking, new SelectList(Enum.GetValues(typeof(Choices))), new { @class = "select-location" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.IsVegan)
+                                    <div class="select-default bg-white">
+                                        @Html.CheckBoxFor(m=>m.IsVegan)
+                                        @*@Html.DropDownListFor(m => m.IsVegan, new SelectList(Enum.GetValues(typeof(Choices))), new { @class = "select-location" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.IsNoisy)
+                                    <div class="select-default bg-white">
+                                        @Html.CheckBoxFor(m=>m.IsNoisy)
+                                        @*@Html.DropDownListFor(m => m.IsNoisy, new SelectList(Enum.GetValues(typeof(Choices))), new { @class = "select-location" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.IsCatPerson)
+                                    <div class="select-default bg-white">
+                                        @Html.CheckBoxFor(m=>m.IsCatPerson)
+                                        @*@Html.DropDownListFor(m => m.IsCatPerson, new SelectList(Enum.GetValues(typeof(Choices))), new { @class = "select-location" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 mb-6">
+                                    @Html.LabelFor(m => m.LikesCleaning)
+                                    <div class="select-default bg-white">
+                                        @Html.CheckBoxFor(m=>m.LikesCleaning)
+                                        @*@Html.DropDownListFor(m => m.LikesCleaning, new SelectList(Enum.GetValues(typeof(Choices))), new { @class = "select-location" })*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button class="btn btn-primary text-uppercase" type="submit">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

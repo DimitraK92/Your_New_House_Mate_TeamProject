@@ -51,7 +51,8 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin, HouseSeeker")]
+        //[Authorize(Roles = "Admin, Roomie")]
+        [Authorize(Roles = "Roomie")]
         public ActionResult People()
         {
             Roomie currentRoomie = GetCurrentRoomie();
@@ -123,47 +124,54 @@ namespace YNHM.WebApp.Controllers
             dbContext.Entry(pair).State = EntityState.Added;
             dbContext.SaveChanges();
 
-
-            //--------------BUGS!!!!!!!!!!!--------------
-            //1 ) Houses not passed to roomies, all of them appear to be null
-            //I changed the property House in Roomie entity to an initialized House field 
-            //in order to avoid the null exception and I implemented some crap down here as well
-            //with an if statement for the same reason
-
-            //2) Current User is not correct - it always takes as current user, the roomie with Id = 1
-
-
-
             //Add roomie to House.Roomies & Add house to Roomie.House
 
             var roomieWithHouse = currentRoomie.HasHouse == true ? currentRoomie : match;
             var roomieWithoutHouse = currentRoomie.HasHouse == false ? currentRoomie : match;
 
+            var house = roomieWithHouse.House;
+            house.Roomies.Add(roomieWithoutHouse);
+            dbContext.Entry(house).State = EntityState.Modified;
+            dbContext.SaveChanges();
 
-            if (roomieWithHouse.House == null)
-            {
-                roomieWithHouse.House = new House();
-                roomieWithHouse.House = dbContext.Houses.Find(1);
-                dbContext.Entry(roomieWithHouse).State = EntityState.Modified;
-                dbContext.SaveChanges();
 
-                roomieWithoutHouse.House = new House();
-                roomieWithoutHouse.House = roomieWithHouse.House;
-                dbContext.Entry(roomieWithoutHouse).State = EntityState.Modified;
-                dbContext.SaveChanges();
 
-                var existingHouse = dbContext.Houses.Find(roomieWithHouse.House.Id);
-                dbContext.Houses.Attach(existingHouse);
-                dbContext.Entry(existingHouse).Collection("Roomies").Load();
-                existingHouse.Roomies.Add(roomieWithHouse);
-                existingHouse.Roomies.Add(roomieWithoutHouse);
-                dbContext.Entry(existingHouse).State = EntityState.Modified;
-                dbContext.SaveChanges();
+            #region Null House Patch
+            //if (roomieWithHouse.House == null)
+            //{
+            //    roomieWithHouse.House = new House();
+            //    roomieWithHouse.House = dbContext.Houses.Find(1);
+            //    dbContext.Entry(roomieWithHouse).State = EntityState.Modified;
+            //    dbContext.SaveChanges();
 
-            }
+            //    roomieWithoutHouse.House = new House();
+            //    roomieWithoutHouse.House = roomieWithHouse.House;
+            //    dbContext.Entry(roomieWithoutHouse).State = EntityState.Modified;
+            //    dbContext.SaveChanges();
+
+            //    var existingHouse = dbContext.Houses.Find(roomieWithHouse.House.Id);
+            //    dbContext.Houses.Attach(existingHouse);
+            //    dbContext.Entry(existingHouse).Collection("Roomies").Load();
+            //    existingHouse.Roomies.Add(roomieWithHouse);
+            //    existingHouse.Roomies.Add(roomieWithoutHouse);
+            //    dbContext.Entry(existingHouse).State = EntityState.Modified;
+            //    dbContext.SaveChanges();
+
+            //}
+            #endregion
+
+
 
             return Content("Great, you have been matched. Have fun, if you can, until you die.");
         }
+
+        public ActionResult House(int? houseId)
+        {
+            var house = dbContext.Houses.Find(houseId);
+            return View(house);
+        }
+
+
         public int GetPercentage(Roomie current, Roomie compare)
         {
             int percentage = 0;

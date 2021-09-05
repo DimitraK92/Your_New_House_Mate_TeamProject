@@ -10,22 +10,27 @@ namespace YNHM.Console
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
+            var houses = context.Houses.ToList();
+            var roomies = context.Roomies.ToList();
+
+
+
             var roomiesWithHouse = context.Roomies.Where(r => r.HasHouse).ToList();
             var housesInDb = context.Houses.ToList();
-            for (int i = 0; i < housesInDb.Count; i++)
-            {
-                context.Houses.Attach(housesInDb[i]);
-                context.Entry(housesInDb[i]).Collection("Roomies").Load();                
-                housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
-                context.SaveChanges();
+            //for (int i = 0; i < housesInDb.Count; i++)
+            //{
+            //    context.Houses.Attach(housesInDb[i]);
+            //    context.Entry(housesInDb[i]).Collection("Roomies").Load();                
+            //    housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
+            //    context.SaveChanges();
 
 
-                //roomiesWithHouse[i].House = housesInDb[i];
-            }
-            context.SaveChanges();
+            //    //roomiesWithHouse[i].House = housesInDb[i];
+            //}
+            //context.SaveChanges();
 
-            roomiesWithHouse = context.Roomies.Where(r => r.HasHouse).ToList();
-            housesInDb = context.Houses.ToList();
+            //roomiesWithHouse = context.Roomies.Where(r => r.HasHouse).ToList();
+            //housesInDb = context.Houses.ToList();
 
             #region Algorithm
             //Random rnd = new Random();

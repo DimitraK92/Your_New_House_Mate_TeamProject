@@ -42,9 +42,12 @@ namespace YNHM.Entities.Models
             IsMatched = false;
             HasHouse = false;
         }
-        //public House House { get; set; }
 
-        public House House = new House();
+
+        //Navigation properties
+        public int? HouseId { get; set; }
+        public virtual House House { get; set; }
+
 
     }
 }

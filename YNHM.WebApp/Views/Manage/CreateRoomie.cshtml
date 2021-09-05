@@ -1,7 +1,7 @@
 ﻿@using YNHM.WebApp.Models
 
-@model YNHM.WebApp.Models.PersonDetailsVM
-@{ 
+@model YNHM.WebApp.Models.CreateRoomieVM
+@{
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
@@ -41,30 +41,29 @@
                         <h2 class="font-weight-normal mb-4">Your Profile Information</h2>
                     </div>
                 </div>
-                @using (Html.BeginForm("EditUserDetails", "Manage", FormMethod.Post))
+                @using (Html.BeginForm("CreateRoomie", "Manage", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.HiddenFor(m => m.Roomie.Id);
                     <div class="card">
                         <div class="card-body p-6">
                             <h3 class="font-weight-normal mb-4">About You</h3>
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.FirstName)
-                                    @Html.TextBoxFor(m => m.Roomie.FirstName, new { @class = "form-control", id = "firstNameProfile", placeholder = "First Name" })
+                                    @Html.LabelFor(m => m.FirstName)
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", id = "firstNameProfile", placeholder = "First Name" })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.LastName)
-                                    @Html.TextBoxFor(m => m.Roomie.LastName, new { @class = "form-control", id = "lastNameProfile", placeholder = "Last Name" })
+                                    @Html.LabelFor(m => m.LastName)
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", id = "lastNameProfile", placeholder = "Last Name" })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.Age)
-                                    @Html.TextBoxFor(m => m.Roomie.Age, new { @class = "form-control", placeholder = "Your Age" })
+                                    @Html.LabelFor(m => m.Age)
+                                    @Html.TextBoxFor(m => m.Age, new { @class = "form-control", placeholder = "Your Age" })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.HasHouse)
-                                    @Html.CheckBoxFor(m=>m.Roomie.HasHouse)
+                                    @Html.LabelFor(m => m.HasHouse)
+                                    @Html.CheckBoxFor(m => m.HasHouse)
                                 </div>
                             </div>
                         </div>
@@ -76,12 +75,12 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.Email)
-                                    @Html.TextBoxFor(m => m.Roomie.Email, new { type = "email", @class = "form-control", placeholder = "Email", })
+                                    @Html.LabelFor(m => m.Email)
+                                    @Html.TextBoxFor(m => m.Email, new { type = "email", @class = "form-control", placeholder = "Email", })
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
-                                    @Html.LabelFor(m => m.Roomie.Phone)
-                                    @Html.TextBoxFor(m => m.Roomie.Phone, new { @class = "form-control", placeholder = "Phone" })
+                                    @Html.LabelFor(m => m.Phone)
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone" })
                                 </div>
                                 <div class="form-group col-md-6">
                                     @Html.LabelFor(m => m.Facebook)
@@ -133,15 +132,15 @@
         </div>
     </div>
 </section>
-    
-    <script>
-        // Date object
-        var today = new Date();
 
-        // Current Date
-        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+<script>
+    // Date object
+    var today = new Date();
 
-        document.getElementById("current_date").innerHTML = date;
-    </script>
+    // Current Date
+    var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+    document.getElementById("current_date").innerHTML = date;
+</script>
 
 

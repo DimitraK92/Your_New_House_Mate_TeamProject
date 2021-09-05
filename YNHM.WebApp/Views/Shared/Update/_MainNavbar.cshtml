@@ -18,29 +18,18 @@
                         <a href="@Url.Action("Index", "HomePage")">Home</a>
                     </li>
                     <li class="">
-                        @if (User.IsInRole("Admin") || User.IsInRole("HouseSeeker"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
                         {
                             @Html.ActionLink("Test", "Index", "Test")
                         }
                     </li>
                     <li class="">
-                        @if (User.IsInRole("Admin") || User.IsInRole("HouseSeeker"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
                         {
                             @Html.ActionLink("People", "People", "HomePage")
                         }
                     </li>
-                    <li class="">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Houses", "Houses", "HomePage")
-                        }
-                    </li>
-                    @*<li class="">
-            @Html.Partial("_LoginPartial")
-        </li>*@
-
                 </ul>
-
             </div>
         </div>
     </nav>

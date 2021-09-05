@@ -239,9 +239,6 @@ namespace YNHM.Database.Migrations
                 #endregion
                 #region houses_seed
 
-                //List<House> houses = new List<House>()
-                //{
-
                 House h1 = new House()
                 {
                     Address = "Fokionos Negri 45",
@@ -251,7 +248,6 @@ namespace YNHM.Database.Migrations
                     Bedrooms = 2,
                     Rent = 250,
                 };
-
                 House h2 = new House()
                 {
                     Address = "Kerkiras 98",
@@ -261,7 +257,6 @@ namespace YNHM.Database.Migrations
                     Bedrooms = 2,
                     Rent = 200,
                 };
-
                 House h3 = new House()
                 {
                     Address = "Frinis 56",
@@ -271,7 +266,6 @@ namespace YNHM.Database.Migrations
                     Bedrooms = 3,
                     Rent = 350,
                 };
-
                 House h4 = new House()
                 {
                     Address = "Markou Mpotsari 32",
@@ -281,66 +275,24 @@ namespace YNHM.Database.Migrations
                     Bedrooms = 3,
                     Rent = 300,                   
                 };
-
-
-                //};
-
-
-                //foreach (var house in houses)
-                //{
-                //    context.Houses.AddOrUpdate(p => new {p.Address, p.District }, house);
-                //}
-
-
                 #endregion
 
                 #region houses-roomies
-                h1.Roomies = new List<Roomie> { r2 };
-                h2.Roomies = new List<Roomie> { r3 };
-                h3.Roomies = new List<Roomie> { r4 };
-                h4.Roomies = new List<Roomie> { r7 };
+                h1.Roomies.Add(r2);
+                h2.Roomies.Add(r3);
+                h3.Roomies.Add(r4);
+                h4.Roomies.Add(r7);
 
                 r2.House = h1;
                 r3.House = h2;
                 r4.House = h3;
                 r7.House = h4;
 
-                //var roomiesWithHouse = roomies.Where(r => r.HasHouse).ToList();
-                //var housesInDb = houses.ToList();
-                //for (int i = 0; i < housesInDb.Count; i++)
-                //{
-                //    housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
-                //roomiesWithHouse[i].House = housesInDb[i];
-
-
-                //context.Houses.Attach(housesInDb[i]);
-                //context.Entry(housesInDb[i]).Collection("Roomies").Load();
-                //housesInDb[i].Roomies.Clear();
-                //context.SaveChanges();
-
-                //housesInDb[i].Roomies.Add(roomiesWithHouse[i]);
-                //context.Entry(housesInDb[i]).State = EntityState.Modified;
-                //context.SaveChanges();
-
-                //}
                 #endregion
-
-
-
                 #region add to Db
 
                 context.Houses.AddOrUpdate(p => new { p.Address, p.District }, h1,h2,h3,h4);
                 context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r5,r6,r8,r9,r10,r11);
-
-                //foreach (var roomie in roomies)
-                //{
-                //    context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, roomie);
-                //}
-                //foreach (var house in houses)
-                //{
-                //    context.Houses.AddOrUpdate(p => new { p.Address, p.District }, house);
-                //}
-
                 context.SaveChanges();
 
                 #endregion

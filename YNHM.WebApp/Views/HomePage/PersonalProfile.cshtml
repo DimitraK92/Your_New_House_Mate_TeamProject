@@ -31,12 +31,23 @@
                                 <a href="@Model.Email">@Model.Email</a>
                             </li>
                             <li>
-                                <i class="fa fa-facebook" aria-hidden="false"></i>
-                                <a href="@Model.Facebook">@Model.Facebook</a>
+                                <i class="fab fa-facebook"></i>
+                                <a href="@Model.Facebook"><span> @Model.Facebook</span></a>
+                            </li>
+                            <br>
+                            <li>
+                                @if (Model.House != null)
+                                {
+                                    <i class="fa fa-house-user"></i>
+                                    <a href="@Url.Action("House","HomePage",new { houseId = Model.HouseId})">
+                                        <span> See the house</span>
+                                    </a>
+
+                                }
                             </li>
                         </ul>
                         <a class="btn btn-primary text-capitalize" href="@Url.Action("Match","HomePage",new { matchedUserId = Model.Id})">
-                            <i class="far fa-user" aria-hidden="true"></i> Match with this parentfucker
+                            <i class="far fa-user" aria-hidden="true"></i> MATCH!
                         </a>
                     </div>
                 </div>

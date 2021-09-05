@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using YNHM.Database;
 using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
@@ -16,6 +17,7 @@ namespace YNHM.WebApp.Controllers
     public class ManageController : Controller
     {
         RoomieRepository pr = new RoomieRepository();
+        ApplicationDbContext db = new ApplicationDbContext();
 
 
         private ApplicationSignInManager _signInManager;
@@ -30,7 +32,7 @@ namespace YNHM.WebApp.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
-        
+
         public ApplicationSignInManager SignInManager
         {
             get
@@ -118,9 +120,6 @@ namespace YNHM.WebApp.Controllers
             //return View(vm);
         }
 
-
-
-
         //
         //GET: /Manage/EditUserDetails
         public ActionResult EditUserDetails()
@@ -129,31 +128,112 @@ namespace YNHM.WebApp.Controllers
             var user = UserManager.FindById(userId);
 
             var roomieId = user.RoomieId;
+            var roomie = pr.GetById(roomieId);
 
-            var houseSeeker = pr.GetById(roomieId);
-
-            PersonDetailsVM vm = new PersonDetailsVM(houseSeeker);
+            PersonDetailsVM vm = new PersonDetailsVM(roomie);
             return View(vm);
         }
 
         //POST: /Manage/EditUserDetails
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserDetails([Bind(Include ="PersonId,FirstName,LastName,Age")] Roomie roomie)
+        public ActionResult EditUserDetails([Bind(Include = "Id,FirstName,LastName,Age,Email,Phone,Facebook,HasHouse")] Roomie roomie)
         {
-
+            ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
-                pr.Edit(roomie);
-                return RedirectToAction("EditUserDetails");
+                db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index","Manage");
             }
-
-            pr.Attach(roomie);
-
             PersonDetailsVM vm = new PersonDetailsVM(roomie);
 
             return View(vm);
         }
+
+        public ActionResult CreateRoomie()
+        {
+            CreateRoomieVM vm = new CreateRoomieVM();
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRoomie(CreateRoomieVM cr)
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+
+            if (ModelState.IsValid)
+            {
+                Roomie r = new Roomie()
+                {
+                    FirstName = cr.FirstName,
+                    LastName = cr.LastName,
+                    Age = cr.Age,
+                    HasHouse = cr.HasHouse,
+                    Email = cr.Email,
+                    Phone = cr.Phone,
+                    Facebook = cr.Facebook
+                };
+
+                db.Roomies.Add(r);
+                db.SaveChanges();
+
+                user.RoomieId = r.Id;
+                UserManager.Update(user);
+
+                return RedirectToAction("TakeTest");
+            }
+            return View(cr);
+        }
+
+
+
+
+
+        //GET: /Manage/TakeTest
+        public ActionResult TakeTest()
+        {
+            TakeTestVM vm = new TakeTestVM();
+            return View(vm);
+        }
+
+        //POST: /Manage/TakeTest
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TakeTest(TakeTestVM tkvm)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+
+            var roomieId = user.RoomieId;
+            var roomie = db.Roomies.Find(roomieId);
+
+            if (ModelState.IsValid)
+            {
+                roomie.IsSmoking = tkvm.IsSmoking;
+                roomie.IsVegan = tkvm.IsVegan;
+                roomie.IsNoisy = tkvm.IsNoisy;
+                roomie.IsCatPerson = tkvm.IsCatPerson;
+                roomie.LikesCleaning = tkvm.LikesCleaning;
+
+                db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("People", "HomePage");
+            }
+            TakeTestVM vm = new TakeTestVM();
+            return View(vm);
+        }
+
+
+
+
+
+
 
 
 

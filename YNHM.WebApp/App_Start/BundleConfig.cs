@@ -16,7 +16,13 @@ namespace YNHM.WebApp
             bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/basicScripts").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/jquery/jquery-3.4.1.min.js",
                 "~/Templates/Listty/StaticHTML/assets/plugins/bootstrap/js/bootstrap.bundle.js",
-                "~/Templates/Listty/StaticHTML/assets/plugins/menuzord/js/menuzord.js"));
+                "~/Templates/Listty/StaticHTML/assets/plugins/menuzord/js/menuzord.js",
+                "~/Templates/Listty/StaticHTML/assets/plugins/selectric/jquery.selectric.min.js"));
+
+            //Selectric
+            bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/selectric").Include(
+                "~/Templates/Listty/StaticHTML/assets/plugins/selectric/jquery.selectric.min.js"
+            ));
 
             //Scroll and lazyestload
             bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad").Include(
@@ -97,11 +103,14 @@ namespace YNHM.WebApp
                 "~/Templates/Listty/StaticHTML/assets/plugins/fontawesome-5.15.2/css/all.min.css",
                 "~/Templates/Listty/StaticHTML/assets/plugins/fontawesome-5.15.2/css/fontawesome.min.css",
                 "~/Templates/Listty/StaticHTML/assets/plugins/listtyicons/style.css",
-                "~/Templates/Listty/StaticHTML/assets/plugins/menuzord/css/menuzord.css"));
+                "~/Templates/Listty/StaticHTML/assets/plugins/menuzord/css/menuzord.css",
+                "~/Templates/Listty/StaticHTML/assets/plugins/selectric/selectric.css"));
 
             bundles.Add(new Bundle("~/Templates/Listty/StaticHTML/assets/styleAndColor").Include(
-                "~/Templates/Listty/StaticHTML/assets/css/color4.css"
-                ));
+                "~/Templates/Listty/StaticHTML/assets/css/color4.css"));
+
+            bundles.Add(new Bundle("~/Templates/Listty/StaticHTML/assets/selectric").Include(
+                "~/Templates/Listty/StaticHTML/assets/plugins/selectric/selectric.css"));
 
 
             //Index

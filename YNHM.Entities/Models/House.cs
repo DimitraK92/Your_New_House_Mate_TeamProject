@@ -16,6 +16,14 @@ namespace YNHM.Entities.Models
         public int Area { get; set; }
         public int Bedrooms { get; set; }
         public int Rent { get; set; }
+
+        public House()
+        {
+            Roomies = new List<Roomie>();
+        }
+
+
+        //Navigation properties
         public virtual ICollection<Roomie> Roomies { get; set; }
     }
 }

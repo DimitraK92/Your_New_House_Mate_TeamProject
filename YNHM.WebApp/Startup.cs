@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using System.Linq;
 using YNHM.Database;
 using YNHM.Entities.Models;
 
@@ -38,11 +39,16 @@ namespace YNHM.WebApp
                 roleManager.Create(admin);
 
                 //TODO: VASSILIS: Change admin pass and add more admins
+                int roomieId = 1;
+                if (db.Roomies.Count()!=0)
+                {
+                    roomieId = db.Roomies.Where(r => r.LastName == "Kotsmanidis").Select(r => r.Id).FirstOrDefault();
+                }
                 var userAdmin = new ApplicationUser()
                 {
                     UserName = "VassilisK",
                     Email = "vassilis.kotsman@gmail.com",
-                    RoomieId = 1
+                    RoomieId = roomieId
                 };
                 string adminPassword = "Admin123!";
 
