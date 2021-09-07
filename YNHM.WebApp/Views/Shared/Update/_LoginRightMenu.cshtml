@@ -69,13 +69,26 @@
                     <span class="small">Role</span>
                 </span>
             </a>
+            @Url.Action()
             <ul class="dropdown-menu">
-                <li>
-                    <a class="d-flex flex-wrap align-items-center" href="@Url.Action("Index", "Manage")">
-                        <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a class="d-flex flex-wrap align-items-center" href="@Url.Action("~/Administration/Views/Administrator/Index","~/Administration/Controllers/Administrator")">
+                            <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                }
+                else if (User.IsInRole("Roomie"))
+                {
+                    <li>
+                        <a class="d-flex flex-wrap align-items-center" href="@Url.Action("Index", "Manage")">
+                            <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                }
                 <li>
                     <a class="d-flex flex-wrap align-items-center" href="@Url.Action("ViewProfile", "Manage")">
                         <i class="fa fa-user mr-2" aria-hidden="true"></i>
@@ -89,7 +102,7 @@
                     </a>
                 </li>
                 <li>
-                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                     {
                         @Html.AntiForgeryToken()
                         <a class="d-flex flex-wrap align-items-center" href="javascript:document.getElementById('logoutForm').submit()">

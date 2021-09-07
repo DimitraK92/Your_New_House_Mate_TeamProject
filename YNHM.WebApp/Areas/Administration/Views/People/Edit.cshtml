@@ -1,4 +1,4 @@
-﻿@model YNHM.Entities.Models.HouseSeeker
+﻿@model YNHM.Entities.Models.Roomie
 
 @{
     ViewBag.Title = "Edit";
@@ -28,7 +28,7 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.HouseSeekerId)
+                                @Html.HiddenFor(model => model.Id)
 
 
                                 <div class="form-group row">
@@ -52,14 +52,6 @@
                                     <div class="col-sm-9">
                                         @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="line"></div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Description)</label>
-                                    <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>
@@ -91,10 +83,10 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    @*@Html.Label("SelectedHousesIds", "Houses", htmlAttributes: new { @class = "control-label col-sm-3" })*@
+                                    @Html.LabelFor(model => model.HouseId, "House", htmlAttributes: new { @class = "control-label col-sm-3" })
                                     <div class="col-sm-9">
-                                        @*@Html.ListBox("SelectedHousesIds", null, htmlAttributes: new { @class = "form-control", size = "5" })*@
-                                        @*@Html.ValidationMessage("SelectedHousesIds", "", new { @class = "text-danger" })*@
+                                        @Html.DropDownListFor(model => model.HouseId, (IEnumerable<SelectListItem>)ViewBag.HouseList, "No House", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.HouseId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="line"></div>

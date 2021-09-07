@@ -1,4 +1,4 @@
-﻿@model IEnumerable<YNHM.Entities.Models.HouseSeeker>
+﻿@model IEnumerable<YNHM.Entities.Models.Roomie>
 
 @{
     ViewBag.Title = "Index";
@@ -70,13 +70,14 @@
                                         <td>
                                             @if (item.House != null)
                                             {
-                                                <a href="@Url.Action($"Details/{item.HouseSeekerId}","Houses")" ><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>
+                                                <a href="@Url.Action($"Details/{item.Id}","Houses")">House</a>
+                                                @*<a href="@Url.Action($"Details/{item.Id}","Houses")"><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>*@
                                             }
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.HouseSeekerId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.HouseSeekerId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.HouseSeekerId })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                                         </td>
                                     </tr>
                                     }

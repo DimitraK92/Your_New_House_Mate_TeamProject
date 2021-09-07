@@ -43,11 +43,11 @@ namespace YNHM.RepositoryServices
             db.SaveChanges();
         }
 
-        public void Attach (Roomie roomie)
-        {
-            db.Roomies.Attach(roomie);
-            db.Entry(roomie).Collection("OwnsHouses").Load();
-        }
+        //public void Attach (Roomie roomie)
+        //{
+        //    //db.Roomies.Attach(roomie);
+        //    //db.Entry(roomie).Collection("OwnsHouses").Load();
+        //}
 
         readonly bool disposed = false;
         protected virtual void Dispose (bool disposing)

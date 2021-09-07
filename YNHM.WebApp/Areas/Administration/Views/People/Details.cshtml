@@ -1,4 +1,4 @@
-﻿@model YNHM.Entities.Models.HouseSeeker
+﻿@model YNHM.Entities.Models.Roomie
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
-            <li class="breadcrumb-item">@Html.ActionLink("Edit", "Edit", new { id = Model.HouseSeekerId })</li>
+            <li class="breadcrumb-item">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</li>
         </ul>
     </div>
     <section class="no-padding-top">
@@ -54,13 +54,6 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Description)</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Description)" disabled>
-                                    </div>
-                                </div>
-                                <div class="line"></div>
-                                <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">Contact Info</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
@@ -85,20 +78,23 @@
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Houses</label>
+                                    <label class="col-sm-3 form-control-label">House</label>
                                     <div class="col-sm-9">
-                                        <ul class="list-unstyled">
-                                            @*@foreach (var house in Model.OwnsHouses)
-                                            {
-                                                <li>@house.Title</li>
-                                            }*@
-                                        </ul>
+                                        @if (Model.House != null)
+                                        {
+                                            <a href="@Url.Action($"Details/{Model.Id}","Houses")">House</a>
+                                            @*<a href="@Url.Action($"Details/{item.Id}","Houses")"><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>*@
+                                        }
+                                        else
+                                        {
+                                            <i>This person has no house.</i>
+                                        }
                                     </div>
                                 </div>
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 ml-auto">
-                                        @Html.ActionLink("Edit", "Edit", new { id = Model.HouseSeekerId, @class = "btn btn-secondary" }) |
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id, @class = "btn btn-secondary" }) |
                                         @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
                                     </div>
                                 </div>

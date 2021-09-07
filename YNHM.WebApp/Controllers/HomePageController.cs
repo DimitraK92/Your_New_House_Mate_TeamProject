@@ -135,33 +135,6 @@ namespace YNHM.WebApp.Controllers
             dbContext.SaveChanges();
 
 
-
-            #region Null House Patch
-            //if (roomieWithHouse.House == null)
-            //{
-            //    roomieWithHouse.House = new House();
-            //    roomieWithHouse.House = dbContext.Houses.Find(1);
-            //    dbContext.Entry(roomieWithHouse).State = EntityState.Modified;
-            //    dbContext.SaveChanges();
-
-            //    roomieWithoutHouse.House = new House();
-            //    roomieWithoutHouse.House = roomieWithHouse.House;
-            //    dbContext.Entry(roomieWithoutHouse).State = EntityState.Modified;
-            //    dbContext.SaveChanges();
-
-            //    var existingHouse = dbContext.Houses.Find(roomieWithHouse.House.Id);
-            //    dbContext.Houses.Attach(existingHouse);
-            //    dbContext.Entry(existingHouse).Collection("Roomies").Load();
-            //    existingHouse.Roomies.Add(roomieWithHouse);
-            //    existingHouse.Roomies.Add(roomieWithoutHouse);
-            //    dbContext.Entry(existingHouse).State = EntityState.Modified;
-            //    dbContext.SaveChanges();
-
-            //}
-            #endregion
-
-
-
             return Content("Great, you have been matched. Have fun, if you can, until you die.");
         }
 
