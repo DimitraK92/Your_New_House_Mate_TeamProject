@@ -1,0 +1,62 @@
+﻿@model YNHM.Entities.Models.House
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom"></h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">@Html.ActionLink("Back to List", "Index")</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg">
+                    <div class="block">
+                        <div class="title"><strong class="d-block">Are you sure you want to delete this house?</strong></div>
+                        <div class="block-body">
+                            <form>
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label class="col-sm-3 form-control-label">@Html.DisplayNameFor(model => model.Title)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Title)" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 form-control-label">Manager</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" value="@String.Format($"{Html.DisplayFor(model => model.HouseSeeker.FirstName)} {Html.DisplayFor(model => model.HouseSeeker.LastName)}")" disabled>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                            </form>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions ">
+                                    <input type="submit" value="Delete" class="btn btn-primary" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</div>
+
