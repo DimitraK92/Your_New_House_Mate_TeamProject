@@ -1,7 +1,8 @@
 ﻿@model YNHM.WebApp.Models.RegisterViewModel
 
 @{
-    Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
+    //Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
 @{
@@ -24,9 +25,6 @@
                         account, please,
                         <a href="@Url.Action("Login", "Account")">click here</a>.
                     </p>
-
-
-
 
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "py-7", role = "form" }))
                     {

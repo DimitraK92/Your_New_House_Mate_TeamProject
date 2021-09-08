@@ -51,6 +51,12 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult About()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "Roomie, Admin")]
         public ActionResult People()
         {
