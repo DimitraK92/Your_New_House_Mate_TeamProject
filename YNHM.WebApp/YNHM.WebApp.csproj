@@ -367,11 +367,6 @@
     <Content Include="Areas\Administration\Views\Houses\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Old-houseViews\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Old-houseViews\Edit.cshtml" />
-    <Content Include="Areas\Administration\Views\Old-houseViews\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Old-houseViews\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Old-houseViews\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
