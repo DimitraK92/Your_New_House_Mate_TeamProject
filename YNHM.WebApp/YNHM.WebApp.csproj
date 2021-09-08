@@ -178,11 +178,8 @@
     <Compile Include="Areas\Administration\Controllers\PeopleController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdminLoginVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\0_Reduntant\Administrator\AdministratorController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Controllers\0_Reduntant\Administrator\HousesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\0_Reduntant\Administrator\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -6398,12 +6395,15 @@
     <Content Include="Views\HomePage\House.cshtml" />
     <Content Include="Views\Manage\TakeTest.cshtml" />
     <Content Include="Views\Manage\CreateRoomie.cshtml" />
+    <Content Include="Views\HomePage\Temp.cshtml" />
+    <Content Include="Views\HomePage\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Data\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
+    <Folder Include="Views\About\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
