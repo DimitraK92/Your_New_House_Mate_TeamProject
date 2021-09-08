@@ -94,8 +94,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 db.Entry(house).State = EntityState.Added;
                 db.SaveChanges();
 
-                //db.Houses.Add(house);
-                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -221,7 +219,9 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             House house = db.Houses.Find(id);
-            db.Houses.Remove(house);
+            house.Roomies.Clear();
+
+            db.Entry(house).State = EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

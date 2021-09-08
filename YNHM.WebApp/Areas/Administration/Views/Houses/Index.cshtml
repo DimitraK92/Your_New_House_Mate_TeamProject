@@ -67,14 +67,12 @@
                                                 @Html.DisplayFor(modelItem => item.District)
                                             </td>
                                             <td>
-                                                
                                                 <ul class="list-unstyled">
                                                     @foreach (var roomie in item.Roomies)
                                                     {
                                                     <li>@String.Format($"{roomie.FirstName} {roomie.LastName}")</li>
                                                     }
                                                 </ul>
-                                                @*@String.Format($"{Html.DisplayFor(modelItem => item.HouseSeeker.FirstName)} {Html.DisplayFor(modelItem => item.HouseSeeker.LastName)}")*@
                                             </td>
                                             <td>
                                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
