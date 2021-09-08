@@ -34,20 +34,20 @@
                         <h3 class="h4 font-weight-normal mb-4 mt-7">Account Information</h3>
                         <div class="form-group">
                             @Html.LabelFor(m => m.UserName)
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", autocomplete = "off" })
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email)
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autocomplete = "off" })
                         </div>
                         <div class="row mb-6">
                             <div class="form-group col-md-6 mb-4">
                                 @Html.LabelFor(m => m.Password)
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", autocomplete = "off" })
                             </div>
                             <div class="form-group col-md-6 mb-4">
                                 @Html.LabelFor(m => m.ConfirmPassword)
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", autocomplete = "off" })
                             </div>
                         </div>
                                 <button type="submit" class="btn btn-primary" value="Register"> Create Account </button>

@@ -6393,6 +6393,7 @@
     <Content Include="Views\Manage\CreateRoomie.cshtml" />
     <Content Include="Views\HomePage\Temp.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
+    <Content Include="Views\HomePage\Match.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,6 +16,7 @@ namespace YNHM.WebApp.Controllers
 {
 
     //TODO: VASSILIS Fix active tab on the navbar
+
     public class HomePageController : Controller
     {
         #region UserManager
@@ -46,6 +47,7 @@ namespace YNHM.WebApp.Controllers
         private readonly RoomieRepository hsr = new RoomieRepository();
 
         // GET: HomePage
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -57,7 +59,9 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Roomie, Admin")]
+        //[Authorize(Roles = "Roomie, Admin")]
+        //[Authorize(Roles = "Roomie")]
+        [Authorize(Roles = "Admin, Roomie")]
         public ActionResult People()
         {
             Roomie currentRoomie = GetCurrentRoomie();
@@ -83,7 +87,6 @@ namespace YNHM.WebApp.Controllers
             return View(vm);
         }
 
-        [Authorize]
         public ActionResult PersonalProfile(int? id)
         {
             if (id == null)
@@ -107,7 +110,7 @@ namespace YNHM.WebApp.Controllers
 
             return View(roomie);
         }
-
+        
         public ActionResult Match(int matchedUserId)
         {
             Roomie currentRoomie = GetCurrentRoomie();
@@ -139,8 +142,7 @@ namespace YNHM.WebApp.Controllers
             dbContext.Entry(house).State = EntityState.Modified;
             dbContext.SaveChanges();
 
-
-            return Content("Great, you have been matched. Have fun, if you can, until you die.");
+            return RedirectToAction("Index","HomePage");
         }
 
         public ActionResult House(int? houseId)
