@@ -3,15 +3,7 @@
 <div class="menu-right">
     @if (Request.IsAuthenticated)
     {
-
-
         <div class="notification">
-            <a class="dropdown-toggle" href="javascript:void(0)" role="button" data-toggle="dropdown" data-display="static"
-               aria-haspopup="true" aria-expanded="false">
-                <i class="far fa-bell" aria-hidden="true"></i>
-                <span class="badge">21</span>
-            </a>
-
             <ul class="dropdown-menu">
                 <li>
                     <a href="javascript:void(0)">
@@ -63,21 +55,20 @@
         <div class="avatar">
             <a class="dropdown-toggle" href="javascript:void(0)" role="button" data-toggle="dropdown" aria-haspopup="true"
                data-display="static" aria-expanded="false">
-                <img class="avatar-img lazyestload" data-src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" alt="Image">
+                <img class="avatar-img" data-src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" alt="Image">
                 <span class="avatar-name">
                     @User.Identity.GetUserName()
-                    <span class="small">Role</span>
                 </span>
             </a>
             <ul class="dropdown-menu">
                 @if (User.IsInRole("Admin"))
                 {
-                    <li>
-                        <a class="d-flex flex-wrap align-items-center" href="@Url.Action("~/Administration/Views/Administrator/Index","~/Administration/Controllers/Administrator")">
-                            <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
-                            <span>Admin</span>
-                        </a>
-                    </li>
+                <li>
+                    <a class="d-flex flex-wrap align-items-center" href="@Url.Action("Index","Administrator",new { Area = "Administration"})">
+                        <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
                 }
                 else if (User.IsInRole("Roomie"))
                 {
@@ -114,10 +105,6 @@
             </ul>
 
         </div>
-    }
-    else
-    {
-        <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary"><i class="fa fa-sign-in"></i>Sign In/Sign Up</a>
     }
 </div>
 

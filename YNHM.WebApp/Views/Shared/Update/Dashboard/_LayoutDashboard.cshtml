@@ -6,6 +6,30 @@
     <title>Dashboard</title>
 
     @Styles.Render("~/Templates/Listty/StaticHTML/assets/basicStyle")
+    @Styles.Render("~/Templates/Listty/StaticHTML/assets/mainStyle")
+
+    @{
+
+        //TODO: VASSILIS: Create separate method for styles and scripts or fix bundles
+        var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+        if (routeValues.ContainsValue("Index"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/mainStyle")
+        }
+        else if (routeValues.ContainsValue("Houses") || routeValues.ContainsValue("People") || routeValues.ContainsValue("TakeTest"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/listingStyle");
+        }
+        else if (routeValues.ContainsValue("SingleListing"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/singleListing")
+        }
+        else if (routeValues.ContainsValue("Register"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/signupStyle")
+        }
+    }
+
 
     <!-- GOOGLE FONT --><!-- font-family: 'Mulish', sans-serif; --><!-- font-family: 'Poppins', sans-serif; -->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,17 +52,51 @@
     @Html.Partial("~/Views/Shared/Update/Dashboard/_MainNavbarDashboard.cshtml")
 
     <div class="main-wrapper">
-        @Html.Partial("~/Views/Shared/Update/Dashboard/_NavbarDashboard.cshtml")
+        @*@Html.Partial("~/Views/Shared/Update/Dashboard/_NavbarDashboard.cshtml")*@
 
         @RenderBody()
     </div>
 
     <!--FOOTER-->
-    @Html.Partial("~/Views/Shared/Update/Dashboard/_FooterDashboard.cshtml")
+    @Html.Partial("~/Views/Shared/Update/_FooterL.cshtml")
 
 
     @Scripts.Render("~/Templates/Listty/StaticHTML/assets/basicScripts")
+    @{
+        if (routeValues.ContainsValue("Index"))
+        {
+            @Scripts.Render("~/Templates/Listty/StaticHTML/assets/mainScripts")
+
+        }
+        else if (routeValues.ContainsValue("Houses"))
+        {
+            @Scripts.Render("~/Templates/Listty/StaticHTML/assets/houseScripts")
+
+        }
+        else if (routeValues.ContainsValue("People") || routeValues.ContainsValue("TakeTest"))
+        {
+            @Scripts.Render("~/Templates/Listty/StaticHTML/assets/peopleScripts")
+
+        }
+        else if (routeValues.ContainsValue("SingleListing"))
+        {
+            @Scripts.Render("~/Templates/Listty/StaticHTML/assets/singleListingScripts")
+        }
+        else if (routeValues.ContainsValue("Login") || routeValues.ContainsValue("PersonalProfile"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/loginScripts")
+        }
+        else if (routeValues.ContainsValue("Register"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/signupScripts")
+        }
+        else if (routeValues.ContainsValue("Test"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad")
+        }
+    }
     @Scripts.Render("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad")
+
 
     <script>
         var d = new Date();
