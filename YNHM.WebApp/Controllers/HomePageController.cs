@@ -109,7 +109,7 @@ namespace YNHM.WebApp.Controllers
             PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie);
             return View(vm);
         }
-
+        
         public ActionResult Match(int matchedUserId)
         {
             Roomie currentRoomie = GetCurrentRoomie();
