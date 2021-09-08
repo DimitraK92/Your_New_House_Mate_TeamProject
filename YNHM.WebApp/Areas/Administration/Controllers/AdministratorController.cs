@@ -7,13 +7,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using YNHM.WebApp.Models;
+using YNHM.Database;
+using YNHM.WebApp.Areas.Administration.ViewModels;
 using YNHM.WebApp.Models.CustomValidations;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
 {
     public class AdministratorController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -95,7 +97,13 @@ namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
         [CustomAuthorization(LoginPage = "~/Administration/Administrator/Login", Role ="Admin")]
         public ActionResult Index()
         {
-            return View();
+            DashboardVM vm = new DashboardVM()
+            {
+                Roomies = db.Roomies.ToList(),
+                Houses = db.Houses.ToList(),
+                RoomiesPairs = db.RoomiesPair.ToList()
+            };
+            return View(vm);
         }
 
         //

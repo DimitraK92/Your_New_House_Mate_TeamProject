@@ -242,8 +242,17 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             roomiesPair.RoomieTwoId = roomieTwo.Id;
             roomiesPair.MatchPercentage = homePageController.GetPercentage(roomieOne, roomieTwo);
 
+            var roomieOneInDb = db.Roomies.Find(roomiesPair.RoomieOneId);
+            roomieOneInDb.IsMatched = true;
+            db.Entry(roomieOneInDb).State = EntityState.Modified;
+
+            var roomieTwoInDb = db.Roomies.Find(roomiesPair.RoomieTwoId);
+            roomieTwoInDb.IsMatched = true;
+            db.Entry(roomieTwoInDb).State = EntityState.Modified;
+
             db.Entry(roomiesPair).State = EntityState.Added;
             db.SaveChanges();
+
         }
 
     }
