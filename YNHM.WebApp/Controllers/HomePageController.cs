@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
+using YNHM.Entities.TestResources;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
@@ -63,11 +64,17 @@ namespace YNHM.WebApp.Controllers
         {
             Roomie currentRoomie = GetCurrentRoomie();
 
+            if (currentRoomie.HasTest==false)
+            {
+                ViewBag.Message = "You have not yet taken the test. You have been redirected here instead.";
+                return RedirectToAction("TestInfo", "Test");
+            }
+
             List<Roomie> roomies = new List<Roomie>();
             try
             {
                 roomies = dbContext.Roomies
-                            .Where(r => r.Id != currentRoomie.Id && r.IsMatched == false).ToList()
+                            .Where(r => r.Id != currentRoomie.Id && r.IsMatched == false &&r.HasTest).ToList()
                             .Where(r => r.HasHouse != currentRoomie.HasHouse).ToList();
             }
             catch (Exception e)
@@ -75,16 +82,19 @@ namespace YNHM.WebApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, e.Message);
             }
 
+            var compared = CompareRoomies(currentRoomie,roomies);
+
             PercentageVM vm = new PercentageVM()
             {
                 CurrentUser = currentRoomie,
-                Roomies = roomies
+                Roomies = roomies,
+                Compared = compared
             };
 
             return View(vm);
         }
 
-        public ActionResult PersonalProfile(int? id)
+        public ActionResult PersonalProfile(int? id, int percentage)
         {
             if (id == null)
             {
@@ -106,7 +116,7 @@ namespace YNHM.WebApp.Controllers
             }
 
             var currentRoomie = GetCurrentRoomie();
-            PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie);
+            PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie, percentage);
             return View(vm);
         }
         
@@ -149,6 +159,19 @@ namespace YNHM.WebApp.Controllers
         {
             var house = dbContext.Houses.Find(houseId);
             return View(house);
+        }
+
+        public Dictionary<Roomie, int> CompareRoomies(Roomie current, List<Roomie> others)
+        {
+            Comparison comp = new Comparison();
+            Dictionary<Roomie, int> roomiesPercentages = new Dictionary<Roomie, int>();
+
+            for (int i = 0; i < others.Count; i++)
+            {
+                int percent = comp.CalculateMatchPercentage(current.Test, others[i].Test);
+                roomiesPercentages.Add(others[i], percent);
+            }
+            return roomiesPercentages.OrderByDescending(r=>r.Value).ToDictionary(x=>x.Key,x=>x.Value);
         }
 
 

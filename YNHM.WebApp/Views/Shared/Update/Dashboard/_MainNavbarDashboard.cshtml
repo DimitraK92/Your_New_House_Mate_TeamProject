@@ -18,13 +18,13 @@
                     <a href="@Url.Action("Index", "HomePage")">Home</a>
                 </li>
                 <li class="">
-                    @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
+                    @if (User.Identity.IsAuthenticated)
                     {
                         <a href="@Url.Action("TestInfo","Test")">Test</a>
                     }
                 </li>
                 <li class="">
-                    @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
+                    @if (User.Identity.IsAuthenticated)
                     {
                         @Html.ActionLink("People", "People", "HomePage")
                     }

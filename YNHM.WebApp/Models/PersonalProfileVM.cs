@@ -10,11 +10,13 @@ namespace YNHM.WebApp.Models
     {
         public Roomie CurrentRoomie { get; set; }
         public Roomie ViewedRoomie { get; set; }
-        public PersonalProfileVM(Roomie current, Roomie viewed)
+        public PersonalProfileVM(Roomie current, Roomie viewed, int percentage)
         {
             CurrentRoomie = current;
             ViewedRoomie = viewed;
+            Percentage = percentage;
         }
+        public int Percentage { get; set; }
 
     }
 }

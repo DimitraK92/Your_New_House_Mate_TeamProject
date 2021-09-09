@@ -14,7 +14,7 @@ using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp.Controllers
 {
-    [Authorize(Roles = "Admin, Roomie")]
+    [Authorize]
     public class TestController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
@@ -120,6 +120,8 @@ namespace YNHM.WebApp.Controllers
                     testQuestions[i].Answer = questions[i].Answer;
                 }
 
+                roomie.HasTest = true;
+                db.Entry(roomie).State = EntityState.Modified;
                 db.Entry(test).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("TestDetails", "Test");

@@ -365,6 +365,7 @@ namespace YNHM.Database.Migrations
                         test.Questions.Add(q);
                         context.Questions.AddOrUpdate(que => new { que.Id, que.TestId }, question);
                     }
+                    roomies[i].HasTest = true;
                     context.Entry(roomies[i]).State = EntityState.Modified;
                     context.Tests.AddOrUpdate(t => t.TestId, test);
                     context.SaveChanges();

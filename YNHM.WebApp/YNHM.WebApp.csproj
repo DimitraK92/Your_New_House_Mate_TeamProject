@@ -192,6 +192,7 @@
     <Compile Include="Models\Choices.cs" />
     <Compile Include="Models\CreateRoomieVM.cs" />
     <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
+    <Compile Include="Models\CustomValidations\ExistingTestAuthorization.cs" />
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PercentageVM.cs" />
@@ -6396,11 +6397,9 @@
     <Content Include="Views\HomePage\House.cshtml" />
     <Content Include="Views\Manage\TakeTest.cshtml" />
     <Content Include="Views\Manage\CreateRoomie.cshtml" />
-    <Content Include="Views\HomePage\Temp.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\HomePage\Match.cshtml" />
     <Content Include="Views\Test\TestDetails.cshtml" />
-    <Content Include="Views\HomePage\Temp.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\Manage\_UploadPhoto.cshtml" />
   </ItemGroup>
