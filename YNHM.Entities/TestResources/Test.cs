@@ -11,12 +11,13 @@ namespace YNHM.Entities.TestResources
 {
     public class Test
     {
-        public int Id { get; set; }
+        [ForeignKey("Roomie")]
+        public int TestId { get; set; }
         public string Name { get; set; }
 
         //Navigation properties
-        public virtual IEnumerable<Roomie> Roomies { get; set; }
-        public virtual IEnumerable<Question> Questions { get; set; }
+        public virtual Roomie Roomie { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 
 }
