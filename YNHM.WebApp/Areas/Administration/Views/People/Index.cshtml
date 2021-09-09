@@ -29,7 +29,7 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>@Html.DisplayNameFor(model => model.PhotoUrl)</th>
+                                        @*<th>@Html.DisplayNameFor(model => model.PhotoUrl)</th>*@
                                         <th>@Html.DisplayNameFor(model => model.FirstName)</th>
                                         <th>@Html.DisplayNameFor(model => model.LastName)</th>
                                         <th>@Html.DisplayNameFor(model => model.Age)</th>
@@ -48,10 +48,10 @@
 
                                     <tr>
                                         <th scope="row">@String.Format($"{++count}")</th>
-                                        <td>
+                                        <!--<td>-->
                                             @*TODO: DISPLAY EACH PERSON'S IMAGE WITH item.PhotoUrl*@
-                                            <img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
-                                        </td>
+                                            <!--<img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
+                                        </td>-->
                                         <td>
                                             @Html.DisplayFor(modelItem => item.FirstName)
                                         </td>
@@ -70,7 +70,7 @@
                                         <td>
                                             @if (item.House != null)
                                             {
-                                                <a href="@Url.Action($"Details/{item.Id}","Houses")">House</a>
+                                                <a href="@Url.Action($"Details/{item.HouseId}","Houses")">House Details</a>
                                                 @*<a href="@Url.Action($"Details/{item.Id}","Houses")"><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>*@
                                             }
                                         </td>

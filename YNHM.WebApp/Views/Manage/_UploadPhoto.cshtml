@@ -1,0 +1,31 @@
+﻿@model YNHM.WebApp.Models.UploadPhotoVM
+
+
+<div class="card card-profile">
+    <div class="card-profile-img py-6">
+
+        @if (Model.Image == null)
+        {
+            <img class="rounded-circle" src="~/Content/images/user/image.png" alt="Image" />
+
+        }
+        else 
+        {
+            <img class="rounded-circle" src=@Model.Image alt="Image">
+        }
+
+    </div>
+
+
+    @using (Html.BeginForm("UploadPhoto", "Manage", FormMethod.Post, new { @class = "px-6", enctype = "multipart/form-data", id = "photo-form" }))
+    {
+        @Html.AntiForgeryToken();
+        <div class="custom-file">
+            <label class="custom-file-label" for="customFileLang">Upload a Picture</label>
+            @Html.TextBoxFor(m => m.ImageFile, new { @class = "custom-file-input", type = "file", accept = "image/*"})
+        </div>
+        <button class="btn btn-primary upload-button" type="submit">Save</button>
+
+    }
+
+</div>

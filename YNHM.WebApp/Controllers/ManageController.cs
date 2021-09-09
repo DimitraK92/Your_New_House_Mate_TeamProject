@@ -130,8 +130,42 @@ namespace YNHM.WebApp.Controllers
             var roomieId = user.RoomieId;
             var roomie = pr.GetById(roomieId);
 
+            user.UserPhoto = roomie.PhotoUrl;
+
             PersonDetailsVM vm = new PersonDetailsVM(roomie);
             return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UploadPhoto(UploadPhotoVM uploadPhotoVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("CreateRoomie");
+            }
+
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            if(user == null) { return Redirect("~/Shared/Error"); }
+
+            if(uploadPhotoVM.ImageFile != null)
+            {
+                uploadPhotoVM.ImageFile.SaveAs(Server.MapPath("~/Content/images/user/" + user.Id + ".jpg"));
+              
+                uploadPhotoVM.Image = "~/Content/images/user/" + user.Id + ".jpg";
+            }
+            else
+            {
+                return Redirect("~/Shared/Error");
+            }
+            user.UserPhoto = "/Content/images/user/" + user.Id + ".jpg";
+
+            var result = await UserManager.UpdateAsync(user);
+            if(result.Succeeded) { return RedirectToAction("CreateRoomie");}
+            else { return Redirect("~/Shared/Error"); }
+
+
         }
 
         //POST: /Manage/EditUserDetails
@@ -152,9 +186,13 @@ namespace YNHM.WebApp.Controllers
             return View(vm);
         }
 
-        public ActionResult CreateRoomie()
+        public async Task<ActionResult> CreateRoomie()
         {
-            CreateRoomieVM vm = new CreateRoomieVM();
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            CreateRoomieVM vm = new CreateRoomieVM()
+            {
+                PhotoUrl = user.UserPhoto
+            };
             return View(vm);
         }
 

@@ -1,7 +1,7 @@
 ﻿@using YNHM.WebApp.Models
 
 @model YNHM.WebApp.Models.PersonDetailsVM
-@{ 
+@{
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
@@ -21,17 +21,25 @@
         </nav>
         <div class="row">
             <div class="col-md-5 col-lg-4">
-                <div class="card card-profile">
-                    <div class="card-profile-img py-6">
-                        <img class="rounded-circle" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Image">
-                    </div>
-                    <form class="px-6">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                            <label class="custom-file-label" for="customFileLang">Upload a Picture</label>
+
+                @Html.Partial("_UploadPhoto", new UploadPhotoVM
+           {
+                    Username = String.Format($"{Model.FirstName} {Model.LastName}"),
+                    Image = Model.PhotoUrl
+           })
+
+
+                @*<div class="card card-profile">
+                        <div class="card-profile-img py-6">
+                            <img class="rounded-circle" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Image">
                         </div>
-                    </form>
-                </div>
+                        <form class="px-6">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <label class="custom-file-label" for="customFileLang">Upload a Picture</label>
+                            </div>
+                        </form>
+                    </div>*@
             </div>
 
 
@@ -64,7 +72,7 @@
                                 </div>
                                 <div class="form-group col-md-6 mb-6">
                                     @Html.LabelFor(m => m.Roomie.HasHouse)
-                                    @Html.CheckBoxFor(m=>m.Roomie.HasHouse)
+                                    @Html.CheckBoxFor(m => m.Roomie.HasHouse)
                                 </div>
                             </div>
                         </div>
@@ -133,15 +141,16 @@
         </div>
     </div>
 </section>
-    
-    <script>
-        // Date object
-        var today = new Date();
 
-        // Current Date
-        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
 
-        document.getElementById("current_date").innerHTML = date;
-    </script>
+<script>
+    // Date object
+    var today = new Date();
+
+    // Current Date
+    var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+
+    document.getElementById("current_date").innerHTML = date;
+</script>
 
 

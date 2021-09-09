@@ -52,6 +52,7 @@ namespace YNHM.WebApp.Controllers
         }
 
         [Authorize(Roles = "Admin, Roomie")]
+        //[Authorize(Roles = "Roomie")]
         public ActionResult People()
         {
             Roomie currentRoomie = GetCurrentRoomie();

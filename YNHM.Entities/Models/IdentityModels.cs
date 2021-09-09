@@ -11,6 +11,7 @@ namespace YNHM.Entities.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual int RoomieId { get; set; }
+        public string UserPhoto { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
