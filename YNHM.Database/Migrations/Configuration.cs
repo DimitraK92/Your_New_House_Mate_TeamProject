@@ -7,6 +7,7 @@ namespace YNHM.Database.Migrations
     using System.Data.Entity.Validation;
     using System.Linq;
     using YNHM.Entities.Models;
+    using YNHM.Entities.TestResources;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -42,7 +43,7 @@ namespace YNHM.Database.Migrations
 
                 };
 
-                Roomie r2 = new Roomie() 
+                Roomie r2 = new Roomie()
                 {
                     FirstName = "Jane",
                     LastName = "Doe",
@@ -102,7 +103,8 @@ namespace YNHM.Database.Migrations
                     HasHouse = true
                 };
 
-                Roomie r5 = new Roomie() {
+                Roomie r5 = new Roomie()
+                {
                     FirstName = "Min",
                     LastName = "Donot",
                     Age = 82,
@@ -120,7 +122,8 @@ namespace YNHM.Database.Migrations
                     IsMatched = true
                 };
 
-                Roomie r6 = new Roomie() {
+                Roomie r6 = new Roomie()
+                {
                     FirstName = "Jill",
                     LastName = "Cannot",
                     Age = 30,
@@ -138,7 +141,8 @@ namespace YNHM.Database.Migrations
                     IsMatched = true
                 };
 
-                Roomie r7 = new Roomie() {
+                Roomie r7 = new Roomie()
+                {
                     FirstName = "Jake",
                     LastName = "Shallnot",
                     Age = 63,
@@ -156,7 +160,8 @@ namespace YNHM.Database.Migrations
                     HasHouse = true
                 };
 
-                Roomie r8 = new Roomie() {
+                Roomie r8 = new Roomie()
+                {
                     FirstName = "Bill",
                     LastName = "Shall",
                     Age = 27,
@@ -172,7 +177,8 @@ namespace YNHM.Database.Migrations
                     IsVegan = true
                 };
 
-                Roomie r9 = new Roomie() {
+                Roomie r9 = new Roomie()
+                {
                     FirstName = "Andy",
                     LastName = "Can",
                     Age = 51,
@@ -188,7 +194,8 @@ namespace YNHM.Database.Migrations
                     IsVegan = true,
                 };
 
-                Roomie r10 = new Roomie() {
+                Roomie r10 = new Roomie()
+                {
                     FirstName = "Andria",
                     LastName = "Could",
                     Age = 18,
@@ -237,6 +244,8 @@ namespace YNHM.Database.Migrations
                 //    //context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, roomie);
                 //}
                 #endregion
+
+
                 #region houses_seed
 
                 House h1 = new House()
@@ -273,7 +282,7 @@ namespace YNHM.Database.Migrations
                     Floor = 4,
                     Area = 73,
                     Bedrooms = 3,
-                    Rent = 300,                   
+                    Rent = 300,
                 };
                 #endregion
 
@@ -291,11 +300,79 @@ namespace YNHM.Database.Migrations
                 #endregion
                 #region add to Db
 
-                context.Houses.AddOrUpdate(p => new { p.Address, p.District }, h1,h2,h3,h4);
-                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r5,r6,r8,r9,r10,r11);
+                context.Houses.AddOrUpdate(p => new { p.Address, p.District }, h1, h2, h3, h4);
+                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1, r5, r6, r8, r9, r10, r11);
                 context.SaveChanges();
 
                 #endregion
+
+                #region Tests
+                List<Question> questions = new List<Question>()
+                {
+                    //Housework
+                    new Question() { Text = "Does cleanliness matter in general?" },
+                    new Question() { Text = "Are you bothered by a sink full with plates?" },
+                    new Question() { Text = "Do you mind the house being dusty?" },
+                    new Question() { Text = "Is cleaning the toilet every day important to you?" },
+
+                    //Noise
+                    new Question() { Text = "Does noise matter in general?" },
+                    new Question() { Text = "Do you listen to music loud?" },
+                    new Question() { Text = "Do you value quiet in the house" },
+                    new Question() { Text = "Will you be with playing musical instruments?" },
+
+                    //Food
+                    new Question() { Text = "Is a vegan or vegetarian diet important to you?" },
+                    new Question() { Text = "Do you cook every day?" },
+                    new Question() { Text = "Is keeping your own groceries separate important?" },
+                    new Question() { Text = "Is eating with your housemates important?" },
+
+                    //Animals
+                    new Question() { Text = "Do you like animal companions?" },
+                    new Question() { Text = "Will you mind caring for the housemate's animal companions, if they are absent?" },
+
+                    //Friends
+                    new Question() { Text = "Doo you mind friends coming over?" },
+                    new Question() { Text = "Do you mind friends or significant others staying overnight?" },
+                    new Question() { Text = "Does hanging out with your housemates matter?" },
+
+                    //Smoking
+                    new Question() { Text = "Do you mind others smoking in the house?" },
+                    new Question() { Text = "Do you mind others smoking weed in the house?" }
+            };
+
+                var roomies = context.Roomies.ToList();
+                Random rnd = new Random();
+                for (int i = 0; i < roomies.Count; i++)
+                {
+                    Test test = new Test()
+                    {
+                        Name = $"{roomies[i].FirstName} {roomies[i].LastName}",
+                        Roomie = roomies[i],
+                        Questions = new List<Question>()
+                    };
+
+                    foreach (var question in questions)
+                    {
+                        Question q = new Question();
+                        q.Text = question.Text;
+                        int n = rnd.Next(0, 3);
+                        if (n == 2) q.Answer = "Yes";
+                        else if (n == 1) q.Answer = "Maybe";
+                        if (n == 0) q.Answer = "No";
+
+                        q.Test = test;
+                        test.Questions.Add(q);
+                        context.Questions.AddOrUpdate(que => new { que.Id, que.TestId }, question);
+                    }
+                    context.Entry(roomies[i]).State = EntityState.Modified;
+                    context.Tests.AddOrUpdate(t => t.TestId, test);
+                    context.SaveChanges();
+
+                }
+                context.SaveChanges();
+                #endregion
+
 
             }
             catch (DbEntityValidationException e)

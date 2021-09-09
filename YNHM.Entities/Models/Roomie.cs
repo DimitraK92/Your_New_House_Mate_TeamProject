@@ -49,7 +49,6 @@ namespace YNHM.Entities.Models
         public int? HouseId { get; set; }
         public virtual House House { get; set; }
 
-        public int? TestId { get; set; }
         public virtual Test Test { get; set; }
 
     }
