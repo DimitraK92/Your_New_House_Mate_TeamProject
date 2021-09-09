@@ -94,7 +94,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
 
 
         // GET: Administrator/Index
-        [CustomAuthorization(LoginPage = "~/Administration/Administrator/Login", Role ="Admin")]
         public ActionResult Index()
         {
             DashboardVM vm = new DashboardVM()

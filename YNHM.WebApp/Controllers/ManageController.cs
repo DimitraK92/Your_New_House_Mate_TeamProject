@@ -180,7 +180,7 @@ namespace YNHM.WebApp.Controllers
                 db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("Index","Manage");
+                return RedirectToAction("Index","HomePage");
             }
             PersonDetailsVM vm = new PersonDetailsVM(roomie);
 
@@ -212,7 +212,7 @@ namespace YNHM.WebApp.Controllers
                     LastName = cr.LastName,
                     Age = cr.Age,
                     HasHouse = cr.HasHouse,
-                    Email = cr.Email,
+                    Email = user.Email,
                     Phone = cr.Phone,
                     Facebook = cr.Facebook,
                     PhotoUrl = user.UserPhoto

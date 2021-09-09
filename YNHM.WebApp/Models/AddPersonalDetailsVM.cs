@@ -18,7 +18,6 @@ namespace YNHM.WebApp.Models
         [MaxLength(15, ErrorMessage = "Last name should have up to 15 characters")]
         public string LastName { get; set; }
 
-        public string Description { get; set; }
         public int Age { get; set; }
 
         [Display(Name = "Phone Number")]

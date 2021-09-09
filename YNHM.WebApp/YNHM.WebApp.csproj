@@ -187,12 +187,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddPersonalDetailsVM.cs" />
-    <Compile Include="Models\AdminLoginVM.cs" />
-    <Compile Include="Models\AnswerQuestionsVM.cs" />
-    <Compile Include="Models\Choices.cs" />
     <Compile Include="Models\CreateRoomieVM.cs" />
     <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
-    <Compile Include="Models\CustomValidations\ExistingTestAuthorization.cs" />
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PercentageVM.cs" />
@@ -5918,15 +5914,9 @@
     <Content Include="Templates\BootstrapiousAdmin\vendor\popper.js\umd\popper.js.flow" />
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
-    <Content Include="Views\MyAccount\MyAccount.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\HomePage\People.cshtml" />
     <Content Include="Views\HomePage\Houses.cshtml" />
-    <Content Include="Views\MyAccount\Password.cshtml" />
-    <Content Include="Views\MyAccount\Messages.cshtml" />
-    <Content Include="Views\MyAccount\EditProfile.cshtml" />
-    <Content Include="Views\MyAccount\Profile.cshtml" />
-    <Content Include="Views\MyAccount\Test.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
     <Content Include="Views\HomePage\SingleListing.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
