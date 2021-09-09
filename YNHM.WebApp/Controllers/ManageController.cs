@@ -165,7 +165,6 @@ namespace YNHM.WebApp.Controllers
             if(result.Succeeded) { return RedirectToAction("CreateRoomie");}
             else { return Redirect("~/Shared/Error"); }
 
-
         }
 
         //POST: /Manage/EditUserDetails
