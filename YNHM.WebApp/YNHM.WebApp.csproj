@@ -176,6 +176,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministratorController.cs" />
     <Compile Include="Areas\Administration\Controllers\HousesController.cs" />
     <Compile Include="Areas\Administration\Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdminLoginVM.cs" />
     <Compile Include="Areas\Administration\ViewModels\DashboardVM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddPersonalDetailsVM.cs" />
     <Compile Include="Models\AdminLoginVM.cs" />
+    <Compile Include="Models\AnswerQuestionsVM.cs" />
     <Compile Include="Models\Choices.cs" />
     <Compile Include="Models\CreateRoomieVM.cs" />
     <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
@@ -365,6 +367,7 @@
     <Content Include="Areas\Administration\Views\Houses\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Index.cshtml" />
+    <Content Include="Views\Test\TestInfo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -6386,7 +6389,6 @@
     <Content Include="Views\Shared\Update\Dashboard\_MainNavbarDashboard.cshtml" />
     <Content Include="Views\Shared\Update\_LoginRightMenu.cshtml" />
     <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\TakeTest.cshtml" />
     <Content Include="Views\HomePage\House.cshtml" />
     <Content Include="Views\Manage\TakeTest.cshtml" />
