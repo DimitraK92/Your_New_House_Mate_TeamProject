@@ -108,7 +108,9 @@ namespace YNHM.WebApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(roomie);
+            var currentRoomie = GetCurrentRoomie();
+            PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie);
+            return View(vm);
         }
         
         public ActionResult Match(int matchedUserId)

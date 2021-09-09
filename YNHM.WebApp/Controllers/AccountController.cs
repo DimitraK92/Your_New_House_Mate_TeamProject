@@ -82,6 +82,10 @@ namespace YNHM.WebApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if (User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Index", "Administrator", new { Area = "Administration" });
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

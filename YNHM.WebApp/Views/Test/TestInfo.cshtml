@@ -1,4 +1,4 @@
-﻿
+﻿@model YNHM.Entities.Models.Roomie
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
@@ -9,6 +9,12 @@
 ===================================== -->
 <section class="py-7 py-md-10">
     <div class="container">
+        @if (Model.Test != null)
+        {
+            <div class="row pb-6 pb-md-9">
+                <h5>If you've read all this before and you have taken the test already, press <a href="@Url.Action("TakeTest","Test")">here</a> to retake the test or <a href="@Url.Action("TestDetails","Test")">here</a> to see your answers.</h5>
+            </div>
+        }
         <div class="row pb-6 pb-md-9">
             <div class="col-sm-4 col-xs-12 order-md-1">
                 <div class="text-center text-md-right my-5 my-md-0">

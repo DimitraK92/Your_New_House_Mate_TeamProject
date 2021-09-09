@@ -1,0 +1,37 @@
+﻿@model YNHM.Entities.TestResources.Test
+@{
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
+}
+@{ 
+    int count = 1;
+}
+
+<section class="pb-8 pt-5 bg-light height100vh">
+    <div class="container">
+        <h2 class="font-weight-normal mb-4 mb-md-0">My Test Answers</h2>
+        
+        <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var q in Model.Questions)
+                {
+                    <tr>
+                        <td>@count</td>
+                        <td>@q.Text</td>
+                        <td>@q.Answer</td>
+                    </tr>
+                    count++;
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</section>

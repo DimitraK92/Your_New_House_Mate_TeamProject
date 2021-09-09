@@ -13,21 +13,30 @@
                     </svg>
                 </a>
                     @Html.Partial("~/Views/Shared/Update/_LoginRightMenu.cshtml")
-                    <ul class="menuzord-menu menuzord-right">
-                        <li class="active">
-                            <a href="@Url.Action("Index", "HomePage")">Home</a>
-                        </li>
-                        <li class="">
-                            @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
-                            {
-                                @Html.ActionLink("People", "People", "HomePage")
-                            }
-                        </li>
-                        <li class="">
-                                @Html.ActionLink("About", "About", "HomePage")
-                        </li>
+            <ul class="menuzord-menu menuzord-right">
+                <li class="active">
+                    <a href="@Url.Action("Index", "HomePage")">Home</a>
+                </li>
+                <li class="">
+                    @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
+                    {
+                        <a href="@Url.Action("TestInfo","Test")">Test</a>
+                    }
+                </li>
+                <li class="">
+                    @if (User.IsInRole("Admin") || User.IsInRole("Roomie"))
+                    {
+                        @Html.ActionLink("People", "People", "HomePage")
+                    }
+                </li>
 
-                    </ul>
+
+                <li class="">
+                    @Html.ActionLink("About", "About", "HomePage")
+                </li>
+
+
+            </ul>
 
                 </div>
             </div>

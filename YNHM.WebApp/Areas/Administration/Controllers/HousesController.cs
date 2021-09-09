@@ -252,8 +252,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
             db.Entry(roomiesPair).State = EntityState.Added;
             db.SaveChanges();
-
         }
-
     }
 }

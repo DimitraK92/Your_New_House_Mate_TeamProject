@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using YNHM.Database;
 using YNHM.Entities.Models;
+using YNHM.Entities.TestResources;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
@@ -114,6 +115,7 @@ namespace YNHM.WebApp.Controllers
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
             var roomie = pr.GetById(user.RoomieId);
+
             PersonDetailsVM vm = new PersonDetailsVM(roomie);
 
             return RedirectToAction($"PersonalProfile/{user.RoomieId}", "HomePage");
@@ -214,6 +216,8 @@ namespace YNHM.WebApp.Controllers
                     Phone = cr.Phone,
                     Facebook = cr.Facebook
                 };
+
+
 
                 db.Roomies.Add(r);
                 db.SaveChanges();

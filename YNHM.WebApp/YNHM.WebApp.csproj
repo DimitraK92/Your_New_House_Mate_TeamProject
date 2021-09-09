@@ -195,6 +195,7 @@
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PercentageVM.cs" />
+    <Compile Include="Models\PersonalProfileVM.cs" />
     <Compile Include="Models\PersonDetailsVM.cs" />
     <Compile Include="Models\TakeTestVM.cs" />
     <Compile Include="Models\UploadPhotoVM.cs" />
@@ -6398,6 +6399,7 @@
     <Content Include="Views\HomePage\Temp.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\HomePage\Match.cshtml" />
+    <Content Include="Views\Test\TestDetails.cshtml" />
     <Content Include="Views\HomePage\Temp.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\Manage\_UploadPhoto.cshtml" />

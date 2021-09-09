@@ -1,4 +1,6 @@
-﻿@model YNHM.Entities.Models.Roomie
+﻿@*@model YNHM.Entities.Models.Roomie*@
+
+@model YNHM.WebApp.Models.PersonalProfileVM
 @{
     //Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
@@ -20,38 +22,68 @@
 
                 <div class="col-sm-8">
                     <div class="p-6">
-                        <h3 class="font-weight-normal mb-0">@Model.FirstName @Model.LastName</h3>
-                        <span class="d-inline-block mb-5" style="font-size: 1rem; font-weight: 600">@Model.IsMatched <i class="fa fa-percent" aria-hidden="false"></i></span>
+                        <h3 class="font-weight-normal mb-0">@Model.ViewedRoomie.FirstName @Model.ViewedRoomie.LastName</h3>
+                        <span class="d-inline-block mb-5" style="font-size: 1rem; font-weight: 600">@Model.ViewedRoomie.IsMatched <i class="fa fa-percent" aria-hidden="false"></i></span>
                         <ul class="list-unstyled mb-5">
                             <li class="mb-2">
                                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                <a class="text-muted" href="@Model.Phone">@Model.Phone</a>
+                                <a class="text-muted" href="@Model.ViewedRoomie.Phone">@Model.ViewedRoomie.Phone</a>
                             </li>
                             <li>
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="@Model.Email">@Model.Email</a>
+                                <a href="@Model.ViewedRoomie.Email">@Model.ViewedRoomie.Email</a>
                             </li>
                             <li>
                                 <i class="fab fa-facebook"></i>
-                                <a href="@Model.Facebook"><span> @Model.Facebook</span></a>
+                                <a href="@Model.ViewedRoomie.Facebook"><span> @Model.ViewedRoomie.Facebook</span></a>
                             </li>
-                            <br>
+                            <br />
                             <li>
-                                @if (Model.House != null)
+                                @if (Model.ViewedRoomie.House != null)
                                 {
                                     <i class="fa fa-house-user"></i>
-                                    <a href="@Url.Action("House","HomePage",new { houseId = Model.HouseId})">
+                                    <a href="@Url.Action("House","HomePage",new { houseId = Model.ViewedRoomie.HouseId})">
                                         <span> See the house</span>
                                     </a>
-
                                 }
                             </li>
                         </ul>
-                        <a class="btn btn-primary text-capitalize" href="@Url.Action("Match","HomePage",new { matchedUserId = Model.Id})">
+                        <a class="btn btn-primary text-capitalize" href="@Url.Action("Match","HomePage",new { matchedUserId = Model.ViewedRoomie.Id})">
                             <i class="far fa-user" aria-hidden="true"></i> MATCH!
                         </a>
                     </div>
+
                 </div>
+                <div class="col-sm-8">
+                        <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Question</th>
+                                    <th>Their Answer</th>
+                                    <th>Your Answer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var viewedQuestions = Model.ViewedRoomie.Test.Questions.ToList();
+                                    var currentQuestions = Model.CurrentRoomie.Test.Questions.ToList();
+                                    int count = 1;
+                                }
+                                @for (int i = 0; i < viewedQuestions.Count; i++)
+                                {
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@viewedQuestions[i].Text</td>
+                                        <td>@viewedQuestions[i].Answer</td>
+                                        <td>@currentQuestions[i].Answer</td>
+                                    </tr>
+                                    count++;
+                                }
+                            </tbody>
+                        </table>
+                </div>
+
             </div>
         </div>
     </div>

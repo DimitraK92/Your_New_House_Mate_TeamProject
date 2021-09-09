@@ -46,14 +46,19 @@ namespace YNHM.WebApp.Controllers
         // GET: Test
         public ActionResult TestInfo()
         {
-            return View();
+            var roomie = GetRoomie();
+            return View(roomie);
         }
 
         //GET: TakeTest
         public ActionResult TakeTest()
         {
             var roomie = GetRoomie();
-            Test test = roomie.Test;
+
+            if (roomie.Test==null)
+            {
+                RedirectToAction("NewTest", "Test");
+            }
 
             ViewBag.Answers = new List<SelectListItem>()
             {
@@ -107,17 +112,16 @@ namespace YNHM.WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                foreach (var tq in test.Questions)
+                var testQuestions = test.Questions.ToList();
+
+                for (int i = 0; i < testQuestions.Count; i++)
                 {
-                    foreach (var q in questions)
-                    {
-                        tq.Answer = q.Answer;
-                    }
+                    testQuestions[i].Answer = questions[i].Answer;
                 }
 
                 db.Entry(test).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("TestDetails", "Test");
             }
             List<Question> Questions = test.Questions.ToList();
 
@@ -165,7 +169,7 @@ namespace YNHM.WebApp.Controllers
                     new Question() { Text = "Will you mind caring for the housemate's animal companions, if they are absent?" },
 
                     //Friends
-                    new Question() { Text = "Doo you mind friends coming over?" },
+                    new Question() { Text = "Do you mind friends coming over?" },
                     new Question() { Text = "Do you mind friends or significant others staying overnight?" },
                     new Question() { Text = "Does hanging out with your housemates matter?" },
 
@@ -187,6 +191,15 @@ namespace YNHM.WebApp.Controllers
             db.SaveChanges();
             return RedirectToAction("TakeTest", "Test");
         }
+
+
+        public ActionResult TestDetails()
+        {
+            var roomie = GetRoomie();
+            var test = roomie.Test;
+            return View(test);
+        }
+
 
         //Helpers
         //TODO: VASSILIS: Move to Repo

@@ -332,7 +332,7 @@ namespace YNHM.Database.Migrations
                     new Question() { Text = "Will you mind caring for the housemate's animal companions, if they are absent?" },
 
                     //Friends
-                    new Question() { Text = "Doo you mind friends coming over?" },
+                    new Question() { Text = "Do you mind friends coming over?" },
                     new Question() { Text = "Do you mind friends or significant others staying overnight?" },
                     new Question() { Text = "Does hanging out with your housemates matter?" },
 
