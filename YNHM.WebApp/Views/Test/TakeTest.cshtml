@@ -1,6 +1,6 @@
-﻿@*@model YNHM.WebApp.Models.TakeTestVM*@
+﻿@*@model YNHM.WebApp.Models.AnswerQuestionsVM*@
 
-@model YNHM.Entities.TestResources.Test
+@model List<YNHM.Entities.TestResources.Question>
 
 @{
     ViewBag.Title = "TakeTest";
@@ -12,38 +12,159 @@
         @using (Html.BeginForm("TakeTest", "Test", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
+            <h4>Cleanliness and Housework</h4>
             <div class="card">
                 <div class="card-body px-6 pt-6 pb-1">
-                    @foreach (var q in Model.Questions)
-                    {
-                        <div class="row justify-content-center">
-                            <div class="form-group col-md-12 mb-6">
-
-                                @Html.Label(q.Text)
-                                @Html.DropDownListFor(m => q.Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
-                            </div>
-                        </div>
-                    }
-
-
-
-                    @*@for (int i = 0; i < Model.Questions.Count; i++)
-        {
-            <div class="row justify-content-center">
-                <div class="form-group col-md-12 mb-6">
-
-                    @Html.Label(Model.Questions[i].Text)
-                    @Html.DropDownListFor(m=>m.Questions[i].Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                    @Html.Label($"{Model[0].Text}")
+                    @Html.DropDownList("[0].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
                 </div>
             </div>
-        }*@
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[1].Text}")
+                    @Html.DropDownList("[1].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[2].Text}")
+                    @Html.DropDownList("[2].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[3].Text}")
+                    @Html.DropDownList("[3].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+
+            <h4>Noise</h4>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[4].Text}")
+                    @Html.DropDownList("[4].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[5].Text}")
+                    @Html.DropDownList("[5].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[6].Text}")
+                    @Html.DropDownList("[6].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[7].Text}")
+                    @Html.DropDownList("[7].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <h4>Eating and Groceries</h4>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[8].Text}")
+                    @Html.DropDownList("[8].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[9].Text}")
+                    @Html.DropDownList("[9].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[10].Text}")
+                    @Html.DropDownList("[10].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[11].Text}")
+                    @Html.DropDownList("[11].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <h4>Animals</h4>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[12].Text}")
+                    @Html.DropDownList("[12].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[13].Text}")
+                    @Html.DropDownList("[13].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <h4>Guests</h4>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[14].Text}")
+                    @Html.DropDownList("[14].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[15].Text}")
+                    @Html.DropDownList("[15].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[16].Text}")
+                    @Html.DropDownList("[16].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <h4>Smoking</h4>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[17].Text}")
+                    @Html.DropDownList("[17].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @Html.Label($"{Model[18].Text}")
+                    @Html.DropDownList("[18].Answer", (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+
+
+            @*@foreach (var q in Model)
+            {
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-12 mb-6">
+
+                        @Html.Label(q.Text)
+                        @Html.DropDownListFor(m => q.Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                    </div>
+                </div>
+            }*@
+
+
+
+            @*@for (int i = 0; i < Model.Questions.Count; i++)
+            {
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-12 mb-6">
+
+                        @Html.Label(Model.Questions[i].Text)
+                        @Html.DropDownListFor(m=>m.Questions[i].Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                    </div>
+                </div>
+            }*@
+
 
             <div class="row justify-content-center">
                 <div class="col-md-7 col-lg-6 col-xl-5">
                     <div class="mb-6">
-                        <button type="submit" value ="TakeTest"class="btn btn-lg btn-primary btn-block">submit</button>
+                        <button type="submit" value="TakeTest" class="btn btn-lg btn-primary btn-block">submit</button>
                     </div>
                 </div>
             </div>
