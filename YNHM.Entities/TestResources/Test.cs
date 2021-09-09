@@ -11,28 +11,12 @@ namespace YNHM.Entities.TestResources
 {
     public class Test
     {
-        public Test()
-        {
-
-        }
-        public Test(QuestionSet questionSet)
-        {
-            QuestionSet = questionSet;
-            Name = questionSet.Name;
-            Answers = new List<Answer>();
-        }
-
-        public int TestId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public List<Question> Questions { get; set; }
-        public List<Answer> Answers { get; set; }
 
         //Navigation properties
-        [Required]
         public virtual IEnumerable<Roomie> Roomies { get; set; }
-
-        public virtual QuestionSet QuestionSet { get; set; }
-
+        public virtual IEnumerable<Question> Questions { get; set; }
     }
 
 }

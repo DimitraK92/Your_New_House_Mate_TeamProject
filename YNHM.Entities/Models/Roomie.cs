@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using YNHM.Entities.TestResources;
 
 namespace YNHM.Entities.Models
 {
@@ -48,6 +49,8 @@ namespace YNHM.Entities.Models
         public int? HouseId { get; set; }
         public virtual House House { get; set; }
 
+        public int? TestId { get; set; }
+        public virtual Test Test { get; set; }
 
     }
 }

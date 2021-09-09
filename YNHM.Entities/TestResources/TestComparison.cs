@@ -12,6 +12,8 @@
 //        //Much tweaking needed, results not good
 //        public int CalculateMatchPercentage(Test test1, Test test2)
 //        {
+
+
 //            double userOneScore = Compare(test2.Answers, test1.Answers);
 //            double possibleUserOneScore = Compare(test1.Answers, test1.Answers);
 
@@ -24,8 +26,8 @@
 //            return (int)Math.Round(Math.Sqrt(userOnePercentage * userTwoPercentage));
 //        }
 
-//        private double Compare(List<Answer>answersTestOne, List<Answer> answersTestTwo)
-//        {            
+//        private double Compare(List<Answer> answersTestOne, List<Answer> answersTestTwo)
+//        {
 //            double userScore = 0;
 
 //            for (int i = 0; i < answersTestOne.Count; i++)
@@ -134,7 +136,7 @@
 //                var compareToSelectedAnswer = comparedToThis[i].MyAnswer;
 //                var preference = comparedToThis[i].Significance;
 
-//                userScore += CalculateScoreWithAcceptedAnswers(comparedToAnswer, compareToSelectedAnswer,preference, answer1);
+//                userScore += CalculateScoreWithAcceptedAnswers(comparedToAnswer, compareToSelectedAnswer, preference, answer1);
 //            }
 //            return userScore;
 //        }
@@ -165,8 +167,8 @@
 //            return (int)Math.Round(multiplicationSqrt);
 //        }
 
-//        private static void ViewErraticDataInConsole(double userOneScore, double possibleUserOneScore, 
-//                                                        double userTwoScore, double possibleUserTwoScore, 
+//        private static void ViewErraticDataInConsole(double userOneScore, double possibleUserOneScore,
+//                                                        double userTwoScore, double possibleUserTwoScore,
 //                                                        double userOnePercentage, double userTwoPercentage)
 //        {
 //            if (userOnePercentage > 100 || userTwoPercentage > 100)
