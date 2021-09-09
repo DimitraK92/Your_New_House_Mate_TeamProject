@@ -1,15 +1,54 @@
-﻿@model YNHM.WebApp.Models.TakeTestVM
+﻿@*@model YNHM.WebApp.Models.TakeTestVM*@
+
+@model YNHM.Entities.TestResources.Test
+
 @{
     ViewBag.Title = "TakeTest";
-    Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
 <section class="bg-light py-5 height100vh">
     <div class="container">
-        @foreach (var question in Model.QuestionSet.Questions)
+        @using (Html.BeginForm("TakeTest", "Test", FormMethod.Post))
         {
-            <p>@question.Text</p>
+            @Html.AntiForgeryToken()
+            <div class="card">
+                <div class="card-body px-6 pt-6 pb-1">
+                    @foreach (var q in Model.Questions)
+                    {
+                        <div class="row justify-content-center">
+                            <div class="form-group col-md-12 mb-6">
+
+                                @Html.Label(q.Text)
+                                @Html.DropDownListFor(m => q.Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                            </div>
+                        </div>
+                    }
+
+
+
+                    @*@for (int i = 0; i < Model.Questions.Count; i++)
+        {
+            <div class="row justify-content-center">
+                <div class="form-group col-md-12 mb-6">
+
+                    @Html.Label(Model.Questions[i].Text)
+                    @Html.DropDownListFor(m=>m.Questions[i].Answer, (IEnumerable<SelectListItem>)ViewBag.Answers, "Select an answer", new { @class = "select-default bg-white form-control" })
+                </div>
+            </div>
+        }*@
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-6 col-xl-5">
+                    <div class="mb-6">
+                        <button type="submit" value ="TakeTest"class="btn btn-lg btn-primary btn-block">submit</button>
+                    </div>
+                </div>
+            </div>
         }
+
     </div>
 </section>
 
@@ -19,7 +58,9 @@
 
 
 
-@*<section class="bg-light py-5 height100vh">
+
+
+<section class="bg-light py-5 height100vh">
         <div class="container">
             <nav class="bg-transparent breadcrumb breadcrumb-2 px-0 mb-5" aria-label="breadcrumb">
                 <h2 class="font-weight-normal mb-4 mb-md-0">Submit Listings</h2>
@@ -343,4 +384,4 @@
             </form>
 
         </div>
-    </section>*@
+    </section>
