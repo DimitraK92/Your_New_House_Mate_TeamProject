@@ -54,6 +54,7 @@ namespace YNHM.WebApp.Controllers
         public ActionResult TakeTest()
         {
             var roomie = GetRoomie();
+            Test test = roomie.Test;
 
             if (roomie.Test==null)
             {
