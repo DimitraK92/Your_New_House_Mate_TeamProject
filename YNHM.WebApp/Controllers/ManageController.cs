@@ -214,7 +214,8 @@ namespace YNHM.WebApp.Controllers
                     HasHouse = cr.HasHouse,
                     Email = cr.Email,
                     Phone = cr.Phone,
-                    Facebook = cr.Facebook
+                    Facebook = cr.Facebook,
+                    PhotoUrl = user.UserPhoto
                 };
 
 
@@ -229,10 +230,6 @@ namespace YNHM.WebApp.Controllers
             }
             return View(cr);
         }
-
-
-
-
 
         //GET: /Manage/TakeTest
         public ActionResult TakeTest()
