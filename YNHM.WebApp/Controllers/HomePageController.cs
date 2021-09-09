@@ -16,7 +16,7 @@ namespace YNHM.WebApp.Controllers
 {
 
     //TODO: VASSILIS Fix active tab on the navbar
-
+    [Authorize]
     public class HomePageController : Controller
     {
         #region UserManager
@@ -59,9 +59,6 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        //[Authorize(Roles = "Roomie, Admin")]
-        //[Authorize(Roles = "Roomie")]
-        [Authorize(Roles = "Admin, Roomie")]
         public ActionResult People()
         {
             Roomie currentRoomie = GetCurrentRoomie();
@@ -112,7 +109,7 @@ namespace YNHM.WebApp.Controllers
             PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie);
             return View(vm);
         }
-        
+
         public ActionResult Match(int matchedUserId)
         {
             Roomie currentRoomie = GetCurrentRoomie();
@@ -146,6 +143,7 @@ namespace YNHM.WebApp.Controllers
 
             return RedirectToAction("Index","HomePage");
         }
+
 
         public ActionResult House(int? houseId)
         {

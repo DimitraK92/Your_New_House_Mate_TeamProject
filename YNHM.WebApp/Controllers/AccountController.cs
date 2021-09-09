@@ -163,7 +163,7 @@ namespace YNHM.WebApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent:true, rememberBrowser:false);
 
                     await UserManager.AddToRoleAsync(user.Id, "Roomie");
 

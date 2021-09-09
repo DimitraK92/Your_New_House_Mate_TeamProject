@@ -218,15 +218,13 @@ namespace YNHM.WebApp.Controllers
                     PhotoUrl = user.UserPhoto
                 };
 
-
-
                 db.Roomies.Add(r);
                 db.SaveChanges();
 
                 user.RoomieId = r.Id;
                 UserManager.Update(user);
 
-                return RedirectToAction("TakeTest");
+                return RedirectToAction("Index","HomePage");
             }
             return View(cr);
         }
