@@ -102,50 +102,59 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                     if (roomie.House.Roomies.Count > 1)
                     {
-                        db.Entry(roomie).State = EntityState.Modified;
-                        db.SaveChanges();
-
-                        var houseRoomies = house.Roomies.ToList();
-
-                        var tempRoomies = new List<Roomie>();
-                        var tempRoomiesTwo = new List<Roomie>();
-
-                        for (int i = 0; i < houseRoomies.Count; i++)
+                        try
                         {
-                            tempRoomies.Add(houseRoomies[i]);
+                            db.Entry(roomie).State = EntityState.Modified;
+                            db.SaveChanges();
 
-                            for (int j = 0; j < houseRoomies.Count; j++)
+                            var houseRoomies = house.Roomies.ToList();
+
+                            var tempRoomies = new List<Roomie>();
+                            var tempRoomiesTwo = new List<Roomie>();
+
+                            for (int i = 0; i < houseRoomies.Count; i++)
                             {
-                                if (!tempRoomies.Contains(houseRoomies[j]))
+                                tempRoomies.Add(houseRoomies[i]);
+
+                                for (int j = 0; j < houseRoomies.Count; j++)
                                 {
-                                    tempRoomiesTwo.Add(houseRoomies[j]);
-
-                                    RoomiesPair newPairFirstVersion = new RoomiesPair()
+                                    if (!tempRoomies.Contains(houseRoomies[j]))
                                     {
-                                        RoomieOneId = houseRoomies[i].Id,
-                                        RoomieTwoId = houseRoomies[j].Id
-                                    };
+                                        tempRoomiesTwo.Add(houseRoomies[j]);
 
-                                    RoomiesPair newPairSecondVersion = new RoomiesPair()
-                                    {
-                                        RoomieOneId = houseRoomies[j].Id,
-                                        RoomieTwoId = houseRoomies[i].Id
+                                        RoomiesPair newPairFirstVersion = new RoomiesPair()
+                                        {
+                                            RoomieOneId = houseRoomies[i].Id,
+                                            RoomieTwoId = houseRoomies[j].Id
+                                        };
 
-                                    };
-                                    var existingPairs = db.RoomiesPair.ToList();
+                                        RoomiesPair newPairSecondVersion = new RoomiesPair()
+                                        {
+                                            RoomieOneId = houseRoomies[j].Id,
+                                            RoomieTwoId = houseRoomies[i].Id
 
-                                    if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
-                                    {
-                                        hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
-                                        houseRoomies[i].IsMatched = true;
-                                        houseRoomies[j].IsMatched = true;
+                                        };
+                                        var existingPairs = db.RoomiesPair.ToList();
+
+                                        if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
+                                        {
+                                            hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
+                                            houseRoomies[i].IsMatched = true;
+                                            houseRoomies[j].IsMatched = true;
+                                        }
+
                                     }
 
                                 }
 
                             }
-
                         }
+                        catch (System.Exception)
+                        {
+
+                            return RedirectToAction("Index");
+                        }
+                        
                     }
                 }
 
