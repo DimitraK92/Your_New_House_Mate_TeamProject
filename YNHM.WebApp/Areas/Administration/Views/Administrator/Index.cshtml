@@ -40,26 +40,26 @@
                             <div class="title">
                                 <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Pairs</strong>
                             </div>
-                            @{ 
-                                var pairs = Model.RoomiesPairs.Count / 2;
+                            @{
+                                var pairs = Model.RoomiesPairs.Count;
                             }
                             <div class="number dashtext-3">@pairs</div>
                         </div>
                     </div>
                 </div>
                 @*<div class="col-md-3 col-sm-6">
-                    <div class="statistic-block block">
-                        <div class="progress-details d-flex align-items-end justify-content-between">
-                            <div class="title">
-                                <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>All Projects</strong>
+                        <div class="statistic-block block">
+                            <div class="progress-details d-flex align-items-end justify-content-between">
+                                <div class="title">
+                                    <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>All Projects</strong>
+                                </div>
+                                <div class="number dashtext-4">41</div>
                             </div>
-                            <div class="number dashtext-4">41</div>
+                            <div class="progress progress-template">
+                                <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+                            </div>
                         </div>
-                        <div class="progress progress-template">
-                            <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
-                        </div>
-                    </div>
-                </div>*@
+                    </div>*@
             </div>
         </div>
     </section>
@@ -72,11 +72,9 @@
                         <div class="piechart chart">
                             <canvas id="pieChartHome1"></canvas>
                             @{
-                                var roomies = Model.Roomies.ToList();
-                                var roomiesMatched = Model.Roomies.Where(x => x.IsMatched == true).ToList();
-                                //var matchedPercentage = (roomiesMatched.Count / roomies.Count) * 100;
+                                var roomiesMatched = @Model.RoomiesPairs.Count *2;
                             }
-                            <div class="text"><strong class="d-block">@roomiesMatched.Count</strong><span class="d-block">Matches</span></div>
+                            <div class="text"><strong class="d-block">@roomiesMatched</strong><span class="d-block">Matches</span></div>
                         </div>
                     </div>
                 </div>
@@ -86,9 +84,10 @@
                         <div class="piechart chart">
                             <canvas id="pieChartHome2"></canvas>
                             @{
-                                var roomiesUnmatched = Model.Roomies.Where(x => x.IsMatched == false).ToList();
+                                var roomies = Model.Roomies.ToList();
+                                var roomiesUnmatched = roomies.Count - roomiesMatched;
                             }
-                            <div class="text"><strong class="d-block">@roomiesUnmatched.Count</strong><span class="d-block">Users</span></div>
+                            <div class="text"><strong class="d-block">@roomiesUnmatched</strong><span class="d-block">Users</span></div>
                         </div>
                     </div>
                 </div>
@@ -98,7 +97,7 @@
                         <div class="piechart chart">
                             <canvas id="pieChartHome3"></canvas>
                             @{
-                                var roomiesWithHouse = Model.Roomies.Where(x => x.HasHouse == true).ToList();
+                                var roomiesWithHouse = Model.Roomies.Where(x => x.HouseId !=null).ToList();
                             }
                             <div class="text"><strong class="d-block">@roomiesWithHouse.Count</strong><span class="d-block">Users</span></div>
                         </div>
@@ -135,15 +134,15 @@
                         <div class="title"><strong>New Messages</strong></div>
                         <div class="messages">
                             @{
-                                
+
                                 for (int i = 0; i < 3; i++)
                                 {
 
                                     <a href="#" class="message d-flex align-items-center">
                                         @*<div class="profile">
-                                            <img src="img/avatar-3.jpg" alt="..." class="img-fluid">
-                                            <div class="status online"></div>
-                                        </div>*@
+                                                <img src="img/avatar-3.jpg" alt="..." class="img-fluid">
+                                                <div class="status online"></div>
+                                            </div>*@
                                         @{
                                             var message = "";
                                             var time = "";

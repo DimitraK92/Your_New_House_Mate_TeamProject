@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
         readonly RoomieRepository pr = new RoomieRepository();
+        HousesController hc = new HousesController();
 
         // GET: People
         public ActionResult Index()
@@ -86,12 +88,75 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if (roomie.HouseId != null)
+                {
+                    var house = db.Houses.Find(roomie.HouseId);
+                    roomie.House = house;
+                    roomie.HasHouse = true;
+
+                    db.Houses.Attach(house);
+                    db.Entry(house).Collection("Roomies").Load();
+                    house.Roomies.Add(roomie);
+                    db.Entry(house).State = EntityState.Modified;
+
+                    if (roomie.House.Roomies.Count > 1)
+                    {
+                        db.Entry(roomie).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        var houseRoomies = house.Roomies.ToList();
+
+                        var tempRoomies = new List<Roomie>();
+                        var tempRoomiesTwo = new List<Roomie>();
+
+                        for (int i = 0; i < houseRoomies.Count; i++)
+                        {
+                            tempRoomies.Add(houseRoomies[i]);
+
+                            for (int j = 0; j < houseRoomies.Count; j++)
+                            {
+                                if (!tempRoomies.Contains(houseRoomies[j]))
+                                {
+                                    tempRoomiesTwo.Add(houseRoomies[j]);
+
+                                    RoomiesPair newPairFirstVersion = new RoomiesPair()
+                                    {
+                                        RoomieOneId = houseRoomies[i].Id,
+                                        RoomieTwoId = houseRoomies[j].Id
+                                    };
+
+                                    RoomiesPair newPairSecondVersion = new RoomiesPair()
+                                    {
+                                        RoomieOneId = houseRoomies[j].Id,
+                                        RoomieTwoId = houseRoomies[i].Id
+
+                                    };
+                                    var existingPairs = db.RoomiesPair.ToList();
+
+                                    if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
+                                    {
+                                        hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
+                                        houseRoomies[i].IsMatched = true;
+                                        houseRoomies[j].IsMatched = true;
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+               
+
                 db.Entry(roomie).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-          
+
 
             ViewBag.HouseList = new SelectList(db.Houses, "Id", "Address");
             return View(roomie);
@@ -119,13 +184,23 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             Roomie roomie = db.Roomies.Find(id);
 
+            if (roomie.Test != null)
+            {
+                var roomieTest = db.Tests.Find(roomie.Test.TestId);
+                db.Tests.Attach(roomieTest);
+                db.Entry(roomieTest).Collection("Questions").Load();
+                roomieTest.Questions.Clear();
+                db.Tests.Remove(roomieTest);
+            }
+            
+
             db.Entry(roomie).State = EntityState.Deleted;
             db.SaveChanges();
 
             return RedirectToAction("Index");
         }
-        
-       
+
+
 
         protected override void Dispose(bool disposing)
         {

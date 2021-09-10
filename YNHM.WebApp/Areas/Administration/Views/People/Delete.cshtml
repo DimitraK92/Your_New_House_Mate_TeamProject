@@ -43,6 +43,7 @@
                             </form>
                             @using (Html.BeginForm())
                             {
+                                @Html.HiddenFor(Model=>Model.Id)
                                 @Html.AntiForgeryToken()
 
                                 <div class="form-actions ">

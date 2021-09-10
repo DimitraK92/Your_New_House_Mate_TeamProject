@@ -147,6 +147,8 @@ namespace YNHM.WebApp.Controllers
             var roomieWithoutHouse = currentRoomie.HasHouse == false ? currentRoomie : match;
 
             var house = roomieWithHouse.House;
+            dbContext.Houses.Attach(house);
+            dbContext.Entry(house).Collection("Roomies").Load();
             house.Roomies.Add(roomieWithoutHouse);
             dbContext.Entry(house).State = EntityState.Modified;
             dbContext.SaveChanges();

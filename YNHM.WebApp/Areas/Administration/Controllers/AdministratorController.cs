@@ -13,6 +13,7 @@ using YNHM.WebApp.Models.CustomValidations;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
 {
+    [Authorize(Roles="Admin")]
     public class AdministratorController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
