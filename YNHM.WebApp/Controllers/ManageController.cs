@@ -229,9 +229,6 @@ namespace YNHM.WebApp.Controllers
                 user.RoomieId = r.Id;
                 UserManager.Update(user);
 
-
-
-
                 return RedirectToAction("Index","HomePage");
             }
             return View(cr);
