@@ -12,7 +12,7 @@
         </div>
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <div class="navbar-header">
-                <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+                <!-- Navbar Header--><a href="@Url.Action("Index","HomePage",new { area = ""})" class="navbar-brand">
                     <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Your New</strong> <strong>House Mate</strong></div>
                     <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div>
                 </a>
@@ -22,7 +22,12 @@
             <div class="right-menu list-inline no-margin-bottom">         
                 <!-- Log out               -->
                 <div class="list-inline-item logout">
-                    @Html.ActionLink("Log off","LogOff", new { Area = "Administration" },new { @class = "nav-link"})
+                    @using (Html.BeginForm("LogOff", "Administrator", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-outline-warning nav-button" type="submit">Log Off</button>
+                    }
+                    @*@Html.ActionLink("Log off", "LogOff", new { Area = "Administration" }, new { @class = "nav-link" })*@
                 </div>
               </div>
         </div>

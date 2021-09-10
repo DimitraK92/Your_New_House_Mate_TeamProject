@@ -40,6 +40,8 @@ namespace YNHM.WebApp
 
                 //TODO: VASSILIS: Change admin pass and add more admins
                 int roomieId = 1;
+
+                #region VassilisK
                 if (db.Roomies.Count()!=0)
                 {
                     roomieId = db.Roomies.Where(r => r.LastName == "Kotsmanidis").Select(r => r.Id).FirstOrDefault();
@@ -58,6 +60,26 @@ namespace YNHM.WebApp
                 {
                     userManager.AddToRole(userAdmin.Id, "Admin");
                 }
+                #endregion
+
+                #region DimitraK
+                if (db.Roomies.Count() != 0)
+                {
+                    roomieId = db.Roomies.Where(r => r.LastName == "Kamni").Select(r => r.Id).FirstOrDefault();
+                }
+                var dimitraAdmin = new ApplicationUser()
+                {
+                    UserName = "DimitraK",
+                    Email = "dimitra.kam@gmail.com",
+                    RoomieId = roomieId
+                };
+
+                userCreated = userManager.Create(dimitraAdmin, adminPassword);
+                if (userCreated.Succeeded)
+                {
+                    userManager.AddToRole(dimitraAdmin.Id, "Admin" );
+                }
+                #endregion
             }
 
             if (!roleManager.RoleExists("Roomie"))

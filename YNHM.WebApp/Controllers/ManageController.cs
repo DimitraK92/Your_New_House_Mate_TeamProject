@@ -8,7 +8,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using YNHM.Database;
 using YNHM.Entities.Models;
-using YNHM.Entities.TestResources;
 using YNHM.RepositoryServices;
 using YNHM.WebApp.Models;
 
@@ -218,15 +217,83 @@ namespace YNHM.WebApp.Controllers
                     PhotoUrl = user.UserPhoto
                 };
 
+                if (r.HasHouse)
+                {
+                    var house = CreateHouse(r);
+                    r.House = house;
+                }
+
                 db.Roomies.Add(r);
                 db.SaveChanges();
 
                 user.RoomieId = r.Id;
                 UserManager.Update(user);
 
+
+
+
                 return RedirectToAction("Index","HomePage");
             }
             return View(cr);
+        }
+
+        private House CreateHouse(Roomie r)
+        {
+            Random rand = new Random();
+            string[] streets =
+{
+                    "Ipirou", "Patission","Panepistimiou", "Frynis","Kerkyras",
+                    "Pl. Koliatsou","Skiathou","Skopelou","Kykladon","Tritis Septemvriou",
+                    "Agiou Nikolaou","Agiou Georgiou","Agias Annas","Agias Zonis","Agias Kiriakis",
+                    "Ari Velouchioti","Angelou Sikelianou","Kosma Aitolou","Athinas","Iras",
+                    "Afroditis","Dia","Autokratoron Angelon","Themistokleous","Perikleous"
+                };
+
+            string[] districts =
+            {
+                    "Center","Zografou","Exarcheia","Kolonaki","Kato Patissia",
+                    "Kypseli","Kaisariani","Perama","Peiraias","Pasalimani",
+                    "Nea Smyrni","Kallithea"
+                };
+
+            string address = $"{streets[rand.Next(0, streets.Length)]} {rand.Next(1, 350)}";
+            string district = $"{districts[rand.Next(0, districts.Length)]}";
+            int rooms = rand.Next(2, 6);
+            int floor = rand.Next(0, 11);
+            int rent = 0;
+            int area = 0;
+
+            if (rooms > 2)
+            {
+                area = rand.Next(70, 200);
+            }
+            else
+            {
+                area = rand.Next(45, 200);
+            }
+
+            if (area > 100)
+            {
+                rent = rand.Next(350, 601);
+            }
+            else
+            {
+                rent = rand.Next(200, 601);
+            }
+
+            House h = new House()
+            {
+                Address = address,
+                District = district,
+                Area = area,
+                Bedrooms = rooms,
+                Floor = floor,
+                Rent = rent
+            };
+
+            h.Roomies.Add(r);
+            db.SaveChanges();
+            return h;
         }
 
         //GET: /Manage/TakeTest

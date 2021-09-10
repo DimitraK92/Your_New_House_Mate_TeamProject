@@ -277,7 +277,16 @@ namespace YNHM.Database.Migrations
                     IsVegan = false
                 };
 
-                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11);
+                Roomie r12 = new Roomie()
+                {
+                    FirstName = "Dimitra",
+                    LastName = "Kamni",
+                    Age = 28,
+                    Email = "dimitra.kam@gmail.com",
+                    Phone = "6945123456"
+                };
+
+                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12);
                 context.SaveChanges();
 
 
