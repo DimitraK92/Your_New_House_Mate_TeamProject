@@ -113,7 +113,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers.Administrator
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "HomePage");
+            return RedirectToAction("Index", "HomePage", new { Area = "" });
         }
 
 
