@@ -1,11 +1,10 @@
 ﻿@model YNHM.WebApp.Areas.Administration.ViewModels.DashboardVM
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Administration/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="page-content">
+<div id="dashboard" class="page-content">
     <div class="page-header">
         <div class="container-fluid">
             <h2 class="h5 no-margin-bottom">Dashboard</h2>
@@ -20,7 +19,7 @@
                             <div class="title">
                                 <div class="icon"><i class="icon-user-1"></i></div><strong>People</strong>
                             </div>
-                            <div class="number dashtext-1">@Model.Roomies.Count</div>
+                            <div id="roomiesnumber" class="number dashtext-1">number of roomies</div>
                         </div>
                     </div>
                 </div>
@@ -30,7 +29,7 @@
                             <div class="title">
                                 <div class="icon"><i class="icon-contract"></i></div><strong>Houses</strong>
                             </div>
-                            <div class="number dashtext-2">@Model.Houses.Count</div>
+                            <div id="housesNumber" class="number dashtext-2">Number Of Houses</div>
                         </div>
                     </div>
                 </div>
@@ -40,10 +39,7 @@
                             <div class="title">
                                 <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Pairs</strong>
                             </div>
-                            @{
-                                var pairs = Model.RoomiesPairs.Count;
-                            }
-                            <div class="number dashtext-3">@pairs</div>
+                            <div id="pairsNumber" class="number dashtext-3">Number of Pairs</div>
                         </div>
                     </div>
                 </div>
@@ -71,10 +67,7 @@
                         <div class="title"><strong class="d-block">Users Matched</strong></div>
                         <div class="piechart chart">
                             <canvas id="pieChartHome1"></canvas>
-                            @{
-                                var roomiesMatched = @Model.RoomiesPairs.Count *2;
-                            }
-                            <div class="text"><strong class="d-block">@roomiesMatched</strong><span class="d-block">Matches</span></div>
+                            <div id="matchedNumber" class="text"><strong class="d-block">Matched Roomies</strong><span class="d-block">Matches</span></div>
                         </div>
                     </div>
                 </div>
@@ -83,11 +76,7 @@
                         <div class="title"><strong class="d-block">Users Unmatched</strong></div>
                         <div class="piechart chart">
                             <canvas id="pieChartHome2"></canvas>
-                            @{
-                                var roomies = Model.Roomies.ToList();
-                                var roomiesUnmatched = roomies.Count - roomiesMatched;
-                            }
-                            <div class="text"><strong class="d-block">@roomiesUnmatched</strong><span class="d-block">Users</span></div>
+                            <div id="unMatchedNumber" class="text"><strong class="d-block">Roomies Unmatched</strong><span class="d-block">Users</span></div>
                         </div>
                     </div>
                 </div>
@@ -96,10 +85,7 @@
                         <div class="title"><strong class="d-block">Users With House</strong></div>
                         <div class="piechart chart">
                             <canvas id="pieChartHome3"></canvas>
-                            @{
-                                var roomiesWithHouse = Model.Roomies.Where(x => x.HouseId !=null).ToList();
-                            }
-                            <div class="text"><strong class="d-block">@roomiesWithHouse.Count</strong><span class="d-block">Users</span></div>
+                            <div id="withHouseNumber" class="text"><strong class="d-block">Users with House</strong><span class="d-block">Users</span></div>
                         </div>
                     </div>
                 </div>
@@ -133,8 +119,9 @@
                     <div class="messages-block block">
                         <div class="title"><strong>New Messages</strong></div>
                         <div class="messages">
-                            @{
 
+                            @{
+                                var roomies = Model.Roomies.ToList();
                                 for (int i = 0; i < 3; i++)
                                 {
 
@@ -155,12 +142,83 @@
                                     </a>
                                 }
                             }
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 </div>
 
+
+@section scripts
+
+{
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/api/roomies/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#roomiesnumber").text(response);
+                }
+            });
+
+            $.ajax({
+                url: "/api/houses/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#housesNumber").text(response);
+                }
+            });
+
+            $.ajax({
+                url: "/api/pairs/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#pairsNumber").text(response);
+                }
+            });
+
+            $.ajax({
+                url: "/api/matched/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#matchedNumber strong").text(response);
+                }
+            });
+
+            $.ajax({
+                url: "/api/unmatched/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#unMatchedNumber strong").text(response);
+                }
+            });
+
+            $.ajax({
+                url: "/api/withHouse/count",
+                method: "GET",
+                timeout: 0,
+                success: function (response) {
+                    console.log(response);
+                    $("#withHouseNumber strong").text(response);
+                }
+            });
+
+        })
+
+    </script>
+}
