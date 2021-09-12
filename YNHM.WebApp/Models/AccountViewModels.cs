@@ -52,7 +52,6 @@ namespace YNHM.WebApp.Models
     {
         [Required]
         [Display(Name = "Username")]
-        //[EmailAddress]
         public string Username { get; set; }
 
         [Required]
@@ -70,7 +69,6 @@ namespace YNHM.WebApp.Models
         [Display(Name ="Username")]
         [MinLength(6,ErrorMessage ="Username must have at least 6 characters")]
         [MaxLength(15,ErrorMessage ="Username must have up to 15 characters")]
-        //[UniqueUsername]
         public string UserName { get; set; }
 
         [Required]

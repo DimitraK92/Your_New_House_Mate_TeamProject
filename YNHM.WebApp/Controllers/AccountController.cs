@@ -165,13 +165,13 @@ namespace YNHM.WebApp.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:true, rememberBrowser:false);
 
-                    await UserManager.AddToRoleAsync(user.Id, "Roomie");
+                    await UserManager.AddToRoleAsync(user.Id, "Roomie");                  
 
                     return RedirectToAction("CreateRoomie", "Manage");
                 }
                 AddErrors(result);
             }
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
 
@@ -203,7 +203,7 @@ namespace YNHM.WebApp.Controllers
                     user.RoomieId= roomie.Id;
                     UserManager.Update(user);
                 }
-                AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
+                //AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
 
                 return RedirectToAction("Index", "Manage");
             }

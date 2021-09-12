@@ -176,7 +176,6 @@ namespace YNHM.WebApp.Controllers
             return roomiesPercentages.OrderByDescending(r=>r.Value).ToDictionary(x=>x.Key,x=>x.Value);
         }
 
-
         public int GetPercentage(Roomie current, Roomie compare)
         {
             int percentage = 0;

@@ -171,46 +171,55 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 var houseRoomies = house.Roomies.ToList();
                 if (houseRoomies.Count > 1)
                 {
-                    var tempRoomies = new List<Roomie>();
-                    var tempRoomiesTwo = new List<Roomie>();
-
-                    for (int i = 0; i < houseRoomies.Count; i++)
+                    try
                     {
-                        houseRoomies[i].IsMatched = true;
-                        tempRoomies.Add(houseRoomies[i]);
+                        var tempRoomies = new List<Roomie>();
+                        var tempRoomiesTwo = new List<Roomie>();
 
-                        for (int j = 0; j < houseRoomies.Count; j++)
+                        for (int i = 0; i < houseRoomies.Count; i++)
                         {
-                            if (!tempRoomies.Contains(houseRoomies[j]))
+                            houseRoomies[i].IsMatched = true;
+                            tempRoomies.Add(houseRoomies[i]);
+
+                            for (int j = 0; j < houseRoomies.Count; j++)
                             {
-                                tempRoomiesTwo.Add(houseRoomies[j]);
-
-                                RoomiesPair newPairFirstVersion = new RoomiesPair()
+                                if (!tempRoomies.Contains(houseRoomies[j]))
                                 {
-                                    RoomieOneId = houseRoomies[i].Id,
-                                    RoomieTwoId = houseRoomies[j].Id
-                                };
+                                    tempRoomiesTwo.Add(houseRoomies[j]);
 
-                                RoomiesPair newPairSecondVersion = new RoomiesPair()
-                                {
-                                    RoomieOneId = houseRoomies[j].Id,
-                                    RoomieTwoId = houseRoomies[i].Id
+                                    RoomiesPair newPairFirstVersion = new RoomiesPair()
+                                    {
+                                        RoomieOneId = houseRoomies[i].Id,
+                                        RoomieTwoId = houseRoomies[j].Id
+                                    };
 
-                                };
-                                var existingPairs = db.RoomiesPair.ToList();
+                                    RoomiesPair newPairSecondVersion = new RoomiesPair()
+                                    {
+                                        RoomieOneId = houseRoomies[j].Id,
+                                        RoomieTwoId = houseRoomies[i].Id
 
-                                if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
-                                {
-                                    GenerateMatch(houseRoomies[i], houseRoomies[j]);
-                                    houseRoomies[i].IsMatched = true;
-                                    houseRoomies[j].IsMatched = true;
+                                    };
+                                    var existingPairs = db.RoomiesPair.ToList();
+
+                                    if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
+                                    {
+                                        GenerateMatch(houseRoomies[i], houseRoomies[j]);
+                                        houseRoomies[i].IsMatched = true;
+                                        houseRoomies[j].IsMatched = true;
+                                    }
+
                                 }
 
                             }
 
                         }
-
                     }
+                    catch (Exception)
+                    {
+
+                        return RedirectToAction("Index");
+                    }
+
                 }
                 return RedirectToAction("Index");
             }

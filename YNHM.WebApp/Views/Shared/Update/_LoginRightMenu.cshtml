@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using YNHM.Database
 
 <div class="menu-right">
     @if (Request.IsAuthenticated)
@@ -55,36 +56,43 @@
         <div class="avatar">
             <a class="dropdown-toggle" href="javascript:void(0)" role="button" data-toggle="dropdown" aria-haspopup="true"
                data-display="static" aria-expanded="false">
-                <img class="avatar-img" data-src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" src="~/Templates/Listty/StaticHTML/assets/img/user/user-2.jpg" alt="Image">
+
+                @{
+
+                    var userPhoto = "/Content/images/user/" + User.Identity.GetUserId() + ".jpg";
+
+                }
+
+                <img class="avatar-img" data-src=@userPhoto src=@userPhoto alt="Image">
                 <span class="avatar-name">
                     @User.Identity.GetUserName()
                 </span>
             </a>
             <ul class="dropdown-menu">
                 @if (User.IsInRole("Admin"))
-                {
+                                {
                 <li>
                     <a class="d-flex flex-wrap align-items-center" href="@Url.Action("Index","Administrator",new { Area = "Administration"})">
                         <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
                         <span>Admin</span>
                     </a>
                 </li>
-                }
-                else if (User.IsInRole("Roomie"))
-                {
+                                }
+                                else if (User.IsInRole("Roomie"))
+{
                     <li>
                         <a class="d-flex flex-wrap align-items-center" href="@Url.Action("Index", "Manage")">
                             <i class="fa fa-tachometer-alt mr-2" aria-hidden="true"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                }
+}
                 @*<li>
-                    <a class="d-flex flex-wrap align-items-center" href="@Url.Action("ViewProfile", "Manage")">
-                        <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                        <span>My Profile</span>
-                    </a>
-                </li>*@
+                        <a class="d-flex flex-wrap align-items-center" href="@Url.Action("ViewProfile", "Manage")">
+                            <i class="fa fa-user mr-2" aria-hidden="true"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>*@
                 <li>
                     <a class="d-flex flex-wrap align-items-center" href="@Url.Action("EditUserDetails", "Manage")">
                         <i class="fa fa-edit mr-2" aria-hidden="true"></i>
@@ -93,18 +101,18 @@
                 </li>
                 <li>
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                    {
+{
                         @Html.AntiForgeryToken()
                         <a class="d-flex flex-wrap align-items-center" href="javascript:document.getElementById('logoutForm').submit()">
                             <i class="fa fa-diamond mr-2" aria-hidden="true"></i>
                             <span>Log Off</span>
                         </a>
-                    }
+}
 
                 </li>
             </ul>
 
         </div>
-    }
+            }
 </div>
 
