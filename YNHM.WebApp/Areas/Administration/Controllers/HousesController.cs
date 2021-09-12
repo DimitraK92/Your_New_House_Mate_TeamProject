@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
+using YNHM.Entities.TestResources;
 using YNHM.WebApp.Controllers;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
@@ -278,12 +279,14 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
         public void GenerateMatch(Roomie roomieOne, Roomie roomieTwo)
         {
+            Comparison compare = new Comparison();
 
             RoomiesPair roomiesPair = new RoomiesPair()
             {
                 RoomieOneId = roomieOne.Id,
                 RoomieTwoId = roomieTwo.Id,
-                MatchPercentage = homePageController.GetPercentage(roomieOne, roomieTwo)
+                MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)
+                //homePageController.GetPercentage(roomieOne, roomieTwo)
             };
 
 

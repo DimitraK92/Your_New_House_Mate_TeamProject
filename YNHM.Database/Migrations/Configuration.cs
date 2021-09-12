@@ -48,24 +48,31 @@ namespace YNHM.Database.Migrations
                                      "Bolton","Blount","Bar Emmon","Celtigar","Velaryon",
                                      "Sunglass","Brune","Blackfyre","Slynt","Mormont","Cerwyn"};
 
-                string[] photos = { @"Models\FakeImages\person1.jpg", @"Models\FakeImages\person2.jpg",
-                                    @"Models\FakeImages\person3.jpg",@"Models\FakeImages\person4.jpg",
-                                    @"Models\FakeImages\person5.jpg",@"Models\FakeImages\person6.jpg",
-                                    @"Models\FakeImages\person7.jpg",@"Models\FakeImages\person8.jpg",
-                                    @"Models\FakeImages\person9.jpg",@"Models\FakeImages\person10.jpg",
-                                    @"Models\FakeImages\person11.jpg",@"Models\FakeImages\person12.jpg",
-                                    @"Models\FakeImages\person13.jpg",@"Models\FakeImages\person14.jpg",
-                                    @"Models\FakeImages\person15.jpg",@"Models\FakeImages\person16.jpg",
-                                    @"Models\FakeImages\person17.jpg",@"Models\FakeImages\person18.jpg",
-                                    @"Models\FakeImages\person19.jpg",@"Models\FakeImages\person20.jpg",
-                                    @"Models\FakeImages\person21.jpg"};
+
+                string[] photoUrls =
+                {
+                    "https://images.generated.photos/By5wHa-A399_axM6a3LK0Fh0dvtB8YTjC_GzPnKLF8A/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTkxMjgwLmpwZw.jpg",
+                    "https://images.generated.photos/idBs6cTp1oeByLZ8uOnWN_X4WCXuaMXTdL-hn7nT0zY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODY0MTkxLmpwZw.jpg",
+                    "https://images.generated.photos/bPnqE37aUUPsB0SSOw9U0na0l31H0o0rDqSPKzymy9s/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzE0MjUyLmpwZw.jpg",
+                    "https://images.generated.photos/3y-hCTGgXQW05YcuipKr3GYe9WWqG7L8_jbbkIu2TwU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODg5Njc3LmpwZw.jpg",
+                    "https://images.generated.photos/NWLOPSC2kc3No9PP625tjeS10zSTEwPsD1_QpXpHXmk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDA3MDIwLmpwZw.jpg",
+                    "https://images.generated.photos/_YTseQf3MZfU6-zTRfKTd_sWP5nyscyvIOo_Wh-GHCo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDE2MDA0LmpwZw.jpg",
+                    "https://images.generated.photos/8IbsJ6feXtsZm7GspT65FPCkRenuqdtz4-aUvXOcEkM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODE3NzYwLmpwZw.jpg",
+                    "https://images.generated.photos/LVzqTLaB5YMec4iyz3V7L7QrjXZ1ZTSqMr7ND_coipA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzAyNDU0LmpwZw.jpg",
+                    "https://images.generated.photos/siVcC4O7_ZZ481xreVc8ORSt0qriBNpZ8QTlqRJI6Xw/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjgxNzA2LmpwZw.jpg",
+                    "https://images.generated.photos/qn1dKX9V-S50sEXeHC09OUcwK3v60EaxhVWiY44O6vU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjQwNzE2LmpwZw.jpg",
+                    "https://images.generated.photos/H7My5xi7BPGkwA1IdoVDeN7sRYJNk2p-htIQsRpUjlY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTM2NDUyLmpwZw.jpg",
+                    "https://images.generated.photos/gw2L-1476wYRIis7FJFnv7E133fbxyNp8tkdfCBiIpM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTUzMTE1LmpwZw.jpg",
+                    "https://images.generated.photos/zkLaESK97b5cwiJq4zZpSmm549UQwFcAiHi_dMzh4ng/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODk4MjM0LmpwZw.jpg"
+
+                };
 
                 Random rand = new Random();
                 for (int i = 0; i < 100; i++)
                 {
                     string firstName = firstNames[rand.Next(0, firstNames.Length)];
                     string lastName = lastNames[rand.Next(0, lastNames.Length)];
-                    string photoUrl = photos[rand.Next(0, photos.Length)];
+                    string photoUrl = photoUrls[rand.Next(0, photoUrls.Length)];
                     string email = $"{firstName}.{lastName}@gmail.com";
                     string phone = $"69{rand.Next(11111111, 100000000)}";
                     int age = rand.Next(18, 101);
@@ -109,7 +116,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Jane",
                     LastName = "Doe",
                     Age = 36,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/JKjKOvFLNOPUqQ2L2I8JnXPB-A87WW6xKU0bjItSna8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDQxODk4LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"janedoe@gmail.com",
                     Facebook = @"https://www.facebook.com/janedoe/",
@@ -130,7 +137,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Jim",
                     LastName = "Do",
                     Age = 10,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/56htaLQXIIqPG9SC9cUTnA0LtEQV0W6sdUFsO7VbsLg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTQ1MTAwLmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"jimdo@gmail.com",
                     Facebook = @"https://www.facebook.com/jimdo/",
@@ -150,7 +157,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Max",
                     LastName = "Dont",
                     Age = 48,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/kYj2SDvgnF7u42kKZ6mYgSLR2jwbMMRdIjWOf33wRPo/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjU0MjQ3LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"maxdont@gmail.com",
                     Facebook = @"https://www.facebook.com/maxdont/",
@@ -169,7 +176,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Min",
                     LastName = "Donot",
                     Age = 82,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/oCB4g5L1MJ8oLTZue9YT53Zcox2fL7S8sIQ6IHd4018/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTYwMDc3LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"mindonot@gmail.com",
                     Facebook = @"https://www.facebook.com/mindonot/",
@@ -188,7 +195,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Jill",
                     LastName = "Cannot",
                     Age = 30,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/h39VCpy-2v2WDYzyqT-8LcTJZeJ0YysbXm6-IHqHov8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjUwMjA4LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"jillcannot@gmail.com",
                     Facebook = @"https://www.facebook.com/jillcannot/",
@@ -207,7 +214,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Jake",
                     LastName = "Shallnot",
                     Age = 63,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/ZXEmTeIdKBps5TSRxltdHAI6uU3S6c322VrwiAdq7Uw/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzY1OTM4LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"jakeshallnot@gmail.com",
                     Facebook = @"https://www.facebook.com/jakeshallnot/",
@@ -226,7 +233,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Bill",
                     LastName = "Shall",
                     Age = 27,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/W7_ZGDX7l51Gilm6hXEES390JBJeOmcpWc1NnBqU0xM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTAwNDUwLmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"billshall@gmail.com",
                     Facebook = @"https://www.facebook.com/billshall/",
@@ -243,7 +250,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Andy",
                     LastName = "Can",
                     Age = 51,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/rpJaN9W1m_Oa_jrfD-tm9W-Febt9hWFA-FxhgIz085c/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzU5MTEyLmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"andycan@gmail.com",
                     Facebook = @"https://www.facebook.com/andycan/",
@@ -260,7 +267,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Andria",
                     LastName = "Could",
                     Age = 18,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/werTYBNwM1Y1Y4HI1lHw4C2k66NlS--Lyr9V_U1yApM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzEyMjA2LmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"andriacould@gmail.com",
                     Facebook = @"https://www.facebook.com/andriacould/",
@@ -278,7 +285,7 @@ namespace YNHM.Database.Migrations
                     FirstName = "Maria",
                     LastName = "Couldnot",
                     Age = 36,
-                    PhotoUrl = @"https://thispersondoesnotexist.com/",
+                    PhotoUrl = "https://images.generated.photos/9xUs4FjOxVTJS8FFIm9GPBdWkjYunDDqJhUPFa50Nxc/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTM0MzExLmpwZw.jpg",
                     Phone = "0306900000000",
                     Email = @"mariacouldnot@gmail.com",
                     Facebook = @"https://www.facebook.com/mariacouldnot/",
@@ -304,7 +311,6 @@ namespace YNHM.Database.Migrations
 
 
                 #endregion
-
 
                 #region houses_seed
 

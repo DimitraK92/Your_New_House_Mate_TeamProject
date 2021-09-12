@@ -60,8 +60,9 @@ namespace YNHM.WebApp.Controllers
             return View();
         }
 
-        public ActionResult People()
+        public ActionResult People(string searchText, string selectOption)
         {
+           
             Roomie currentRoomie = GetCurrentRoomie();
 
             if (currentRoomie.HasTest==false)
@@ -82,7 +83,23 @@ namespace YNHM.WebApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, e.Message);
             }
 
+
             var compared = CompareRoomies(currentRoomie,roomies);
+
+            #region Filtering
+
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                switch (selectOption)
+                {
+                    case "First Name": compared = compared.Where(x => x.Key.FirstName.ToUpper().Contains(searchText.ToUpper())).ToDictionary(x => x.Key, x => x.Value); break;                   
+                    case "Percentage": compared = compared.Where(x => x.Value > Convert.ToInt32(searchText)).ToDictionary(x => x.Key, x => x.Value); break;
+                }
+            }
+
+
+            #endregion
+
 
             PercentageVM vm = new PercentageVM()
             {

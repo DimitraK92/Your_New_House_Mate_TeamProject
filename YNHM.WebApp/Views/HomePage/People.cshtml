@@ -9,10 +9,25 @@
 
 <section class="py-7 py-md-10">
     <div class="container">
+        @using (Html.BeginForm("People", "HomePage", FormMethod.Get))
+        {
+            <div class="search-result-bar">
+                <div class="mb-6 form-group">
+                    <label class="mb-4 h5 font-weight-normal text-dark" for="selectOption">Filter by:</label>
+                    <div class="select-bg-transparent select-border d-flex">
+                        <select id="selectOption" name="selectOption" class="select-location form-control">
+                            <option>First Name</option>
+                            <option>Percentage</option>
+                        </select>
+                    </div>
+                    @Html.TextBox("searchText", null, new { id = "searchBox", type = "search", @class = "form-control", placeholder = "Enter Keyword", autocomplete = "off" })
 
+                    <input id="searchButton" type="submit" value="Search for Roomies" class="btn btn-outline-primary" />
+                    <input id="resetButton" type="button" name="Clear Form" value="View All" class="btn btn-outline-dark" />
+                </div>
+            </div>
+        }
 
-
-        @*searchbox*@
 
         <div class="row">
 
@@ -21,7 +36,8 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card rounded-0 card-hover-overlay">
                         <div class="position-relative">
-                            <img class="card-img rounded-0" data-src=@roomie.Key.PhotoUrl src=@roomie.Key.PhotoUrl alt="Card image cap">
+
+                            <img class="card-img rounded-0" src="@roomie.Key.PhotoUrl" alt="Card image cap">
                             <div class="card-img-overlay">
                                 <h3>
                                     <a href="@Url.Action($"PersonalProfile/{roomie.Key.Id}",new { percentage = roomie.Value})">
@@ -43,34 +59,39 @@
             }
 
 
-            @foreach (var roomie in Model.Roomies)
-            {
-                @*<div class="col-md-6 col-lg-4">
-                        <div class="card rounded-0 card-hover-overlay">
-                            <div class="position-relative">
-                                <img class="card-img rounded-0" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Card image cap">
-                                <div class="card-img-overlay">
-                                    <h3>
-                                        <a href="@Url.Action($"PersonalProfile/{roomie.Id}")">
-                                            @roomie.FirstName <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                        </a>
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <div class="card-footer bg-transparent">
-                                <ul class="list-unstyled d-flex mb-0 py-2">
-                                    <li>
-                                        <h4>@GetPercentage(Model.CurrentUser, roomie) <i class="fa fa-percent" aria-hidden="false"></i> match</h4>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>*@
-            }
-
 
         </div>
     </div>
 </section>
+@section SearchBoxScripts
 
+{
+    <script>
+
+        $(window).on('load', function () {
+            $("#searchBox").val("");
+        });
+    </script>
+
+    <script>
+        $("#selectOption").on('change', (function () {
+            var option = $("#selectOption").val();
+            var searchBox = $("#searchBox");
+            if (option == 'MatchPercentage') {
+                searchBox.attr('type', 'number');
+            }
+            else {
+                searchBox.attr('type', 'search')
+            }
+        }));
+
+
+    </script>
+
+    <script>
+        $("#resetButton").click(function (e) {
+            window.location.href='@Url.Action("People", "HomePage")';
+        });
+
+    </script>
+}
