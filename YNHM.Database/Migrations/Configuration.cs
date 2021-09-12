@@ -46,14 +46,26 @@ namespace YNHM.Database.Migrations
                                      "Baratheon","Martell","Targaryen","Arryn","Tyrell",
                                      "Tully","Greyjoy","Allgood","Allyrion","Amber",
                                      "Bolton","Blount","Bar Emmon","Celtigar","Velaryon",
-                                     "Sunglass","Brune","Blackfyre","Slynt","Mormont","Cerwyn"
-                                     };
+                                     "Sunglass","Brune","Blackfyre","Slynt","Mormont","Cerwyn"};
+
+                string[] photos = { @"Models\FakeImages\person1.jpg", @"Models\FakeImages\person2.jpg",
+                                    @"Models\FakeImages\person3.jpg",@"Models\FakeImages\person4.jpg",
+                                    @"Models\FakeImages\person5.jpg",@"Models\FakeImages\person6.jpg",
+                                    @"Models\FakeImages\person7.jpg",@"Models\FakeImages\person8.jpg",
+                                    @"Models\FakeImages\person9.jpg",@"Models\FakeImages\person10.jpg",
+                                    @"Models\FakeImages\person11.jpg",@"Models\FakeImages\person12.jpg",
+                                    @"Models\FakeImages\person13.jpg",@"Models\FakeImages\person14.jpg",
+                                    @"Models\FakeImages\person15.jpg",@"Models\FakeImages\person16.jpg",
+                                    @"Models\FakeImages\person17.jpg",@"Models\FakeImages\person18.jpg",
+                                    @"Models\FakeImages\person19.jpg",@"Models\FakeImages\person20.jpg",
+                                    @"Models\FakeImages\person21.jpg"};
 
                 Random rand = new Random();
                 for (int i = 0; i < 100; i++)
                 {
                     string firstName = firstNames[rand.Next(0, firstNames.Length)];
                     string lastName = lastNames[rand.Next(0, lastNames.Length)];
+                    string photoUrl = photos[rand.Next(0, photos.Length)];
                     string email = $"{firstName}.{lastName}@gmail.com";
                     string phone = $"69{rand.Next(11111111, 100000000)}";
                     int age = rand.Next(18, 101);
@@ -66,7 +78,8 @@ namespace YNHM.Database.Migrations
                         Phone = phone,
                         Email = email,
                         IsMatched = false,
-                        HasHouse = false
+                        HasHouse = false,
+                        PhotoUrl = photoUrl
                     };
 
                     context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r);

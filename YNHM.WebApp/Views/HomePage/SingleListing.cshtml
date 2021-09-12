@@ -1,6 +1,6 @@
-﻿@model YNHM.Entities.Models.House
+﻿<!--model YNHM.Entities.Models.House
 
-@{ 
+{ 
     //Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="mb-2 mb-lg-0">
-                    <h1 class="single-listing-title">@Model.Title</h1>
-                    <p class="text-muted mb-1"> <i class="fas fa-map-marker-alt text-primary mr-1"></i>@Model.Address, @Model.District </p>
+                    <h1 class="single-listing-title">Model.Title</h1>
+                    <p class="text-muted mb-1"> <i class="fas fa-map-marker-alt text-primary mr-1"></i>Model.Address, Model.District </p>
                     <div class="d-flex align-items-center">
                         <ul class="list-inline list-inline-rating mr-2">
                             <li class="list-inline-item">
@@ -44,42 +44,42 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 <!-- ====================================
 ———	LISTING DETAILS CAROUSEL
 ===================================== -->
-<section>
+<!--<section>
     <div class="owl-carousel owl-theme listing-details-carousel nav-light-dark">
 
-        @foreach (var img in Model.Photos)
+        foreach (var img in Model.Photos)
         {
             <div class="single-item">
-                <a class="overlay-dark" href="@img.PhotoUrl" data-fancybox="gallery"
+                <a class="overlay-dark" href="img.PhotoUrl" data-fancybox="gallery"
                    data-caption="Caption for single image">
-                    <img class="lazyestload" data-src="@img.PhotoUrl" src="@img.PhotoUrl" alt="Image" />
+                    <img class="lazyestload" data-src="img.PhotoUrl" src="img.PhotoUrl" alt="Image" />
                 </a>
             </div>
         }
     </div>
-</section>
+</section>-->
 
 <!-- ====================================
 ———	MAIN CONTENT
 ===================================== -->
-<section class="pt-7 pb-4 pt-md-9 pb-md-8">
+<!--<section class="pt-7 pb-4 pt-md-9 pb-md-8">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 col-lg-8">
+            <div class="col-md-7 col-lg-8">-->
                 <!-- About -->
-                <div class="single-listing-content mb-6">
+                <!--<div class="single-listing-content mb-6">
                     <h3 class="font-weight-normal mb-6">About This Hotel</h3>
                     <p class="mb-6">@@house.Description</p>
                 </div>
-                <hr>
+                <hr>-->
 
                 <!-- Features -->
-                <div class="my-6">
+                <!--<div class="my-6">
                     <h3 class="font-weight-normal mb-6">Features</h3>
                     <ul class="list-unstyled mb-6">
                         <li class="d-inline-block mr-4 mb-2">
@@ -108,34 +108,34 @@
 
                     </ul>
                     <hr>
-                </div>
+                </div>-->
 
                 <!-- Added By -->
-                <div>
+                <!--<div>
                     <h3 class="font-weight-normal mb-6">Added By </h3>
                     <div class="media mb-7">
                         <div class="media-img">
-                            <img src="@Model.HouseSeeker.PhotoUrl" data-src="@Model.HouseSeeker.PhotoUrl" class="mr-3 media-object rounded-circle lazyestload" alt="Manager's image'">
+                            <img src="Model.HouseSeeker.PhotoUrl" data-src="Model.HouseSeeker.PhotoUrl" class="mr-3 media-object rounded-circle lazyestload" alt="Manager's image'">
                         </div>
                         <div class="media-body">
-                            <h5 class="media-heading">@Model.HouseSeeker.FirstName @Model.HouseSeeker.LastName</h5>
+                            <h5 class="media-heading">Model.HouseSeeker.FirstName Model.HouseSeeker.LastName</h5>
                             <div class="d-flex flex-column flex-lg-row align-items-lg-center">
                                 <ul class="list-inline d-flex flex-column flex-lg-row mb-0">
 
                                     <li class="list-inline-item">
                                         <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.HouseSeeker.Phone</span>
+                                        <span class="ml-2">Model.HouseSeeker.Phone</span>
                                     </li>
                                     <li class="list-inline-item">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.HouseSeeker.Email</span>
+                                        <span class="ml-2">Model.HouseSeeker.Email</span>
                                     </li>
 
                                 </ul>
 
                                 <ul class="list-inline list-inline-icon ml-lg-auto">
                                     <li class="list-inline-item">
-                                        <a class="mr-2" href="@Model.HouseSeeker.Facebook" target="_blank">
+                                        <a class="mr-2" href="Model.HouseSeeker.Facebook" target="_blank">
                                             <i class="fab fa-facebook-square" aria-hidden="true"></i>
                                         </a>
                                     </li>
@@ -157,10 +157,10 @@
                     </div>
 
                     <hr>
-                </div>
+                </div>-->
 
                 <!-- Reviews -->
-                <div class="my-6">
+                <!--<div class="my-6">
                     <h3 class="font-weight-normal mb-6">Reviews (3)</h3>
                     <div class="media mb-3">
                         <div class="media-img">
@@ -188,10 +188,10 @@
                             <p>
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan totam rem ape
                                 riam,
-                            </p>
+                            </p>-->
 
                             <!-- Reply Section -->
-                            <div class="reply-wrapper">
+                            <!--<div class="reply-wrapper">
                                 <a class="d-inline-block mb-2 btn-reply" href="javascript:0">Reply</a>
                                 <form class="form-reply my-3">
                                     <textarea class="form-control mb-6" rows="3" placeholder="Enter your comment"></textarea>
@@ -273,10 +273,10 @@
                     </div>
 
                     <hr>
-                </div>
+                </div>-->
 
                 <!-- Add Review -->
-                <div class="my-6" id="add-review">
+                <!--<div class="my-6" id="add-review">
                     <h3 class="font-weight-normal mb-6"> Add Review </h3>
                     <span class="star add-rating-default pl-0 mb-6"></span>
                     <form>
@@ -314,12 +314,12 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>-->
 
             <!--======= Sidebar =======-->
-            <div class="col-md-5 col-lg-4 pl-xl-8">
+            <!--<div class="col-md-5 col-lg-4 pl-xl-8">-->
                 <!-- Single listing Map -->
-                <div class="map-sidebar border rounded mb-5">
+                <!--<div class="map-sidebar border rounded mb-5">
                     <div id="single-listing-map" data-lat="40.755347" data-lag="-73.977151"></div>
                     <div class="px-6 py-5">
                         <ul class="list-unstyled mb-0">
@@ -329,10 +329,10 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
 
                 <!-- Book Rooms -->
-                <form class="mb-5" action="#">
+                <!--<form class="mb-5" action="#">
                     <h3 class="mb-3 font-weight-normal">Book Rooms</h3>
 
                     <div class="form-group mb-6">
@@ -372,10 +372,10 @@
                         <button type="submit" class="btn btn-primary"> Book Now </button>
                     </div>
 
-                </form>
+                </form>-->
 
                 <!-- Opening Hours -->
-                <div class="border rounded px-6 py-5 mb-5">
+                <!--<div class="border rounded px-6 py-5 mb-5">
                     <h3 class="mb-4 font-weight-normal">Opening Hours</h3>
                     <ul class="list-unstyled mb-0">
                         <li class="d-flex justify-content-between mb-3 pb-3 border-bottom">
@@ -414,4 +414,4 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
