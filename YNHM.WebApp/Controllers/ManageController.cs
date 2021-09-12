@@ -120,20 +120,85 @@ namespace YNHM.WebApp.Controllers
             return RedirectToAction($"PersonalProfile/{user.RoomieId}", "HomePage");
             //return View(vm);
         }
-
-        //
+       
+             
         //GET: /Manage/EditUserDetails
-        public ActionResult EditUserDetails()
+        public async Task<ActionResult> EditUserDetails()
         {
-            var userId = User.Identity.GetUserId();
-            var user = UserManager.FindById(userId);
+            //var userId = User.Identity.GetUserId();
+            //var user = UserManager.FindById(userId);
+
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             var roomieId = user.RoomieId;
             var roomie = pr.GetById(roomieId);
 
-            user.UserPhoto = roomie.PhotoUrl;
+            roomie.PhotoUrl = user.UserPhoto;
 
             PersonDetailsVM vm = new PersonDetailsVM(roomie);
+            return View(vm);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePhoto(UploadPhotoVM uploadPhotoVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditUserDetails");
+            }
+
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            if (user == null) { return Redirect("~/Shared/Error"); }
+
+            if (uploadPhotoVM.ImageFile != null)
+            {
+                uploadPhotoVM.ImageFile.SaveAs(Server.MapPath("~/Content/images/user/" + user.Id + ".jpg"));
+
+                uploadPhotoVM.Image = "~/Content/images/user/" + user.Id + ".jpg";
+            }
+            else
+            {
+                return Redirect("~/Shared/Error");
+            }
+            user.UserPhoto = "/Content/images/user/" + user.Id + ".jpg";
+
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded) { return RedirectToAction("EditUserDetails"); }
+            else { return Redirect("~/Shared/Error"); }
+
+        }
+
+        //POST: /Manage/EditUserDetails
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUserDetails([Bind(Include = "Id,FirstName,LastName,Age,Email,Phone,Facebook,HasHouse, PhotoUrl")] Roomie roomie)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = UserManager.FindById(User.Identity.GetUserId());
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                roomie.PhotoUrl = user.UserPhoto;              
+
+                return RedirectToAction("Index","HomePage");
+            }
+
+            PersonDetailsVM vm = new PersonDetailsVM(roomie);
+
+            return View(vm);
+        }
+
+        public async Task<ActionResult> CreateRoomie()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            CreateRoomieVM vm = new CreateRoomieVM()
+            {
+                PhotoUrl = user.UserPhoto
+            };
             return View(vm);
         }
 
@@ -148,12 +213,12 @@ namespace YNHM.WebApp.Controllers
 
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-            if(user == null) { return Redirect("~/Shared/Error"); }
+            if (user == null) { return Redirect("~/Shared/Error"); }
 
-            if(uploadPhotoVM.ImageFile != null)
+            if (uploadPhotoVM.ImageFile != null)
             {
                 uploadPhotoVM.ImageFile.SaveAs(Server.MapPath("~/Content/images/user/" + user.Id + ".jpg"));
-              
+
                 uploadPhotoVM.Image = "~/Content/images/user/" + user.Id + ".jpg";
             }
             else
@@ -163,37 +228,9 @@ namespace YNHM.WebApp.Controllers
             user.UserPhoto = "/Content/images/user/" + user.Id + ".jpg";
 
             var result = await UserManager.UpdateAsync(user);
-            if(result.Succeeded) { return RedirectToAction("CreateRoomie");}
+            if (result.Succeeded) { return RedirectToAction("CreateRoomie"); }
             else { return Redirect("~/Shared/Error"); }
 
-        }
-
-        //POST: /Manage/EditUserDetails
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditUserDetails([Bind(Include = "Id,FirstName,LastName,Age,Email,Phone,Facebook,HasHouse")] Roomie roomie)
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
-            if (ModelState.IsValid)
-            {
-                db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-
-                return RedirectToAction("Index","HomePage");
-            }
-            PersonDetailsVM vm = new PersonDetailsVM(roomie);
-
-            return View(vm);
-        }
-
-        public async Task<ActionResult> CreateRoomie()
-        {
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            CreateRoomieVM vm = new CreateRoomieVM()
-            {
-                PhotoUrl = user.UserPhoto
-            };
-            return View(vm);
         }
 
         [HttpPost]
@@ -328,14 +365,6 @@ namespace YNHM.WebApp.Controllers
             TakeTestVM vm = new TakeTestVM();
             return View(vm);
         }
-
-
-
-
-
-
-
-
 
 
         //

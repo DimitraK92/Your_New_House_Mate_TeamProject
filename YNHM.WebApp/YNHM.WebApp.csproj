@@ -6403,6 +6403,7 @@
     <Content Include="Views\Test\TestDetails.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\Manage\_UploadPhoto.cshtml" />
+    <Content Include="Views\Manage\_ChangePhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

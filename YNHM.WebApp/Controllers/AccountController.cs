@@ -203,7 +203,7 @@ namespace YNHM.WebApp.Controllers
                     user.RoomieId= roomie.Id;
                     UserManager.Update(user);
                 }
-                AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
+                //AddPersonalDetailsVM vm = new AddPersonalDetailsVM();
 
                 return RedirectToAction("Index", "Manage");
             }

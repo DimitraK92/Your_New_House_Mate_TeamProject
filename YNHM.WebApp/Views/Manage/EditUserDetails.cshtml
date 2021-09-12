@@ -22,24 +22,12 @@
         <div class="row">
             <div class="col-md-5 col-lg-4">
 
-                @Html.Partial("_UploadPhoto", new UploadPhotoVM
+                @Html.Partial("_ChangePhoto", new UploadPhotoVM
            {
-                    Username = String.Format($"{Model.FirstName} {Model.LastName}"),
-                    Image = Model.PhotoUrl
+                    Username = String.Format($"{Model.Roomie.FirstName} {Model.Roomie.LastName}"),
+                    Image = Model.Roomie.PhotoUrl
            })
 
-
-                @*<div class="card card-profile">
-                        <div class="card-profile-img py-6">
-                            <img class="rounded-circle" data-src="~/Models/FakeImages/person5.jpg" src="~/Models/FakeImages/person5.jpg" alt="Image">
-                        </div>
-                        <form class="px-6">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                                <label class="custom-file-label" for="customFileLang">Upload a Picture</label>
-                            </div>
-                        </form>
-                    </div>*@
             </div>
 
 
@@ -159,4 +147,19 @@
     document.getElementById("current_date").innerHTML = date;
 </script>
 
+<script>
+    jQuery(".custom-file-input").on("change", function () {
+        ! function (e) {
+            if (e.files && e.files[0]) {
+                var t = new FileReader;
+                t.onload = function (e) {
+                    jQuery(".card-profile-img py-6 ").attr("src", e.target.result);
+                }, t.readAsDataURL(e.files[0])
+            }
+            $("#photo-form").submit();
+        }(this)
+    }), jQuery(".upload-button").on("click", function () {
+        jQuery(".custom-file-input").click();
 
+    });
+</script>
