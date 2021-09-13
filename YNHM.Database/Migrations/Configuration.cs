@@ -385,7 +385,7 @@ namespace YNHM.Database.Migrations
                     new Question() { Text = "Does noise matter in general?" },
                     new Question() { Text = "Do you listen to music loud?" },
                     new Question() { Text = "Do you value quiet in the house" },
-                    new Question() { Text = "Will you be with playing musical instruments?" },
+                    new Question() { Text = "Will you be bothered by housemates playing musical instruments?" },
 
                     //Food
                     new Question() { Text = "Is a vegan or vegetarian diet important to you?" },
@@ -419,7 +419,7 @@ namespace YNHM.Database.Migrations
                         Roomie = roomies[i],
                         Questions = new List<Question>()
                     };
-                    
+
                     foreach (var question in questions)
                     {
                         Question q = new Question();
@@ -431,7 +431,6 @@ namespace YNHM.Database.Migrations
 
                         q.Test = test;
                         test.Questions.Add(q);
-                        context.Questions.AddOrUpdate(que => new { que.Id, que.TestId }, question);
                     }
 
                     roomies[i].Test = test;

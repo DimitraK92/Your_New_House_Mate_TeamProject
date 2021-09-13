@@ -15,19 +15,9 @@ namespace YNHM.Console
         {
             ApplicationDbContext context = new ApplicationDbContext();
             Random rand = new Random();
-            
 
-            int count = 1;
-            foreach (var h in context.Houses)
-            {
-                System.Console.WriteLine($"{count} {h.Address}, {h.District}");
-                System.Console.WriteLine($"Floor: {h.Floor}, Rooms: {h.Bedrooms}, Rent: {h.Rent}, Area: {h.Area}");
-                System.Console.WriteLine();
-                count++;
-            }
 
             
-
 
 
         }
