@@ -189,10 +189,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                 db.Entry(house).State = EntityState.Modified;
                 db.SaveChanges();
-
+               
                 var houseRoomies = house.Roomies.ToList();
                 if (houseRoomies.Count > 1)
                 {
+                    Comparison compare = new Comparison();
                     try
                     {
                         var tempRoomies = new List<Roomie>();
@@ -212,13 +213,15 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                                     RoomiesPair newPairFirstVersion = new RoomiesPair()
                                     {
                                         RoomieOneId = houseRoomies[i].Id,
-                                        RoomieTwoId = houseRoomies[j].Id
+                                        RoomieTwoId = houseRoomies[j].Id,
+                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
                                     };
 
                                     RoomiesPair newPairSecondVersion = new RoomiesPair()
                                     {
                                         RoomieOneId = houseRoomies[j].Id,
-                                        RoomieTwoId = houseRoomies[i].Id
+                                        RoomieTwoId = houseRoomies[i].Id,
+                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
 
                                     };
                                     var existingPairs = db.RoomiesPair.ToList();
