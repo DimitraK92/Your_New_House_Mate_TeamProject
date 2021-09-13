@@ -77,6 +77,13 @@ namespace YNHM.WebApp.Controllers
                 roomies = dbContext.Roomies
                             .Where(r => r.Id != currentRoomie.Id && r.IsMatched == false &&r.HasTest).ToList()
                             .Where(r => r.HasHouse != currentRoomie.HasHouse).ToList();
+                
+                if (!currentRoomie.HasHouse)
+                {
+                    var matchedWithRooms = dbContext.Roomies.Where(r => r.Id != currentRoomie.Id && r.IsMatched)
+                        .Where(r => r.House.Roomies.Count != r.House.Bedrooms).ToList();
+                    roomies.AddRange(matchedWithRooms);
+                }
             }
             catch (Exception e)
             {
@@ -111,9 +118,9 @@ namespace YNHM.WebApp.Controllers
             return View(vm);
         }
 
-        public ActionResult PersonalProfile(int? id, int percentage)
+        public ActionResult PersonalProfile(int? id, int? percentage)
         {
-            if (id == null)
+            if (id == null||percentage==null)
             {
                 return View("Error");
             }
@@ -133,7 +140,7 @@ namespace YNHM.WebApp.Controllers
             }
 
             var currentRoomie = GetCurrentRoomie();
-            PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie, percentage);
+            PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie, percentage.GetValueOrDefault());
             return View(vm);
         }
         
@@ -141,7 +148,19 @@ namespace YNHM.WebApp.Controllers
         {
             Roomie currentRoomie = GetCurrentRoomie();
 
+
+
             Roomie match = dbContext.Roomies.Find(matchedUserId);
+
+            var roomieWithHouse = currentRoomie.HasHouse == true ? currentRoomie : match;
+            var roomieWithoutHouse = currentRoomie.HasHouse == false ? currentRoomie : match;
+
+            bool roomsLeft = roomieWithHouse.House.Bedrooms - roomieWithHouse.House.Roomies.Count > 0 ? true : false;
+            if (!roomsLeft)
+            {
+                TempData["message"] = "Sorry, you cannot add this person, your house is full. :(";
+                return RedirectToAction("MatchDetails", "Manage");
+            }
 
             Comparison compare = new Comparison();
 
@@ -162,8 +181,7 @@ namespace YNHM.WebApp.Controllers
 
             //Add roomie to House.Roomies & Add house to Roomie.House
 
-            var roomieWithHouse = currentRoomie.HasHouse == true ? currentRoomie : match;
-            var roomieWithoutHouse = currentRoomie.HasHouse == false ? currentRoomie : match;
+
 
             var house = roomieWithHouse.House;
             roomieWithoutHouse.HasHouse = true;
@@ -175,7 +193,7 @@ namespace YNHM.WebApp.Controllers
             dbContext.Entry(house).State = EntityState.Modified;
             dbContext.SaveChanges();
 
-            return RedirectToAction("Index","HomePage");
+            return RedirectToAction("MatchDetails","Manage");
         }
 
         public ActionResult House(int? houseId)
@@ -192,6 +210,7 @@ namespace YNHM.WebApp.Controllers
             return View(user);
         }
 
+        //Helpers
         public Dictionary<Roomie, int> CompareRoomies(Roomie current, List<Roomie> others)
         {
             Comparison comp = new Comparison();

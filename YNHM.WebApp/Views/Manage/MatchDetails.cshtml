@@ -1,0 +1,112 @@
+﻿@model YNHM.WebApp.Models.MatchDetailsVM
+@{
+    ViewBag.Title = "MatchDetails";
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
+}
+
+<section class="pb-8 pt-5 bg-light height100vh">
+    <div class="container">
+        <!-- My Bookings -->
+        <h5>My housemates</h5>
+        <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.PairedRoomies != null)
+                {
+                    foreach (var roomie in Model.PairedRoomies)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-sm rounded" data-src="@roomie.Key.PhotoUrl" src="@roomie.Key.PhotoUrl" alt="Image">
+                            </td>
+                            <td class="text-capitalize">
+                                @Html.DisplayFor(x => roomie.Key.FirstName)
+                            </td>
+                            <td class="text-capitalize">
+                                @Html.DisplayFor(x => roomie.Key.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => roomie.Key.Age)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => roomie.Key.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(x => roomie.Key.Email)
+                            </td>
+                            <td>
+                                <a class="text-hover-primary text-muted" href="@Url.Action("PersonalProfile","HomePage", new { id=roomie.Key.Id,percentage=roomie.Value})">View Profile</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+        <br />
+        <h5>My house</h5>
+        <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Address</th>
+                    <th>Floor</th>
+                    <th>Rent</th>
+                    <th>Area</th>
+                    <th>Bedrooms</th>
+                    <th>Detailed View</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.House != null)
+                {
+                    <tr>
+                        <td>
+                            <img class="img-sm rounded" data-src="@Model.House.PhotoUrl" src="@Model.House.PhotoUrl" alt="Image">
+                        </td>
+                        <td class="text-capitalize">
+                            <text>@Model.House.Address, @Model.House.District</text>
+                        </td>
+                        <td class="text-capitalize">
+                            @Html.DisplayFor(x => Model.House.Floor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => Model.House.Rent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => Model.House.Area)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => Model.House.Bedrooms)
+                        </td>
+                        <td>
+                            <a class="text-hover-primary text-muted" href="@Url.Action("House","HomePage", new { houseId=Model.House.Id})">View Profile</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["message"]");
+            };
+    </script>
+}
+
+

@@ -92,6 +92,10 @@ namespace YNHM.WebApp
                 "~/Templates/Listty/StaticHTML/assets/plugins/smoothscroll/SmoothScroll.js",
                 "~/Templates/Listty/StaticHTML/assets/plugins/lazyestload/lazyestload.js"));
 
+            //Pairs
+            bundles.Add(new ScriptBundle("~/Templates/Listty/StaticHTML/assets/pairScripts").Include(
+                "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js",
+                "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/Responsive-2.2.2/js/dataTables.responsive.min.js"));
 
             //----------------------------------------------------------------------------------//
             //Style Bundles
@@ -111,7 +115,6 @@ namespace YNHM.WebApp
 
             bundles.Add(new Bundle("~/Templates/Listty/StaticHTML/assets/selectric").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/selectric/selectric.css"));
-
 
             //Index
             bundles.Add(new StyleBundle("~/Templates/Listty/StaticHTML/assets/mainStyle").Include(
@@ -154,6 +157,15 @@ namespace YNHM.WebApp
             //Signup
             bundles.Add(new StyleBundle("~/Templates/Listty/StaticHTML/assets/signupStyle").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/selectric/selectric.css"));
+            
+            //User pairs
+            bundles.Add(new StyleBundle("~/Templates/Listty/StaticHTML/assets/pairsStyle").Include(
+                "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css",
+                "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/Responsive-2.2.2/css/responsive.dataTables.min.css"));
+
+
+
+
         }
     }
 }

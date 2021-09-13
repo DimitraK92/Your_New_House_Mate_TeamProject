@@ -206,6 +206,7 @@
     <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatchDetailsVM.cs" />
     <Compile Include="Models\PercentageVM.cs" />
     <Compile Include="Models\PersonalProfileVM.cs" />
     <Compile Include="Models\PersonDetailsVM.cs" />
@@ -6404,6 +6405,7 @@
     <Content Include="Views\PayPal\PaymentSuccess.cshtml" />
     <Content Include="Views\PayPal\PaymentFailed.cshtml" />
     <Content Include="Views\HomePage\Subscriptions.cshtml" />
+    <Content Include="Views\Manage\MatchDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

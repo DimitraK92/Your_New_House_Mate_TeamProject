@@ -127,7 +127,6 @@ namespace YNHM.WebApp.Controllers
                 UserManager.Update(user);
             }
 
-            //on successful payment, show success page to user.
 
             TempData["message"] = "Your payment has been processed and has been accepted!";
             return RedirectToAction("Index", "HomePage");

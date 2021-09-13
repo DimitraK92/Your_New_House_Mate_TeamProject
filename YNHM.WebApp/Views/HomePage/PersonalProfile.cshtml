@@ -16,14 +16,11 @@
                         @if (Model.ViewedRoomie.PhotoUrl == null)
                         {
                             <img class="w-100 rounded rounded-md-left" data-src="~/Content/images/user/image.png" src="~/Content/images/user/image.png" alt="profile-user.jpg">
-
                         }
                         else
                         {
-
                             <img class="w-100 rounded rounded-md-left" data-src="@Model.ViewedRoomie.PhotoUrl" src="@Model.ViewedRoomie.PhotoUrl" alt="profile-user.jpg">
                         }
-
                     </div>
                 </div>
 
@@ -33,17 +30,26 @@
                         <span class="d-inline-block mb-5" style="font-size: 1rem; font-weight: 600">@Model.Percentage <i class="fa fa-percent" aria-hidden="false"></i></span>
                         <ul class="list-unstyled mb-5">
                             <li class="mb-2">
-                                <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                <a class="text-muted" href="@Model.ViewedRoomie.Phone">@Model.ViewedRoomie.Phone</a>
+                                <i class="fa fa-envelope-open-text" aria-hidden="true"></i>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                                    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                                    quia.
+                                </p>
                             </li>
-                            <li>
+                            @*<li>
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <a href="@Model.ViewedRoomie.Email">@Model.ViewedRoomie.Email</a>
                             </li>
                             <li>
                                 <i class="fab fa-facebook"></i>
                                 <a href="@Model.ViewedRoomie.Facebook"><span> @Model.ViewedRoomie.Facebook</span></a>
-                            </li>
+                            </li>*@
                             <br />
                             <li>
                                 @if (Model.ViewedRoomie.House != null)
@@ -55,15 +61,14 @@
                                 }
                             </li>
                         </ul>
-                        <a class="btn btn-primary text-capitalize" href="@Url.Action("Match","HomePage",new { matchedUserId = Model.ViewedRoomie.Id})">
-                            <i class="far fa-user" aria-hidden="true"></i> MATCH!
-                        </a>
+                        @if (!Model.ViewedRoomie.IsMatched)
+                        {
+                            <a class="btn btn-primary text-capitalize" href="@Url.Action("Match","HomePage",new { matchedUserId = Model.ViewedRoomie.Id})">
+                                <i class="far fa-user" aria-hidden="true"></i> MATCH!
+                            </a>
+                        }
                     </div>
-
                 </div>
-
-
-
                 @if (Model.CurrentRoomie.IsSubscribed)
                 {
                     if (Model.ViewedRoomie.Test == null || Model.CurrentRoomie.Test == null)

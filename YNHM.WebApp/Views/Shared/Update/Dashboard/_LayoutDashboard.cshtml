@@ -28,6 +28,10 @@
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/signupStyle")
         }
+        else if (routeValues.ContainsValue("MatchDetails"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/pairsStyle")
+        }
     }
 
 
@@ -93,6 +97,10 @@
         else if (routeValues.ContainsValue("Test"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad")
+        }
+        else if (routeValues.ContainsValue("MatchDetails"))
+        {
+            @Styles.Render("~/Templates/Listty/StaticHTML/assets/pairScripts")
         }
     }
     @Scripts.Render("~/Templates/Listty/StaticHTML/assets/scrollAndLazyLoad")

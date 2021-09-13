@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -328,7 +329,38 @@ namespace YNHM.WebApp.Controllers
             h.Roomies.Add(r);
             db.SaveChanges();
             return h;
-        }   
+        }
+
+        public ActionResult MatchDetails()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var userRoomie = db.Roomies.Find(user.RoomieId);
+
+            var pairs = db.RoomiesPair
+                .Where(p => p.RoomieOneId == userRoomie.Id || p.RoomieTwoId == userRoomie.Id)
+                .ToList();
+
+            Dictionary<Roomie,int> pairedRoomies = new Dictionary<Roomie, int>();
+            foreach (var pair in pairs)
+            {
+                int id = pair.RoomieOneId != userRoomie.Id ? id = pair.RoomieOneId : id = pair.RoomieTwoId;
+                var roomie = db.Roomies.Find(id);
+                pairedRoomies.Add(roomie,pair.MatchPercentage);
+            }
+            var house = userRoomie.House;
+
+            pairedRoomies = pairedRoomies.OrderBy(r => r.Key.LastName).ThenBy(r => r.Key.FirstName).ToDictionary(x => x.Key, x => x.Value);
+            MatchDetailsVM vm = new MatchDetailsVM()
+            {
+                PairedRoomies = pairedRoomies,
+                House = house
+            };
+            return View(vm);
+        }
+
+
+
+
 
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
