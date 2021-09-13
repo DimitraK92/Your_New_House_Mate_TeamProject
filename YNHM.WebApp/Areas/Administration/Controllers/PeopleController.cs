@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -16,9 +17,29 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         HousesController hc = new HousesController();
 
         // GET: People
-        public ActionResult Index()
+        public ActionResult Index(string searchText, string selectOption)
         {
-            var roomies = db.Roomies.ToList();
+            var roomies = db.Roomies.OrderByDescending(x=>x.HouseId).ToList();
+
+            #region Filtering
+
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                switch (selectOption)
+                {
+                    case "First Name": roomies = roomies.Where(x => x.FirstName.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Last Name": roomies = roomies.Where(x => x.LastName.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Email": roomies = roomies.Where(x => x.Email.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Phone Number": roomies = roomies.Where(x => x.Phone.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Min Age": roomies = roomies.Where(x => x.Age >= Convert.ToInt32(searchText)).ToList(); break;
+                    case "Max Age": roomies = roomies.Where(x => x.Age <= Convert.ToInt32(searchText)).ToList(); break;
+                    case "House": roomies = roomies.Where(x => x.HasHouse == Boolean.Parse(searchText)).ToList(); break;
+                    
+                }
+            }
+
+            #endregion
+
 
             return View(roomies);
         }

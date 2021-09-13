@@ -143,6 +143,8 @@ namespace YNHM.WebApp.Controllers
 
             Roomie match = dbContext.Roomies.Find(matchedUserId);
 
+            Comparison compare = new Comparison();
+
             match.IsMatched = true;
             currentRoomie.IsMatched = true;
 
@@ -153,7 +155,7 @@ namespace YNHM.WebApp.Controllers
             RoomiesPair pair = new RoomiesPair();
             pair.RoomieOneId = currentRoomie.Id;
             pair.RoomieTwoId = matchedUserId;
-            pair.MatchPercentage = GetPercentage(currentRoomie, match);
+            pair.MatchPercentage = compare.CalculateMatchPercentage(currentRoomie.Test, match.Test);
 
             dbContext.Entry(pair).State = EntityState.Added;
             dbContext.SaveChanges();
@@ -164,6 +166,9 @@ namespace YNHM.WebApp.Controllers
             var roomieWithoutHouse = currentRoomie.HasHouse == false ? currentRoomie : match;
 
             var house = roomieWithHouse.House;
+            roomieWithoutHouse.HasHouse = true;
+            dbContext.Entry(roomieWithoutHouse).State = EntityState.Modified;
+
             dbContext.Houses.Attach(house);
             dbContext.Entry(house).Collection("Roomies").Load();
             house.Roomies.Add(roomieWithoutHouse);
@@ -205,23 +210,6 @@ namespace YNHM.WebApp.Controllers
                 roomiesPercentages.Add(others[i], percent);
             }
             return roomiesPercentages.OrderByDescending(r=>r.Value).ToDictionary(x=>x.Key,x=>x.Value);
-        }
-
-        public int GetPercentage(Roomie current, Roomie compare)
-        {
-            int percentage = 0;
-
-            bool[] currentAnswer = { current.IsSmoking, current.IsVegan, current.IsNoisy, current.LikesCleaning, current.IsCatPerson };
-            bool[] compared = { compare.IsSmoking, compare.IsVegan, compare.IsNoisy, compare.LikesCleaning, compare.IsCatPerson };
-
-            for (int i = 0; i < currentAnswer.Length; i++)
-            {
-                if (currentAnswer[i] == compared[i])
-                {
-                    percentage += 20;
-                }
-            }
-            return percentage;
         }
         private Roomie GetCurrentRoomie()
         {

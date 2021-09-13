@@ -10,7 +10,32 @@
 <div class="page-content">
     <div class="page-header no-margin-bottom">
         <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom text-center">People</h2>
+            <h2 class="h5 no-margin-bottom">People</h2>
+        </div>
+        <div class="container-fluid" style="display: flex; justify-content: flex-end">
+            @using (Html.BeginForm("Index", "People", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="form-group">
+                    <label class="h5 no-margin-bottom mr-3" for="selectOption">Filter by:</label>
+                    <select id="selectOption" name="selectOption" class="select-location form-control">
+                        <option>First Name</option>
+                        <option>Last Name</option>
+                        <option>Email</option>
+                        <option>Phone Number</option>
+                        <option>Min Age</option>
+                        <option>Max Age</option>
+                        <option>House</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("searchText", null, new { id = "searchBox", type = "search", @class = "mr-sm-3 form-control form-control", placeholder = "Enter Keyword", autocomplete = "off" })
+
+                </div>
+                <div class="form-group">
+                    <input id="searchButton" type="submit" value="Search" class="btn btn-outline-primary" />
+                    <input id="resetButton" type="button" name="Clear Form" value="View All" class="btn btn-outline-secondary" />
+                </div>
+            }
         </div>
     </div>
     <div class="container-fluid">
@@ -23,13 +48,12 @@
             <div class="row">
                 <div class="col">
                     <div class="block">
-                        @*<div class="title text-center"><strong>Houses</strong></div>*@
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        @*<th>@Html.DisplayNameFor(model => model.PhotoUrl)</th>*@
+                                        <th>@Html.DisplayNameFor(model => model.PhotoUrl)</th>
                                         <th>@Html.DisplayNameFor(model => model.FirstName)</th>
                                         <th>@Html.DisplayNameFor(model => model.LastName)</th>
                                         <th>@Html.DisplayNameFor(model => model.Age)</th>
@@ -46,40 +70,39 @@
                                     @foreach (var item in Model)
                                     {
 
-                                    <tr>
-                                        <th scope="row">@String.Format($"{++count}")</th>
-                                        <!--<td>-->
-                                            @*TODO: DISPLAY EACH PERSON'S IMAGE WITH item.PhotoUrl*@
-                                            <!--<img style="max-width:60px" src="~/Models/FakeImages/person1.jpg" alt="Person Photo" />
-                                        </td>-->
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FirstName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LastName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Age)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Phone)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
-                                        </td>
-                                        <td>
-                                            @if (item.House != null)
-                                            {
-                                                <a href="@Url.Action($"Details/{item.HouseId}","Houses")">House Details</a>
-                                                @*<a href="@Url.Action($"Details/{item.Id}","Houses")"><img src="@item.House.Photos.First().PhotoUrl" height="60" width="60" /></a>*@
-                                            }
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">@String.Format($"{++count}")</th>
+                                            <td>
+
+                                                <img style="max-width:60px" src=@item.PhotoUrl alt="Person Photo" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Age)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Phone)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @if (item.House != null)
+                                                {
+                                                    <a href="@Url.Action($"Details/{item.HouseId}","Houses")">House Details</a>
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -90,3 +113,47 @@
         </div>
     </section>
 </div>
+
+@section PeopleSearchBoxScripts
+
+{
+    <script>
+
+        $(window).on('load', function () {
+            $("#searchBox").val("");
+        });
+    </script>
+
+    <script>
+        $("#selectOption").on('change', (function () {
+            var option = $("#selectOption").val();
+            var searchBox = $("#searchBox");
+            if (option == 'Min Age') {
+                searchBox.attr('type', 'number');
+                searchBox.attr('placeholder', 'Enter a min value');
+            } else if (option == 'Max Age') {
+                searchBox.attr('type', 'number');
+                searchBox.attr('placeholder', 'Enter a max value');
+            } else if (option == 'House') {
+                searchBox.replaceWith(
+                    /*`<input id="searchText" type="checkbox" value="" class="checkbox-template mr-sm-3 form-control form-control">`);*/
+                    `<select id="searchText" name="searchText" class="select-location form-control ml-lg-5 mr-lg-5">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                    `);
+            }
+            else {
+                searchBox.attr('type', 'search')
+            }
+        }));
+
+
+    </script>
+
+    <script>
+        $("#resetButton").click(function (e) {
+            window.location.href='@Url.Action("Index", "People")';
+        });
+
+    </script>
+}

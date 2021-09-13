@@ -19,9 +19,30 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         HomePageController homePageController = new HomePageController();
 
         // GET: Administration/Houses
-        public ActionResult Index()
+        public ActionResult Index(string searchText, string selectOption)
         {
-            return View(db.Houses.ToList());
+            var houses = db.Houses.OrderByDescending(x=>x.Roomies.Count).ToList();
+
+            #region Filtering
+
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                switch (selectOption)
+                {
+                    case "Address": houses  = houses.Where(x => x.Address.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Distinct": houses  = houses.Where(x => x.District.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Floor": houses = houses.Where(x => x.Floor >= Convert.ToInt32(searchText)).ToList(); break;
+                    case "Area": houses = houses.Where(x => x.Area >= Convert.ToInt32(searchText)).ToList(); break;
+                    case "Bedrooms": houses = houses.Where(x => x.Bedrooms >= Convert.ToInt32(searchText)).ToList(); break;
+                    case "Rent": houses = houses.Where(x => x.Rent >= Convert.ToInt32(searchText)).ToList(); break;
+                    case "Number of Roomies": houses = houses.Where(x => x.Roomies.Count >= Convert.ToInt32(searchText)).ToList(); break;
+                }
+            }
+
+            #endregion
+
+
+            return View(houses);
         }
 
         // GET: Administration/Houses/Details/5
@@ -285,8 +306,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 RoomieOneId = roomieOne.Id,
                 RoomieTwoId = roomieTwo.Id,
-                MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)
-                //homePageController.GetPercentage(roomieOne, roomieTwo)
+                MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)               
             };
 
 

@@ -115,13 +115,6 @@ namespace YNHM.Database.Migrations
                     Phone = "6945666666",
                     Facebook = "https://www.facebook.com/vassilis.geko",
                     IsSubscribed = true,
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = true,
-                    LikesCleaning = true,
-                    IsVegan = true,
-
                 };
                 Roomie r2 = new Roomie()
                 {
@@ -132,15 +125,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"janedoe@gmail.com",
                     Facebook = @"https://www.facebook.com/janedoe/",
-
-                    IsSmoking = false,
-                    IsCatPerson = false,
-                    IsNoisy = false,
-                    LikesCleaning = false,
-                    IsVegan = false,
-
-                    HasHouse = true,
-                    IsMatched = true
 
                 };
                 Roomie r3 = new Roomie()
@@ -153,15 +137,6 @@ namespace YNHM.Database.Migrations
                     Email = @"jimdo@gmail.com",
                     Facebook = @"https://www.facebook.com/jimdo/",
 
-                    IsSmoking = true,
-                    IsCatPerson = false,
-                    IsNoisy = false,
-                    LikesCleaning = false,
-                    IsVegan = false,
-
-                    HasHouse = true,
-                    IsMatched = true
-
                 };
                 Roomie r4 = new Roomie()
                 {
@@ -172,14 +147,7 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"maxdont@gmail.com",
                     Facebook = @"https://www.facebook.com/maxdont/",
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = false,
-                    LikesCleaning = false,
-                    IsVegan = false,
-
-                    HasHouse = true
+                    
                 };
                 Roomie r5 = new Roomie()
                 {
@@ -190,14 +158,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"mindonot@gmail.com",
                     Facebook = @"https://www.facebook.com/mindonot/",
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = true,
-                    LikesCleaning = false,
-                    IsVegan = false,
-
-                    IsMatched = true
                 };
                 Roomie r6 = new Roomie()
                 {
@@ -208,14 +168,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"jillcannot@gmail.com",
                     Facebook = @"https://www.facebook.com/jillcannot/",
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = true,
-                    LikesCleaning = true,
-                    IsVegan = false,
-
-                    IsMatched = true
                 };
                 Roomie r7 = new Roomie()
                 {
@@ -226,14 +178,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"jakeshallnot@gmail.com",
                     Facebook = @"https://www.facebook.com/jakeshallnot/",
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = true,
-                    LikesCleaning = true,
-                    IsVegan = true,
-
-                    HasHouse = true
                 };
                 Roomie r8 = new Roomie()
                 {
@@ -244,12 +188,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"billshall@gmail.com",
                     Facebook = @"https://www.facebook.com/billshall/",
-
-                    IsSmoking = true,
-                    IsCatPerson = true,
-                    IsNoisy = false,
-                    LikesCleaning = true,
-                    IsVegan = true
                 };
                 Roomie r9 = new Roomie()
                 {
@@ -260,12 +198,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"andycan@gmail.com",
                     Facebook = @"https://www.facebook.com/andycan/",
-
-                    IsSmoking = true,
-                    IsCatPerson = false,
-                    IsNoisy = true,
-                    LikesCleaning = false,
-                    IsVegan = true,
                 };
                 Roomie r10 = new Roomie()
                 {
@@ -277,12 +209,6 @@ namespace YNHM.Database.Migrations
                     Email = @"andriacould@gmail.com",
                     Facebook = @"https://www.facebook.com/andriacould/",
 
-                    IsSmoking = false,
-                    IsCatPerson = false,
-                    IsNoisy = true,
-                    LikesCleaning = true,
-                    IsVegan = false
-
                 };
                 Roomie r11 = new Roomie()
                 {
@@ -293,12 +219,6 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"mariacouldnot@gmail.com",
                     Facebook = @"https://www.facebook.com/mariacouldnot/",
-
-                    IsSmoking = false,
-                    IsCatPerson = true,
-                    IsNoisy = false,
-                    LikesCleaning = true,
-                    IsVegan = false
                 };
                 Roomie r12 = new Roomie()
                 {
