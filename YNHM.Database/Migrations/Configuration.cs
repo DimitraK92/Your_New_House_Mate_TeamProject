@@ -409,6 +409,8 @@ namespace YNHM.Database.Migrations
 
                 var roomies = context.Roomies.ToList();
                 Random rnd = new Random();
+
+
                 for (int i = 0; i < roomies.Count; i++)
                 {
                     Test test = new Test()
@@ -417,7 +419,7 @@ namespace YNHM.Database.Migrations
                         Roomie = roomies[i],
                         Questions = new List<Question>()
                     };
-
+                    
                     foreach (var question in questions)
                     {
                         Question q = new Question();
@@ -431,6 +433,8 @@ namespace YNHM.Database.Migrations
                         test.Questions.Add(q);
                         context.Questions.AddOrUpdate(que => new { que.Id, que.TestId }, question);
                     }
+
+                    roomies[i].Test = test;
                     roomies[i].HasTest = true;
                     context.Entry(roomies[i]).State = EntityState.Modified;
                     context.Tests.AddOrUpdate(t => t.TestId, test);

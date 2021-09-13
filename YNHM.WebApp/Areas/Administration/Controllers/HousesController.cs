@@ -309,7 +309,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)               
             };
 
-
             var roomieOneInDb = db.Roomies.Find(roomiesPair.RoomieOneId);
             roomieOneInDb.IsMatched = true;
             db.Entry(roomieOneInDb).State = EntityState.Modified;

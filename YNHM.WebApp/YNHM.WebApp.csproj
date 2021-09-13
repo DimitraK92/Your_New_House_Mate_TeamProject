@@ -209,7 +209,6 @@
     <Compile Include="Models\PercentageVM.cs" />
     <Compile Include="Models\PersonalProfileVM.cs" />
     <Compile Include="Models\PersonDetailsVM.cs" />
-    <Compile Include="Models\TakeTestVM.cs" />
     <Compile Include="Models\UploadPhotoVM.cs" />
     <Compile Include="PaypalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -6394,7 +6393,6 @@
     <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
     <Content Include="Views\Test\TakeTest.cshtml" />
     <Content Include="Views\HomePage\House.cshtml" />
-    <Content Include="Views\Manage\TakeTest.cshtml" />
     <Content Include="Views\Manage\CreateRoomie.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\HomePage\Match.cshtml" />

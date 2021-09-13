@@ -33,13 +33,6 @@ namespace YNHM.Entities.Models
         public bool HasTest { get; set; }
         public bool IsSubscribed { get; set; }
 
-        //REQUIREMENTS
-        public bool IsSmoking { get; set; }
-        public bool IsVegan { get; set; }
-        public bool IsNoisy { get; set; }
-        public bool LikesCleaning { get; set; }
-        public bool IsCatPerson { get; set; }
-
         public Roomie()
         {
             IsMatched = false;

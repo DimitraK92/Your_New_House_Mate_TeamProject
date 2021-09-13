@@ -328,45 +328,8 @@ namespace YNHM.WebApp.Controllers
             h.Roomies.Add(r);
             db.SaveChanges();
             return h;
-        }
+        }   
 
-        //GET: /Manage/TakeTest
-        public ActionResult TakeTest()
-        {
-            TakeTestVM vm = new TakeTestVM();
-            return View(vm);
-        }
-
-        //POST: /Manage/TakeTest
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult TakeTest(TakeTestVM tkvm)
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var userId = User.Identity.GetUserId();
-            var user = UserManager.FindById(userId);
-
-            var roomieId = user.RoomieId;
-            var roomie = db.Roomies.Find(roomieId);
-
-            if (ModelState.IsValid)
-            {
-                roomie.IsSmoking = tkvm.IsSmoking;
-                roomie.IsVegan = tkvm.IsVegan;
-                roomie.IsNoisy = tkvm.IsNoisy;
-                roomie.IsCatPerson = tkvm.IsCatPerson;
-                roomie.LikesCleaning = tkvm.LikesCleaning;
-
-                db.Entry(roomie).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-
-                return RedirectToAction("People", "HomePage");
-            }
-            TakeTestVM vm = new TakeTestVM();
-            return View(vm);
-        }
-
-        //
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {

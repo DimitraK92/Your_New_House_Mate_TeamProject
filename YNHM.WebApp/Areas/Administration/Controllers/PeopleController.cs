@@ -33,8 +33,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                     case "Phone Number": roomies = roomies.Where(x => x.Phone.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
                     case "Min Age": roomies = roomies.Where(x => x.Age >= Convert.ToInt32(searchText)).ToList(); break;
                     case "Max Age": roomies = roomies.Where(x => x.Age <= Convert.ToInt32(searchText)).ToList(); break;
-                    case "House": roomies = roomies.Where(x => x.HasHouse == Boolean.Parse(searchText)).ToList(); break;
-                    
+                    case "House": roomies = roomies.Where(x => x.HasHouse == Boolean.Parse(searchText)).ToList(); break;                   
                 }
             }
 
@@ -125,11 +124,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                     {
                         try
                         {
-                            db.Entry(roomie).State = EntityState.Modified;
-                            db.SaveChanges();
-
                             var houseRoomies = house.Roomies.ToList();
-
                             var tempRoomies = new List<Roomie>();
                             var tempRoomiesTwo = new List<Roomie>();
 
@@ -175,8 +170,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                             return RedirectToAction("Index");
                         }
-                        
+
+                        db.Entry(roomie).State = EntityState.Modified;
                     }
+                    db.Entry(roomie).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
 
                
