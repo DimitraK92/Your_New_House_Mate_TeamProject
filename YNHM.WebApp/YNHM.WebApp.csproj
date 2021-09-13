@@ -63,6 +63,9 @@
     <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -187,6 +190,7 @@
     <Compile Include="Areas\Administration\Controllers\HousesController.cs" />
     <Compile Include="Areas\Administration\Controllers\PeopleController.cs" />
     <Compile Include="Areas\Administration\Controllers\Api\DashboardApiController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdminLoginVM.cs" />
     <Compile Include="Areas\Administration\ViewModels\DashboardVM.cs" />
@@ -207,6 +211,7 @@
     <Compile Include="Models\PersonDetailsVM.cs" />
     <Compile Include="Models\TakeTestVM.cs" />
     <Compile Include="Models\UploadPhotoVM.cs" />
+    <Compile Include="PaypalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -6420,6 +6425,9 @@
     <Content Include="Views\Manage\_UploadPhoto.cshtml" />
     <Content Include="Views\Manage\_ChangePhoto.cshtml" />
     <Content Include="Views\HomePage\People.cshtml" />
+    <Content Include="Views\PayPal\PaymentSuccess.cshtml" />
+    <Content Include="Views\PayPal\PaymentFailed.cshtml" />
+    <Content Include="Views\HomePage\Subscriptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

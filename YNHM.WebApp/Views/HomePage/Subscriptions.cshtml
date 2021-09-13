@@ -1,0 +1,153 @@
+﻿@using Microsoft.AspNet.Identity
+@model YNHM.Entities.Models.ApplicationUser
+@{
+    ViewBag.Title = "Subscriptions";
+    Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
+}
+
+
+    @if (Model != null && Model.IsSubscribed)
+    {
+<section class="py-7 py-md-10">
+    <div class="container">
+        <div class="section-title">
+            <h4>
+                Your Current Plan
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-pricing border-primary">
+                    <h2 class="card-title">
+                        Premium
+                    </h2>
+
+                    <div class="pricing bg-primary">
+                        <span class="price text-white">14</span>
+                        <span class="year text-white">EUR/Month</span>
+                    </div>
+                    <div class="text-align-center">
+                        <h5><strong>Expiration date:</strong> @Model.SubscriptionExpires.Value.ToString("d")</h5>
+                    </div>
+                    <div class="card-body px-7 px-md-3 px-lg-7">
+
+                        <ul class="list-unstyled mt-4">
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Profile Customization</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Test answers comparison</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Appears higher in searches</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Seaweed for silk ribbons</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    }
+
+else
+{
+<section class="py-7 py-md-10">
+    <div class="container">
+        <div class="section-title">
+            <h4>
+                Our website offers two packages with different user experience. Find out more below!
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-pricing">
+                    <h2 class="card-title">
+                        Free
+                    </h2>
+
+                    <div class="pricing">
+                        <span class="price">0</span>
+                        <span class="year">EUR/Month</span>
+                    </div>
+
+                    <div class="card-body px-7 px-md-3 px-lg-7">
+
+                        <ul class="list-unstyled mt-4">
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Profile Customization</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer bg-transparent text-center border-top-0 pb-5 pt-4">
+                        <a href="@Url.Action("Index","HomePage")" class="btn btn-outline-secondary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-pricing border-primary">
+                    <h2 class="card-title">
+                        Premium
+                    </h2>
+
+                    <div class="pricing bg-primary">
+                        <span class="price text-white">14</span>
+                        <span class="year text-white">EUR/Month</span>
+                    </div>
+                    <div class="card-body px-7 px-md-3 px-lg-7">
+
+                        <ul class="list-unstyled mt-4">
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Profile Customization</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Test answers comparison</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Appears higher in searches</span>
+                            </li>
+                            <li class="active mb-3">
+                                <i class="fa fa-check-square"></i>
+                                <span class="mb-0">Seaweed for silk ribbons</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer bg-transparent text-center border-top-0 pb-5 pt-4">
+                        <a href="@Url.Action("PaymentWithPaypal","PayPal")" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @{
+            if (!User.Identity.IsAuthenticated)
+            {
+                <div class="text-center pt-5">
+                    <p class="mb-0 text-dark" style="font-size: 16px"> Don't have an Account? <a href="@Url.Action("Register","Account")">Sign up</a></p>
+                </div>
+            }
+        }
+
+
+
+    </div>
+</section>
+}
+
+
+
+
