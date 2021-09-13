@@ -187,17 +187,6 @@ namespace YNHM.WebApp.Controllers
             return View(user);
         }
 
-        [AllowAnonymous]
-        public ActionResult Subscriptions()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            
-            return View(user);
-        }
-
-
-
-
         public Dictionary<Roomie, int> CompareRoomies(Roomie current, List<Roomie> others)
         {
             Comparison comp = new Comparison();
