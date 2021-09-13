@@ -31,6 +31,7 @@ namespace YNHM.Entities.Models
         public bool IsMatched { get; set; }
         public bool HasHouse { get; set; }
         public bool HasTest { get; set; }
+        public bool IsSubscribed { get; set; }
 
         //REQUIREMENTS
         public bool IsSmoking { get; set; }

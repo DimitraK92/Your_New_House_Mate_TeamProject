@@ -266,7 +266,7 @@ namespace YNHM.WebApp.Controllers
                 user.RoomieId = r.Id;
                 UserManager.Update(user);
 
-                return RedirectToAction("Index","HomePage");
+                return RedirectToAction("Subscriptions","HomePage");
             }
             return View(cr);
         }
@@ -365,7 +365,6 @@ namespace YNHM.WebApp.Controllers
             TakeTestVM vm = new TakeTestVM();
             return View(vm);
         }
-
 
         //
         // GET: /Manage/AddPhoneNumber

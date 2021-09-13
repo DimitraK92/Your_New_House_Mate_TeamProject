@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 
 }
@@ -65,7 +65,7 @@
                          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                          style="z-index: 7; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px; font-family: 'Mulish', sans-serif;">
                         <p>
-                            Click <a href="@Url.Action("About","HomePage")">HERE</a> if you want to find out more or Sign in/Sign up below. <br />
+                            Click <a href="@Url.Action("About", "HomePage")">HERE</a> if you want to find out more or Sign in/Sign up below. <br />
                         </p>
                     </div>
 
@@ -99,6 +99,14 @@
 
 
 
+@if (TempData["message"] != null)
+{
+<script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["message"]");
+            };
+</script>
+}
 
 
 
