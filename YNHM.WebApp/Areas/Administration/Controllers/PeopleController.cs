@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
 using YNHM.RepositoryServices;
+using YNHM.Entities.TestResources;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
@@ -19,7 +20,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: People
         public ActionResult Index(string searchText, string selectOption)
         {
-            var roomies = db.Roomies.OrderByDescending(x=>x.HouseId).ToList();
+            var roomies = db.Roomies.OrderByDescending(x => x.HouseId).ToList();
 
             #region Filtering
 
@@ -33,7 +34,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                     case "Phone Number": roomies = roomies.Where(x => x.Phone.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
                     case "Min Age": roomies = roomies.Where(x => x.Age >= Convert.ToInt32(searchText)).ToList(); break;
                     case "Max Age": roomies = roomies.Where(x => x.Age <= Convert.ToInt32(searchText)).ToList(); break;
-                    case "House": roomies = roomies.Where(x => x.HasHouse == Boolean.Parse(searchText)).ToList(); break;                   
+                    case "House": roomies = roomies.Where(x => x.HasHouse == Boolean.Parse(searchText)).ToList(); break;
                 }
             }
 
@@ -106,6 +107,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl,HouseId")] Roomie roomie)
         {
+
             if (ModelState.IsValid)
             {
 
@@ -114,70 +116,72 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                     var house = db.Houses.Find(roomie.HouseId);
                     roomie.House = house;
                     roomie.HasHouse = true;
+                    db.Entry(roomie).State = EntityState.Modified;
 
                     db.Houses.Attach(house);
                     db.Entry(house).Collection("Roomies").Load();
                     house.Roomies.Add(roomie);
                     db.Entry(house).State = EntityState.Modified;
 
-                    if (roomie.House.Roomies.Count > 1)
+                    db.SaveChanges();
+                }
+
+                var houseRoomies = roomie.House.Roomies.ToList();
+                if (houseRoomies.Count > 1)
+                {
+                    Comparison compare = new Comparison();
+                    try
                     {
-                        try
+                        var tempRoomies = new List<Roomie>();
+                        var tempRoomiesTwo = new List<Roomie>();
+
+                        for (int i = 0; i < houseRoomies.Count; i++)
                         {
-                            var houseRoomies = house.Roomies.ToList();
-                            var tempRoomies = new List<Roomie>();
-                            var tempRoomiesTwo = new List<Roomie>();
+                            houseRoomies[i].IsMatched = true;
+                            tempRoomies.Add(houseRoomies[i]);
 
-                            for (int i = 0; i < houseRoomies.Count; i++)
+                            for (int j = 0; j < houseRoomies.Count; j++)
                             {
-                                tempRoomies.Add(houseRoomies[i]);
-
-                                for (int j = 0; j < houseRoomies.Count; j++)
+                                if (!tempRoomies.Contains(houseRoomies[j]))
                                 {
-                                    if (!tempRoomies.Contains(houseRoomies[j]))
+                                    tempRoomiesTwo.Add(houseRoomies[j]);
+
+                                    RoomiesPair newPairFirstVersion = new RoomiesPair()
                                     {
-                                        tempRoomiesTwo.Add(houseRoomies[j]);
+                                        RoomieOneId = houseRoomies[i].Id,
+                                        RoomieTwoId = houseRoomies[j].Id,
+                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
+                                    };
 
-                                        RoomiesPair newPairFirstVersion = new RoomiesPair()
-                                        {
-                                            RoomieOneId = houseRoomies[i].Id,
-                                            RoomieTwoId = houseRoomies[j].Id
-                                        };
+                                    RoomiesPair newPairSecondVersion = new RoomiesPair()
+                                    {
+                                        RoomieOneId = houseRoomies[j].Id,
+                                        RoomieTwoId = houseRoomies[i].Id,
+                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
 
-                                        RoomiesPair newPairSecondVersion = new RoomiesPair()
-                                        {
-                                            RoomieOneId = houseRoomies[j].Id,
-                                            RoomieTwoId = houseRoomies[i].Id
+                                    };
+                                    var existingPairs = db.RoomiesPair.ToList();
 
-                                        };
-                                        var existingPairs = db.RoomiesPair.ToList();
-
-                                        if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
-                                        {
-                                            hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
-                                            houseRoomies[i].IsMatched = true;
-                                            houseRoomies[j].IsMatched = true;
-                                        }
-
+                                    if (!(existingPairs.Contains(newPairFirstVersion) || existingPairs.Contains(newPairSecondVersion)))
+                                    {
+                                        hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
+                                        houseRoomies[i].IsMatched = true;
+                                        houseRoomies[j].IsMatched = true;
                                     }
 
                                 }
 
                             }
-                        }
-                        catch (System.Exception)
-                        {
 
-                            return RedirectToAction("Index");
                         }
-
-                        db.Entry(roomie).State = EntityState.Modified;
                     }
-                    db.Entry(roomie).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
+                    catch (System.Exception)
+                    {
 
-               
+                        return RedirectToAction("Index");
+                    }
+
+                }
 
                 db.Entry(roomie).State = EntityState.Modified;
                 db.SaveChanges();
@@ -220,7 +224,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 roomieTest.Questions.Clear();
                 db.Tests.Remove(roomieTest);
             }
-            
+
 
             db.Entry(roomie).State = EntityState.Deleted;
             db.SaveChanges();
