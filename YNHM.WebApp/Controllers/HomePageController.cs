@@ -173,12 +173,22 @@ namespace YNHM.WebApp.Controllers
             return RedirectToAction("Index","HomePage");
         }
 
-
         public ActionResult House(int? houseId)
         {
             var house = dbContext.Houses.Find(houseId);
             return View(house);
         }
+
+        [AllowAnonymous]
+        public ActionResult Subscriptions()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            
+            return View(user);
+        }
+
+
+
 
         public Dictionary<Roomie, int> CompareRoomies(Roomie current, List<Roomie> others)
         {
@@ -188,6 +198,13 @@ namespace YNHM.WebApp.Controllers
             for (int i = 0; i < others.Count; i++)
             {
                 int percent = comp.CalculateMatchPercentage(current.Test, others[i].Test);
+
+                //Add to percentage if subscriber
+                if (others[i].IsSubscribed)
+                {
+                    percent += 10;
+                }
+
                 roomiesPercentages.Add(others[i], percent);
             }
             return roomiesPercentages.OrderByDescending(r=>r.Value).ToDictionary(x=>x.Key,x=>x.Value);

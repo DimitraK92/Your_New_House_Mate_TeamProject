@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -12,6 +11,10 @@ namespace YNHM.Entities.Models
     {
         public virtual int RoomieId { get; set; }
         public string UserPhoto { get; set; }
+        public bool IsSubscribed { get; set; }
+        public DateTime? SubscriptionStarts { get; set; }
+        public DateTime? SubscriptionExpires { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

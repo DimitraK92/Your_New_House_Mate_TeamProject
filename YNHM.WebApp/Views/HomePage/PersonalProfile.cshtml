@@ -20,7 +20,7 @@
                         }
                         else
                         {
-                           
+
                             <img class="w-100 rounded rounded-md-left" data-src="@Model.ViewedRoomie.PhotoUrl" src="@Model.ViewedRoomie.PhotoUrl" alt="profile-user.jpg">
                         }
 
@@ -62,51 +62,53 @@
 
                 </div>
 
-                @if (Model.ViewedRoomie.Test == null || Model.CurrentRoomie.Test == null)
+
+
+                @if (Model.CurrentRoomie.IsSubscribed)
                 {
-                    <div class="col-sm-8">
-                        <div class="p-6">
-                            <h4>The user has not taken the test yet</h4>
+                    if (Model.ViewedRoomie.Test == null || Model.CurrentRoomie.Test == null)
+                    {
+                        <div class="col-sm-8">
+                            <div class="p-6">
+                                <h4>The user has not taken the test yet</h4>
+                            </div>
                         </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="col-sm-8">
-                        <div class="p-6">
-                            <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Number</th>
-                                        <th>Question</th>
-                                        <th>Their Answer</th>
-                                        <th>Your Answer</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        var viewedQuestions = Model.ViewedRoomie.Test.Questions.ToList();
-                                        var currentQuestions = Model.CurrentRoomie.Test.Questions.ToList();
-                                        int count = 1;
-                                    }
-                                    @for (int i = 0; i < viewedQuestions.Count; i++)
-                                    {
+                    }
+                    else
+                    {
+                        <div class="col-sm-8">
+                            <div class="p-6">
+                                <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
+                                    <thead>
                                         <tr>
-                                            <td>@count</td>
-                                            <td>@viewedQuestions[i].Text</td>
-                                            <td>@viewedQuestions[i].Answer</td>
-                                            <td>@currentQuestions[i].Answer</td>
+                                            <th>Number</th>
+                                            <th>Question</th>
+                                            <th>Their Answer</th>
+                                            <th>Your Answer</th>
                                         </tr>
-                                        count++;
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var viewedQuestions = Model.ViewedRoomie.Test.Questions.ToList();
+                                            var currentQuestions = Model.CurrentRoomie.Test.Questions.ToList();
+                                            int count = 1;
+                                        }
+                                        @for (int i = 0; i < viewedQuestions.Count; i++)
+                                        {
+                                            <tr>
+                                                <td>@count</td>
+                                                <td>@viewedQuestions[i].Text</td>
+                                                <td>@viewedQuestions[i].Answer</td>
+                                                <td>@currentQuestions[i].Answer</td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    }
                 }
-
-
-
             </div>
         </div>
     </div>

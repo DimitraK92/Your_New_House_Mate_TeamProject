@@ -1,5 +1,7 @@
 namespace YNHM.Database.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -24,29 +26,33 @@ namespace YNHM.Database.Migrations
             try
             {
                 #region roomies seed
-                string[] firstNames =   { "Maria", "Mohammed", "Wei", "Yan", "John",
-                                        "Helen", "Christina", "David","Ahmed","Astridr",
-                                        "Anna", "Luis","Fatima","Olga", "Richard",
-                                        "Victor", "Sandra", "Ming", "Marina","Carmen",
-                                        "Clarissa", "Melpomene","James","Camina","Amos",
-                                        "Klaes", "Julie","Jules-Pierre","Fred","Arjun",
-                                        "Elvi","Shed","Cotyar","Filip","Josephus",
-                                        "Frodo","Sam","Merry","Pippin","Gandalf",
-                                        "Aragorn","Legolas","Gimli","Boromir","Morgoth",
-                                        "Melkor","Sauron","Ellaria","Gloin","Glorfindel",
-                                        "Eowyn","Arwen","Balin","Celebrimbor","Denethor",
-                                        "Elendil","Elrond","Galadriel","Hurin","Turin",
-                                        "Nienor","Luthien","Saruman"};
+                string[] firstNames =   { 
+                    "Maria", "Mohammed", "Wei", "Yan", "John",
+                    "Helen", "Christina", "David","Ahmed","Astridr",
+                    "Anna", "Luis","Fatima","Olga", "Richard",
+                    "Victor", "Sandra", "Ming", "Marina","Carmen",
+                    "Clarissa", "Melpomene","James","Camina","Amos",
+                    "Klaes", "Julie","Jules-Pierre","Fred","Arjun",
+                    "Elvi","Shed","Cotyar","Filip","Josephus",
+                    "Frodo","Sam","Merry","Pippin","Gandalf",
+                    "Aragorn","Legolas","Gimli","Boromir","Morgoth",
+                    "Melkor","Sauron","Ellaria","Gloin","Glorfindel",
+                    "Eowyn","Arwen","Balin","Celebrimbor","Denethor",
+                    "Elendil","Elrond","Galadriel","Hurin","Turin",
+                    "Nienor","Luthien","Saruman"
+                };
 
-                string[] lastNames =    {"Wang","Nagata","Holden","Burton","Kamal",
-                                     "Dawes","Anderson","Avasarala","Inaros", "Mao",
-                                     "Johnson","Miller","Wei","Volovodof","Shaddid",
-                                     "Drummer","Ashford","Cortazar","Errinwright","Murtry",
-                                     "Pereira","Ren","Skywalker","Lannister","Stark",
-                                     "Baratheon","Martell","Targaryen","Arryn","Tyrell",
-                                     "Tully","Greyjoy","Allgood","Allyrion","Amber",
-                                     "Bolton","Blount","Bar Emmon","Celtigar","Velaryon",
-                                     "Sunglass","Brune","Blackfyre","Slynt","Mormont","Cerwyn"};
+                string[] lastNames =    {
+                    "Wang","Nagata","Holden","Burton","Kamal",
+                    "Dawes","Anderson","Avasarala","Inaros", "Mao",
+                    "Johnson","Miller","Wei","Volovodof","Shaddid",
+                    "Drummer","Ashford","Cortazar","Errinwright","Murtry",
+                    "Pereira","Ren","Skywalker","Lannister","Stark",
+                    "Baratheon","Martell","Targaryen","Arryn","Tyrell",
+                    "Tully","Greyjoy","Allgood","Allyrion","Amber",
+                    "Bolton","Blount","Bar Emmon","Celtigar","Velaryon",
+                    "Sunglass","Brune","Blackfyre","Slynt","Mormont","Cerwyn"
+                };
 
 
                 string[] photoUrls =
@@ -76,6 +82,11 @@ namespace YNHM.Database.Migrations
                     string email = $"{firstName}.{lastName}@gmail.com";
                     string phone = $"69{rand.Next(11111111, 100000000)}";
                     int age = rand.Next(18, 101);
+                    bool subscribed= false;
+                    if (rand.Next(0,101)%3==0)
+                    {
+                        subscribed = true;
+                    }
 
                     Roomie r = new Roomie()
                     {
@@ -86,6 +97,7 @@ namespace YNHM.Database.Migrations
                         Email = email,
                         IsMatched = false,
                         HasHouse = false,
+                        IsSubscribed = subscribed,
                         PhotoUrl = photoUrl
                     };
 
@@ -102,6 +114,7 @@ namespace YNHM.Database.Migrations
                     Email = "vassilis.kotsman@gmail.com",
                     Phone = "6945666666",
                     Facebook = "https://www.facebook.com/vassilis.geko",
+                    IsSubscribed = true,
 
                     IsSmoking = true,
                     IsCatPerson = true,
@@ -110,7 +123,6 @@ namespace YNHM.Database.Migrations
                     IsVegan = true,
 
                 };
-
                 Roomie r2 = new Roomie()
                 {
                     FirstName = "Jane",
@@ -131,7 +143,6 @@ namespace YNHM.Database.Migrations
                     IsMatched = true
 
                 };
-
                 Roomie r3 = new Roomie()
                 {
                     FirstName = "Jim",
@@ -170,7 +181,6 @@ namespace YNHM.Database.Migrations
 
                     HasHouse = true
                 };
-
                 Roomie r5 = new Roomie()
                 {
                     FirstName = "Min",
@@ -189,7 +199,6 @@ namespace YNHM.Database.Migrations
 
                     IsMatched = true
                 };
-
                 Roomie r6 = new Roomie()
                 {
                     FirstName = "Jill",
@@ -208,7 +217,6 @@ namespace YNHM.Database.Migrations
 
                     IsMatched = true
                 };
-
                 Roomie r7 = new Roomie()
                 {
                     FirstName = "Jake",
@@ -227,7 +235,6 @@ namespace YNHM.Database.Migrations
 
                     HasHouse = true
                 };
-
                 Roomie r8 = new Roomie()
                 {
                     FirstName = "Bill",
@@ -244,7 +251,6 @@ namespace YNHM.Database.Migrations
                     LikesCleaning = true,
                     IsVegan = true
                 };
-
                 Roomie r9 = new Roomie()
                 {
                     FirstName = "Andy",
@@ -261,7 +267,6 @@ namespace YNHM.Database.Migrations
                     LikesCleaning = false,
                     IsVegan = true,
                 };
-
                 Roomie r10 = new Roomie()
                 {
                     FirstName = "Andria",
@@ -279,7 +284,6 @@ namespace YNHM.Database.Migrations
                     IsVegan = false
 
                 };
-
                 Roomie r11 = new Roomie()
                 {
                     FirstName = "Maria",
@@ -296,14 +300,15 @@ namespace YNHM.Database.Migrations
                     LikesCleaning = true,
                     IsVegan = false
                 };
-
                 Roomie r12 = new Roomie()
                 {
                     FirstName = "Dimitra",
                     LastName = "Kamni",
                     Age = 28,
                     Email = "dimitra.kam@gmail.com",
-                    Phone = "6945123456"
+                    Phone = "6945123456",
+                    IsSubscribed = true
+
                 };
 
                 context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12);
@@ -516,6 +521,7 @@ namespace YNHM.Database.Migrations
                 #endregion
 
 
+                CreateRolesAndUsers();
             }
             catch (DbEntityValidationException e)
             {
@@ -530,6 +536,96 @@ namespace YNHM.Database.Migrations
                     }
                 }
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Creates Roles, if they do not exist. Creates Admin users.
+        /// </summary>
+        private void CreateRolesAndUsers()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+            //Admin Role and User is added
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var admin = new IdentityRole()
+                {
+                    Name = "Admin"
+                };
+
+                roleManager.Create(admin);
+
+                //TODO: VASSILIS: Change admin pass and add more admins
+                int roomieId = 1;
+
+                #region VassilisK
+                if (db.Roomies.Count() != 0)
+                {
+                    roomieId = db.Roomies.Where(r => r.LastName == "Kotsmanidis").Select(r => r.Id).FirstOrDefault();
+                }
+                var userAdmin = new ApplicationUser()
+                {
+                    UserName = "VassilisK",
+                    Email = "vassilis.kotsman@gmail.com",
+                    RoomieId = roomieId,
+                    IsSubscribed = true,
+                    SubscriptionStarts = DateTime.Now,
+                    SubscriptionExpires = DateTime.Now.AddYears(5)
+                };
+                string adminPassword = "Admin123!";
+
+                var userCreated = userManager.Create(userAdmin, adminPassword);
+
+                if (userCreated.Succeeded)
+                {
+                    userManager.AddToRole(userAdmin.Id, "Admin");
+                }
+                #endregion
+
+                #region DimitraK
+                if (db.Roomies.Count() != 0)
+                {
+                    roomieId = db.Roomies.Where(r => r.LastName == "Kamni").Select(r => r.Id).FirstOrDefault();
+                }
+                var dimitraAdmin = new ApplicationUser()
+                {
+                    UserName = "DimitraK",
+                    Email = "dimitra.kam@gmail.com",
+                    RoomieId = roomieId,
+                    IsSubscribed = true,
+                    SubscriptionStarts = DateTime.Now,
+                    SubscriptionExpires = DateTime.Now.AddYears(5)
+                };
+
+                userCreated = userManager.Create(dimitraAdmin, adminPassword);
+                if (userCreated.Succeeded)
+                {
+                    userManager.AddToRole(dimitraAdmin.Id, "Admin");
+                }
+                #endregion
+            }
+
+            if (!roleManager.RoleExists("Roomie"))
+            {
+                var roomie = new IdentityRole()
+                {
+                    Name = "Roomie"
+                };
+
+                roleManager.Create(roomie);
+            }
+
+            if (!roleManager.RoleExists("Subscriber"))
+            {
+                var subscriber = new IdentityRole()
+                {
+                    Name = "Subscriber"
+                };
+                roleManager.Create(subscriber);
             }
         }
 
