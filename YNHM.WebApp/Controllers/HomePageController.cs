@@ -187,6 +187,14 @@ namespace YNHM.WebApp.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
+        public ActionResult Subscriptions()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            
+            return View(user);
+        }
+
 
 
 
