@@ -200,6 +200,12 @@ namespace YNHM.WebApp.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
+        public ActionResult AboutDevelopers()
+        {
+            return View();
+        }
+
         //Helpers
         public Dictionary<Roomie, int> CompareRoomies(Roomie current, List<Roomie> others)
         {

@@ -196,22 +196,27 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                             for (int j = 0; j < houseRoomies.Count; j++)
                             {
+
                                 if (!tempRoomies.Contains(houseRoomies[j]))
                                 {
                                     tempRoomiesTwo.Add(houseRoomies[j]);
+
+
+                                    var test1 = db.Tests.Find(houseRoomies[i].Id);
+                                    var test2 = db.Tests.Find(houseRoomies[j].Id);
 
                                     RoomiesPair newPairFirstVersion = new RoomiesPair()
                                     {
                                         RoomieOneId = houseRoomies[i].Id,
                                         RoomieTwoId = houseRoomies[j].Id,
-                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
+                                        MatchPercentage = compare.CalculateMatchPercentage(test1, test2)
                                     };
 
                                     RoomiesPair newPairSecondVersion = new RoomiesPair()
                                     {
                                         RoomieOneId = houseRoomies[j].Id,
                                         RoomieTwoId = houseRoomies[i].Id,
-                                        MatchPercentage = compare.CalculateMatchPercentage(houseRoomies[i].Test, houseRoomies[j].Test)
+                                        MatchPercentage = compare.CalculateMatchPercentage(test1, test2)
 
                                     };
                                     var existingPairs = db.RoomiesPair.ToList();

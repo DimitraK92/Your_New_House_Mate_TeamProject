@@ -35,7 +35,7 @@
                                 <i class="fa fa-bed" aria-hidden="true"></i> <strong>Bedrooms:</strong> @Model.Bedrooms
                             </li>
                             <li class="mb-2">
-                                <i class="fas fa-euro-sign" aria-hidden="true"></i> <strong>Rent:</strong> @Model.Rent
+                                <i class="fas fa-euro-sign" aria-hidden="true"></i> <strong>Total Rent:</strong> @Model.Rent
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-euro-sign" aria-hidden="true"></i> <strong>Current rent per person:</strong> @RentPerPerson(Model.Rent, Model.Roomies.Count)
@@ -46,100 +46,12 @@
                                 <i class="fa fa-building" aria-hidden="true"></i> <strong>Floor:</strong> @Model.Floor
                             </li>
                             <li class="mb-2">
-                                <i class="fa fa-building" aria-hidden="true"></i> <strong>Area:</strong> @Model.Area
+                                <i class="fa fa-building" aria-hidden="true"></i> <strong>Area:</strong> @Model.Area m<sup>2</sup>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-<section class="py-7 pt-md-9 pb-md-8">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="mb-2 mb-lg-0">
-                    <p class="text-muted mb-1"> <i class="fas fa-map-marker-alt text-primary mr-1"></i>@Model.Address, @Model.District</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section>
-    <div class="owl-carousel owl-theme listing-details-carousel nav-light-dark">
-        <div class="single-item">
-            <a class="overlay-dark" href="@Model.PhotoUrl" data-fancybox="gallery"
-               data-caption="Caption for single image">
-                <img class="" data-src="@Model.PhotoUrl" src="@Model.PhotoUrl" alt="Image" />
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="pt-7 pb-4 pt-md-9 pb-md-8">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 col-lg-8">
-                
-                <!-- Features -->
-                <div class="my-6">
-                    <h3 class="font-weight-normal mb-6">Features</h3>
-                    <ul class="list-unstyled mb-6">
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="fa fa-wifi mr-2" aria-hidden="true"></i>Wi-Fi
-                        </li>
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="fa fa-cube mr-2" aria-hidden="true"></i>Reservations
-                        </li>
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="fa fa-filter mr-2" aria-hidden="true"></i>Air Filtration
-                        </li>
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="far fa-check-circle mr-2" aria-hidden="true"></i>Pets Friendly
-                        </li>
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="far fa-credit-card mr-2" aria-hidden="true"></i>Accept Credit Card
-                        </li>
-
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="fas fa-glass-martini mr-2" aria-hidden="true"></i>Free Full Breakfast
-                        </li>
-
-                        <li class="d-inline-block mr-4 mb-2">
-                            <i class="fa fa-car mr-2" aria-hidden="true"></i>Parking Available
-                        </li>
-
-                    </ul>
-                    <hr>
-                </div>
-
-            </div>
-
-            <!--======= Sidebar =======-->
-            <!--<div class="col-md-5 col-lg-4 pl-xl-8">-->
-                <!-- Single listing Map -->
-                <!--<div class="map-sidebar border rounded mb-5">
-                    <div id="single-listing-map" data-lat="40.755347" data-lag="-73.977151"></div>
-                    <div class="px-6 py-5">
-                        <ul class="list-unstyled mb-0">
-                            <li class="d-flex align-items-start">
-                                <i class="fas fa-map-marker-alt mr-3 mt-1" aria-hidden="true"></i>
-                                <span>2880 Broadway, New York, NY 10025, USA</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </div>
 </section>
