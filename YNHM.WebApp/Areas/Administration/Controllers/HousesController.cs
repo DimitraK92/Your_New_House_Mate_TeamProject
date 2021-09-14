@@ -21,7 +21,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: Administration/Houses
         public ActionResult Index(string searchText, string selectOption)
         {
-            var houses = db.Houses.OrderByDescending(x=>x.Roomies.Count).ToList();
+            var houses = db.Houses.OrderByDescending(x=>x.Roomies.Count).ThenBy(x=>x.Address).ToList();
 
             #region Filtering
 
@@ -59,11 +59,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             var roomiesIds = house.Roomies.Select(x => x.Id).ToList();
-            ViewBag.SelectedRoomiesIds = db.Roomies.ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r=>r.LastName).ThenBy(r=>r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = String.Format($"{x.FirstName} {x.LastName}"),
-
+                Text = String.Format($"{x.LastName}, {x.FirstName}"),
             });
 
             return View(house);
@@ -74,10 +73,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         {
             House house = new House();
 
-            ViewBag.SelectedRoomiesIds = db.Roomies.ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r => r.LastName).ThenBy(r => r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = String.Format($"{x.FirstName} {x.LastName}"),
+                Text = String.Format($"{x.LastName}, {x.FirstName}"),
 
             });
 
@@ -122,10 +121,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             var roomiesIds = house.Roomies.Select(x => x.Id).ToList();
-            ViewBag.SelectedRoomiesIds = db.Roomies.ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r => r.LastName).ThenBy(r => r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = String.Format($"{x.FirstName} {x.LastName}"),
+                Text = String.Format($"{x.LastName}, {x.FirstName}"),
 
             });
 
@@ -146,10 +145,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             var roomiesIds = house.Roomies.Select(x => x.Id).ToList();
-            ViewBag.SelectedRoomiesIds = db.Roomies.ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r => r.LastName).ThenBy(r => r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = String.Format($"{x.FirstName} {x.LastName}"),
+                Text = String.Format($"{x.LastName}, {x.FirstName}"),
                 Selected = roomiesIds.Any(y => y == x.Id)
             });
 
@@ -253,10 +252,10 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             db.Entry(house).Collection("Roomies").Load();
 
             var roomiesIds = house.Roomies.Select(x => x.Id).ToList();
-            ViewBag.SelectedRoomiesIds = db.Roomies.ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r => r.LastName).ThenBy(r => r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = String.Format($"{x.FirstName} {x.LastName}"),
+                Text = String.Format($"{x.LastName}, {x.FirstName}"),
                 Selected = roomiesIds.Any(y => y == x.Id)
             });
 
