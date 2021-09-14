@@ -6,8 +6,8 @@ using System.Net;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
-using YNHM.RepositoryServices;
 using YNHM.Entities.TestResources;
+using YNHM.RepositoryServices;
 
 namespace YNHM.WebApp.Areas.Administration.Controllers
 {
@@ -20,7 +20,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: People
         public ActionResult Index(string searchText, string selectOption)
         {
-            var roomies = db.Roomies.OrderByDescending(x => x.HasHouse).ThenBy(x=>x.LastName).ThenBy(x=>x.FirstName).ToList();
+            var roomies = db.Roomies.OrderByDescending(x => x.HasHouse).ThenBy(x => x.LastName).ThenBy(x => x.FirstName).ToList();
 
             #region Filtering
 
@@ -39,7 +39,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             #endregion
-
 
             return View(roomies);
         }
@@ -80,7 +79,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.HouseList = new SelectList(db.Houses.OrderBy(h=>h.Address), "Id", "Address");
+            ViewBag.HouseList = new SelectList(db.Houses.OrderBy(h => h.Address), "Id", "Address");
             return View(roomie);
         }
 
@@ -107,10 +106,8 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Age,MatchPercent,Phone,Email,Facebook,Description,PhotoUrl,HouseId")] Roomie roomie)
         {
-
             if (ModelState.IsValid)
             {
-
                 if (roomie.HouseId != null)
                 {
                     var house = db.Houses.Find(roomie.HouseId);
@@ -146,7 +143,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                                 {
                                     tempRoomiesTwo.Add(houseRoomies[j]);
 
-                                    var test1 =db.Tests.Find(houseRoomies[i].Id);
+                                    var test1 = db.Tests.Find(houseRoomies[i].Id);
                                     var test2 = db.Tests.Find(houseRoomies[j].Id);
 
                                     RoomiesPair newPairFirstVersion = new RoomiesPair()
@@ -170,7 +167,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                                         {
                                             db.RoomiesPair.Add(newPairSecondVersion);
                                             houseRoomies[i].IsMatched = true;
-                                            houseRoomies[j].IsMatched = true;                                           
+                                            houseRoomies[j].IsMatched = true;
                                         }
                                         else if (existingPairs.Contains(newPairSecondVersion))
                                         {
@@ -184,7 +181,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                                             houseRoomies[i].IsMatched = true;
                                             houseRoomies[j].IsMatched = true;
                                         }
-                                        
+
                                     }
                                     existingPairs = db.RoomiesPair.ToList();
                                     //hc.GenerateMatch(houseRoomies[i], houseRoomies[j]);
@@ -205,9 +202,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                 return RedirectToAction("Index");
             }
-
-
-            ViewBag.HouseList = new SelectList(db.Houses.OrderBy(h=>h.Address), "Id", "Address");
+            ViewBag.HouseList = new SelectList(db.Houses.OrderBy(h => h.Address), "Id", "Address");
             return View(roomie);
         }
 
@@ -242,14 +237,11 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 db.Tests.Remove(roomieTest);
             }
 
-
             db.Entry(roomie).State = EntityState.Deleted;
             db.SaveChanges();
 
             return RedirectToAction("Index");
         }
-
-
 
         protected override void Dispose(bool disposing)
         {

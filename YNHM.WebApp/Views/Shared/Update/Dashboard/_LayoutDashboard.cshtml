@@ -20,7 +20,7 @@
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/listingStyle");
         }
-        else if (routeValues.ContainsValue("SingleListing"))
+        else if (routeValues.ContainsValue("House"))
         {
             @Styles.Render("~/Templates/Listty/StaticHTML/assets/singleListing")
         }
@@ -72,7 +72,7 @@
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/mainScripts")
 
         }
-        else if (routeValues.ContainsValue("Houses"))
+        else if (routeValues.ContainsValue("House"))
         {
             @Scripts.Render("~/Templates/Listty/StaticHTML/assets/houseScripts")
 

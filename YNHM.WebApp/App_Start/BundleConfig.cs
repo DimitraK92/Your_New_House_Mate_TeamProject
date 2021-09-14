@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace YNHM.WebApp
 {
@@ -101,7 +100,6 @@ namespace YNHM.WebApp
             //Style Bundles
             //----------------------------------------------------------------------------------//
 
-
             //Basic
             bundles.Add(new Bundle("~/Templates/Listty/StaticHTML/assets/basicStyle").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/fontawesome-5.15.2/css/all.min.css",
@@ -157,15 +155,11 @@ namespace YNHM.WebApp
             //Signup
             bundles.Add(new StyleBundle("~/Templates/Listty/StaticHTML/assets/signupStyle").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/selectric/selectric.css"));
-            
+
             //User pairs
             bundles.Add(new StyleBundle("~/Templates/Listty/StaticHTML/assets/pairsStyle").Include(
                 "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css",
                 "~/Templates/Listty/StaticHTML/assets/plugins/DataTables/Responsive-2.2.2/css/responsive.dataTables.min.css"));
-
-
-
-
         }
     }
 }

@@ -1,10 +1,65 @@
 ﻿@model YNHM.Entities.Models.House
 
 @{
-    //Layout = "~/Views/Shared/Update/_LayoutL.cshtml";
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
-
 }
+
+@{ 
+    double RentPerPerson(int rent, int housemates)
+    {
+        double houseRent = rent;
+        double mates = housemates;
+
+        if (mates == 0) return 0;
+
+        double rentPerPerson = houseRent / mates;
+        return Math.Truncate(rentPerPerson);
+    }
+}
+
+<section class="bg-light py-7 py-md-10">
+    <div class="container">
+        <div class="bg-white rounded shadow mb-8">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div>
+                            <img class="w-100 rounded rounded-md-left" data-src="@Model.PhotoUrl" src="@Model.PhotoUrl" alt="profile-user.jpg">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="p-6">
+                        <h3 class="font-weight-normal mb-0">@Model.Address</h3>
+                        <span class="d-inline-block mb-5" style="font-size: 1rem; font-weight: 600">@Model.District <i class="fa fa-location-arrow" aria-hidden="false"></i></span>
+                        <ul class="list-unstyled mb-5">
+                            <li class="mb-2">
+                                <i class="fa fa-bed" aria-hidden="true"></i> <strong>Bedrooms:</strong> @Model.Bedrooms
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-euro-sign" aria-hidden="true"></i> <strong>Rent:</strong> @Model.Rent
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-euro-sign" aria-hidden="true"></i> <strong>Current rent per person:</strong> @RentPerPerson(Model.Rent, Model.Roomies.Count)
+                                <br /> 
+                                <i class="fas fa-euro-sign" aria-hidden="true"></i><strong> With max capacity:</strong> @RentPerPerson(Model.Rent, Model.Bedrooms)
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa fa-building" aria-hidden="true"></i> <strong>Floor:</strong> @Model.Floor
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa fa-building" aria-hidden="true"></i> <strong>Area:</strong> @Model.Area
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
 
 
 <section class="py-7 pt-md-9 pb-md-8">
@@ -19,27 +74,18 @@
     </div>
 </section>
 
-<!-- ====================================
-———	LISTING DETAILS CAROUSEL
-===================================== -->
+
 <section>
     <div class="owl-carousel owl-theme listing-details-carousel nav-light-dark">
-
-        @*@foreach (var img in Model.Photos)
-        {
-            <div class="single-item">
-                <a class="overlay-dark" href="@img.PhotoUrl" data-fancybox="gallery"
-                   data-caption="Caption for single image">
-                    <img class="lazyestload" data-src="@img.PhotoUrl" src="@img.PhotoUrl" alt="Image" />
-                </a>
-            </div>
-        }*@
+        <div class="single-item">
+            <a class="overlay-dark" href="@Model.PhotoUrl" data-fancybox="gallery"
+               data-caption="Caption for single image">
+                <img class="" data-src="@Model.PhotoUrl" src="@Model.PhotoUrl" alt="Image" />
+            </a>
+        </div>
     </div>
 </section>
 
-<!-- ====================================
-———	MAIN CONTENT
-===================================== -->
 <section class="pt-7 pb-4 pt-md-9 pb-md-8">
     <div class="container">
         <div class="row">
@@ -77,60 +123,12 @@
                     <hr>
                 </div>
 
-                <!-- Added By -->
-                @*<div>
-                    <h3 class="font-weight-normal mb-6">Added By </h3>
-                    <div class="media mb-7">
-                        <div class="media-img">
-                            <img src="@Model.HouseSeeker.PhotoUrl" data-src="@Model.HouseSeeker.PhotoUrl" class="mr-3 media-object rounded-circle lazyestload" alt="Manager's image'">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading">@Model.HouseSeeker.FirstName @Model.HouseSeeker.LastName</h5>
-                            <div class="d-flex flex-column flex-lg-row align-items-lg-center">
-                                <ul class="list-inline d-flex flex-column flex-lg-row mb-0">
-
-                                    <li class="list-inline-item">
-                                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.HouseSeeker.Phone</span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        <span class="ml-2">@Model.HouseSeeker.Email</span>
-                                    </li>
-
-                                </ul>
-
-                                <ul class="list-inline list-inline-icon ml-lg-auto">
-                                    <li class="list-inline-item">
-                                        <a class="mr-2" href="@Model.HouseSeeker.Facebook" target="_blank">
-                                            <i class="fab fa-facebook-square" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="mr-2" href="javascript:void(0)">
-                                            <i class="fab fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="mr-2" href="javascript:void(0)">
-                                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-                </div>*@
             </div>
 
             <!--======= Sidebar =======-->
-            <div class="col-md-5 col-lg-4 pl-xl-8">
+            <!--<div class="col-md-5 col-lg-4 pl-xl-8">-->
                 <!-- Single listing Map -->
-                <div class="map-sidebar border rounded mb-5">
+                <!--<div class="map-sidebar border rounded mb-5">
                     <div id="single-listing-map" data-lat="40.755347" data-lag="-73.977151"></div>
                     <div class="px-6 py-5">
                         <ul class="list-unstyled mb-0">
@@ -141,13 +139,7 @@
                         </ul>
                     </div>
                 </div>
-
-
-                <!-- Opening Hours -->
-
-
-
-            </div>
+            </div>-->
         </div>
     </div>
 </section>

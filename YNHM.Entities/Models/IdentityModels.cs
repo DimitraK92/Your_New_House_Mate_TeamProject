@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace YNHM.Entities.Models
 {
@@ -14,7 +14,6 @@ namespace YNHM.Entities.Models
         public bool IsSubscribed { get; set; }
         public DateTime? SubscriptionStarts { get; set; }
         public DateTime? SubscriptionExpires { get; set; }
-
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

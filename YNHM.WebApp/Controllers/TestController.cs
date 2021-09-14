@@ -1,16 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
 using YNHM.Entities.TestResources;
-using YNHM.WebApp.Models;
 
 namespace YNHM.WebApp.Controllers
 {
@@ -18,7 +15,6 @@ namespace YNHM.WebApp.Controllers
     public class TestController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
-
         private ApplicationUserManager userManager;
         public ApplicationUserManager UserManager
         {
@@ -34,7 +30,6 @@ namespace YNHM.WebApp.Controllers
 
         public TestController()
         {
-
         }
         public TestController(ApplicationUserManager applicationUserManager)
         {
@@ -42,21 +37,20 @@ namespace YNHM.WebApp.Controllers
         }
 
 
-
-        // GET: Test
+        // GET: Test/TestInfo
         public ActionResult TestInfo()
         {
             var roomie = GetRoomie();
             return View(roomie);
         }
 
-        //GET: TakeTest
+        //GET: Test/TakeTest
         public ActionResult TakeTest()
         {
             var roomie = GetRoomie();
             Test test = roomie.Test;
 
-            if (roomie.Test==null)
+            if (roomie.Test == null)
             {
                 RedirectToAction("NewTest", "Test");
             }
@@ -104,6 +98,7 @@ namespace YNHM.WebApp.Controllers
             return View(Questions);
         }
 
+        //POST: Test/TakeTest
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult TakeTest(List<Question> questions)
@@ -131,7 +126,7 @@ namespace YNHM.WebApp.Controllers
             return View(Questions);
         }
 
-
+        //POST: Test/NewTest
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult NewTest()
@@ -147,7 +142,7 @@ namespace YNHM.WebApp.Controllers
             {
                 Roomie = roomie,
                 Name = $"{roomie.FirstName} {roomie.LastName}",
-                Questions =new List<Question>()
+                Questions = new List<Question>()
                 {
                     //Housework
                     new Question() { Text = "Does cleanliness matter in general?" },
@@ -182,7 +177,6 @@ namespace YNHM.WebApp.Controllers
                 }
             };
 
-
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Test");
@@ -202,7 +196,6 @@ namespace YNHM.WebApp.Controllers
             var test = roomie.Test;
             return View(test);
         }
-
 
         //Helpers
         //TODO: VASSILIS: Move to Repo

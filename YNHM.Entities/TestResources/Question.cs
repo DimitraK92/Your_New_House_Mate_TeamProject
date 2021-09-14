@@ -7,7 +7,6 @@
         public string Answer { get; set; }
 
         //Navigation Properties
-
         public int? TestId { get; set; }
         public virtual Test Test { get; set; }
     }

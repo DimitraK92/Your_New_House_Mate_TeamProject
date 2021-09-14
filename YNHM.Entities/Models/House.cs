@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace YNHM.Entities.Models
 {
@@ -21,7 +17,6 @@ namespace YNHM.Entities.Models
         {
             Roomies = new List<Roomie>();
         }
-
 
         //Navigation properties
         public virtual ICollection<Roomie> Roomies { get; set; }

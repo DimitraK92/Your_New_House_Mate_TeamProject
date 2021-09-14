@@ -33,8 +33,6 @@ namespace YNHM.RepositoryServices
             db.SaveChanges();
         }
 
-
-
         public void Delete(int id)
         {
             Roomie roomie = db.Roomies.Find(id);

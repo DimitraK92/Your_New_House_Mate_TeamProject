@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
 
-
 <!-- ====================================
 ———	USER PROFILE
 ===================================== -->
@@ -23,7 +22,6 @@
                         }
                     </div>
                 </div>
-
                 <div class="col-sm-8">
                     <div class="p-6">
                         <h3 class="font-weight-normal mb-0">@Model.ViewedRoomie.FirstName @Model.ViewedRoomie.LastName</h3>
@@ -42,15 +40,6 @@
                                     quia.
                                 </p>
                             </li>
-                            @*<li>
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="@Model.ViewedRoomie.Email">@Model.ViewedRoomie.Email</a>
-                            </li>
-                            <li>
-                                <i class="fab fa-facebook"></i>
-                                <a href="@Model.ViewedRoomie.Facebook"><span> @Model.ViewedRoomie.Facebook</span></a>
-                            </li>*@
-                            <br />
                             <li>
                                 @if (Model.ViewedRoomie.House != null)
                                 {

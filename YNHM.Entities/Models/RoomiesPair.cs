@@ -11,7 +11,6 @@ namespace YNHM.Entities.Models
         [Key]
         [Column(Order = 2)]
         public int RoomieTwoId { get; set; }
-
         public int MatchPercentage { get; set; }
     }
 }

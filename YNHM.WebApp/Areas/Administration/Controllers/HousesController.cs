@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
 using YNHM.Entities.Models;
@@ -21,7 +20,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
         // GET: Administration/Houses
         public ActionResult Index(string searchText, string selectOption)
         {
-            var houses = db.Houses.OrderByDescending(x=>x.Roomies.Count).ThenBy(x=>x.Address).ToList();
+            var houses = db.Houses.OrderByDescending(x => x.Roomies.Count).ThenBy(x => x.Address).ToList();
 
             #region Filtering
 
@@ -29,8 +28,8 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 switch (selectOption)
                 {
-                    case "Address": houses  = houses.Where(x => x.Address.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
-                    case "Distinct": houses  = houses.Where(x => x.District.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Address": houses = houses.Where(x => x.Address.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
+                    case "Distinct": houses = houses.Where(x => x.District.ToUpper().Contains(searchText.ToUpper())).ToList(); break;
                     case "Floor": houses = houses.Where(x => x.Floor >= Convert.ToInt32(searchText)).ToList(); break;
                     case "Area": houses = houses.Where(x => x.Area >= Convert.ToInt32(searchText)).ToList(); break;
                     case "Bedrooms": houses = houses.Where(x => x.Bedrooms >= Convert.ToInt32(searchText)).ToList(); break;
@@ -40,8 +39,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             #endregion
-
-
             return View(houses);
         }
 
@@ -59,7 +56,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             }
 
             var roomiesIds = house.Roomies.Select(x => x.Id).ToList();
-            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r=>r.LastName).ThenBy(r=>r.FirstName).ToList().Select(x => new SelectListItem()
+            ViewBag.SelectedRoomiesIds = db.Roomies.OrderBy(r => r.LastName).ThenBy(r => r.FirstName).ToList().Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
                 Text = String.Format($"{x.LastName}, {x.FirstName}"),
@@ -79,7 +76,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                 Text = String.Format($"{x.LastName}, {x.FirstName}"),
 
             });
-
             return View(house);
         }
 
@@ -111,12 +107,9 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
                             db.Entry(roomie).State = EntityState.Modified;
                         }
                     }
-
                 }
-
                 db.Entry(house).State = EntityState.Added;
                 db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
@@ -125,9 +118,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 Value = x.Id.ToString(),
                 Text = String.Format($"{x.LastName}, {x.FirstName}"),
-
             });
-
             return View(house);
         }
 
@@ -188,7 +179,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
 
                 db.Entry(house).State = EntityState.Modified;
                 db.SaveChanges();
-               
+
                 var houseRoomies = house.Roomies.ToList();
                 if (houseRoomies.Count > 1)
                 {
@@ -262,7 +253,6 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             return View(house);
         }
 
-
         // GET: Administration/Houses/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -308,7 +298,7 @@ namespace YNHM.WebApp.Areas.Administration.Controllers
             {
                 RoomieOneId = roomieOne.Id,
                 RoomieTwoId = roomieTwo.Id,
-                MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)               
+                MatchPercentage = compare.CalculateMatchPercentage(roomieOne.Test, roomieTwo.Test)
             };
 
             var roomieOneInDb = db.Roomies.Find(roomiesPair.RoomieOneId);

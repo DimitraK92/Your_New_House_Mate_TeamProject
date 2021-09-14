@@ -1,18 +1,13 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YNHM.Database;
-using YNHM.Entities.Models;
 
 namespace YNHM.RepositoryServices
 {
     public class UserAndRoleRepository
     {
         readonly ApplicationDbContext db = new ApplicationDbContext();
-
         public bool CheckIfUserExists(string userName)
         {
             return db.Users.Select(u => u.UserName).ToList().Contains(userName) ? true : false;
@@ -27,8 +22,6 @@ namespace YNHM.RepositoryServices
         {
             return db.Roles.First(r => r.Name == roleName);
         }
-
-
         public ICollection<IdentityUser> GetAllUsers()
         {
             return db.Users.ToList();
@@ -47,9 +40,8 @@ namespace YNHM.RepositoryServices
         public ICollection<IdentityUser> GetUsersByRole(string roleName)
         {
             var roleId = FindRoleByName(roleName).Id;
-            return db.Users.Where(u=>u.Roles.Select(r=>r.RoleId).Contains(roleId)).ToList();
+            return db.Users.Where(u => u.Roles.Select(r => r.RoleId).Contains(roleId)).ToList();
         }
-
         public string GetUserRole(IdentityUser user)
         {
             var userRoles = user.Roles as List<string>;
@@ -61,7 +53,7 @@ namespace YNHM.RepositoryServices
             {
                 return userRoles.FirstOrDefault();
             }
-            
+
         }
 
     }

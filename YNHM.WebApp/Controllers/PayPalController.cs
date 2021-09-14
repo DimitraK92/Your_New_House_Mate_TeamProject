@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity.Owin;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YNHM.Database;
@@ -28,7 +27,6 @@ namespace YNHM.WebApp.Controllers
 
         public PayPalController()
         {
-
         }
 
         public PayPalController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -42,7 +40,7 @@ namespace YNHM.WebApp.Controllers
         {
             //getting the apiContext  
             APIContext apiContext = PaypalConfiguration.GetAPIContext();
-            
+
             try
             {
                 //A resource representing a Payer that funds a payment Payment Method as paypal  
@@ -112,7 +110,7 @@ namespace YNHM.WebApp.Controllers
                 user.SubscriptionStarts = DateTime.Now;
             }
 
-            if (user.SubscriptionExpires == null || user.SubscriptionExpires<DateTime.Now)
+            if (user.SubscriptionExpires == null || user.SubscriptionExpires < DateTime.Now)
             {
                 user.SubscriptionExpires = DateTime.Now.AddDays(30);
             }

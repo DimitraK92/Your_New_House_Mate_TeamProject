@@ -9,7 +9,7 @@
 <section class="pb-8 pt-5 bg-light height100vh">
     <div class="container">
         <h2 class="font-weight-normal mb-4 mb-md-0">My Test Answers</h2>
-        
+
         <table id="my-booking" class="display nowrap table-data-default" style="width:100%">
             <thead>
                 <tr>
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach (var q in Model.Questions)
                 {
                     <tr>
@@ -32,6 +32,12 @@
 
             </tbody>
         </table>
-
+        <div class="row justify-content-center" style="padding-top:10px !important">
+            <div class="col-md-7 col-lg-6 col-xl-5">
+                <div class="mb-6">
+                    <a class="btn btn-lg btn-primary btn-block" href="@Url.Action("People","HomePage")">See your matches!</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

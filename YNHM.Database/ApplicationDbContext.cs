@@ -10,7 +10,6 @@ namespace YNHM.Database
         public DbSet<Roomie> Roomies { get; set; }
         public DbSet<RoomiesPair> RoomiesPair { get; set; }
         public DbSet<House> Houses { get; set; }
-
         public DbSet<Test> Tests { get; set; }
         public DbSet<Question> Questions { get; set; }
 
@@ -19,12 +18,6 @@ namespace YNHM.Database
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
         }
-        public ApplicationDbContext(string connectionString= "HouseMate") : base(connectionString)
-        {
-            this.Configuration.LazyLoadingEnabled = true;
-            this.Configuration.ProxyCreationEnabled = true;
-        }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

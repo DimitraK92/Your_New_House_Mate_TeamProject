@@ -1,11 +1,8 @@
 ﻿@using YNHM.Entities.Models
 @model YNHM.WebApp.Models.PercentageVM
-
-
 @{
     Layout = "~/Views/Shared/Update/Dashboard/_LayoutDashboard.cshtml";
 }
-
 
 <section class="py-7 py-md-10">
     <div class="container">
@@ -27,8 +24,6 @@
                 </div>
             </div>
         }
-
-
         <div class="row">
 
             @foreach (var roomie in Model.Compared)
@@ -57,9 +52,6 @@
                     </div>
                 </div>
             }
-
-
-
         </div>
     </div>
 </section>

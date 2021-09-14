@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
 using YNHM.Entities.Models;
 
 namespace YNHM.WebApp.Models
 {
 
-
-
     public class PersonDetailsVM
     {
         public Roomie Roomie { get; set; }
-
         public PersonDetailsVM(Roomie roomie)
         {
             Roomie = roomie;
         }
-
 
         [Display(Name = "First Name")]
         [MinLength(2, ErrorMessage = "First name should have at least 2 characters.")]
@@ -32,7 +23,6 @@ namespace YNHM.WebApp.Models
         public string LastName { get; set; }
 
         public int Age { get; set; }
-
         public string PhotoUrl { get; set; }
 
         [Display(Name = "Phone Number")]
@@ -44,7 +34,6 @@ namespace YNHM.WebApp.Models
 
         [Display(Name = "Facebook Profile")]
         public string Facebook { get; set; }
-
         public string GetUsersName()
         {
             return $"{Roomie.FirstName} {Roomie.LastName}";

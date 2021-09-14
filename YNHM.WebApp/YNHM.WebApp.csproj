@@ -205,7 +205,6 @@
     <Compile Include="Models\CreateRoomieVM.cs" />
     <Compile Include="Models\CustomValidations\CustomAuthorization.cs" />
     <Compile Include="Models\CustomValidations\UniqueUsername.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MatchDetailsVM.cs" />
     <Compile Include="Models\PercentageVM.cs" />
     <Compile Include="Models\PersonalProfileVM.cs" />
@@ -369,7 +368,6 @@
     <Content Include="Areas\Administration\Views\Shared\_AdminLoginLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AdminSidebarMenu.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AdminNavbar.cshtml" />
-    <Content Include="Areas\Administration\Views\Administrator\Login.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Create.cshtml" />
@@ -377,6 +375,9 @@
     <Content Include="Areas\Administration\Views\Houses\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Houses\Index.cshtml" />
+    <Content Include="Templates\Listty\StaticHTML\assets\img\works\FindPerson.png" />
+    <Content Include="Templates\Listty\StaticHTML\assets\img\works\Register.png" />
+    <Content Include="Templates\Listty\StaticHTML\assets\img\works\TakeTest.png" />
     <Content Include="Views\Test\TestInfo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -5799,27 +5800,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -5923,13 +5906,7 @@
     <Content Include="Templates\BootstrapiousAdmin\vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="Templates\BootstrapiousAdmin\vendor\popper.js\umd\popper.js.flow" />
     <Content Include="Views\HomePage\Index.cshtml" />
-    <Content Include="Views\Shared\_MenuBar.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\HomePage\Houses.cshtml" />
     <Content Include="Views\HomePage\PersonalProfile.cshtml" />
-    <Content Include="Views\HomePage\SingleListing.cshtml" />
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
     <Content Include="Views\Account\ProvideAdditionalInfo.cshtml" />
     <Content Include="Views\Manage\EditUserDetails.cshtml" />
     <Content Include="Views\Manage\ViewProfile.cshtml" />
@@ -6391,29 +6368,21 @@
     <Content Include="Views\Shared\Update\Dashboard\_LayoutDashboard.cshtml" />
     <Content Include="Views\Shared\Update\Dashboard\_MainNavbarDashboard.cshtml" />
     <Content Include="Views\Shared\Update\_LoginRightMenu.cshtml" />
-    <Content Include="Views\Shared\_UserDashboardPanelLeftMenu.cshtml" />
     <Content Include="Views\Test\TakeTest.cshtml" />
     <Content Include="Views\HomePage\House.cshtml" />
     <Content Include="Views\Manage\CreateRoomie.cshtml" />
     <Content Include="Views\HomePage\About.cshtml" />
-    <Content Include="Views\HomePage\Match.cshtml" />
     <Content Include="Views\Test\TestDetails.cshtml" />
-    <Content Include="Views\HomePage\About.cshtml" />
     <Content Include="Views\Manage\_UploadPhoto.cshtml" />
     <Content Include="Views\Manage\_ChangePhoto.cshtml" />
     <Content Include="Views\HomePage\People.cshtml" />
-    <Content Include="Views\PayPal\PaymentSuccess.cshtml" />
-    <Content Include="Views\PayPal\PaymentFailed.cshtml" />
     <Content Include="Views\HomePage\Subscriptions.cshtml" />
     <Content Include="Views\Manage\MatchDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Data\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\less\" />
     <Folder Include="Templates\BootstrapiousAdmin\vendor\font-awesome\scss\" />
-    <Folder Include="Views\About\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

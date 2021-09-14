@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace YNHM.Entities.TestResources
 {
@@ -46,14 +44,12 @@ namespace YNHM.Entities.TestResources
             }
             return userScore;
         }
-
         private double Compare(Question question2, Question question1)
         {
             if (question2.Answer == question1.Answer) return 15d;
             else if (question2.Answer == "Maybe" || question1.Answer == "Maybe") return 5d;
             else return 1d;
         }
-
         private double CalculatePercentage(double firstValue, double secondValue)
         {
             return (firstValue / secondValue) * 100;

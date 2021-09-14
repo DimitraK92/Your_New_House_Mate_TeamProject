@@ -62,10 +62,9 @@ namespace YNHM.WebApp.Controllers
 
         public ActionResult People(string searchText, string selectOption)
         {
-           
             Roomie currentRoomie = GetCurrentRoomie();
 
-            if (currentRoomie.HasTest==false)
+            if (currentRoomie.HasTest == false)
             {
                 ViewBag.Message = "You have not yet taken the test. You have been redirected here instead.";
                 return RedirectToAction("TestInfo", "Test");
@@ -75,9 +74,9 @@ namespace YNHM.WebApp.Controllers
             try
             {
                 roomies = dbContext.Roomies
-                            .Where(r => r.Id != currentRoomie.Id && r.IsMatched == false &&r.HasTest).ToList()
+                            .Where(r => r.Id != currentRoomie.Id && r.IsMatched == false && r.HasTest).ToList()
                             .Where(r => r.HasHouse != currentRoomie.HasHouse).ToList();
-                
+
                 if (!currentRoomie.HasHouse)
                 {
                     var matchedWithRooms = dbContext.Roomies.Where(r => r.Id != currentRoomie.Id && r.IsMatched)
@@ -89,9 +88,7 @@ namespace YNHM.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, e.Message);
             }
-
-
-            var compared = CompareRoomies(currentRoomie,roomies);
+            var compared = CompareRoomies(currentRoomie, roomies);
 
             #region Filtering
 
@@ -99,14 +96,13 @@ namespace YNHM.WebApp.Controllers
             {
                 switch (selectOption)
                 {
-                    case "First Name": compared = compared.Where(x => x.Key.FirstName.ToUpper().Contains(searchText.ToUpper())).ToDictionary(x => x.Key, x => x.Value); break;                   
+                    case "First Name": compared = compared.Where(x => x.Key.FirstName.ToUpper().Contains(searchText.ToUpper())).ToDictionary(x => x.Key, x => x.Value); break;
                     case "Percentage": compared = compared.Where(x => x.Value > Convert.ToInt32(searchText)).ToDictionary(x => x.Key, x => x.Value); break;
                 }
             }
 
 
             #endregion
-
 
             PercentageVM vm = new PercentageVM()
             {
@@ -120,7 +116,7 @@ namespace YNHM.WebApp.Controllers
 
         public ActionResult PersonalProfile(int? id, int? percentage)
         {
-            if (id == null||percentage==null)
+            if (id == null || percentage == null)
             {
                 return View("Error");
             }
@@ -143,13 +139,10 @@ namespace YNHM.WebApp.Controllers
             PersonalProfileVM vm = new PersonalProfileVM(currentRoomie, roomie, percentage.GetValueOrDefault());
             return View(vm);
         }
-        
+
         public ActionResult Match(int matchedUserId)
         {
             Roomie currentRoomie = GetCurrentRoomie();
-
-
-
             Roomie match = dbContext.Roomies.Find(matchedUserId);
 
             var roomieWithHouse = currentRoomie.HasHouse == true ? currentRoomie : match;
@@ -180,9 +173,6 @@ namespace YNHM.WebApp.Controllers
             dbContext.SaveChanges();
 
             //Add roomie to House.Roomies & Add house to Roomie.House
-
-
-
             var house = roomieWithHouse.House;
             roomieWithoutHouse.HasHouse = true;
             dbContext.Entry(roomieWithoutHouse).State = EntityState.Modified;
@@ -193,7 +183,8 @@ namespace YNHM.WebApp.Controllers
             dbContext.Entry(house).State = EntityState.Modified;
             dbContext.SaveChanges();
 
-            return RedirectToAction("MatchDetails","Manage");
+            TempData["message"] = "Great, you have been matched! Try to have some fun until you die! :D";
+            return RedirectToAction("MatchDetails", "Manage");
         }
 
         public ActionResult House(int? houseId)
@@ -206,7 +197,6 @@ namespace YNHM.WebApp.Controllers
         public ActionResult Subscriptions()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            
             return View(user);
         }
 
@@ -225,10 +215,9 @@ namespace YNHM.WebApp.Controllers
                 {
                     percent += 10;
                 }
-
                 roomiesPercentages.Add(others[i], percent);
             }
-            return roomiesPercentages.OrderByDescending(r=>r.Value).ToDictionary(x=>x.Key,x=>x.Value);
+            return roomiesPercentages.OrderByDescending(r => r.Value).ToDictionary(x => x.Key, x => x.Value);
         }
         private Roomie GetCurrentRoomie()
         {

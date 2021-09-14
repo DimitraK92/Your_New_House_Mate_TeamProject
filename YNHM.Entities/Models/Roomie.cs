@@ -13,21 +13,18 @@ namespace YNHM.Entities.Models
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
         public int Age { get; set; }
-        
+
         [DisplayName("Photo")]
         public string PhotoUrl { get; set; }
 
         //CONTACT DETAILS
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
-
         public string Email { get; set; }
 
         [Display(Name = "Facebook Profile")]
         public string Facebook { get; set; }
-
         public bool IsMatched { get; set; }
         public bool HasHouse { get; set; }
         public bool HasTest { get; set; }
@@ -38,7 +35,6 @@ namespace YNHM.Entities.Models
             IsMatched = false;
             HasHouse = false;
         }
-
 
         //Navigation properties
         public int? HouseId { get; set; }

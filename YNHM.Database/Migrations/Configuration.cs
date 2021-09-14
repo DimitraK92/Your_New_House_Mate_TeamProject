@@ -26,7 +26,7 @@ namespace YNHM.Database.Migrations
             try
             {
                 #region roomies seed
-                string[] firstNames =   { 
+                string[] firstNames =   {
                     "Maria", "Mohammed", "Wei", "Yan", "John",
                     "Helen", "Christina", "David","Ahmed","Astridr",
                     "Anna", "Luis","Fatima","Olga", "Richard",
@@ -82,8 +82,8 @@ namespace YNHM.Database.Migrations
                     string email = $"{firstName}.{lastName}@gmail.com";
                     string phone = $"69{rand.Next(11111111, 100000000)}";
                     int age = rand.Next(18, 101);
-                    bool subscribed= false;
-                    if (rand.Next(0,101)%3==0)
+                    bool subscribed = false;
+                    if (rand.Next(0, 101) % 3 == 0)
                     {
                         subscribed = true;
                     }
@@ -147,7 +147,7 @@ namespace YNHM.Database.Migrations
                     Phone = "0306900000000",
                     Email = @"maxdont@gmail.com",
                     Facebook = @"https://www.facebook.com/maxdont/",
-                    
+
                 };
                 Roomie r5 = new Roomie()
                 {
@@ -231,7 +231,7 @@ namespace YNHM.Database.Migrations
 
                 };
 
-                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12);
+                context.Roomies.AddOrUpdate(p => new { p.FirstName, p.LastName }, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12);
                 context.SaveChanges();
 
 
@@ -262,8 +262,10 @@ namespace YNHM.Database.Migrations
                     string district = $"{districts[rand.Next(0, districts.Length)]}";
                     int rooms = rand.Next(2, 6);
                     int floor = rand.Next(0, 11);
+                    string photoUrl = @"https://graphicriver.img.customer.envatousercontent.com/files/321602081/preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=df09fd193f86c7719415ef430c3b2e01";
                     int rent = 0;
                     int area = 0;
+
 
                     if (rooms > 2)
                     {
@@ -290,7 +292,8 @@ namespace YNHM.Database.Migrations
                         Area = area,
                         Bedrooms = rooms,
                         Floor = floor,
-                        Rent = rent
+                        Rent = rent,
+                        PhotoUrl = photoUrl
                     };
                     context.Houses.Add(h);
                 };

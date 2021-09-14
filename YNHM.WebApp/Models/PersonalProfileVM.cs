@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using YNHM.Entities.Models;
+﻿using YNHM.Entities.Models;
 
 namespace YNHM.WebApp.Models
 {
