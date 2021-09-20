@@ -1,6 +1,6 @@
 # YourNewHouseMate
 
-Final group project for the PeopleCert C Sharp Coding Bootcamp (CB13, February 2021). 
+Final group project for the PeopleCert C# Coding Bootcamp (CB13, February 2021). 
 
 This application simulates a platform where people can find roommates for their house. The matching is done via an algorithm which compares answers to questions in a test which all the users need to complete. Results are presented with a match percentage and let the user choose with that in mind. A supposed premium version allows the user to see the other person's answers to the test. 
 
